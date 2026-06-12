@@ -1,0 +1,25 @@
+"use client";
+
+export default function JoinCTA() {
+  return (
+    <section className="py-[50px] px-[5%] bg-bg text-center relative overflow-hidden">
+      {/* Glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(0,120,229,0.07)_0%,transparent_70%)] pointer-events-none" />
+
+      <div className="relative z-[1]">
+        <div className="section-tag justify-center">Join Now</div>
+        <h2 className="font-[var(--font-bebas)] text-[clamp(48px,7vw,96px)] tracking-[1px] leading-none text-white mb-4">
+          Ready to <span className="text-gold">Win Big</span>?
+        </h2>
+        <p className="section-desc mx-auto text-center mb-0">
+          Join thousands of players already winning on India&apos;s best gaming platform. Start playing today.
+        </p>
+
+        <div className="flex gap-4 justify-center flex-wrap mt-10">
+          <a href="#" className="btn btn-gold btn-large">Start Playing Now</a>
+          <a href="#" className="btn btn-ghost btn-large">Explore Casino</a>
+        </div>
+      </div>
+    </section>
+  );
+}

@@ -1,34 +1,46 @@
-﻿"use client";
+"use client";
 
-import clsx from "clsx";
-import ScrollReveal from "../components/ScrollReveal";
+import Link from "next/link";
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import {
+  FaHorse,
+  FaBolt,
+  FaCheck,
+  FaArrowRight,
+  FaLock,
+  FaExclamationTriangle,
+} from "react-icons/fa";
+import ScrollReveal from "../components/ScrollReveal";
+
+const ACCENT = "#01A3F6";
 
 const whyPopular = [
-  { icon: "âš¡", label: "Races are fast and exciting" },
-  { icon: "ðŸ“¡", label: "Live betting creates more entertainment" },
-  { icon: "ðŸ“Š", label: "Multiple betting options are available" },
-  { icon: "ðŸŒ", label: "International racing events attract huge audiences" },
-  { icon: "ðŸ‡", label: "Every race offers new opportunities" },
-  { icon: "ðŸ", label: "Fast pace and unpredictability" },
+  "Races are fast and exciting",
+  "Live betting creates more entertainment",
+  "Multiple betting options are available",
+  "International racing events attract huge audiences",
+  "Every race offers new opportunities",
+  "Fast pace and unpredictability",
 ];
 
 const liveFeatures = [
-  { icon: "ðŸ“Š", label: "Real time horse racing odds" },
-  { icon: "âš¡", label: "Fast live betting markets" },
-  { icon: "ðŸ“±", label: "Mobile friendly race betting" },
-  { icon: "ðŸ–¥ï¸", label: "Smooth betting interface" },
-  { icon: "ðŸ‡", label: "Quick access to live races" },
-  { icon: "ðŸ§­", label: "Easy market navigation" },
+  "Real time horse racing odds",
+  "Fast live betting markets",
+  "Mobile friendly race betting",
+  "Smooth betting interface",
+  "Quick access to live races",
+  "Easy market navigation",
 ];
 
 const bettingMarkets = [
-  { title: "Race Winner", desc: "Predict which horse will win the race.", icon: "ðŸ¥‡" },
-  { title: "Place Betting", desc: "Bet on a horse to finish within selected top positions.", icon: "ðŸ…" },
-  { title: "Each Way Betting", desc: "Combine win and place betting into one selection.", icon: "âš–ï¸" },
-  { title: "Forecast Betting", desc: "Predict the first and second place horses in the correct order.", icon: "ðŸ“‹" },
-  { title: "Tricast Betting", desc: "Choose the top three race finishers in exact order.", icon: "ðŸ†" },
-  { title: "Live Betting Markets", desc: "Place bets during live horse racing events with updated odds.", icon: "ðŸ“¡" },
+  { title: "Race Winner", desc: "Predict which horse will win the race." },
+  { title: "Place Betting", desc: "Bet on a horse to finish within selected top positions." },
+  { title: "Each Way Betting", desc: "Combine win and place betting into one selection." },
+  { title: "Forecast Betting", desc: "Predict the first and second place horses in the correct order." },
+  { title: "Tricast Betting", desc: "Choose the top three race finishers in exact order." },
+  { title: "Live Betting Markets", desc: "Place bets during live horse racing events with updated odds." },
 ];
 
 const tournaments = [
@@ -48,11 +60,11 @@ const mobileFeatures = [
 ];
 
 const securityFeatures = [
-  { icon: "ðŸ”", label: "Secure account protection" },
-  { icon: "ðŸ’³", label: "Safe payment systems" },
-  { icon: "âš™ï¸", label: "Encrypted transactions" },
-  { icon: "ðŸ›¡ï¸", label: "Reliable betting systems" },
-  { icon: "ðŸ‘¤", label: "Protected user information" },
+  "Secure account protection",
+  "Safe payment systems",
+  "Encrypted transactions",
+  "Reliable betting systems",
+  "Protected user information",
 ];
 
 const benefits = [
@@ -74,11 +86,11 @@ const steps = [
 ];
 
 const whyUsersEnjoy = [
-  { icon: "â±ï¸", label: "Races are quick and entertaining" },
-  { icon: "ðŸ“¡", label: "Live betting increases excitement" },
-  { icon: "ðŸ“Š", label: "Multiple race markets are available" },
-  { icon: "ðŸŒŽ", label: "International events create nonstop action" },
-  { icon: "ðŸ“ˆ", label: "Real time odds improve engagement" },
+  "Races are quick and entertaining",
+  "Live betting increases excitement",
+  "Multiple race markets are available",
+  "International events create nonstop action",
+  "Real time odds improve engagement",
 ];
 
 const responsibleTips = [
@@ -89,418 +101,541 @@ const responsibleTips = [
 ];
 
 export default function HorseRacing() {
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const top = window.scrollY;
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      setProgress(h > 0 ? (top / h) * 100 : 0);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <>
+    <div className="relative min-h-screen overflow-hidden bg-[#05080B] text-white">
       <ScrollReveal />
 
-      {/* ===== HERO SECTION ===== */}
-      <section className={clsx('relative', 'min-h-[70vh]', 'flex', 'items-center', 'overflow-hidden')}>
-        {/* Hero Background Image */}
-        <div className={clsx('absolute', 'inset-0', 'z-0')}>
-          <Image
-            src="/horse-racing-hero.png"
-            alt="Horse Racing Betting at 1xPlay"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className={clsx('absolute', 'inset-0', 'bg-gradient-to-r', 'from-[#080A0E]/95', 'via-[#080A0E]/70', 'to-transparent')} />
-          <div className={clsx('absolute', 'inset-0', 'bg-gradient-to-t', 'from-[#080A0E]', 'via-transparent', 'to-transparent')} />
+      {/* Scroll progress */}
+      <div className="fixed top-[70px] left-0 right-0 h-[2px] z-[998] bg-white/[0.04]">
+        <motion.div
+          className="h-full bg-gradient-to-r from-[#0078E5] to-[#01A3F6] shadow-[0_0_12px_rgba(1,163,246,0.6)]"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+
+      {/* ── Hero (keeps horse-racing-hero.png) ── */}
+      <section className="relative z-10 overflow-hidden pt-[120px] pb-16 md:pb-24 px-[5%]">
+        <div className="absolute inset-0 z-0">
+          <Image src="/horse-racing-hero.png" alt="Horse Racing Betting at 1xPlay" fill sizes="100vw" className="object-cover" priority />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#05080B] via-[#05080B]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-[#05080B]/50" />
+          <div className="absolute top-[12%] right-[14%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(1,163,246,0.16)_0%,transparent_65%)] pointer-events-none" />
         </div>
 
-        <div className={clsx('relative', 'z-10', 'max-w-[1200px]', 'mx-auto', 'px-[5%]', 'py-[70px]')}>
-          <div className={clsx('max-w-[700px]', 'reveal')}>
-            <div className="section-tag">ðŸ‡ Horse Racing</div>
-            <h1 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(40px,6vw,72px)]', 'tracking-[1px]', 'leading-[1.05]', 'text-white', 'mb-6')}>
-              Horse Racing Betting<br />at <span className="text-gold">1xPlay</span>
-            </h1>
-            <p className={clsx('text-[17px]', 'text-[#B0B8CC]', 'leading-[1.8]', 'font-light', 'mb-8', 'max-w-[600px]')}>
+        <div className="relative z-10 mx-auto max-w-[1180px]">
+          <div className="max-w-[720px]">
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="inline-flex items-center gap-2 rounded-full border border-[#01A3F6]/40 bg-[#01A3F6]/12 px-3.5 py-1.5 backdrop-blur-md shadow-[0_0_24px_rgba(1,163,246,0.18)]"
+            >
+              <FaHorse className="w-3.5 h-3.5 text-[#01A3F6]" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#01A3F6] font-[var(--font-syne)]">
+                Horse Racing
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="mt-6 font-[var(--font-bebas)] text-[clamp(44px,7vw,82px)] leading-[0.92] tracking-[1px] text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+            >
+              Horse Racing Betting
+              <br />
+              at{" "}
+              <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent">
+                1xPlay
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="mt-6 max-w-[600px] text-[16px] md:text-[18px] leading-relaxed font-light text-white/70"
+            >
               Welcome to the exciting world of horse racing betting at 1xPlay where speed, strategy, and real-time sports action come together on one modern betting platform.
-            </p>
-            <div className={clsx('flex', 'gap-4', 'flex-wrap')}>
-              <a href="#markets" className={clsx('btn', 'btn-gold', 'btn-large')}>Explore Markets</a>
-              <a href="#how-to-start" className={clsx('btn', 'btn-ghost', 'btn-large')}>How to Start</a>
-            </div>
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="mt-8 flex flex-wrap gap-4"
+            >
+              <a href="#markets" className="btn btn-gold btn-large">
+                Explore Markets <FaArrowRight className="w-3.5 h-3.5" />
+              </a>
+              <a href="#how-to-start" className="btn btn-ghost btn-large">
+                How to Start
+              </a>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ===== INTRO SECTION ===== */}
-      <section className={clsx('py-[40px]', 'px-[5%]', 'bg-bg2')}>
-        <div className={clsx('max-w-[950px]', 'mx-auto', 'text-center', 'reveal')}>
-          <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.9]', 'font-light', 'mb-6')}>
+      {/* Stat ribbon */}
+      <section className="relative z-10 px-[5%] -mt-4">
+        <div className="mx-auto max-w-[1180px] grid grid-cols-3 gap-px rounded-2xl overflow-hidden border border-white/10 bg-white/[0.06]">
+          {[
+            { v: "6", l: "Bet Markets" },
+            { v: "5", l: "Event Types" },
+            { v: "24/7", l: "Live Odds" },
+          ].map((s) => (
+            <div key={s.l} className="bg-[#0C0A06] px-5 py-7 text-center">
+              <div className="font-[var(--font-bebas)] text-[clamp(32px,5vw,50px)] leading-none tracking-wide bg-gradient-to-b from-white to-[#01A3F6] bg-clip-text text-transparent">
+                {s.v}
+              </div>
+              <div className="mt-2 text-[10px] uppercase tracking-[0.25em] text-muted font-[var(--font-syne)] font-semibold">
+                {s.l}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ── Editorial flow ── */}
+      <div className="relative z-10 px-[5%] py-[70px] md:py-[100px] space-y-[72px] md:space-y-[110px]">
+        {/* 01 — Intro */}
+        <Block num="01" eyebrow="The Sport of Kings" title="Horse Racing Betting at 1xPlay">
+          <p>
             Horse racing remains one of the most popular sports betting categories worldwide because of its fast races, thrilling finishes, and exciting betting opportunities. At 1xPlay, users can enjoy live horse racing betting, smooth mobile access, and real-time odds updates for major racing events and international tournaments.
           </p>
-          <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light')}>
+          <p>
             Whether you are an experienced racing fan or a beginner exploring online horse racing betting, 1xPlay provides a secure, easy to use, and user-friendly platform designed for modern sports enthusiasts.
           </p>
-        </div>
-      </section>
+        </Block>
 
-      {/* ===== WHY POPULAR ===== */}
-      <section className={clsx('py-[50px]', 'px-[5%]', 'bg-bg', 'relative', 'overflow-hidden')}>
-        <div className={clsx('absolute', 'top-0', 'right-[-10%]', 'w-[400px]', 'h-[400px]', 'bg-[radial-gradient(circle,rgba(0,120,229,0.05)_0%,transparent_70%)]', 'pointer-events-none')} />
-
-        <div className={clsx('max-w-[1200px]', 'mx-auto')}>
-          <div className={clsx('text-center', 'mb-14', 'reveal')}>
-            <div className={clsx('section-tag', 'justify-center')}>Thrilling Action</div>
-            <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,56px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
-              Why Horse Racing Betting<br />Is <span className="text-gold">So Popular</span>
-            </h2>
-            <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'max-w-[650px]', 'mx-auto', 'font-light')}>
-              Horse racing has been one of the biggest betting sports for many years because every race brings excitement, competition, and unpredictable results.
-            </p>
-          </div>
-
-          <div className={clsx('grid', 'grid-cols-2', 'md:grid-cols-3', 'gap-4', 'mb-10')}>
-            {whyPopular.map((item) => (
-              <div key={item.label} className={clsx('flex', 'items-center', 'gap-3.5', 'p-5', 'bg-card', 'border', 'border-border', 'rounded-xl', 'hover:border-[rgba(0,120,229,0.3)]', 'transition-all', 'group', 'reveal')}>
-                <span className={clsx('text-[22px]', 'group-hover:scale-110', 'transition-transform')}>{item.icon}</span>
-                <span className={clsx('text-[14px]', 'text-white', 'font-medium')}>{item.label}</span>
+        {/* 02 — Why popular */}
+        <WideBlock num="02" eyebrow="Thrilling Action" title="Why Horse Racing Betting Is So Popular">
+          <p className="max-w-2xl">
+            Horse racing has been one of the biggest betting sports for many years because every race brings excitement, competition, and unpredictable results.
+          </p>
+          <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {whyPopular.map((label) => (
+              <div
+                key={label}
+                className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3.5 transition hover:border-[#01A3F6]/25"
+              >
+                <FaBolt className="shrink-0 text-[#01A3F6]" size={15} />
+                <span className="text-[14px] text-white/85">{label}</span>
               </div>
             ))}
           </div>
-
-          <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'text-center', 'max-w-[700px]', 'mx-auto', 'font-light', 'reveal')}>
+          <p className="mt-7 max-w-2xl text-white/60">
             The speed and unpredictability of horse racing make it one of the most engaging online sports betting experiences.
           </p>
-        </div>
-      </section>
+        </WideBlock>
 
-      {/* ===== LIVE BETTING EXPERIENCE ===== */}
-      <section className={clsx('py-[50px]', 'px-[5%]', 'bg-bg2', 'overflow-hidden')}>
-        <div className={clsx('max-w-[1200px]', 'mx-auto')}>
-          <div className={clsx('grid', 'grid-cols-1', 'lg:grid-cols-2', 'gap-16', 'items-center')}>
-            {/* Left: Content */}
-            <div className="reveal">
-              <div className="section-tag">Live Race Tracking</div>
-              <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,52px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
-                Live Horse Racing<br /><span className="text-gold">Betting Experience</span>
-              </h2>
-              <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-6')}>
-                At 1xPlay, users can enjoy live horse racing betting with real-time race updates and continuously changing odds.
-              </p>
-              <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-8')}>
-                The platform is designed to provide fast betting access during live races so users can place bets smoothly without delays. Live horse racing betting helps users feel more connected to the race while enjoying real-time sports action.
-              </p>
-
-              <h3 className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[16px]', 'text-white', 'mb-5')}>Live Betting Features</h3>
-              <div className={clsx('grid', 'grid-cols-2', 'gap-3')}>
-                {liveFeatures.map((f) => (
-                  <div key={f.label} className={clsx('flex', 'items-center', 'gap-2.5', 'p-3.5', 'bg-card', 'border', 'border-border', 'rounded-lg', 'text-[13px]', 'text-white', 'font-medium')}>
-                    <span className="text-[16px]">{f.icon}</span>
-                    {f.label}
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Image */}
-            <div className={clsx('reveal', 'relative', 'rounded-2xl', 'overflow-hidden', 'border', 'border-border')}>
-              <Image
-                src="/horse-racing-live.png"
-                alt="Live Horse Racing Betting at 1xPlay"
-                width={600}
-                height={400}
-                className={clsx('w-full', 'h-auto', 'object-cover')}
-              />
-              <div className={clsx('absolute', 'inset-0', 'bg-gradient-to-t', 'from-[#080A0E]/60', 'via-transparent', 'to-transparent')} />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== POPULAR BETTING MARKETS ===== */}
-      <section id="markets" className={clsx('py-[50px]', 'px-[5%]', 'bg-bg')}>
-        <div className={clsx('max-w-[1200px]', 'mx-auto')}>
-          <div className={clsx('text-center', 'mb-14', 'reveal')}>
-            <div className={clsx('section-tag', 'justify-center')}>Betting Markets</div>
-            <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,56px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
-              Popular Horse Racing<br /><span className="text-gold">Betting Markets</span>
-            </h2>
-            <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'max-w-[650px]', 'mx-auto', 'font-light')}>
-              1xPlay offers multiple horse racing betting options designed for both beginners and experienced sports bettors.
-            </p>
-          </div>
-
-          <div className={clsx('grid', 'grid-cols-1', 'sm:grid-cols-2', 'lg:grid-cols-3', 'gap-5')}>
-            {bettingMarkets.map((market) => (
-              <div key={market.title} className={clsx('bg-card/60', 'backdrop-blur-sm', 'border', 'border-border', 'rounded-2xl', 'p-7', 'hover:border-[rgba(0,120,229,0.25)]', 'transition-all', 'group', 'reveal')}>
-                <div className={clsx('w-12', 'h-12', 'rounded-xl', 'bg-[rgba(0,120,229,0.1)]', 'border', 'border-[rgba(0,120,229,0.2)]', 'flex', 'items-center', 'justify-center', 'text-[22px]', 'mb-5', 'group-hover:scale-110', 'transition-transform')}>
-                  {market.icon}
-                </div>
-                <h4 className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-white', 'text-[16px]', 'mb-2')}>{market.title}</h4>
-                <p className={clsx('text-[13px]', 'text-muted', 'leading-[1.7]')}>{market.desc}</p>
+        {/* 03 — Live betting (split with horse-racing-live.png) */}
+        <SplitMedia num="03" eyebrow="Live Race Tracking" title="Live Horse Racing Betting Experience" image="/horse-racing-live.jpg" alt="Live Horse Racing Betting at 1xPlay">
+          <p>
+            At 1xPlay, users can enjoy live horse racing betting with real-time race updates and continuously changing odds.
+          </p>
+          <p>
+            The platform is designed to provide fast betting access during live races so users can place bets smoothly without delays. Live horse racing betting helps users feel more connected to the race while enjoying real-time sports action.
+          </p>
+          <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#01A3F6] font-[var(--font-syne)] pt-1">
+            Live Betting Features
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+            {liveFeatures.map((f) => (
+              <div key={f} className="flex items-center gap-2.5 rounded-lg border border-white/[0.06] bg-white/[0.02] px-3.5 py-2.5 text-[13px] text-white/85">
+                <FaCheck className="shrink-0 text-[#01A3F6]" size={12} />
+                {f}
               </div>
             ))}
           </div>
+        </SplitMedia>
 
-          <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'text-center', 'mt-10', 'max-w-[700px]', 'mx-auto', 'font-light', 'reveal')}>
+        {/* 04 — Markets bento */}
+        <WideBlock num="04" eyebrow="Betting Markets" title="Popular Horse Racing Betting Markets" id="markets">
+          <p className="max-w-2xl">
+            1xPlay offers multiple horse racing betting options designed for both beginners and experienced sports bettors.
+          </p>
+          <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+            {bettingMarkets.map((m, i) => (
+              <motion.div
+                key={m.title}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: (i % 3) * 0.05 }}
+                className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-gradient-to-b from-white/[0.03] to-transparent p-5 transition-all hover:border-[#01A3F6]/35"
+              >
+                <div className="absolute -top-10 -right-10 h-28 w-28 rounded-full bg-[radial-gradient(circle,rgba(1,163,246,0.12)_0%,transparent_70%)] opacity-0 transition-opacity group-hover:opacity-100" />
+                <div className="relative z-10">
+                  <span className="mb-3 inline-flex w-fit items-center rounded-md bg-[#01A3F6]/10 px-2 py-1 text-[9px] font-bold uppercase tracking-wider text-[#01A3F6] font-[var(--font-syne)]">
+                    Market
+                  </span>
+                  <h4 className="font-[var(--font-syne)] text-[15px] font-bold text-white">{m.title}</h4>
+                  <p className="mt-1.5 text-[12.5px] leading-[1.6] text-muted">{m.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <p className="mt-7 max-w-2xl text-white/60">
             Our goal is to provide users with a complete horse racing betting experience through flexible markets and real-time race coverage.
           </p>
-        </div>
-      </section>
+        </WideBlock>
 
-      {/* ===== MAJOR TOURNAMENTS ===== */}
-      <section className={clsx('py-[50px]', 'px-[5%]', 'bg-bg3')}>
-        <div className={clsx('max-w-[1200px]', 'mx-auto')}>
-          <div className={clsx('text-center', 'mb-14', 'reveal')}>
-            <div className={clsx('section-tag', 'justify-center')}>Global Events</div>
-            <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,52px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
-              International Horse<br />Racing <span className="text-gold">Events & Meets</span>
-            </h2>
-            <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'max-w-[650px]', 'mx-auto', 'font-light')}>
-              At 1xPlay, users can follow and enjoy betting on major horse racing events and global racing tournaments.
-            </p>
-          </div>
-
-          <h3 className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[18px]', 'text-white', 'text-center', 'mb-8', 'reveal')}>
+        {/* 05 — Tournaments chip cloud */}
+        <WideBlock num="05" eyebrow="Global Events" title="International Horse Racing Events & Meets">
+          <p className="max-w-2xl">
+            At 1xPlay, users can follow and enjoy betting on major horse racing events and global racing tournaments.
+          </p>
+          <p className="mt-5 text-[12px] font-bold uppercase tracking-[0.2em] text-[#01A3F6] font-[var(--font-syne)]">
             Popular Competitions Include
-          </h3>
-
-          <div className={clsx('grid', 'grid-cols-1', 'sm:grid-cols-2', 'md:grid-cols-3', 'gap-3.5', 'max-w-[900px]', 'mx-auto', 'mb-10')}>
+          </p>
+          <div className="mt-4 flex flex-wrap gap-2.5">
             {tournaments.map((t) => (
-              <div key={t} className={clsx('flex', 'items-center', 'gap-3', 'p-4', 'bg-card', 'border', 'border-border', 'rounded-xl', 'hover:border-[rgba(0,120,229,0.25)]', 'transition-all', 'reveal')}>
-                <span className="text-gold text-[14px]">ðŸ‡</span>
-                <span className={clsx('text-[13px]', 'text-white', 'font-medium')}>{t}</span>
-              </div>
+              <span
+                key={t}
+                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2.5 text-[13px] font-medium text-white/85 transition-all hover:border-[#01A3F6]/40 hover:bg-[#01A3F6]/[0.06] hover:text-white"
+              >
+                <FaHorse className="text-[#01A3F6]" size={12} />
+                {t}
+              </span>
             ))}
           </div>
-
-          <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'text-center', 'max-w-[650px]', 'mx-auto', 'font-light', 'reveal')}>
+          <p className="mt-7 max-w-2xl text-white/60">
             Horse racing fans can enjoy nonstop sports entertainment through exciting races from different regions around the world.
           </p>
-        </div>
-      </section>
+        </WideBlock>
 
-      {/* ===== MOBILE BETTING ===== */}
-      <section className={clsx('py-[50px]', 'px-[5%]', 'bg-bg', 'overflow-hidden')}>
-        <div className={clsx('max-w-[1200px]', 'mx-auto')}>
-          <div className={clsx('grid', 'grid-cols-1', 'lg:grid-cols-2', 'gap-16', 'items-center')}>
-            {/* Left: Image */}
-            <div className={clsx('reveal', 'relative', 'rounded-2xl', 'overflow-hidden', 'border', 'border-border', 'order-2', 'lg:order-1')}>
-              <Image
-                src="/horse-racing-mobile.png"
-                alt="Mobile Horse Racing Betting at 1xPlay"
-                width={600}
-                height={400}
-                className={clsx('w-full', 'h-auto', 'object-cover')}
-              />
-              <div className={clsx('absolute', 'inset-0', 'bg-gradient-to-t', 'from-[#080A0E]/50', 'via-transparent', 'to-transparent')} />
-            </div>
-
-            {/* Right: Content */}
-            <div className={clsx('reveal', 'order-1', 'lg:order-2')}>
-              <div className="section-tag">Mobile Optimization</div>
-              <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,52px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
-                Smooth Mobile<br /><span className="text-gold">Horse Racing</span> Experience
-              </h2>
-              <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-8')}>
-                Modern users prefer mobile sports betting because it provides instant access to live races anytime and anywhere. 1xPlay is fully optimized for mobile devices for convenience and speed.
-              </p>
-
-              <h3 className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[16px]', 'text-white', 'mb-5')}>Users can:</h3>
-              <div className={clsx('flex', 'flex-col', 'gap-3')}>
-                {mobileFeatures.map((f) => (
-                  <div key={f} className={clsx('flex', 'items-center', 'gap-3', 'p-3.5', 'bg-card', 'border', 'border-border', 'rounded-xl', 'hover:border-[rgba(0,120,229,0.25)]', 'transition-all')}>
-                    <div className={clsx('w-6', 'h-6', 'rounded-full', 'bg-[rgba(0,120,229,0.15)]', 'flex', 'items-center', 'justify-center', 'shrink-0')}>
-                      <span className={clsx('text-[#0078E5]', 'text-[11px]', 'font-bold')}>âœ“</span>
-                    </div>
-                    <span className={clsx('text-[14px]', 'text-white', 'font-medium')}>{f}</span>
-                  </div>
-                ))}
-              </div>
-
-              <p className={clsx('text-[13px]', 'text-muted', 'leading-[1.7]', 'mt-6', 'font-light')}>
-                The mobile platform is designed for speed, convenience, and uninterrupted sports betting entertainment.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== SECURITY ===== */}
-      <section className={clsx('py-[50px]', 'px-[5%]', 'bg-bg2')}>
-        <div className={clsx('max-w-[900px]', 'mx-auto', 'text-center')}>
-          <div className="reveal">
-            <div className={clsx('section-tag', 'justify-center')}>Security</div>
-            <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,52px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
-              Safe and Secure<br />Horse Racing <span className="text-gold">Betting</span>
-            </h2>
-            <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'max-w-[650px]', 'mx-auto', 'font-light', 'mb-10')}>
-              At 1xPlay, user security remains a top priority. We use advanced technology, secure systems, and modern protection tools to help maintain safe betting experiences.
-            </p>
-          </div>
-
-          <div className={clsx('grid', 'grid-cols-2', 'md:grid-cols-5', 'gap-4', 'mb-10')}>
-            {securityFeatures.map((f) => (
-              <div key={f.label} className={clsx('bg-card', 'border', 'border-border', 'rounded-xl', 'p-5', 'flex', 'flex-col', 'items-center', 'gap-3', 'hover:border-[rgba(0,120,229,0.3)]', 'transition-all', 'group', 'reveal')}>
-                <span className={clsx('text-[24px]', 'group-hover:scale-110', 'transition-transform')}>{f.icon}</span>
-                <span className={clsx('text-[12px]', 'text-white', 'font-medium', 'text-center', 'leading-tight')}>{f.label}</span>
+        {/* 06 — Mobile (split reverse with horse-racing-mobile.png) */}
+        <SplitMedia num="06" eyebrow="Mobile Optimization" title="Smooth Mobile Horse Racing Experience" image="/horse-racing-mobile.jpg" alt="Mobile Horse Racing Betting at 1xPlay" reverse>
+          <p>
+            Modern users prefer mobile sports betting because it provides instant access to live races anytime and anywhere. 1xPlay is fully optimized for mobile devices for convenience and speed.
+          </p>
+          <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#01A3F6] font-[var(--font-syne)] pt-1">
+            Users can:
+          </p>
+          <div className="flex flex-col gap-2.5">
+            {mobileFeatures.map((f) => (
+              <div key={f} className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3 text-[14px] text-white/85">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#01A3F6]/15 text-[#01A3F6]">
+                  <FaCheck size={11} />
+                </span>
+                {f}
               </div>
             ))}
           </div>
+          <p className="text-white/60">
+            The mobile platform is designed for speed, convenience, and uninterrupted sports betting entertainment.
+          </p>
+        </SplitMedia>
 
-          <div className={clsx('max-w-[700px]', 'mx-auto', 'reveal')}>
-            <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-3')}>
-              We continuously improve platform performance and security to provide users with a trusted online betting environment, focusing on secure account protection, safe payment systems, and encrypted transactions.
-            </p>
+        {/* 07 — Security */}
+        <WideBlock num="07" eyebrow="Security" title="Safe and Secure Horse Racing Betting">
+          <p className="max-w-2xl">
+            At 1xPlay, user security remains a top priority. We use advanced technology, secure systems, and modern protection tools to help maintain safe betting experiences.
+          </p>
+          <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            {securityFeatures.map((label) => (
+              <div
+                key={label}
+                className="flex items-center gap-3 rounded-xl border border-white/[0.07] bg-white/[0.02] px-4 py-3.5 transition-all hover:border-[#01A3F6]/30 hover:bg-[#01A3F6]/[0.04]"
+              >
+                <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md bg-[#01A3F6]/12 text-[#01A3F6]">
+                  <FaLock size={12} />
+                </span>
+                <span className="text-[13.5px] text-white/85">{label}</span>
+              </div>
+            ))}
           </div>
-        </div>
-      </section>
+          <p className="mt-7 max-w-2xl text-white/60">
+            We continuously improve platform performance and security to provide users with a trusted online betting environment, focusing on secure account protection, safe payment systems, and encrypted transactions.
+          </p>
+        </WideBlock>
 
-      {/* ===== WHY USERS ENJOY ===== */}
-      <section className={clsx('py-[50px]', 'px-[5%]', 'bg-bg')}>
-        <div className={clsx('max-w-[1200px]', 'mx-auto')}>
-          <div className={clsx('grid', 'grid-cols-1', 'lg:grid-cols-2', 'gap-16', 'items-start')}>
-            {/* Left */}
-            <div className="reveal">
-              <div className="section-tag">Platform Value</div>
-              <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,52px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
-                Why Choose <span className="text-gold">1xPlay</span><br />for Horse Racing
-              </h2>
-              <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-5')}>
+        {/* 08 — Why choose (two columns) */}
+        <WideBlock num="08" eyebrow="Platform Value" title="Why Choose 1xPlay for Horse Racing">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14">
+            <div className="space-y-5">
+              <p>
                 1xPlay focuses on delivering a smooth, fast, and user-friendly sports betting experience for horse racing fans worldwide.
               </p>
-              <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-6')}>
+              <p>
                 Our platform is designed to help users enjoy sports betting with better performance, smoother navigation, and direct access to live odds.
               </p>
-              
-              <h3 className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[16px]', 'text-white', 'mb-4')}>Why Users Enjoy Horse Racing:</h3>
-              <div className={clsx('flex', 'flex-col', 'gap-3')}>
-                {whyUsersEnjoy.map((item) => (
-                  <div key={item.label} className="flex items-center gap-3">
-                    <span className="text-gold">{item.icon}</span>
-                    <span className="text-[13px] text-muted font-light">{item.label}</span>
+              <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#01A3F6] font-[var(--font-syne)]">
+                Why Users Enjoy Horse Racing:
+              </p>
+              <div className="flex flex-col gap-3">
+                {whyUsersEnjoy.map((label) => (
+                  <div key={label} className="flex items-center gap-3">
+                    <FaBolt className="shrink-0 text-[#01A3F6]" size={13} />
+                    <span className="text-[13.5px] text-white/85 font-light">{label}</span>
                   </div>
                 ))}
               </div>
             </div>
-
-            {/* Right: Benefits list */}
-            <div className="reveal">
-              <h3 className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[16px]', 'text-white', 'mb-6')}>
+            <div>
+              <p className="mb-5 text-[12px] font-bold uppercase tracking-[0.2em] text-[#01A3F6] font-[var(--font-syne)]">
                 Benefits of Soccer Betting at 1xPlay
-              </h3>
-              <div className={clsx('grid', 'grid-cols-1', 'sm:grid-cols-2', 'gap-3')}>
+              </p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {benefits.map((b) => (
-                  <div key={b} className={clsx('flex', 'items-center', 'gap-3', 'p-3.5', 'bg-card', 'border', 'border-border', 'rounded-xl', 'hover:border-[rgba(0,120,229,0.25)]', 'transition-all')}>
-                    <div className={clsx('w-6', 'h-6', 'rounded-full', 'bg-[rgba(0,120,229,0.15)]', 'flex', 'items-center', 'justify-center', 'shrink-0')}>
-                      <span className={clsx('text-[#0078E5]', 'text-[11px]', 'font-bold')}>âœ“</span>
-                    </div>
-                    <span className={clsx('text-[13px]', 'text-white', 'font-medium')}>{b}</span>
+                  <div
+                    key={b}
+                    className="flex items-center gap-3 rounded-xl border border-white/[0.07] bg-white/[0.02] px-4 py-3.5 transition-all hover:border-[#01A3F6]/30 hover:bg-[#01A3F6]/[0.04]"
+                  >
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[#01A3F6]/12 text-[#01A3F6]">
+                      <FaCheck size={11} />
+                    </span>
+                    <span className="text-[13px] text-white/85">{b}</span>
                   </div>
                 ))}
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </WideBlock>
 
-      {/* ===== HOW TO START ===== */}
-      <section id="how-to-start" className={clsx('py-[50px]', 'px-[5%]', 'bg-bg3')}>
-        <div className={clsx('max-w-[1200px]', 'mx-auto')}>
-          <div className={clsx('text-center', 'mb-14', 'reveal')}>
-            <div className={clsx('section-tag', 'justify-center')}>Get Started</div>
-            <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,56px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
-              Easy to Start<br /><span className="text-gold">Racing Betting</span>
-            </h2>
-            <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'max-w-[550px]', 'mx-auto', 'font-light')}>
-              Getting started with horse racing betting at 1xPlay is quick and beginner-friendly.
-            </p>
-          </div>
-
-          <div className={clsx('grid', 'grid-cols-1', 'lg:grid-cols-12', 'gap-12', 'items-center')}>
-            {/* Left: Steps List */}
-            <div className={clsx('lg:col-span-7', 'flex', 'flex-col', 'gap-4')}>
+        {/* 09 — How to start (keeps image.png) */}
+        <WideBlock num="09" eyebrow="Get Started" title="Easy to Start Racing Betting" id="how-to-start">
+          <p className="max-w-2xl">Getting started with horse racing betting at 1xPlay is quick and beginner-friendly.</p>
+          <div className="mt-7 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {steps.map((s) => (
-                <div key={s.step} className={clsx('flex', 'gap-5', 'p-5', 'bg-card/60', 'backdrop-blur-sm', 'border', 'border-border', 'rounded-2xl', 'hover:border-[rgba(0,120,229,0.25)]', 'transition-all', 'group', 'reveal')}>
-                  <div className={clsx('font-[var(--font-bebas)]', 'text-[36px]', 'text-gold', 'leading-none', 'shrink-0', 'group-hover:scale-110', 'transition-transform')}>{s.step}</div>
-                  <div className="flex flex-col gap-1">
-                    <h4 className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-white', 'text-[15px]')}>{s.title}</h4>
-                    <p className={clsx('text-[13px]', 'text-muted', 'leading-[1.6]')}>{s.desc}</p>
-                  </div>
+                <div key={s.step} className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5">
+                  <div className="font-[var(--font-bebas)] text-[40px] leading-none text-[#01A3F6]/25">{s.step}</div>
+                  <h4 className="mt-2 font-[var(--font-syne)] text-[15px] font-bold text-white">{s.title}</h4>
+                  <p className="mt-1.5 text-[12.5px] leading-[1.6] text-muted">{s.desc}</p>
                 </div>
               ))}
             </div>
-
-            {/* Right: Graphic */}
-            <div className={clsx('lg:col-span-5', 'reveal', 'relative', 'rounded-2xl', 'overflow-hidden', 'border', 'border-border', 'aspect-[16/10]', 'bg-bg2', 'shadow-[0_20px_40px_rgba(0,0,0,0.5)]')}>
+            <div className="lg:col-span-5 relative rounded-2xl overflow-hidden border border-white/10 aspect-[16/10] bg-[#0C0A06] shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
               <div className="absolute inset-0 scale-[1.18] origin-[center_46%]">
-                <Image
-                  src="/image.png"
-                  alt="1xPlay Registration Platform"
-                  fill
-                  className="object-cover"
-                  priority
-                />
+                <Image src="/image.png" alt="1xPlay Registration Platform" fill sizes="(max-width:1024px) 100vw, 40vw" className="object-cover" />
               </div>
-              <div className="absolute top-4 left-4 bg-bg/85 backdrop-blur-md border border-white/10 px-3 py-1.5 rounded-lg text-[10px] font-bold text-white uppercase tracking-[1px] z-10 flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-green animate-pulse" /> Live Platform Preview
+              <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 rounded-lg border border-white/10 bg-[#05080B]/85 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[1px] text-white backdrop-blur-md">
+                <span className="h-2 w-2 rounded-full bg-[#01A3F6] animate-pulse" /> Live Platform Preview
               </div>
             </div>
           </div>
-
-          <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'text-center', 'mt-12', 'max-w-[600px]', 'mx-auto', 'font-light', 'reveal')}>
+          <p className="mt-8 max-w-2xl text-white/60">
             The platform is designed to make horse racing betting simple, accessible, and enjoyable for all users.
           </p>
-        </div>
-      </section>
+        </WideBlock>
 
-      {/* ===== RESPONSIBLE BETTING ===== */}
-      <section className={clsx('py-[40px]', 'px-[5%]', 'bg-bg2')}>
-        <div className={clsx('max-w-[800px]', 'mx-auto')}>
-          <div className={clsx('bg-card/60', 'backdrop-blur-sm', 'border', 'border-border', 'rounded-2xl', 'p-10', 'reveal')}>
-            <div className={clsx('text-center', 'mb-8')}>
-              <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(28px,3.5vw,42px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-4')}>
-                Responsible Sports <span className="text-gold">Betting</span>
-              </h2>
-              <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light')}>
-                At 1xPlay, we encourage responsible gambling and recommend users enjoy horse racing betting as a form of entertainment only.
+        {/* 10 — Responsible */}
+        <Block num="10" eyebrow="Play Safe" title="Responsible Sports Betting" accent="#01A3F6">
+          <p>
+            At 1xPlay, we encourage responsible gambling and recommend users enjoy horse racing betting as a form of entertainment only.
+          </p>
+          <FeatureCard
+            icon={FaExclamationTriangle}
+            accent="#01A3F6"
+            title="We recommend users:"
+            items={responsibleTips}
+          />
+          <p>Responsible betting helps maintain a safe and enjoyable sports entertainment experience.</p>
+        </Block>
+      </div>
+
+      {/* ── Final CTA ── */}
+      <section className="relative z-10 px-[5%] pb-28">
+        <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#15100a] via-[#0C0A06] to-[#15100a] p-10 md:p-16 text-center">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[360px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.10)_0%,transparent_70%)] pointer-events-none" />
+          <div className="relative z-10 mx-auto max-w-[760px]">
+            <span className="section-tag justify-center mb-5">Enjoy Horse Racing</span>
+            <h2 className="font-[var(--font-bebas)] text-[clamp(34px,5vw,62px)] leading-[0.98] tracking-[1px] text-white">
+              Join the Horse Racing Betting Experience at{" "}
+              <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent">
+                1xPlay
+              </span>
+            </h2>
+            <div className="mt-6 space-y-4 text-[15px] leading-[1.8] font-light text-muted">
+              <p>
+                1xPlay continues growing as a trusted destination for sports fans looking for fast, secure, and exciting horse racing betting experiences.
+              </p>
+              <p>
+                From live horse racing odds and real-time betting markets to smooth mobile access and secure systems, 1xPlay provides everything needed for premium online sports betting.
+              </p>
+              <p>
+                If you are looking for a modern horse racing betting platform with fast performance, secure transactions, and exciting race coverage, 1xPlay is the perfect place to enjoy online horse racing betting anytime, anywhere.
               </p>
             </div>
-
-            <h3 className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[15px]', 'text-white', 'text-center', 'mb-5')}>We recommend users:</h3>
-            <div className={clsx('grid', 'grid-cols-1', 'sm:grid-cols-2', 'gap-3')}>
-              {responsibleTips.map((tip) => (
-                <div key={tip} className={clsx('flex', 'items-center', 'gap-3', 'p-3.5', 'bg-bg3', 'border', 'border-border', 'rounded-xl')}>
-                  <span className="text-[16px]">âš ï¸</span>
-                  <span className={clsx('text-[13px]', 'text-muted', 'font-medium')}>{tip}</span>
-                </div>
-              ))}
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <a href="#" className="btn btn-gold btn-large">
+                Start Betting Now <FaArrowRight className="w-3.5 h-3.5" />
+              </a>
+              <Link href="/games" className="btn btn-ghost btn-large">
+                All Games Hub
+              </Link>
             </div>
-
-            <p className={clsx('text-[13px]', 'text-muted', 'leading-[1.7]', 'text-center', 'mt-6', 'font-light')}>
-              Responsible betting helps maintain a safe and enjoyable sports entertainment experience.
-            </p>
           </div>
         </div>
       </section>
+    </div>
+  );
+}
 
-      {/* ===== FINAL CTA ===== */}
-      <section className={clsx('py-[60px]', 'px-[5%]', 'bg-bg', 'text-center', 'relative', 'overflow-hidden')}>
-        <div className={clsx('absolute', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2', 'w-[800px]', 'h-[400px]', 'bg-[radial-gradient(ellipse,rgba(0,120,229,0.06)_0%,transparent_70%)]', 'pointer-events-none')} />
+/* ─────────── Reusable blocks ─────────── */
 
-        <div className={clsx('relative', 'z-10', 'max-w-[750px]', 'mx-auto', 'reveal')}>
-          <div className={clsx('section-tag', 'justify-center')}>Enjoy Horse Racing</div>
-          <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(36px,5vw,64px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
-            Join the Horse Racing Betting Experience at <span className="text-gold">1xPlay</span>
-          </h2>
-          <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-5')}>
-            1xPlay continues growing as a trusted destination for sports fans looking for fast, secure, and exciting horse racing betting experiences.
-          </p>
-          <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-5')}>
-            From live horse racing odds and real-time betting markets to smooth mobile access and secure systems, 1xPlay provides everything needed for premium online sports betting.
-          </p>
-          <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-10')}>
-            If you are looking for a modern horse racing betting platform with fast performance, secure transactions, and exciting race coverage, 1xPlay is the perfect place to enjoy online horse racing betting anytime, anywhere.
-          </p>
-          <div className={clsx('flex', 'gap-4', 'justify-center', 'flex-wrap')}>
-            <a href="#" className={clsx('btn', 'btn-gold', 'btn-large')}>Start Betting Now</a>
-            <a href="/games" className={clsx('btn', 'btn-ghost', 'btn-large')}>All Games Hub</a>
+function Block({
+  num,
+  eyebrow,
+  title,
+  accent = ACCENT,
+  children,
+}: {
+  num: string;
+  eyebrow: string;
+  title: string;
+  accent?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.5 }}
+      className="mx-auto max-w-[920px]"
+    >
+      <div className="flex flex-col md:flex-row gap-6 md:gap-10">
+        <div className="shrink-0">
+          <div className="font-[var(--font-bebas)] text-[56px] md:text-[80px] leading-none tracking-wider" style={{ color: `${accent}26` }}>
+            {num}
           </div>
+          <div className="mt-1 h-[2px] w-12 rounded-full" style={{ background: accent }} />
         </div>
-      </section>
-    </>
+        <div className="flex-1">
+          <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.3em] font-[var(--font-syne)]" style={{ color: accent }}>
+            {eyebrow}
+          </p>
+          <h2 className="font-[var(--font-bebas)] text-[clamp(28px,4vw,44px)] leading-[1.02] tracking-[0.5px] text-white">{title}</h2>
+          <div className="mt-5 flex flex-col gap-5 text-[15px] leading-[1.85] font-light text-muted">{children}</div>
+        </div>
+      </div>
+    </motion.section>
+  );
+}
+
+function WideBlock({
+  num,
+  eyebrow,
+  title,
+  id,
+  children,
+}: {
+  num: string;
+  eyebrow: string;
+  title: string;
+  id?: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <motion.section
+      id={id}
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.5 }}
+      className="mx-auto max-w-[1180px] scroll-mt-24"
+    >
+      <div className="mb-2 flex items-center gap-4">
+        <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider" style={{ color: `${ACCENT}26` }}>
+          {num}
+        </span>
+        <span className="h-[2px] w-10 rounded-full" style={{ background: ACCENT }} />
+        <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#01A3F6] font-[var(--font-syne)]">{eyebrow}</span>
+      </div>
+      <h2 className="font-[var(--font-bebas)] text-[clamp(28px,4vw,48px)] leading-[1.02] tracking-[0.5px] text-white">{title}</h2>
+      <div className="mt-6 text-[15px] leading-[1.85] font-light text-muted">{children}</div>
+    </motion.section>
+  );
+}
+
+function SplitMedia({
+  num,
+  eyebrow,
+  title,
+  image,
+  alt,
+  reverse,
+  children,
+}: {
+  num: string;
+  eyebrow: string;
+  title: string;
+  image: string;
+  alt: string;
+  reverse?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.5 }}
+      className="mx-auto max-w-[1180px]"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div className={reverse ? "lg:order-2" : ""}>
+          <div className="mb-2 flex items-center gap-4">
+            <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider" style={{ color: `${ACCENT}26` }}>
+              {num}
+            </span>
+            <span className="h-[2px] w-10 rounded-full" style={{ background: ACCENT }} />
+            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#01A3F6] font-[var(--font-syne)]">{eyebrow}</span>
+          </div>
+          <h2 className="font-[var(--font-bebas)] text-[clamp(28px,4vw,46px)] leading-[1.02] tracking-[0.5px] text-white">{title}</h2>
+          <div className="mt-5 flex flex-col gap-4 text-[15px] leading-[1.8] font-light text-muted">{children}</div>
+        </div>
+        <div className={`relative overflow-hidden rounded-2xl border border-white/10 ${reverse ? "lg:order-1" : ""}`}>
+          <Image src={image} alt={alt} width={600} height={400} sizes="(max-width:1024px) 100vw, 50vw" className="w-full h-auto object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05080B]/60 via-transparent to-transparent" />
+        </div>
+      </div>
+    </motion.section>
+  );
+}
+
+function FeatureCard({
+  icon: Icon,
+  title,
+  items,
+  accent = ACCENT,
+}: {
+  icon: React.ElementType;
+  title: string;
+  items: string[];
+  accent?: string;
+}) {
+  return (
+    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6">
+      <div className="mb-4 flex items-center gap-3">
+        <span className="flex h-9 w-9 items-center justify-center rounded-lg" style={{ backgroundColor: `${accent}1A`, color: accent }}>
+          <Icon size={16} />
+        </span>
+        <p className="font-[var(--font-syne)] text-[14px] font-bold text-white">{title}</p>
+      </div>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
+        {items.map((item) => (
+          <li key={item} className="flex items-start gap-3 text-[14px] text-white/85">
+            <FaCheck className="mt-0.5 shrink-0" size={13} style={{ color: accent }} />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }

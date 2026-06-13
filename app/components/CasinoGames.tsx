@@ -7,14 +7,14 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const games = [
-  { name: "Roulette", tag: "Table Game", emoji: "🎲", bg: "linear-gradient(135deg,#1a0a0a,#3d0e0e)", badge: "hot" },
-  { name: "Blackjack", tag: "Card Game", emoji: "🃏", bg: "linear-gradient(135deg,#0a1a14,#0d3d25)", badge: "new" },
-  { name: "Baccarat", tag: "Live Table", emoji: "♠️", bg: "linear-gradient(135deg,#0a0e1a,#0d1a3d)", badge: null },
-  { name: "Teen Patti", tag: "Indian Favourite", emoji: "🃏", bg: "linear-gradient(135deg,#1a160a,#3d2e0d)", badge: "hot" },
-  { name: "Dragon Tiger", tag: "Live Game", emoji: "🐯", bg: "linear-gradient(135deg,#1a0a14,#3d0d25)", badge: null },
-  { name: "Aviator", tag: "Crash Game", emoji: "✈️", image: "/aviator.png", badge: "new" },
-  { name: "Slots", tag: "100+ Games", emoji: "🎰", bg: "linear-gradient(135deg,#1a0e0a,#3d2010)", badge: null },
-  { name: "Andar Bahar", tag: "Classic Indian", emoji: "🀄", bg: "linear-gradient(135deg,#0e0a1a,#1d0d3d)", badge: null },
+  { name: "Roulette", tag: "Table Game", emoji: "🎲", image: "/casino-dice.jpg", badge: "hot" },
+  { name: "Blackjack", tag: "Card Game", emoji: "🃏", image: "/casino-spade.jpg", badge: "new" },
+  { name: "Baccarat", tag: "Live Table", emoji: "♠️", image: "/casino-cards.jpg", badge: null },
+  { name: "Teen Patti", tag: "Indian Favourite", emoji: "🃏", image: "/casino-aces.jpg", badge: "hot" },
+  { name: "Dragon Tiger", tag: "Live Game", emoji: "🐯", image: "/casino-tiger.jpg", badge: null },
+  { name: "Aviator", tag: "Crash Game", emoji: "✈️", image: "/aviator.jpg", badge: "new" },
+  { name: "Slots", tag: "100+ Games", emoji: "🎰", image: "/casino-slots.jpg", badge: null },
+  { name: "Andar Bahar", tag: "Classic Indian", emoji: "🀄", image: "/andar-bahar.jpg", badge: null },
 ];
 
 export default function CasinoGames() {
@@ -215,24 +215,15 @@ export default function CasinoGames() {
             )}
             style={{ transformStyle: "preserve-3d", transform: "translateZ(0)" }}
           >
-            {/* Background Image or Gradient */}
-            {game.image ? (
-              <div className={clsx('absolute', 'inset-0', 'transition-transform', 'duration-500', 'group-hover:scale-[1.05]')}>
-                <Image
-                  src={game.image}
-                  alt={game.name}
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            ) : (
-              <div
-                className={clsx('absolute', 'inset-0', 'flex', 'items-center', 'justify-center', 'text-[56px]', 'md:text-[72px]', 'transition-transform', 'duration-500', 'group-hover:scale-[1.05]')}
-                style={{ background: game.bg }}
-              >
-                {game.emoji}
-              </div>
-            )}
+            {/* Background Image */}
+            <div className={clsx('absolute', 'inset-0', 'transition-transform', 'duration-500', 'group-hover:scale-[1.05]')}>
+              <Image
+                src={game.image}
+                alt={game.name}
+                fill
+                className="object-cover"
+              />
+            </div>
             
             {/* Overlay */}
             <div className={clsx('absolute', 'inset-0', 'bg-gradient-to-t', 'from-black/95', 'via-black/35', 'to-transparent')} />

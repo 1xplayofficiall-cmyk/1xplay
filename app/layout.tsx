@@ -5,6 +5,8 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Preloader from "./components/Preloader";
 import CursorGlow from "./components/CursorGlow";
+import GlobalJsonLd from "./components/GlobalJsonLd";
+import BreadcrumbJsonLd from "./components/BreadcrumbJsonLd";
 import { rootMetadata } from "./seo";
 
 const robotoSlab = Roboto_Slab({
@@ -31,6 +33,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#080A0E",
 };
 
 export default function RootLayout({
@@ -45,6 +48,8 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body className="min-h-screen flex flex-col">
+        <GlobalJsonLd />
+        <BreadcrumbJsonLd />
         <Preloader />
         <CursorGlow />
         <Navbar />

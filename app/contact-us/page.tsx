@@ -1,6 +1,6 @@
 "use client";
 
-import clsx from "clsx";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Mail,
@@ -10,295 +10,647 @@ import {
   ShieldCheck,
   Globe,
   MessageSquare,
-  Trophy,
-  Wallet,
-  User,
+  Clock,
+  CheckCircle2,
+  Loader2,
+  AlertCircle,
+  ChevronRight,
+  Sparkles,
 } from "lucide-react";
 import ScrollReveal from "../components/ScrollReveal";
 
-export default function ContactPage() {
-  const supportServices = [
-    "Account Related Support",
-    "Login & Registration Issues",
-    "Cricket ID Assistance",
-    "Casino Games Support",
-    "Sports Betting Help",
-    "Deposit & Withdrawal Queries",
-    "Technical Support",
-    "Bonus & Promotion Information",
-    "General Gaming Assistance",
-  ];
+const supportCategories = [
+  "Account & Login",
+  "Cricket ID Assistance",
+  "Casino Games Support",
+  "Sports Betting Help",
+  "Deposit & Withdrawal",
+  "Bonus & Promotions",
+  "Technical Support",
+  "Other",
+];
+
+const channels = [
+  {
+    icon: Mail,
+    title: "Email Support",
+    value: "support@1xplay.com",
+    sub: "Replies within a few hours",
+    href: "mailto:support@1xplay.com",
+  },
+  {
+    icon: MessageSquare,
+    title: "Business Inquiries",
+    value: "business@1xplay.com",
+    sub: "Partnerships & affiliates",
+    href: "mailto:business@1xplay.com",
+  },
+  {
+    icon: MessageCircle,
+    title: "Live Chat",
+    value: "Available in-platform",
+    sub: "Instant agent connection",
+    href: "#live-chat",
+  },
+  {
+    icon: Send,
+    title: "Telegram & WhatsApp",
+    value: "Fast secure messaging",
+    sub: "Worldwide coverage",
+    href: "#messaging",
+  },
+];
+
+const trustItems = [
+  {
+    icon: ShieldCheck,
+    title: "Secure Assistance",
+    desc: "Verified, encrypted support channels protecting every conversation.",
+  },
+  {
+    icon: Headphones,
+    title: "24/7 Availability",
+    desc: "Real agents on standby around the clock, every day of the year.",
+  },
+  {
+    icon: Globe,
+    title: "Global Coverage",
+    desc: "Multilingual help for players across regions and time zones.",
+  },
+];
+
+type FormState = {
+  name: string;
+  email: string;
+  category: string;
+  message: string;
+};
+
+type FormErrors = Partial<Record<keyof FormState, string>>;
+
+const emptyForm: FormState = { name: "", email: "", category: "", message: "" };
+
+export default function ContactUsPage() {
+  const [form, setForm] = useState<FormState>(emptyForm);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      setScrollProgress(docHeight > 0 ? (scrollTop / docHeight) * 100 : 0);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const messageCount = form.message.length;
+  const isReady = useMemo(
+    () => form.name.trim() && form.email.trim() && form.message.trim(),
+    [form]
+  );
+
+  const update = (key: keyof FormState, value: string) => {
+    setForm((prev) => ({ ...prev, [key]: value }));
+    if (errors[key]) setErrors((prev) => ({ ...prev, [key]: undefined }));
+  };
+
+  const validate = (): boolean => {
+    const next: FormErrors = {};
+    if (!form.name.trim()) next.name = "Please enter your name";
+    if (!form.email.trim()) {
+      next.email = "Please enter your email";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      next.email = "Enter a valid email address";
+    }
+    if (!form.message.trim()) {
+      next.message = "Please tell us how we can help";
+    } else if (form.message.trim().length < 10) {
+      next.message = "A little more detail helps us help you";
+    }
+    setErrors(next);
+    return Object.keys(next).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (status === "submitting") return;
+    if (!validate()) return;
+
+    setStatus("submitting");
+    try {
+      // TODO: replace this simulated delay with a real request, e.g.
+      //   await fetch("/api/contact", { method: "POST", body: JSON.stringify(form) })
+      // and branch on res.ok. The UI states below are already wired for it.
+      await new Promise((resolve) => setTimeout(resolve, 1100));
+      setStatus("success");
+      setForm(emptyForm);
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  const inputBase =
+    "w-full rounded-xl border bg-[#030914]/60 px-4 py-3.5 text-sm text-white placeholder:text-muted/40 outline-none transition-all focus:shadow-[0_0_22px_rgba(1,163,246,0.12)]";
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-bg text-white">
+    <div className="relative min-h-screen overflow-hidden bg-[#030914] text-white">
       <ScrollReveal />
-      
-      {/* Background Effects */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="absolute top-10 left-10 h-72 w-72 rounded-full bg-gold-glow blur-[120px]" />
-        <div className="absolute right-10 bottom-10 h-96 w-96 rounded-full bg-[rgba(1,163,246,0.1)] blur-[140px]" />
-        <div className="absolute top-1/2 left-1/2 h-96 w-96 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold-glow blur-[180px]" />
+
+      {/* Scroll progress */}
+      <div className="fixed top-[70px] left-0 right-0 h-[2px] z-[998] bg-white/[0.04]">
+        <motion.div
+          className="h-full bg-gradient-to-r from-[#0078E5] to-[#01A3F6] shadow-[0_0_12px_rgba(1,163,246,0.6)]"
+          style={{ width: `${scrollProgress}%` }}
+        />
       </div>
 
-      {/* Hero Section */}
-      <section className="relative z-10 px-6 pt-36 pb-16">
-        <div className="mx-auto max-w-7xl text-center">
+      {/* Ambient background */}
+      <div className="fixed inset-0 pointer-events-none z-0">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px)",
+            backgroundSize: "48px 48px",
+            maskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 10%, transparent 70%)",
+            WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 10%, transparent 70%)",
+          }}
+        />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[820px] h-[460px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.12)_0%,transparent_65%)]" />
+        <div className="absolute right-[6%] bottom-[12%] w-[420px] h-[420px] rounded-full bg-[rgba(0,120,229,0.08)] blur-[150px]" />
+      </div>
+
+      {/* ─────────── Hero ─────────── */}
+      <section className="relative z-10 px-[5%] pt-[110px] pb-14">
+        <div className="mx-auto max-w-[1400px]">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className={clsx('section-tag', 'justify-center', 'mb-6')}
+            transition={{ duration: 0.7 }}
+            className="relative rounded-3xl overflow-hidden border border-white/10 bg-[#060d18]/60 backdrop-blur-xl min-h-[400px] md:min-h-[440px] flex items-end"
           >
-            24/7 Customer Support
+            {/* Decorative layers */}
+            <div className="absolute inset-0 bg-gradient-to-br from-[#0078E5]/[0.10] via-transparent to-[#01A3F6]/[0.06]" />
+            <div
+              className="absolute inset-0 opacity-[0.4] pointer-events-none"
+              style={{
+                backgroundImage:
+                  "linear-gradient(rgba(1,163,246,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(1,163,246,0.08) 1px, transparent 1px)",
+                backgroundSize: "40px 40px",
+                maskImage: "radial-gradient(circle at 75% 30%, black, transparent 70%)",
+                WebkitMaskImage: "radial-gradient(circle at 75% 30%, black, transparent 70%)",
+              }}
+            />
+            <div className="absolute top-[18%] right-[16%] w-52 h-52 bg-[#01A3F6]/20 rounded-full blur-[90px] pointer-events-none animate-pulse" />
+
+            <div className="relative z-10 w-full p-7 md:p-10 lg:p-12">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-end">
+                {/* Left: copy */}
+                <div className="lg:col-span-7">
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="inline-flex items-center gap-2 px-3.5 py-1.5 mb-5 rounded-full border border-[#01A3F6]/40 bg-[#01A3F6]/15 backdrop-blur-md shadow-[0_0_24px_rgba(1,163,246,0.2)]"
+                  >
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full rounded-full bg-[#1EBF6A] opacity-75 animate-ping" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1EBF6A]" />
+                    </span>
+                    <span className="text-[10px] font-bold text-[#01A3F6] uppercase tracking-[0.25em] font-[var(--font-syne)]">
+                      Support Online · 24/7
+                    </span>
+                  </motion.div>
+
+                  <motion.h1
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.3 }}
+                    className="font-[var(--font-bebas)] text-[clamp(48px,8vw,92px)] tracking-[2px] leading-[0.9] text-white mb-4 drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+                  >
+                    WE&apos;RE HERE
+                    <br />
+                    TO{" "}
+                    <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#5ecfff] bg-clip-text text-transparent">
+                      HELP
+                    </span>
+                  </motion.h1>
+
+                  <motion.p
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.4 }}
+                    className="text-white/70 text-[15px] md:text-[17px] leading-relaxed font-light max-w-xl mb-6"
+                  >
+                    Questions about your account, cricket ID, payments, or a game?
+                    The 1xPlay support team responds fast — pick a channel below or
+                    send us a message directly.
+                  </motion.p>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5 }}
+                    className="flex flex-wrap gap-2"
+                  >
+                    {[
+                      { label: "Send a message", href: "#contact-form" },
+                      { label: "Live chat", href: "#live-chat" },
+                      { label: "Email us", href: "mailto:support@1xplay.com" },
+                    ].map((pill) => (
+                      <a
+                        key={pill.label}
+                        href={pill.href}
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md text-[11px] font-bold uppercase tracking-wider text-white/80 hover:text-white hover:border-[#01A3F6]/50 hover:bg-[#01A3F6]/10 transition-all font-[var(--font-syne)]"
+                      >
+                        {pill.label}
+                        <ChevronRight className="w-3 h-3 opacity-60" />
+                      </a>
+                    ))}
+                  </motion.div>
+                </div>
+
+                {/* Right: live support glass panel */}
+                <motion.div
+                  initial={{ opacity: 0, x: 24 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.45 }}
+                  className="lg:col-span-5"
+                >
+                  <div className="rounded-2xl border border-white/10 bg-[#0a1220]/70 backdrop-blur-xl p-5 md:p-6 shadow-[0_20px_60px_rgba(0,0,0,0.4)]">
+                    <div className="flex items-center gap-3 mb-5 pb-4 border-b border-white/[0.06]">
+                      <div className="w-10 h-10 rounded-xl bg-[#01A3F6]/15 border border-[#01A3F6]/25 flex items-center justify-center">
+                        <Headphones className="w-5 h-5 text-[#01A3F6]" />
+                      </div>
+                      <div>
+                        <p className="text-[10px] uppercase tracking-[0.2em] text-muted font-[var(--font-syne)] font-semibold">
+                          Support Desk
+                        </p>
+                        <p className="text-white font-[var(--font-syne)] font-bold text-sm">
+                          1xPlay Help Centre
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-3 gap-3 mb-5">
+                      {[
+                        { label: "Avg Reply", value: "<5m", icon: Clock },
+                        { label: "Channels", value: "4", icon: MessageCircle },
+                        { label: "Uptime", value: "24/7", icon: Sparkles },
+                      ].map((stat) => (
+                        <div
+                          key={stat.label}
+                          className="relative rounded-xl border border-white/[0.06] bg-[#030914]/50 p-3 text-center overflow-hidden group"
+                        >
+                          <div className="absolute inset-0 bg-gradient-to-b from-[#01A3F6]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                          <stat.icon className="w-3.5 h-3.5 text-[#01A3F6] mx-auto mb-1.5 relative z-10" />
+                          <div className="text-[8px] uppercase tracking-[0.15em] text-muted font-[var(--font-syne)] relative z-10">
+                            {stat.label}
+                          </div>
+                          <div className="text-xl font-[var(--font-bebas)] text-white tracking-wider relative z-10">
+                            {stat.value}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <a
+                      href="#contact-form"
+                      className="flex items-center justify-between gap-3 rounded-xl border border-[#01A3F6]/25 bg-[#01A3F6]/10 px-4 py-3 transition-all hover:bg-[#01A3F6]/15 hover:border-[#01A3F6]/40 group"
+                    >
+                      <span className="text-sm font-[var(--font-syne)] font-semibold text-white">
+                        Open a support ticket
+                      </span>
+                      <ChevronRight className="w-4 h-4 text-[#01A3F6] transition-transform group-hover:translate-x-0.5" />
+                    </a>
+                  </div>
+                </motion.div>
+              </div>
+            </div>
           </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="mt-4 font-[var(--font-bebas)] text-[clamp(44px,7vw,85px)] tracking-[1px] leading-[1.05] text-white"
-          >
-            Contact <span className="text-gold">1xPlay</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
-            className="mx-auto mt-6 max-w-3xl text-[16px] leading-relaxed text-muted font-light"
-          >
-            Have questions about your account, gaming experience,
-            cricket ID services, or technical support? The 1xPlay
-            support team is always ready to help users with fast,
-            reliable, and professional assistance.
-          </motion.p>
         </div>
       </section>
 
-      {/* Contact Cards */}
-      <section className="relative z-10 px-6 pb-20">
-        <div className="mx-auto grid max-w-7xl gap-6 md:grid-cols-2 lg:grid-cols-4">
-          {[
-            {
-              icon: Mail,
-              title: "Email Support",
-              text: "support@1xplay.com",
-            },
-            {
-              icon: MessageSquare,
-              title: "Business Inquiries",
-              text: "business@1xplay.com",
-            },
-            {
-              icon: MessageCircle,
-              title: "Live Chat Support",
-              text: "Instant assistance available on the platform.",
-            },
-            {
-              icon: Send,
-              title: "Telegram & WhatsApp",
-              text: "Fast and secure support worldwide.",
-            },
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              whileHover={{ y: -8 }}
-              className="rounded-2xl border border-border bg-card p-6 backdrop-blur-xl relative overflow-hidden transition-all hover:border-gold/30 hover:shadow-[0_8px_30px_rgb(0,120,229,0.03)]"
+      {/* ─────────── Channels ─────────── */}
+      <section className="relative z-10 px-[5%] pb-16">
+        <div className="mx-auto max-w-[1400px] grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {channels.map((c, i) => (
+            <motion.a
+              key={c.title}
+              href={c.href}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.07 }}
+              whileHover={{ y: -6 }}
+              className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0a1220]/60 backdrop-blur-xl p-6 transition-colors hover:border-[#01A3F6]/35"
             >
-              <div className="absolute top-0 right-0 w-[80px] h-[80px] bg-[radial-gradient(circle,rgba(0,120,229,0.03)_0%,transparent_70%)] pointer-events-none" />
-              <item.icon
-                className="mb-4 text-gold"
-                size={34}
-              />
-              <h3 className="mb-2 font-[var(--font-syne)] text-[16px] font-bold text-white uppercase tracking-[0.5px]">
-                {item.title}
+              <div className="absolute -top-10 -right-10 w-32 h-32 bg-[radial-gradient(circle,rgba(1,163,246,0.10)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="mb-4 w-12 h-12 rounded-xl bg-[#01A3F6]/12 border border-[#01A3F6]/20 flex items-center justify-center transition-transform group-hover:scale-110">
+                <c.icon className="w-5 h-5 text-[#01A3F6]" />
+              </div>
+              <h3 className="mb-1 font-[var(--font-syne)] text-[13px] font-bold text-white uppercase tracking-[0.5px]">
+                {c.title}
               </h3>
-              <p className="text-sm text-muted leading-relaxed font-light">{item.text}</p>
-            </motion.div>
+              <p className="text-sm text-white/90 font-medium break-words">{c.value}</p>
+              <p className="mt-1 text-[12px] text-muted font-light">{c.sub}</p>
+            </motion.a>
           ))}
         </div>
       </section>
 
-      {/* Form & Services */}
-      <section className="relative z-10 px-6 pb-24">
-        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-2">
+      {/* ─────────── Form + Services ─────────── */}
+      <section id="contact-form" className="relative z-10 px-[5%] pb-20 scroll-mt-24">
+        <div className="mx-auto max-w-[1400px] grid gap-8 lg:grid-cols-12">
+          {/* Form */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="lg:col-span-7 relative overflow-hidden rounded-2xl border border-white/10 bg-[#0a1220]/70 backdrop-blur-xl p-7 md:p-9"
+          >
+            <div className="absolute top-0 right-0 w-48 h-48 bg-[radial-gradient(circle,rgba(1,163,246,0.06)_0%,transparent_70%)] pointer-events-none" />
 
-          {/* Contact Form */}
-          <div className="rounded-2xl border border-border bg-card p-8 backdrop-blur-xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-[radial-gradient(circle,rgba(0,120,229,0.03)_0%,transparent_70%)] pointer-events-none" />
-            <h2 className="mb-4 font-[var(--font-bebas)] text-[32px] tracking-[1px] text-white">
-              Send Us a Message
-            </h2>
-
-            <p className="mb-8 text-[14px] text-muted font-light leading-relaxed">
-              If you have any questions or need support,
-              provide your details and our support team
-              will respond as quickly as possible.
-            </p>
-
-            <form className="space-y-5 relative z-10">
-              <input
-                type="text"
-                placeholder="Full Name"
-                className="w-full rounded-xl border border-border bg-bg/40 px-4 py-4 outline-none transition focus:border-gold text-sm placeholder-white/20 text-white"
-              />
-
-              <input
-                type="email"
-                placeholder="Email Address"
-                className="w-full rounded-xl border border-border bg-bg/40 px-4 py-4 outline-none transition focus:border-gold text-sm placeholder-white/20 text-white"
-              />
-
-              <input
-                type="text"
-                placeholder="Subject"
-                className="w-full rounded-xl border border-border bg-bg/40 px-4 py-4 outline-none transition focus:border-gold text-sm placeholder-white/20 text-white"
-              />
-
-              <textarea
-                rows={6}
-                placeholder="Message"
-                className="w-full rounded-xl border border-border bg-bg/40 px-4 py-4 outline-none transition focus:border-gold text-sm placeholder-white/20 text-white resize-none"
-              />
-
-              <motion.button
-                whileHover={{ scale: 1.01 }}
-                whileTap={{ scale: 0.99 }}
-                className="btn btn-gold w-full justify-center py-4 font-[var(--font-syne)] text-[14px] uppercase font-bold"
-              >
-                Send Message
-              </motion.button>
-            </form>
-          </div>
-
-          <div className="space-y-8">
-            <div className="rounded-2xl border border-border bg-card p-8 backdrop-blur-xl relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-[radial-gradient(circle,rgba(0,120,229,0.03)_0%,transparent_70%)] pointer-events-none" />
-              <h2 className="mb-6 font-[var(--font-bebas)] text-[32px] tracking-[1px] text-white">
-                Support Services
+            <div className="relative z-10">
+              <h2 className="font-[var(--font-bebas)] text-[34px] tracking-[1px] text-white">
+                Send Us a Message
               </h2>
+              <p className="mt-2 mb-7 text-[14px] text-muted font-light leading-relaxed">
+                Share a few details and our team will get back to you as quickly as possible.
+              </p>
 
-              <div className="grid gap-3 sm:grid-cols-2">
-                {supportServices.map((service, index) => (
-                  <div
-                    key={index}
-                    className="rounded-xl border border-border bg-bg2 p-4 text-[13px] text-text font-medium flex items-center gap-2.5 transition hover:border-gold/25"
+              {status === "success" ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  className="rounded-2xl border border-[#1EBF6A]/30 bg-[#1EBF6A]/10 p-8 text-center"
+                >
+                  <div className="mx-auto mb-4 w-14 h-14 rounded-full bg-[#1EBF6A]/15 border border-[#1EBF6A]/30 flex items-center justify-center">
+                    <CheckCircle2 className="w-7 h-7 text-[#1EBF6A]" />
+                  </div>
+                  <h3 className="font-[var(--font-syne)] text-lg font-bold text-white mb-2">
+                    Message sent
+                  </h3>
+                  <p className="text-sm text-muted font-light max-w-sm mx-auto mb-6">
+                    Thanks for reaching out — our support team will reply to your email shortly.
+                  </p>
+                  <button
+                    onClick={() => setStatus("idle")}
+                    className="btn btn-ghost px-6 py-2.5 text-[12px] uppercase font-bold font-[var(--font-syne)]"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold shrink-0" />
+                    Send another
+                  </button>
+                </motion.div>
+              ) : (
+                <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                  <div className="grid gap-5 sm:grid-cols-2">
+                    <div>
+                      <label className="mb-2 block text-[11px] font-bold uppercase tracking-wider text-muted font-[var(--font-syne)]">
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        value={form.name}
+                        onChange={(e) => update("name", e.target.value)}
+                        placeholder="John Doe"
+                        className={`${inputBase} ${
+                          errors.name
+                            ? "border-[#E8303A]/60 focus:border-[#E8303A]"
+                            : "border-white/[0.08] focus:border-[#01A3F6]/45"
+                        }`}
+                      />
+                      {errors.name && (
+                        <p className="mt-1.5 flex items-center gap-1 text-[12px] text-[#E8303A]">
+                          <AlertCircle className="w-3 h-3" /> {errors.name}
+                        </p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label className="mb-2 block text-[11px] font-bold uppercase tracking-wider text-muted font-[var(--font-syne)]">
+                        Email Address
+                      </label>
+                      <input
+                        type="email"
+                        value={form.email}
+                        onChange={(e) => update("email", e.target.value)}
+                        placeholder="you@email.com"
+                        className={`${inputBase} ${
+                          errors.email
+                            ? "border-[#E8303A]/60 focus:border-[#E8303A]"
+                            : "border-white/[0.08] focus:border-[#01A3F6]/45"
+                        }`}
+                      />
+                      {errors.email && (
+                        <p className="mt-1.5 flex items-center gap-1 text-[12px] text-[#E8303A]">
+                          <AlertCircle className="w-3 h-3" /> {errors.email}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="mb-2 block text-[11px] font-bold uppercase tracking-wider text-muted font-[var(--font-syne)]">
+                      Topic
+                    </label>
+                    <select
+                      value={form.category}
+                      onChange={(e) => update("category", e.target.value)}
+                      className={`${inputBase} border-white/[0.08] focus:border-[#01A3F6]/45 cursor-pointer ${
+                        form.category ? "text-white" : "text-muted/40"
+                      }`}
+                    >
+                      <option value="" className="bg-[#0a1220]">
+                        Select a topic (optional)
+                      </option>
+                      {supportCategories.map((cat) => (
+                        <option key={cat} value={cat} className="bg-[#0a1220] text-white">
+                          {cat}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <div className="mb-2 flex items-center justify-between">
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-muted font-[var(--font-syne)]">
+                        Message
+                      </label>
+                      <span
+                        className={`text-[11px] font-medium ${
+                          messageCount > 1000 ? "text-[#E8303A]" : "text-muted/60"
+                        }`}
+                      >
+                        {messageCount}/1000
+                      </span>
+                    </div>
+                    <textarea
+                      rows={6}
+                      maxLength={1000}
+                      value={form.message}
+                      onChange={(e) => update("message", e.target.value)}
+                      placeholder="How can we help you today?"
+                      className={`${inputBase} resize-none ${
+                        errors.message
+                          ? "border-[#E8303A]/60 focus:border-[#E8303A]"
+                          : "border-white/[0.08] focus:border-[#01A3F6]/45"
+                      }`}
+                    />
+                    {errors.message && (
+                      <p className="mt-1.5 flex items-center gap-1 text-[12px] text-[#E8303A]">
+                        <AlertCircle className="w-3 h-3" /> {errors.message}
+                      </p>
+                    )}
+                  </div>
+
+                  {status === "error" && (
+                    <p className="flex items-center gap-2 rounded-xl border border-[#E8303A]/30 bg-[#E8303A]/10 px-4 py-3 text-[13px] text-[#E8303A]">
+                      <AlertCircle className="w-4 h-4 shrink-0" />
+                      Something went wrong sending your message. Please try again.
+                    </p>
+                  )}
+
+                  <button
+                    type="submit"
+                    disabled={status === "submitting" || !isReady}
+                    className="btn btn-gold w-full justify-center py-4 font-[var(--font-syne)] text-[14px] uppercase font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {status === "submitting" ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" /> Sending…
+                      </>
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" /> Send Message
+                      </>
+                    )}
+                  </button>
+
+                  <p className="text-center text-[11px] text-muted/60 font-light">
+                    We typically reply within a few hours. Your details stay private.
+                  </p>
+                </form>
+              )}
+            </div>
+          </motion.div>
+
+          {/* Side column */}
+          <div className="lg:col-span-5 space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative overflow-hidden rounded-2xl border border-white/10 bg-[#0a1220]/70 backdrop-blur-xl p-7 md:p-8"
+            >
+              <h2 className="mb-5 font-[var(--font-bebas)] text-[30px] tracking-[1px] text-white">
+                What We Help With
+              </h2>
+              <div className="grid gap-2.5 sm:grid-cols-2">
+                {supportCategories.map((service) => (
+                  <div
+                    key={service}
+                    className="flex items-center gap-2.5 rounded-xl border border-white/[0.06] bg-[#030914]/50 px-3.5 py-3 text-[13px] text-white/85 font-medium transition hover:border-[#01A3F6]/25 hover:text-white"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#01A3F6] shrink-0 shadow-[0_0_8px_rgba(1,163,246,0.6)]" />
                     {service}
                   </div>
                 ))}
               </div>
-            </div>
+            </motion.div>
 
-            <div className="rounded-2xl border border-border bg-card p-8 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-[radial-gradient(circle,rgba(0,120,229,0.03)_0%,transparent_70%)] pointer-events-none" />
-              <h2 className="mb-4 font-[var(--font-bebas)] text-[32px] tracking-[1px] text-white">
-                24/7 Global Assistance
-              </h2>
-
-              <p className="text-[14px] leading-relaxed text-muted font-light">
-                The 1xPlay support team works continuously to
-                provide assistance for users across different
-                countries and regions. Our support services are
-                responsive, reliable, and easy to access whenever
-                you need help.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Trust Section */}
-      <section className="relative z-10 px-6 pb-24">
-        <div className="mx-auto max-w-7xl">
-          <h2 className="mb-12 text-center font-[var(--font-bebas)] text-[clamp(32px,4.5vw,56px)] tracking-[1px] text-white">
-            Reliable Support You Can Trust
-          </h2>
-
-          <div className="grid gap-6 md:grid-cols-3">
-            {[
-              {
-                icon: ShieldCheck,
-                title: "Secure Assistance",
-                desc: "Professional and secure support services for all users.",
-              },
-              {
-                icon: Headphones,
-                title: "24/7 Availability",
-                desc: "Round-the-clock assistance whenever support is required.",
-              },
-              {
-                icon: Globe,
-                title: "Global Support",
-                desc: "Helping players from multiple countries and regions worldwide.",
-              },
-            ].map((item, idx) => (
-              <div key={idx} className="rounded-2xl border border-border bg-card p-8 backdrop-blur-xl relative overflow-hidden transition-all hover:border-gold/30 hover:shadow-[0_8px_30px_rgb(0,120,229,0.03)]">
-                <div className="absolute top-0 right-0 w-[100px] h-[100px] bg-[radial-gradient(circle,rgba(0,120,229,0.03)_0%,transparent_70%)] pointer-events-none" />
-                <item.icon
-                  className="mb-4 text-gold"
-                  size={40}
-                />
-                <h3 className="mb-3 font-[var(--font-syne)] text-[16px] font-bold text-white uppercase tracking-[0.5px]">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-muted font-light leading-relaxed">
-                  {item.desc}
+            <motion.div
+              id="live-chat"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="relative overflow-hidden rounded-2xl border border-[#01A3F6]/20 bg-gradient-to-br from-[#0a1220]/80 to-[#0078E5]/[0.08] backdrop-blur-xl p-7 md:p-8 scroll-mt-24"
+            >
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[220px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.10)_0%,transparent_70%)] pointer-events-none" />
+              <div className="relative z-10">
+                <div className="mb-4 w-12 h-12 rounded-xl bg-[#01A3F6]/15 border border-[#01A3F6]/25 flex items-center justify-center">
+                  <Globe className="w-5 h-5 text-[#01A3F6]" />
+                </div>
+                <h2 className="mb-3 font-[var(--font-bebas)] text-[28px] tracking-[1px] text-white">
+                  24/7 Global Assistance
+                </h2>
+                <p className="text-[14px] leading-relaxed text-muted font-light">
+                  Our team works continuously to support players across regions and
+                  time zones. Reliable, responsive, and always one tap away whenever
+                  you need a hand.
                 </p>
               </div>
-            ))}
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="relative z-10 px-6 pb-24">
-        <div className="mx-auto max-w-7xl rounded-2xl border border-border bg-card p-10 backdrop-blur-xl relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-[radial-gradient(circle,rgba(0,120,229,0.03)_0%,transparent_70%)] pointer-events-none" />
-          <h2 className="mb-10 text-center font-[var(--font-bebas)] text-[clamp(32px,4.5vw,52px)] tracking-[1px] text-white">
-            Why Contact 1xPlay?
-          </h2>
-
-          <div className="grid gap-6 grid-cols-2 md:grid-cols-4">
-            {[
-              { icon: User, title: "Account Support" },
-              { icon: Trophy, title: "Gaming Assistance" },
-              { icon: Wallet, title: "Payment Help" },
-              { icon: Headphones, title: "Technical Support" }
-            ].map((feat, index) => (
-              <div key={index} className="text-center group">
-                <feat.icon
-                  size={40}
-                  className="mx-auto mb-4 text-gold transition-transform duration-250 group-hover:scale-110"
-                />
-                <h3 className="font-[var(--font-syne)] text-[14px] font-bold text-white uppercase tracking-[0.5px]">
-                  {feat.title}
-                </h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="relative z-10 px-6 pb-28">
-        <div className="mx-auto max-w-5xl rounded-2xl border border-border bg-card p-12 text-center relative overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-[radial-gradient(ellipse,rgba(0,120,229,0.04)_0%,transparent_70%)] pointer-events-none" />
-          <div className="relative z-10">
-            <h2 className="mb-4 font-[var(--font-bebas)] text-[clamp(36px,5vw,60px)] tracking-[1px] text-white">
-              Connect With 1xPlay
+      {/* ─────────── Trust ─────────── */}
+      <section className="relative z-10 px-[5%] pb-24">
+        <div className="mx-auto max-w-[1400px]">
+          <div className="mb-12 text-center">
+            <span className="section-tag justify-center mb-4">Why Reach Out</span>
+            <h2 className="font-[var(--font-bebas)] text-[clamp(32px,4.5vw,56px)] tracking-[1px] text-white">
+              Support You Can{" "}
+              <span className="bg-gradient-to-r from-[#0078E5] to-[#01A3F6] bg-clip-text text-transparent">
+                Trust
+              </span>
             </h2>
+          </div>
 
-            <p className="mx-auto mb-8 max-w-2xl text-[14px] text-muted font-light leading-relaxed">
-              Stay connected with 1xPlay for the latest updates,
-              gaming features, promotions, and support services.
-              For any questions, feedback, or support requests,
-              feel free to contact our team anytime.
+          <div className="grid gap-6 md:grid-cols-3">
+            {trustItems.map((item, idx) => (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[#0a1220]/60 backdrop-blur-xl p-8 transition-colors hover:border-[#01A3F6]/30"
+              >
+                <div className="absolute -top-12 -right-12 w-40 h-40 bg-[radial-gradient(circle,rgba(1,163,246,0.08)_0%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity" />
+                <div className="mb-5 w-12 h-12 rounded-xl bg-[#01A3F6]/12 border border-[#01A3F6]/20 flex items-center justify-center transition-transform group-hover:scale-110">
+                  <item.icon className="w-5 h-5 text-[#01A3F6]" />
+                </div>
+                <h3 className="mb-3 font-[var(--font-syne)] text-[15px] font-bold text-white uppercase tracking-[0.5px]">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-muted font-light leading-relaxed">{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────── CTA ─────────── */}
+      <section id="messaging" className="relative z-10 px-[5%] pb-28 scroll-mt-24">
+        <div className="mx-auto max-w-5xl relative overflow-hidden rounded-3xl border border-white/10 bg-[#0a1220]/70 backdrop-blur-xl p-10 md:p-14 text-center">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[320px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.10)_0%,transparent_70%)] pointer-events-none" />
+          <div className="relative z-10">
+            <h2 className="mb-4 font-[var(--font-bebas)] text-[clamp(34px,5vw,58px)] tracking-[1px] text-white">
+              Still Have Questions?
+            </h2>
+            <p className="mx-auto mb-8 max-w-2xl text-[14px] md:text-[15px] text-muted font-light leading-relaxed">
+              Start a live chat for instant answers, or drop us an email and we&apos;ll
+              take care of the rest. The 1xPlay team is ready whenever you are.
             </p>
-
-            <button className="btn btn-gold px-8 py-4 font-[var(--font-syne)] text-[13px] uppercase font-bold">
-              Start Live Chat
-            </button>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a
+                href="#contact-form"
+                className="btn btn-gold px-8 py-4 font-[var(--font-syne)] text-[13px] uppercase font-bold"
+              >
+                <MessageCircle className="w-4 h-4" /> Start Live Chat
+              </a>
+              <a
+                href="mailto:support@1xplay.com"
+                className="btn btn-ghost px-8 py-4 font-[var(--font-syne)] text-[13px] uppercase font-bold"
+              >
+                <Mail className="w-4 h-4" /> Email Support
+              </a>
+            </div>
           </div>
         </div>
       </section>

@@ -84,7 +84,7 @@ export const seoPages = {
     description:
       "Play online casino games at 1xPlay, including slots, live casino, table games, and secure mobile-friendly casino entertainment.",
     path: "/casino",
-    image: "/casino-hero.png",
+    image: "/casino-slots.jpg",
     keywords: ["online casino", "casino games", "live casino", "1xPlay casino"],
     changeFrequency: "weekly",
     priority: 0.88,
@@ -149,7 +149,7 @@ export const seoPages = {
     description:
       "Watch the latest cricket match highlights, live streams, and top moments on 1xPlay. Stream IPL, international, and T20 action powered by YouTube.",
     path: "/highlights",
-    image: "/cricket-hero.png",
+    image: "/highlights-hero.jpg",
     keywords: ["cricket highlights", "live cricket stream", "IPL highlights", "cricket videos", "1xPlay highlights"],
     changeFrequency: "daily",
     priority: 0.9,
@@ -196,6 +196,7 @@ export const seoPages = {
     description:
       "Read 1xPlay rules for sports betting, market settlement, cricket betting, tennis, football, account use, and fair gaming standards.",
     path: "/rules",
+    image: "/rules-hero.png",
     keywords: ["1xPlay rules", "sports betting rules", "bet settlement", "gaming rules"],
     changeFrequency: "monthly",
     priority: 0.62,
@@ -205,19 +206,20 @@ export const seoPages = {
     description:
       "Enjoy online soccer betting at 1xPlay with live football odds, global league coverage, secure markets, and mobile-friendly betting.",
     path: "/soccer",
-    image: "/soccer-hero.png",
+    image: "/footbal.png",
     keywords: ["soccer betting", "football betting", "live football betting", "1xPlay soccer"],
     changeFrequency: "weekly",
     priority: 0.84,
   },
   "/tennis": {
-    title: "Online Tennis Betting",
+    title: "Online Tennis Betting at 1xPlay",
     description:
-      "Bet on tennis at 1xPlay with live tennis odds, match markets, tournament coverage, secure access, and fast mobile betting.",
+      "Experience online tennis betting at 1xPlay with live odds, Grand Slam coverage, ATP and WTA markets, mobile betting, and secure transactions.",
     path: "/tennis",
-    keywords: ["tennis betting", "live tennis betting", "online sports betting", "1xPlay tennis"],
+    image: "/tennis-hero.jpg",
+    keywords: ["tennis betting", "live tennis betting", "Grand Slam betting", "ATP betting", "WTA betting", "1xPlay tennis"],
     changeFrequency: "weekly",
-    priority: 0.8,
+    priority: 0.84,
   },
   "/terms-and-conditions": {
     title: "Terms and Conditions",
@@ -252,7 +254,19 @@ export const rootMetadata: Metadata = {
   generator: "Next.js",
   creator: siteName,
   publisher: siteName,
+  authors: [{ name: siteName }],
+  category: "Gaming",
   keywords: seoPages["/"].keywords,
+  manifest: "/manifest.webmanifest",
+  appleWebApp: {
+    capable: true,
+    title: siteName,
+    statusBarStyle: "black-translucent",
+  },
+  // Drop your Google Search Console token into NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
   alternates: {
     canonical: seoPages["/"].path,
   },
@@ -348,5 +362,77 @@ export function createPageMetadata(path: SeoPath): Metadata {
       shortcut: "/1xplay.webp",
       apple: "/1xplay.webp",
     },
+  };
+}
+
+/* ─────────── JSON-LD structured data ───────────
+   Emitted as <script type="application/ld+json"> for rich results.
+   Organization + WebSite are site-wide; WebPage + BreadcrumbList are per-route. */
+
+const ORG_ID = `${getSiteUrl()}/#organization`;
+const SITE_ID = `${getSiteUrl()}/#website`;
+
+export function organizationSchema() {
+  const url = getSiteUrl();
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": ORG_ID,
+    name: siteName,
+    url: `${url}/`,
+    logo: { "@type": "ImageObject", url: `${url}${defaultImage}` },
+    description: seoPages["/"].description,
+  };
+}
+
+export function websiteSchema() {
+  const url = getSiteUrl();
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": SITE_ID,
+    name: siteName,
+    url: `${url}/`,
+    description: seoPages["/"].description,
+    inLanguage: "en-IN",
+    publisher: { "@id": ORG_ID },
+  };
+}
+
+function absoluteUrl(path: string) {
+  return `${getSiteUrl()}${path === "/" ? "/" : path}`;
+}
+
+export function webPageSchema(path: SeoPath) {
+  const page = seoPages[path];
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: page.title,
+    description: page.description,
+    url: absoluteUrl(page.path),
+    inLanguage: "en-IN",
+    isPartOf: { "@id": SITE_ID },
+    primaryImageOfPage: { "@type": "ImageObject", url: `${getSiteUrl()}${"image" in page && page.image ? page.image : defaultImage}` },
+  };
+}
+
+export function breadcrumbSchema(path: SeoPath) {
+  const page = seoPages[path];
+  const itemListElement: Array<Record<string, unknown>> = [
+    { "@type": "ListItem", position: 1, name: "Home", item: absoluteUrl("/") },
+  ];
+  if (path !== "/") {
+    itemListElement.push({
+      "@type": "ListItem",
+      position: 2,
+      name: page.title,
+      item: absoluteUrl(page.path),
+    });
+  }
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement,
   };
 }

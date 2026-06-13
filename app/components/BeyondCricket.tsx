@@ -7,12 +7,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const sports = [
-  { icon: "/footbal.png", name: "Football" },
-  { icon: "/tennis-icon.png", name: "Tennis" },
-  { icon: "/basketball-icon.png", name: "Basketball" },
-  { icon: "/esports-icon.png", name: "Esports" },
-  { icon: "/horseracing-icon.png", name: "Horse Racing" },
-  { icon: "/globe-icon.png", name: "International Sports Tournaments" },
+  { icon: "/footbal.png", name: "Football", cover: true },
+  { icon: "/tennis-hero.jpg", name: "Tennis", cover: true },
+  { icon: "/basketball-hero.jpg", name: "Basketball", cover: true },
+  { icon: "/esports-hero.jpg", name: "Esports", cover: true },
+  { icon: "/horse-racing-live.jpg", name: "Horse Racing", cover: true },
+  { icon: "/globe-icon.png", name: "International Sports Tournaments", cover: false },
 ];
 
 export default function BeyondCricket() {
@@ -120,7 +120,10 @@ export default function BeyondCricket() {
                   alt={sport.name}
                   fill
                   sizes="(max-width: 768px) 50vw, 200px"
-                  className="object-contain group-hover:scale-105 transition-transform duration-500 p-2.5"
+                  className={clsx(
+                    "group-hover:scale-105 transition-transform duration-500",
+                    sport.cover ? "object-cover" : "object-contain p-2.5"
+                  )}
                 />
               </div>
               <div className="p-4 text-center border-t border-white/5">

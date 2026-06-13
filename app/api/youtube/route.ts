@@ -1,66 +1,11 @@
 import { NextResponse } from "next/server";
+import { MOCK_VIDEOS, type YouTubeVideo } from "../../data/mockVideos";
 
-export const dynamic = "force-dynamic";
+// Static export pre-renders this to its simulated payload; on a Node server it
+// behaves as ISR (the live fetch below carries its own revalidate window).
+export const dynamic = "force-static";
 
-export type YouTubeVideo = {
-  id: string;
-  title: string;
-  thumbnail: string;
-  channelTitle: string;
-  publishedAt: string;
-  live: boolean;
-};
-
-const MOCK_VIDEOS: YouTubeVideo[] = [
-  {
-    id: "INDAUSLiveT20",
-    title: "IND vs AUS T20 – Live Match Centre & Ball-by-Ball",
-    thumbnail: "https://img.youtube.com/vi/8kZg_ALxFx0/hqdefault.jpg",
-    channelTitle: "Cricket Live Stream",
-    publishedAt: new Date().toISOString(),
-    live: true,
-  },
-  {
-    id: "MIvCSK2026",
-    title: "IPL 2026: MI vs CSK – Full Match Highlights",
-    thumbnail: "https://img.youtube.com/vi/JGwWNGJdvx8/hqdefault.jpg",
-    channelTitle: "IPL Official",
-    publishedAt: new Date(Date.now() - 86400000).toISOString(),
-    live: false,
-  },
-  {
-    id: "ENGPAKHighlights",
-    title: "ENG vs PAK – 2nd ODI Best Moments & Highlights",
-    thumbnail: "https://img.youtube.com/vi/fLexgOxsZu0/hqdefault.jpg",
-    channelTitle: "Cricket Highlights HD",
-    publishedAt: new Date(Date.now() - 172800000).toISOString(),
-    live: false,
-  },
-  {
-    id: "cricket_best_catches",
-    title: "Top 10 Cricket Catches of the Season",
-    thumbnail: "https://img.youtube.com/vi/OPf0YbXqDm0/hqdefault.jpg",
-    channelTitle: "Cricket Vault",
-    publishedAt: new Date(Date.now() - 259200000).toISOString(),
-    live: false,
-  },
-  {
-    id: "mock-t20-world-cup",
-    title: "T20 World Cup – Super Over Thriller Highlights",
-    thumbnail: "https://img.youtube.com/vi/kJQP7kiw5Fk/hqdefault.jpg",
-    channelTitle: "ICC Cricket",
-    publishedAt: new Date(Date.now() - 345600000).toISOString(),
-    live: false,
-  },
-  {
-    id: "mock-ipl-final",
-    title: "IPL Final – Last Over Finish | Extended Highlights",
-    thumbnail: "https://img.youtube.com/vi/60ItHLz5WEA/hqdefault.jpg",
-    channelTitle: "Star Sports",
-    publishedAt: new Date(Date.now() - 432000000).toISOString(),
-    live: false,
-  },
-];
+const DEFAULT_LIMIT = 12;
 
 // Global cache variables
 let cachedVideos: YouTubeVideo[] | null = null;
@@ -82,15 +27,45 @@ type YouTubeSearchItem = {
   };
 };
 
-function parseLimit(raw: string | null) {
-  const parsed = Number.parseInt(raw || "12", 10);
-  if (Number.isNaN(parsed)) return 12;
-  return Math.min(Math.max(parsed, 1), MAX_RESULTS);
+// Resolved channel id, cached for the lifetime of the server process so the
+// @handle lookup only costs one API call.
+let resolvedChannelId: string | null = null;
+
+/**
+ * Returns the channel id to restrict results to, or null for a global search.
+ * YOUTUBE_CHANNEL accepts either a raw channel id ("UC...") or a handle
+ * ("@SomeChannel"), which is resolved via the channels endpoint.
+ */
+async function getChannelId(apiKey: string): Promise<string | null> {
+  const configured = process.env.YOUTUBE_CHANNEL?.trim();
+  if (!configured) return null;
+  if (configured.startsWith("UC")) return configured;
+  if (resolvedChannelId) return resolvedChannelId;
+
+  const handle = configured.startsWith("@") ? configured : `@${configured}`;
+  const res = await fetch(
+    `https://www.googleapis.com/youtube/v3/channels?part=id&forHandle=${encodeURIComponent(handle)}&key=${apiKey}`,
+    { next: { revalidate: 86400 } }
+  );
+  if (!res.ok) {
+    throw new Error(`Channel lookup for ${handle} returned status ${res.status}`);
+  }
+  const data = await res.json();
+  const id = data.items?.[0]?.id;
+  if (!id) {
+    throw new Error(`No YouTube channel found for handle ${handle}`);
+  }
+  resolvedChannelId = id;
+  return id;
 }
 
-export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const limit = parseLimit(searchParams.get("limit"));
+export async function GET() {
+  // Static export build: no live server, serve simulated data.
+  if (process.env.STATIC_EXPORT === "true") {
+    return NextResponse.json({ success: true, simulated: true, videos: MOCK_VIDEOS.slice(0, DEFAULT_LIMIT) });
+  }
+
+  const limit = DEFAULT_LIMIT;
   const apiKey = process.env.YOUTUBE_API_KEY;
 
   // If no API key configured, return mock data
@@ -115,9 +90,24 @@ export async function GET(request: Request) {
   }
 
   try {
-    // Search query optimized to find live matches and recent highlights
-    const searchQuery = encodeURIComponent("cricket match highlights live");
-    const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchQuery}&type=video&key=${apiKey}&maxResults=${MAX_RESULTS}&order=date`;
+    const params = new URLSearchParams({
+      part: "snippet",
+      type: "video",
+      key: apiKey,
+      maxResults: String(MAX_RESULTS),
+      order: "date",
+    });
+
+    // When a channel is configured, list its latest uploads; otherwise fall
+    // back to a global search optimized for live matches and highlights.
+    const channelId = await getChannelId(apiKey);
+    if (channelId) {
+      params.set("channelId", channelId);
+    } else {
+      params.set("q", "cricket match highlights live");
+    }
+
+    const url = `https://www.googleapis.com/youtube/v3/search?${params}`;
 
     const res = await fetch(url, {
       next: { revalidate: 1800 } // Next.js level fetch cache (30 minutes)

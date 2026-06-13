@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -17,6 +18,7 @@ import {
   Zap,
 } from "lucide-react";
 import ScrollReveal from "../components/ScrollReveal";
+import { MOCK_VIDEOS } from "../data/mockVideos";
 
 interface Video {
   id: string;
@@ -227,8 +229,13 @@ export default function HighlightsPage() {
         return data.videos[0] ?? null;
       });
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : "Something went wrong";
-      setError(message);
+      // No reachable API (e.g. static export) — fall back to bundled highlights
+      // so the feed still renders instead of showing an error screen.
+      console.error(err);
+      setVideos(MOCK_VIDEOS);
+      setSimulated(true);
+      setError(null);
+      setFeaturedVideo((prev) => prev ?? MOCK_VIDEOS[0] ?? null);
     } finally {
       setLoading(false);
     }
@@ -289,6 +296,17 @@ export default function HighlightsPage() {
         />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.12)_0%,transparent_65%)] pointer-events-none" />
         <div className="absolute bottom-1/3 -left-32 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(0,120,229,0.08)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-[520px] pointer-events-none overflow-hidden relative">
+          <Image
+            src="/highlights-hero.jpg"
+            alt=""
+            fill
+            sizes="100vw"
+            className="object-cover object-top opacity-35"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#030914]/20 via-[#030914]/75 to-[#030914]" />
+        </div>
 
         {/* Hero */}
         <section className="relative z-10 pt-[110px] pb-6 px-[5%]">

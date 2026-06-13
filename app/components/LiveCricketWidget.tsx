@@ -4,6 +4,8 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight, Info, AlertTriangle, CheckCircle2, X, Settings, Play } from "lucide-react";
 import clsx from "clsx";
+import { MOCK_MATCHES } from "../data/mockMatches";
+import { MOCK_VIDEOS } from "../data/mockVideos";
 
 interface Team {
   name: string;
@@ -75,8 +77,12 @@ export default function LiveCricketWidget() {
         throw new Error(data.error || "Failed to load matches");
       }
     } catch (err: unknown) {
+      // No server/API available (e.g. static export) — show simulated data
+      // instead of an error so the widget still renders meaningful content.
       console.error(err);
-      setError(err instanceof Error ? err.message : "An unexpected error occurred");
+      setMatches(MOCK_MATCHES);
+      setIsSimulated(true);
+      setError(null);
     } finally {
       setLoading(false);
     }
@@ -103,8 +109,10 @@ export default function LiveCricketWidget() {
         throw new Error(data.error || "Failed to load videos");
       }
     } catch (err: unknown) {
+      // Fall back to bundled highlights when the API isn't reachable.
       console.error(err);
-      setVideosError(err instanceof Error ? err.message : "Unable to sync streams");
+      setVideos(MOCK_VIDEOS);
+      setVideosError(null);
     } finally {
       setVideosLoading(false);
     }

@@ -146,8 +146,131 @@ export default function WhyBetter() {
             "overflow-hidden"
           )}
         >
-          <div className={clsx("overflow-x-auto", "-mx-[5%]", "px-[5%]", "sm:mx-0", "sm:px-0")}>
-            <table className={clsx("w-full", "min-w-[680px]", "border-collapse")}>
+          {/* Mobile: stacked cards (no horizontal scroll) */}
+          <div className={clsx("md:hidden", "p-3", "sm:p-4", "flex", "flex-col", "gap-3")}>
+            {comparisonRows.map((row) => (
+              <div
+                key={row.feature}
+                className={clsx(
+                  "rounded-xl",
+                  "border",
+                  "border-white/[0.08]",
+                  "bg-[#0a0f18]/80",
+                  "overflow-hidden"
+                )}
+              >
+                <div
+                  className={clsx(
+                    "px-3.5",
+                    "py-3",
+                    "border-b",
+                    "border-[rgba(0,120,229,0.2)]",
+                    "bg-gradient-to-br",
+                    "from-[rgba(0,120,229,0.18)]",
+                    "to-[rgba(1,163,246,0.08)]"
+                  )}
+                >
+                  <span
+                    className={clsx(
+                      "text-[13px]",
+                      "text-gold",
+                      "font-bold",
+                      "font-[var(--font-syne)]",
+                      "leading-snug",
+                      "block",
+                      "pl-2.5",
+                      "border-l-2",
+                      "border-gold"
+                    )}
+                  >
+                    {row.feature}
+                  </span>
+                </div>
+
+                <div
+                  className={clsx(
+                    "px-3.5",
+                    "py-3",
+                    "border-b",
+                    "border-white/[0.06]",
+                    "bg-[rgba(0,120,229,0.06)]"
+                  )}
+                >
+                  <div className={clsx("flex", "items-center", "gap-1.5", "mb-1.5")}>
+                    <span
+                      className={clsx(
+                        "text-[10px]",
+                        "uppercase",
+                        "tracking-[0.1em]",
+                        "font-bold",
+                        "text-white",
+                        "font-[var(--font-syne)]"
+                      )}
+                    >
+                      1xPlay
+                    </span>
+                    <span
+                      className={clsx(
+                        "inline-flex",
+                        "items-center",
+                        "justify-center",
+                        "w-4",
+                        "h-4",
+                        "rounded-full",
+                        "bg-green/20",
+                        "text-green"
+                      )}
+                    >
+                      <Check className="w-2.5 h-2.5" strokeWidth={3} />
+                    </span>
+                  </div>
+                  <div className={clsx("flex", "items-start", "gap-2")}>
+                    <Check className={clsx("w-3.5", "h-3.5", "text-green", "shrink-0", "mt-0.5")} strokeWidth={2.5} />
+                    <p className={clsx("text-[12px]", "leading-relaxed", "text-text")}>{row.oneXPlay}</p>
+                  </div>
+                </div>
+
+                <div className={clsx("px-3.5", "py-3")}>
+                  <div className={clsx("flex", "items-center", "gap-1.5", "mb-1.5")}>
+                    <span
+                      className={clsx(
+                        "text-[10px]",
+                        "uppercase",
+                        "tracking-[0.1em]",
+                        "font-bold",
+                        "text-muted",
+                        "font-[var(--font-syne)]"
+                      )}
+                    >
+                      Other Platforms
+                    </span>
+                    <span
+                      className={clsx(
+                        "inline-flex",
+                        "items-center",
+                        "justify-center",
+                        "w-4",
+                        "h-4",
+                        "rounded-full",
+                        "bg-red/15",
+                        "text-red"
+                      )}
+                    >
+                      <X className="w-2.5 h-2.5" strokeWidth={3} />
+                    </span>
+                  </div>
+                  <div className={clsx("flex", "items-start", "gap-2")}>
+                    <X className={clsx("w-3.5", "h-3.5", "text-red/70", "shrink-0", "mt-0.5")} strokeWidth={2.5} />
+                    <p className={clsx("text-[12px]", "leading-relaxed", "text-muted")}>{row.other}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Desktop: full table */}
+          <div className={clsx("hidden", "md:block")}>
+            <table className={clsx("w-full", "border-collapse")}>
               <thead>
                 <tr className={clsx("border-b", "border-white/[0.08]", "bg-[#0a0f18]")}>
                   <th

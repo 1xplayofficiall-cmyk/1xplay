@@ -376,7 +376,7 @@ export default function ContactUsPage() {
             <div className="absolute top-0 right-0 w-48 h-48 bg-[radial-gradient(circle,rgba(1,163,246,0.06)_0%,transparent_70%)] pointer-events-none" />
 
             <div className="relative z-10">
-              <h2 className="font-[var(--font-bebas)] text-[34px] tracking-[1px] text-white">
+              <h2 className="section-title">
                 Send Us a Message
               </h2>
               <p className="mt-2 mb-7 text-[14px] text-muted font-light leading-relaxed">
@@ -591,9 +591,9 @@ export default function ContactUsPage() {
       {/* ─────────── Trust ─────────── */}
       <section className="relative z-10 px-[5%] pb-24">
         <div className="mx-auto max-w-[1400px]">
-          <div className="mb-12 text-center">
+          <div className="mb-12 text-left sm:text-center">
             <span className="section-tag justify-center mb-4">Why Reach Out</span>
-            <h2 className="font-[var(--font-bebas)] text-[clamp(32px,4.5vw,56px)] tracking-[1px] text-white">
+            <h2 className="section-title">
               Support You Can{" "}
               <span className="bg-gradient-to-r from-[#0078E5] to-[#01A3F6] bg-clip-text text-transparent">
                 Trust
@@ -627,10 +627,10 @@ export default function ContactUsPage() {
 
       {/* ─────────── CTA ─────────── */}
       <section id="messaging" className="relative z-10 px-[5%] pb-28 scroll-mt-24">
-        <div className="mx-auto max-w-5xl relative overflow-hidden rounded-3xl border border-white/10 bg-[#0a1220]/70 backdrop-blur-xl p-10 md:p-14 text-center">
+        <div className="mx-auto max-w-5xl relative overflow-hidden rounded-3xl border border-white/10 bg-[#0a1220]/70 backdrop-blur-xl p-10 md:p-14 text-left sm:text-center">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[320px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.10)_0%,transparent_70%)] pointer-events-none" />
           <div className="relative z-10">
-            <h2 className="mb-4 font-[var(--font-bebas)] text-[clamp(34px,5vw,58px)] tracking-[1px] text-white">
+            <h2 className="section-title">
               Still Have Questions?
             </h2>
             <p className="mx-auto mb-8 max-w-2xl text-[14px] md:text-[15px] text-muted font-light leading-relaxed">

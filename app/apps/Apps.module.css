@@ -124,7 +124,7 @@
 
 .heroTitle {
   font-family: var(--font-bebas, sans-serif);
-  font-size: clamp(26px, 4.5vw, 62px);
+  font-size: clamp(29px, 4.5vw, 62px);
   line-height: 1.15;
   letter-spacing: 1px;
   color: #fff;
@@ -1407,4 +1407,23 @@
   .whyGrid { grid-template-columns: 1fr; }
   .gameList { grid-template-columns: 1fr; }
   .hero { padding: 90px 5% 60px; }
+}
+
+/* Phones: headings/copy align left, button & badge rows stay centered */
+@media (max-width: 639px) {
+  .sectionTitle,
+  .sectionDesc,
+  .ctaTag,
+  .ctaTitle,
+  .ctaDesc {
+    text-align: left;
+  }
+  .ctaDesc,
+  .installHeader .sectionDesc {
+    margin-left: 0;
+    margin-right: 0;
+  }
+  .downloadBadges {
+    justify-content: center;
+  }
 }

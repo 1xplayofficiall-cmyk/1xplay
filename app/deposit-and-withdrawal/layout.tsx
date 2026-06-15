@@ -1,4 +1,5 @@
 import { createPageMetadata } from "../seo";
+import PageJsonLd from "../components/PageJsonLd";
 
 export const metadata = createPageMetadata("/deposit-and-withdrawal");
 
@@ -7,5 +8,10 @@ export default function DepositAndWithdrawalLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return (
+    <>
+      <PageJsonLd path="/deposit-and-withdrawal" />
+      {children}
+    </>
+  );
 }

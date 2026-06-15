@@ -1,4 +1,5 @@
 import { createPageMetadata } from "../seo";
+import PageJsonLd from "../components/PageJsonLd";
 
 export const metadata = createPageMetadata("/highlights");
 
@@ -7,5 +8,10 @@ export default function HighlightsLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return (
+    <>
+      <PageJsonLd path="/highlights" />
+      {children}
+    </>
+  );
 }

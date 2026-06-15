@@ -1,4 +1,5 @@
 import { createPageMetadata } from "../seo";
+import PageJsonLd from "../components/PageJsonLd";
 
 export const metadata = createPageMetadata("/tennis");
 
@@ -7,5 +8,10 @@ export default function TennisLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return (
+    <>
+      <PageJsonLd path="/tennis" />
+      {children}
+    </>
+  );
 }

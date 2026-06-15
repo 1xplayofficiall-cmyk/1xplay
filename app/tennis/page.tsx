@@ -2,9 +2,8 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
 import { GiTennisBall } from "react-icons/gi";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import {
   FaBolt,
   FaTv,
@@ -20,18 +19,7 @@ const ACCENT = "#01A3F6";
 /* ─────────── Page ─────────── */
 
 export default function TennisPage() {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const top = window.scrollY;
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(h > 0 ? (top / h) * 100 : 0);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const { scrollYProgress } = useScroll();
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#030914] text-white">
@@ -40,8 +28,8 @@ export default function TennisPage() {
       {/* Scroll progress */}
       <div className="fixed top-[70px] left-0 right-0 h-[2px] z-[998] bg-white/[0.04]">
         <motion.div
-          className="h-full bg-gradient-to-r from-[#0078E5] to-[#01A3F6] shadow-[0_0_12px_rgba(1,163,246,0.6)]"
-          style={{ width: `${progress}%` }}
+          className="h-full w-full origin-left bg-gradient-to-r from-[#0078E5] to-[#01A3F6] shadow-[0_0_12px_rgba(1,163,246,0.6)]"
+          style={{ scaleX: scrollYProgress }}
         />
       </div>
 
@@ -351,7 +339,7 @@ export default function TennisPage() {
           <GiTennisBall className="absolute -bottom-10 -right-8 h-64 w-64 text-[#01A3F6]/[0.06] pointer-events-none" />
           <div className="relative z-10 max-w-2xl">
             <span className="section-tag mb-5">Enjoy the Best Online Tennis Betting</span>
-            <h2 className="font-[var(--font-bebas)] text-[clamp(34px,5vw,60px)] leading-[0.95] tracking-[1px] text-white">
+            <h2 className="section-title">
               Feel the Thrill of{" "}
               <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#5ecfff] bg-clip-text text-transparent">
                 Every Serve
@@ -365,7 +353,7 @@ export default function TennisPage() {
                 If you are looking for a trusted platform for tennis betting online, 1xPlay provides the perfect combination of convenience, performance, and excitement. Join 1xPlay today and experience the thrill of every serve, every set, and every match like never before.
               </p>
             </div>
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-wrap gap-4 max-sm:justify-center">
               <Link href="/apps" className="btn btn-gold btn-large">
                 Get Started <FaArrowRight className="w-3.5 h-3.5" />
               </Link>
@@ -388,7 +376,7 @@ function Hero() {
       {/* Hero background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
-          src="/tennis-hero.jpg"
+          src="/tennis.png"
           alt=""
           fill
           sizes="100vw"
@@ -440,7 +428,7 @@ function Hero() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mt-8 flex flex-wrap gap-4"
+              className="mt-8 flex flex-wrap gap-4 max-sm:justify-center"
             >
               <Link href="/apps" className="btn btn-gold btn-large">
                 Start Betting <FaArrowRight className="w-3.5 h-3.5" />
@@ -451,86 +439,6 @@ function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: illustrative live scorecard */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.94, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            transition={{ delay: 0.25, duration: 0.6 }}
-            className="lg:col-span-5"
-          >
-            <div className="relative rounded-3xl border border-white/10 bg-[#09101e]/80 backdrop-blur-xl p-5 shadow-[0_30px_80px_rgba(0,0,0,0.5)]">
-              {/* header */}
-              <div className="flex items-center justify-between border-b border-white/[0.06] pb-3.5">
-                <div className="flex items-center gap-2">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#E8303A] opacity-75" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-[#E8303A]" />
-                  </span>
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/70 font-[var(--font-syne)]">
-                    Live · Set 2
-                  </span>
-                </div>
-                <span className="rounded-md bg-white/[0.05] px-2 py-1 text-[9px] font-semibold uppercase tracking-wider text-muted">
-                  Sample Market
-                </span>
-              </div>
-
-              {/* players */}
-              <div className="space-y-3 py-4">
-                {[
-                  { name: "A. Player", sets: [6, 4], pts: "40", odds: "1.85", lead: true },
-                  { name: "B. Player", sets: [3, 5], pts: "30", odds: "1.95", lead: false },
-                ].map((p) => (
-                  <div
-                    key={p.name}
-                    className="flex items-center justify-between rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3"
-                  >
-                    <div className="flex items-center gap-3">
-                      <span
-                        className="flex h-8 w-8 items-center justify-center rounded-full text-[12px] font-bold"
-                        style={{
-                          backgroundColor: p.lead ? "rgba(1,163,246,0.15)" : "rgba(255,255,255,0.05)",
-                          color: p.lead ? ACCENT : "#fff",
-                        }}
-                      >
-                        {p.name.charAt(0)}
-                      </span>
-                      <span className="text-[13px] font-semibold text-white">{p.name}</span>
-                    </div>
-                    <div className="flex items-center gap-2.5">
-                      {p.sets.map((s, idx) => (
-                        <span
-                          key={idx}
-                          className="w-5 text-center font-[var(--font-bebas)] text-[18px] text-white/80"
-                        >
-                          {s}
-                        </span>
-                      ))}
-                      <span className="w-6 text-center text-[12px] font-bold text-[#01A3F6]">{p.pts}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* odds buttons */}
-              <div className="grid grid-cols-2 gap-3 pt-1">
-                {[
-                  { label: "A. Player", odds: "1.85" },
-                  { label: "B. Player", odds: "1.95" },
-                ].map((o) => (
-                  <div
-                    key={o.label}
-                    className="flex items-center justify-between rounded-xl border border-[#01A3F6]/20 bg-[#01A3F6]/[0.06] px-4 py-3 transition-colors hover:bg-[#01A3F6]/10"
-                  >
-                    <span className="text-[11px] uppercase tracking-wider text-muted font-[var(--font-syne)]">
-                      {o.label}
-                    </span>
-                    <span className="font-[var(--font-bebas)] text-[20px] text-[#01A3F6]">{o.odds}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
@@ -578,7 +486,7 @@ function Block({
           >
             {eyebrow}
           </p>
-          <h2 className="font-[var(--font-bebas)] text-[clamp(28px,4vw,44px)] leading-[1.02] tracking-[0.5px] text-white">
+          <h2 className="section-title">
             {title}
           </h2>
           <div className="mt-5 flex flex-col gap-5 text-[15px] leading-[1.85] font-light text-muted">
@@ -622,7 +530,7 @@ function WideBlock({
           {eyebrow}
         </span>
       </div>
-      <h2 className="font-[var(--font-bebas)] text-[clamp(28px,4vw,48px)] leading-[1.02] tracking-[0.5px] text-white">
+      <h2 className="section-title">
         {title}
       </h2>
       <div className="mt-6 text-[15px] leading-[1.85] font-light text-muted">{children}</div>

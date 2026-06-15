@@ -191,13 +191,15 @@ export default function CasinoGames() {
       <div className={clsx('flex', 'justify-between', 'items-end', 'mb-[60px]', 'gap-6', 'flex-wrap', 'reveal-header')}>
         <div>
           <div className="section-tag">Casino Games</div>
-          <h2 className="section-title">Best Casino Games Online <span className="text-gold">FOR</span><br />Indian Players</h2>
+          <h2 className="section-title">Best Casino Games Online <span className="text-gold">For</span><br />Indian Players</h2>
         </div>
         <div>
           <p className="section-desc">
             1xPlay provides access to some of the best casino games online with smooth gameplay, high-quality graphics, and real-time gaming experiences. We focus on creating a premium casino environment where users can enjoy exciting games anytime and anywhere.
           </p>
-          <a href="#" className={clsx('btn', 'btn-gold', 'mt-5', 'inline-flex')}>Browse All Games</a>
+          <div className={clsx('flex', 'justify-center', 'md:justify-start', 'mt-5')}>
+            <a href="#" className={clsx('btn', 'btn-gold', 'inline-flex')}>Browse All Games</a>
+          </div>
         </div>
       </div>
 
@@ -225,27 +227,32 @@ export default function CasinoGames() {
               />
             </div>
             
-            {/* Overlay */}
-            <div className={clsx('absolute', 'inset-0', 'bg-gradient-to-t', 'from-black/95', 'via-black/35', 'to-transparent')} />
-            
             {/* Badge */}
             {game.badge === "hot" && (
-              <div className={clsx('absolute', 'top-2.5', 'right-2.5', 'md:top-3', 'md:right-3', 'bg-red', 'text-white', 'text-[9px]', 'md:text-[10px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'px-2', 'py-0.5', 'md:px-2.5', 'md:py-1', 'rounded', 'z-10')}>Hot</div>
+              <div className={clsx('absolute', 'top-2.5', 'right-2.5', 'md:top-3', 'md:right-3', 'bg-red', 'text-white', 'text-[9px]', 'md:text-[10px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'px-2', 'py-0.5', 'md:px-2.5', 'md:py-1', 'rounded', 'z-20')}>Hot</div>
             )}
             {game.badge === "new" && (
-              <div className={clsx('absolute', 'top-2.5', 'right-2.5', 'md:top-3', 'md:right-3', 'bg-green', 'text-[#041208]', 'text-[9px]', 'md:text-[10px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'px-2', 'py-0.5', 'md:px-2.5', 'md:py-1', 'rounded', 'z-10')}>New</div>
+              <div className={clsx('absolute', 'top-2.5', 'right-2.5', 'md:top-3', 'md:right-3', 'bg-green', 'text-[#041208]', 'text-[9px]', 'md:text-[10px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'px-2', 'py-0.5', 'md:px-2.5', 'md:py-1', 'rounded', 'z-20')}>New</div>
             )}
             
-            {/* Info */}
-            <div className={clsx('absolute', 'bottom-0', 'left-0', 'right-0', 'p-3', 'md:p-4', 'pt-4', 'md:pt-5', 'z-10')} style={{ transform: "translateZ(30px)" }}>
-              <div className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[13px]', 'sm:text-[14px]', 'md:text-[15px]', 'text-white', 'mb-0.5', 'md:mb-1')}>{game.name}</div>
-              <div className={clsx('text-[9px]', 'sm:text-[10px]', 'md:text-[11px]', 'text-muted', 'uppercase', 'tracking-[0.5px]', 'md:tracking-[1px]')}>{game.tag}</div>
+            {/* Hover name overlay */}
+            <div
+              className={clsx(
+                'absolute', 'inset-0', 'flex', 'items-center', 'justify-center', 'p-3',
+                'bg-black/65', 'opacity-0', 'group-hover:opacity-100',
+                'transition-opacity', 'duration-300', 'z-10'
+              )}
+              style={{ transform: "translateZ(30px)" }}
+            >
+              <span className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[13px]', 'sm:text-[14px]', 'md:text-[15px]', 'text-white', 'text-center', 'leading-tight')}>
+                {game.name}
+              </span>
             </div>
           </div>
         ))}
       </div>
 
-      <p className={clsx('text-center', 'mt-10', 'text-[13px]', 'text-muted', 'max-w-[800px]', 'mx-auto', 'leading-relaxed')}>
+      <p className={clsx('text-left', 'sm:text-center', 'mt-10', 'text-[13px]', 'text-muted', 'max-w-[800px]', 'mx-auto', 'leading-relaxed')}>
         Our platform regularly updates gaming categories to keep the experience fresh, engaging, and entertaining for players worldwide.
         Whether users prefer classic table games, strategic card games, or fast-paced modern casino experiences, 1xPlay offers something for everyone. The platform is optimized for smooth gameplay so users can enjoy casino games online without lag or interruptions.
         As a growing casino game India platform, we focus on providing better gaming quality, faster performance, and a user-friendly environment that helps players enjoy every moment.

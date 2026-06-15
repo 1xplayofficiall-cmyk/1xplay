@@ -7,12 +7,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const sports = [
-  { icon: "/footbal.png", name: "Football", cover: true },
-  { icon: "/tennis-hero.jpg", name: "Tennis", cover: true },
-  { icon: "/basketball-hero.jpg", name: "Basketball", cover: true },
-  { icon: "/esports-hero.jpg", name: "Esports", cover: true },
-  { icon: "/horse-racing-live.jpg", name: "Horse Racing", cover: true },
-  { icon: "/globe-icon.png", name: "International Sports Tournaments", cover: false },
+  { icon: "/footbal.png", name: "Football" },
+  { icon: "/tennis-hero.jpg", name: "Tennis" },
+  { icon: "/basketball-hero.jpg", name: "Basketball" },
+  { icon: "/esports-hero.jpg", name: "Esports" },
+  { icon: "/horse-racing-live.jpg", name: "Horse Racing" },
+  { icon: "/globe-icon.png", name: "International Sports Tournaments" },
 ];
 
 export default function BeyondCricket() {
@@ -88,9 +88,9 @@ export default function BeyondCricket() {
 
       <div className={clsx('max-w-[1200px]', 'mx-auto')}>
         {/* Header */}
-        <div className={clsx('text-center', 'mb-14', 'reveal-beyond-header')}>
+        <div className={clsx('text-left', 'sm:text-center', 'mb-14', 'reveal-beyond-header')}>
           <div className={clsx('section-tag', 'justify-center')}>Beyond Cricket</div>
-          <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,56px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
+          <h2 className="section-title">
             Entertainment Beyond<br />Cricket and <span className="text-gold">Casino Games</span>
           </h2>
           <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'max-w-[700px]', 'mx-auto', 'font-light')}>
@@ -99,7 +99,7 @@ export default function BeyondCricket() {
         </div>
 
         {/* Sports Grid */}
-        <h3 className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[18px]', 'text-white', 'text-center', 'mb-8', 'reveal-beyond-subheader')}>
+        <h3 className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[18px]', 'text-white', 'text-left', 'sm:text-center', 'mb-8', 'reveal-beyond-subheader')}>
           Sports available on the platform include:
         </h3>
 
@@ -108,33 +108,35 @@ export default function BeyondCricket() {
             <div
               key={sport.name}
               className={clsx(
-                'bg-card', 'border', 'border-border', 'rounded-xl', 'overflow-hidden',
-                'flex', 'flex-col', 'items-stretch', 'cursor-pointer',
-                'hover:border-[rgba(0,120,229,0.3)]', 'hover:bg-card2',
-                'transition-all', 'group', 'reveal-beyond-card'
+                'relative', 'aspect-[3/4]', 'rounded-xl', 'overflow-hidden',
+                'border', 'border-border', 'cursor-pointer', 'group', 'reveal-beyond-card',
+                'hover:border-[rgba(0,120,229,0.4)]', 'transition-colors', 'duration-300'
               )}
             >
-              <div className="relative w-full aspect-video bg-black/20 overflow-hidden">
-                <Image
-                  src={sport.icon}
-                  alt={sport.name}
-                  fill
-                  sizes="(max-width: 768px) 50vw, 200px"
-                  className={clsx(
-                    "group-hover:scale-105 transition-transform duration-500",
-                    sport.cover ? "object-cover" : "object-contain p-2.5"
-                  )}
-                />
-              </div>
-              <div className="p-4 text-center border-t border-white/5">
-                <span className={clsx('text-[13px]', 'text-white', 'font-medium', 'leading-tight', 'group-hover:text-[#01A3F6]', 'transition-colors')}>{sport.name}</span>
+              <Image
+                src={sport.icon}
+                alt={sport.name}
+                fill
+                sizes="(max-width: 768px) 50vw, 200px"
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <div
+                className={clsx(
+                  'absolute', 'inset-0', 'flex', 'items-center', 'justify-center', 'p-3',
+                  'bg-black/65', 'opacity-0', 'group-hover:opacity-100',
+                  'transition-opacity', 'duration-300'
+                )}
+              >
+                <span className={clsx('text-[13px]', 'text-white', 'font-medium', 'leading-tight', 'text-center')}>
+                  {sport.name}
+                </span>
               </div>
             </div>
           ))}
         </div>
 
         {/* Bottom Text */}
-        <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'text-center', 'max-w-[700px]', 'mx-auto', 'font-light', 'reveal-beyond-header')}>
+        <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'text-left', 'sm:text-center', 'max-w-[700px]', 'mx-auto', 'font-light', 'reveal-beyond-header')}>
           This variety helps users enjoy a complete digital entertainment experience with more gaming opportunities and betting markets.
         </p>
       </div>

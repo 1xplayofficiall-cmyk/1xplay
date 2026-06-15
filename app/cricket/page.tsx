@@ -3,8 +3,8 @@
 import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, useScroll } from "framer-motion";
 import {
   FaTrophy,
   FaBolt,
@@ -71,18 +71,7 @@ const onboarding = [
 export default function CricketPage() {
   const [activeMarketTab, setActiveMarketTab] = useState("all");
   const [selectedOdd, setSelectedOdd] = useState<string | null>(null);
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const top = window.scrollY;
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(h > 0 ? (top / h) * 100 : 0);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const { scrollYProgress } = useScroll();
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#05080B] text-white">
@@ -91,15 +80,27 @@ export default function CricketPage() {
       {/* Scroll progress */}
       <div className="fixed top-[70px] left-0 right-0 h-[2px] z-[998] bg-white/[0.04]">
         <motion.div
-          className="h-full bg-gradient-to-r from-[#0078E5] to-[#01A3F6] shadow-[0_0_12px_rgba(1,163,246,0.6)]"
-          style={{ width: `${progress}%` }}
+          className="h-full w-full origin-left bg-gradient-to-r from-[#0078E5] to-[#01A3F6] shadow-[0_0_12px_rgba(1,163,246,0.6)]"
+          style={{ scaleX: scrollYProgress }}
         />
       </div>
 
       {/* ── Hero ── */}
       <section className="relative z-10 overflow-hidden pt-[110px] pb-[40px] px-[5%]">
-        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(1,163,246,0.07)_0%,transparent_70%)] pointer-events-none z-0" />
-        <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(0,120,229,0.05)_0%,transparent_70%)] pointer-events-none z-0" />
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/cricket.png"
+            alt="Cricket Betting at 1xPlay"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#05080B] via-[#05080B]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-[#05080B]/50" />
+          <div className="absolute top-[12%] right-[14%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(1,163,246,0.16)_0%,transparent_65%)] pointer-events-none" />
+        </div>
 
         <div className="relative z-10 max-w-[1400px] mx-auto w-full flex flex-col gap-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -120,7 +121,7 @@ export default function CricketPage() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="font-[var(--font-bebas)] text-[clamp(46px,6.5vw,78px)] tracking-[1px] leading-[0.92] text-white mb-6"
+                className="font-[var(--font-bebas)] text-[clamp(46px,6.5vw,45px)] tracking-[1px] leading-[0.92] text-white mb-6"
               >
                 Experience the Excitement of{" "}
                 <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(1,163,246,0.15)]">
@@ -141,7 +142,7 @@ export default function CricketPage() {
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="flex gap-4 flex-wrap"
+                className="flex gap-4 flex-wrap max-sm:justify-center"
               >
                 <Link href="#sportsbook" className="btn btn-gold btn-large gap-2">
                   <span>Place Bets Now</span> <FaArrowRight size={12} />
@@ -159,27 +160,7 @@ export default function CricketPage() {
               transition={{ delay: 0.25, duration: 0.6 }}
               className="lg:col-span-5 relative flex justify-center"
             >
-              <div className="relative w-[280px] sm:w-[350px] h-[320px] sm:h-[420px] rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-sm p-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
-                <div className="absolute -inset-1 bg-gradient-to-tr from-[#0078E5] to-[#01A3F6] rounded-3xl opacity-20 blur-xl group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
-                <div className="relative w-full h-full rounded-2xl overflow-hidden">
-                  <Image
-                    src="/cricket-hero.png"
-                    alt="Cricket Hero Illustration"
-                    fill
-                    sizes="(max-width:640px) 280px, 350px"
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-black/40 border border-white/10 p-4 rounded-xl flex items-center justify-between">
-                    <div className="flex flex-col">
-                      <span className="text-[10px] uppercase text-muted tracking-wider">Live IPL Odds</span>
-                      <span className="text-white font-[var(--font-syne)] font-bold text-[14px]">CSK Win Selection</span>
-                    </div>
-                    <span className="bg-[#01A3F6] text-white font-[var(--font-syne)] font-bold text-[13px] px-3 py-1.5 rounded-lg shadow-lg">1.92</span>
-                  </div>
-                </div>
-              </div>
+            
             </motion.div>
           </div>
 
@@ -427,7 +408,7 @@ export default function CricketPage() {
               ))}
           </div>
 
-          <p className="text-center text-muted text-[13px] font-light mt-10 max-w-[600px] mx-auto">
+          <p className="text-left sm:text-center text-muted text-[13px] font-light mt-10 max-w-[600px] mx-auto">
             Odds represent a simulated preview. Users can enjoy cricket betting from multiple angles while following the game closely.
           </p>
         </section>
@@ -529,11 +510,11 @@ export default function CricketPage() {
 
       {/* ── Final CTA ── */}
       <section className="relative z-10 px-[5%] pb-28">
-        <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#070C13] via-[#05080B] to-[#070C13] p-10 md:p-16 text-center">
+        <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#070C13] via-[#05080B] to-[#070C13] p-10 md:p-16 text-left sm:text-center">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.08)_0%,transparent_70%)] pointer-events-none" />
           <div className="relative z-10 max-w-[800px] mx-auto">
             <span className="section-tag justify-center mb-4">Ready to Play?</span>
-            <h2 className="font-[var(--font-bebas)] text-[clamp(40px,6vw,68px)] tracking-[1px] leading-[0.95] text-white mb-6">
+            <h2 className="section-title">
               Join the Cricket Action <br />At{" "}
               <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent">1xPlay Exchange</span>
             </h2>
@@ -567,7 +548,7 @@ function EyebrowHead({ num, eyebrow, title }: { num: string; eyebrow: string; ti
         <span className="h-[2px] w-10 rounded-full" style={{ background: ACCENT }} />
         <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#01A3F6] font-[var(--font-syne)]">{eyebrow}</span>
       </div>
-      <h2 className="font-[var(--font-bebas)] text-[clamp(28px,4vw,46px)] leading-[1.02] tracking-[0.5px] text-white">{title}</h2>
+      <h2 className="section-title">{title}</h2>
     </>
   );
 }

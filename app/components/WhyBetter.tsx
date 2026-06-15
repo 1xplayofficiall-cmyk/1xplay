@@ -20,9 +20,9 @@ export default function WhyBetter() {
 
       <div className={clsx('max-w-[1200px]', 'mx-auto')}>
         {/* Header */}
-        <div className={clsx('text-center', 'mb-16', 'reveal')}>
+        <div className={clsx('text-left', 'sm:text-center', 'mb-16', 'reveal')}>
           <div className={clsx('section-tag', 'justify-center')}>Why Choose Us</div>
-          <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(36px,5vw,60px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
+          <h2 className="section-title">
             Why 1xPlay Is <span className="text-gold">Better</span> Than<br />Other Platforms
           </h2>
           <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'max-w-[720px]', 'mx-auto', 'font-light')}>
@@ -31,7 +31,7 @@ export default function WhyBetter() {
         </div>
 
         {/* What Makes 1xPlay Different - Subheading */}
-        <h3 className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[20px]', 'text-white', 'text-center', 'mb-10', 'reveal')}>
+        <h3 className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[20px]', 'text-white', 'text-left', 'sm:text-center', 'mb-10', 'reveal')}>
           What Makes 1xPlay Different
         </h3>
 
@@ -62,7 +62,7 @@ export default function WhyBetter() {
         </div>
 
         {/* Bottom Line */}
-        <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'text-center', 'mt-12', 'max-w-[800px]', 'mx-auto', 'font-light', 'reveal')}>
+        <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'text-left', 'sm:text-center', 'mt-12', 'max-w-[800px]', 'mx-auto', 'font-light', 'reveal')}>
           These features help 1xPlay stand out as one of the growing names among the best online casinos in India.
         </p>
       </div>

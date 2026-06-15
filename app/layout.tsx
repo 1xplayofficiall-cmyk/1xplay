@@ -4,9 +4,8 @@ import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Preloader from "./components/Preloader";
-import CursorGlow from "./components/CursorGlow";
+import SmoothScroll from "./components/SmoothScroll";
 import GlobalJsonLd from "./components/GlobalJsonLd";
-import BreadcrumbJsonLd from "./components/BreadcrumbJsonLd";
 import { rootMetadata } from "./seo";
 
 const robotoSlab = Roboto_Slab({
@@ -49,9 +48,8 @@ export default function RootLayout({
     >
       <body className="min-h-screen flex flex-col">
         <GlobalJsonLd />
-        <BreadcrumbJsonLd />
+        <SmoothScroll />
         <Preloader />
-        <CursorGlow />
         <Navbar />
         <main className="flex-1 flex flex-col">{children}</main>
         <Footer />

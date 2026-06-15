@@ -20,7 +20,7 @@ export default function SafeSecure() {
           {/* Left: Content */}
           <div className="reveal">
             <div className="section-tag">Security First</div>
-            <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,56px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
+            <h2 className="section-title">
               Safe and Secure<br />Online Gambling <span className="text-gold">Casino</span>
             </h2>
             <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-8')}>

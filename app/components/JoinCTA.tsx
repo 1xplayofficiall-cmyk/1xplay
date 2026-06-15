@@ -2,13 +2,13 @@
 
 export default function JoinCTA() {
   return (
-    <section className="py-[50px] px-[5%] bg-bg text-center relative overflow-hidden">
+    <section className="py-[50px] px-[5%] bg-bg text-left sm:text-center relative overflow-hidden">
       {/* Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(0,120,229,0.07)_0%,transparent_70%)] pointer-events-none" />
 
       <div className="relative z-[1]">
         <div className="section-tag justify-center">Join Now</div>
-        <h2 className="font-[var(--font-bebas)] text-[clamp(48px,7vw,96px)] tracking-[1px] leading-none text-white mb-4">
+        <h2 className="section-title">
           Ready to <span className="text-gold">Win Big</span>?
         </h2>
         <p className="section-desc mx-auto text-center mb-0">

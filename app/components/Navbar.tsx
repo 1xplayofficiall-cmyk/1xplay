@@ -223,8 +223,8 @@ export default function Navbar() {
             );
           })}
           <div className={clsx('flex', 'gap-3', 'mt-4')}>
-            <Link href="#" className={clsx('btn', 'btn-ghost', 'flex-1', 'justify-center')}>Log In</Link>
-            <Link href="#" className={clsx('btn', 'btn-gold', 'flex-1', 'justify-center')}>Join Now</Link>
+            <Link href="#" className={clsx('btn', 'btn-ghost', 'flex-1', 'justify-center')}>Register</Link>
+            <Link href="#" className={clsx('btn', 'btn-gold', 'flex-1', 'justify-center')}>Download</Link>
           </div>
         </div>
       )}

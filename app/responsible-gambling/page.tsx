@@ -69,7 +69,7 @@ export default function ResponsibleGamblingPage() {
 
       {/* HERO SECTION */}
       <section className="relative z-10 px-6 pt-36 pb-16">
-        <div className="mx-auto max-w-5xl text-center">
+        <div className="mx-auto max-w-5xl text-left sm:text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -187,7 +187,7 @@ export default function ResponsibleGamblingPage() {
             {/* Left: Content */}
             <div className="md:col-span-7 reveal">
               <span className="section-tag">Player Assistance</span>
-              <h2 className="font-[var(--font-bebas)] text-[clamp(32px,4.5vw,52px)] tracking-[1px] leading-none text-white mb-6">
+              <h2 className="section-title">
                 Support & <span className="text-gold">Assistance</span>
               </h2>
               <p className="text-[14px] text-muted leading-[1.8] font-light mb-6">
@@ -231,7 +231,7 @@ export default function ResponsibleGamblingPage() {
 
         <div className="relative z-10 max-w-[750px] mx-auto reveal">
           <span className="section-tag justify-center">Our Commitment</span>
-          <h2 className="font-[var(--font-bebas)] text-[clamp(36px,5vw,60px)] tracking-[1px] leading-none text-white mb-6">
+          <h2 className="section-title">
             Commitment to <span className="text-gold">Responsible Gaming</span>
           </h2>
           <p className="text-[15px] text-muted leading-[1.8] font-light mb-8">

@@ -3,8 +3,8 @@
 import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, useScroll } from "framer-motion";
 import {
   FaShieldAlt,
   FaMobileAlt,
@@ -40,7 +40,7 @@ const gameTabs = [
 
 export default function CasinoPage() {
   const [selectedGameInfo, setSelectedGameInfo] = useState<string | null>("aviator");
-  const [progress, setProgress] = useState(0);
+  const { scrollYProgress } = useScroll();
 
   // Slots Simulator State
   const symbols = ["🍒", "🍋", "💎", "7️⃣", "⭐", "🔔"];
@@ -49,17 +49,6 @@ export default function CasinoPage() {
   const [coins, setCoins] = useState(500);
   const [slotMessage, setSlotMessage] = useState("Spin the reels to win virtual coins!");
   const [spinClass, setSpinClass] = useState([false, false, false]);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const top = window.scrollY;
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(h > 0 ? (top / h) * 100 : 0);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const spin = () => {
     if (spinning || coins < 50) return;
@@ -127,15 +116,28 @@ export default function CasinoPage() {
       {/* Scroll progress */}
       <div className="fixed top-[70px] left-0 right-0 h-[2px] z-[998] bg-white/[0.04]">
         <motion.div
-          className="h-full bg-gradient-to-r from-[#0078E5] to-[#01A3F6] shadow-[0_0_12px_rgba(1,163,246,0.6)]"
-          style={{ width: `${progress}%` }}
+          className="h-full w-full origin-left bg-gradient-to-r from-[#0078E5] to-[#01A3F6] shadow-[0_0_12px_rgba(1,163,246,0.6)]"
+          style={{ scaleX: scrollYProgress }}
         />
       </div>
 
       {/* ── Hero ── */}
       <section className="relative z-10 overflow-hidden pt-[110px] pb-[40px] px-[5%]">
-        <div className="absolute top-1/4 left-1/3 w-[500px] h-[500px] bg-[radial-gradient(circle,rgba(1,163,246,0.07)_0%,transparent_70%)] pointer-events-none z-0" />
-        <div className="absolute bottom-10 right-10 w-[300px] h-[300px] bg-[radial-gradient(circle,rgba(0,120,229,0.05)_0%,transparent_70%)] pointer-events-none z-0" />
+     
+        {/* Background image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/casino.png"
+            alt="Casino Gaming at 1xPlay"
+            fill
+            sizes="100vw"
+            className="object-cover object-center"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#05080B] via-[#05080B]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-[#05080B]/50" />
+          <div className="absolute top-[12%] right-[14%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(1,163,246,0.16)_0%,transparent_65%)] pointer-events-none" />
+        </div>
 
         <div className="relative z-10 max-w-[1400px] mx-auto w-full flex flex-col gap-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -156,7 +158,7 @@ export default function CasinoPage() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="font-[var(--font-bebas)] text-[clamp(44px,6vw,76px)] tracking-[1px] leading-[0.92] text-white mb-6"
+                className="font-[var(--font-bebas)] text-[clamp(29px,6vw,56px)] tracking-[1px] leading-[0.92] text-white mb-6"
               >
                 Experience the Ultimate{" "}
                 <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(1,163,246,0.15)]">
@@ -178,7 +180,7 @@ export default function CasinoPage() {
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="flex gap-4 flex-wrap"
+                className="flex gap-4 flex-wrap max-sm:justify-center"
               >
                 <Link href="#portfolio" className="btn btn-gold btn-large gap-2">
                   <span>Explore Games</span> <FaArrowRight size={12} />
@@ -475,13 +477,13 @@ export default function CasinoPage() {
 
         {/* 04 — Slot machine mini-game */}
         <section id="slots-game" className="mx-auto max-w-[1180px] scroll-mt-24">
-          <div className="text-center max-w-[650px] mx-auto mb-10">
+          <div className="text-left sm:text-center max-w-[650px] mx-auto mb-10">
             <div className="flex items-center justify-center gap-4 mb-3">
               <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider text-[#01A3F6]/15">04</span>
               <span className="h-[2px] w-10 rounded-full bg-[#01A3F6]" />
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#01A3F6] font-[var(--font-syne)]">Slot Simulator</span>
             </div>
-            <h2 className="font-[var(--font-bebas)] text-[clamp(28px,4vw,50px)] text-white tracking-[1px] leading-tight">
+            <h2 className="section-title">
               Interactive <span className="text-[#01A3F6]">Slot Machine</span>
             </h2>
             <p className="text-muted text-[14.5px] mt-2 font-light">
@@ -706,11 +708,11 @@ export default function CasinoPage() {
 
       {/* ── Final CTA ── */}
       <section className="relative z-10 px-[5%] pb-28">
-        <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#070C13] via-[#05080B] to-[#070C13] p-10 md:p-16 text-center">
+        <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#070C13] via-[#05080B] to-[#070C13] p-10 md:p-16 text-left sm:text-center">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.08)_0%,transparent_70%)] pointer-events-none" />
           <div className="relative z-10 max-w-[800px] mx-auto">
             <span className="section-tag justify-center mb-4">Join the Action</span>
-            <h2 className="font-[var(--font-bebas)] text-[clamp(40px,6vw,68px)] tracking-[1px] leading-[0.95] text-white mb-6">
+            <h2 className="section-title">
               Join the Excitement at <br />
               <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent">1xPlay Casino</span>
             </h2>
@@ -744,7 +746,7 @@ function EyebrowHead({ num, eyebrow, title }: { num: string; eyebrow: string; ti
         <span className="h-[2px] w-10 rounded-full" style={{ background: ACCENT }} />
         <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#01A3F6] font-[var(--font-syne)]">{eyebrow}</span>
       </div>
-      <h2 className="font-[var(--font-bebas)] text-[clamp(28px,4vw,46px)] leading-[1.02] tracking-[0.5px] text-white">{title}</h2>
+      <h2 className="section-title">{title}</h2>
     </>
   );
 }

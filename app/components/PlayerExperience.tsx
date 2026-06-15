@@ -32,9 +32,9 @@ export default function PlayerExperience() {
 
       <div className={clsx('max-w-[1200px]', 'mx-auto')}>
         {/* Header */}
-        <div className={clsx('text-center', 'mb-14', 'reveal')}>
+        <div className={clsx('text-left', 'sm:text-center', 'mb-14', 'reveal')}>
           <div className={clsx('section-tag', 'justify-center')}>Player Reviews</div>
-          <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,56px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
+          <h2 className="section-title">
             Player Reviews and<br /><span className="text-gold">Gaming Experience</span>
           </h2>
         </div>

@@ -54,6 +54,16 @@ html, body {
 
 html { scroll-behavior: smooth; }
 
+/* Lenis smooth scroll — when JS is active it adds these classes to <html>.
+   While Lenis drives the scroll, native smooth-behaviour is turned off so the
+   two don't fight. Falls back to CSS smooth scroll if JS is disabled. */
+html.lenis,
+html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
 body {
   font-family: var(--font-dm);
   background: var(--bg);
@@ -63,15 +73,17 @@ body {
   padding-top: env(safe-area-inset-top, 0px);
 }
 
-/* NOISE OVERLAY */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events: none;
-  z-index: 1000;
-  opacity: 0.3;
+/* NOISE OVERLAY removed for performance — it was a full-screen fixed layer
+   that forced repaints during scroll. */
+
+/* PERF: backdrop-filter (frosted glass) is one of the most expensive things to
+   paint and it re-samples the page on every scroll frame. Disabled globally;
+   panels keep their translucent background colours, just without the blur. */
+*,
+*::before,
+*::after {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 /* BUTTONS */
@@ -126,7 +138,8 @@ body::before {
 }
 .section-title {
   font-family: var(--font-bebas);
-  font-size: clamp(25px, 5vw, 44px);
+  /* Single standard size for ALL section headings (h2) across the site */
+  font-size: clamp(28px, 4.5vw, 50px);
   letter-spacing: 1px;
   line-height: 1;
   color: var(--white);
@@ -186,3 +199,16 @@ body::before {
 ::-webkit-scrollbar-track { background: rgba(255,255,255,0.01); }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(0,120,229,0.4); }
+
+/* ============================================================
+   MOBILE OPTIMIZATION — phones (<= 639px)
+   Section headings/intro copy align to the LEFT, while CTA
+   button groups stay CENTERED. Applies site-wide via the
+   shared .section-* classes; raw headings are handled per
+   component with `text-left sm:text-center`.
+   ============================================================ */
+@media (max-width: 639px) {
+  .section-title,
+  .section-desc { text-align: left; }
+  .section-tag { justify-content: flex-start; }
+}

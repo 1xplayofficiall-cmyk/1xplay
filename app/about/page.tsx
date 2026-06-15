@@ -14,7 +14,7 @@ export default function AboutPage() {
       <section className={clsx('relative', 'pt-[160px]', 'pb-[100px]', 'px-[5%]', 'bg-bg', 'overflow-hidden')}>
         <div className={clsx('absolute', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2', 'w-[800px]', 'h-[600px]', 'bg-[radial-gradient(ellipse,rgba(0,120,229,0.06)_0%,transparent_70%)]', 'pointer-events-none')} />
 
-        <div className={clsx('max-w-[1200px]', 'mx-auto', 'relative', 'z-10', 'text-center', 'reveal')}>
+        <div className={clsx('max-w-[1200px]', 'mx-auto', 'relative', 'z-10', 'text-left', 'sm:text-center', 'reveal')}>
           <h1 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(44px,7vw,90px)]', 'tracking-[1px]', 'leading-[1.05]', 'text-white', 'mb-6')}>
             About <span className="text-gold">1xPlay</span>
           </h1>
@@ -30,7 +30,7 @@ export default function AboutPage() {
 
       {/* ===== INTRO SECTION ===== */}
       <section className={clsx('py-[40px]', 'px-[5%]', 'bg-bg2', 'border-t', 'border-b', 'border-border')}>
-        <div className={clsx('max-w-[1000px]', 'mx-auto', 'text-center', 'reveal')}>
+        <div className={clsx('max-w-[1000px]', 'mx-auto', 'text-left', 'sm:text-center', 'reveal')}>
           <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.9]', 'font-light', 'mb-6')}>
             At 1xPlay, we focus on creating a trusted gaming environment where users from different parts of the world can enjoy online games, sports entertainment, live experiences, and rewarding opportunities anytime they want.
           </p>
@@ -50,7 +50,7 @@ export default function AboutPage() {
             {/* Left: Content */}
             <div className={clsx('lg:col-span-7', 'reveal')}>
               <div className="section-tag">Our Mission</div>
-              <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,56px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-6')}>
+              <h2 className="section-title">
                 Making Gaming <span className="text-gold">Accessible & Exciting</span>
               </h2>
               <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-5')}>
@@ -64,20 +64,16 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Right: Real Screenshot Crop (Header Area) */}
-            <div className={clsx('lg:col-span-5', 'reveal', 'relative', 'rounded-2xl', 'overflow-hidden', 'border', 'border-border', 'aspect-[16/10]', 'bg-bg2', 'shadow-[0_20px_40px_rgba(0,0,0,0.5)]')}>
-              <div className={clsx('absolute', 'inset-0', 'scale-[1.3]', 'origin-[center_12%]')}>
-                <Image
-                  src="/about_1.png"
-                  alt="1xPlay Live Platform Welcome"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-              <div className={clsx('absolute', 'bottom-4', 'left-4', 'right-4', 'bg-bg/90', 'backdrop-blur-md', 'border', 'border-white/10', 'p-4', 'rounded-xl')}>
-                <div className={clsx('text-[12px]', 'font-bold', 'text-white', 'uppercase', 'tracking-[1px]', 'mb-1')}>Direct Registration</div>
-                <div className={clsx('text-[11px]', 'text-muted', 'leading-relaxed')}>Players can instantly access and register their account through our live verified portal interface.</div>
-              </div>
+            {/* Right: Platform preview */}
+            <div className={clsx('lg:col-span-5', 'reveal', 'relative', 'rounded-2xl', 'overflow-hidden', 'border', 'border-border', 'bg-bg2', 'shadow-[0_20px_40px_rgba(0,0,0,0.5)]')}>
+              <Image
+                src="/about_1.jpeg"
+                alt="1xPlay Live Platform Welcome"
+                width={1280}
+                height={1080}
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="w-full h-auto block"
+              />
             </div>
           </div>
         </div>
@@ -124,16 +120,16 @@ export default function AboutPage() {
       <section className={clsx('py-[50px]', 'px-[5%]', 'bg-bg')}>
         <div className={clsx('max-w-[1200px]', 'mx-auto')}>
           <div className={clsx('grid', 'grid-cols-1', 'lg:grid-cols-12', 'gap-16', 'items-center')}>
-            {/* Left: Real Screenshot Crop (Casino / Games Grid) */}
-            <div className={clsx('lg:col-span-5', 'reveal', 'relative', 'rounded-2xl', 'overflow-hidden', 'border', 'border-border', 'aspect-[16/11]', 'bg-bg2', 'shadow-[0_20px_40px_rgba(0,0,0,0.5)]')}>
-              <div className={clsx('absolute', 'inset-0', 'scale-[1.3]', 'origin-[center_78%]')}>
-                <Image
-                  src="/about_2.png"
-                  alt="1xPlay Live Casino & Cricket ID Services"
-                  fill
-                  className="object-cover"
-                />
-              </div>
+            {/* Left: Casino & games preview */}
+            <div className={clsx('lg:col-span-5', 'reveal', 'relative', 'rounded-2xl', 'overflow-hidden', 'border', 'border-border', 'bg-bg2', 'shadow-[0_20px_40px_rgba(0,0,0,0.5)]')}>
+              <Image
+                src="/about_2.jpeg"
+                alt="1xPlay Live Casino & Cricket ID Services"
+                width={1280}
+                height={1080}
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="w-full h-auto block"
+              />
               <div className={clsx('absolute', 'bottom-4', 'left-4', 'right-4', 'bg-bg/90', 'backdrop-blur-md', 'border', 'border-white/10', 'p-4', 'rounded-xl')}>
                 <div className={clsx('text-[12px]', 'font-bold', 'text-white', 'uppercase', 'tracking-[1px]', 'mb-1')}>Live Games Section</div>
                 <div className={clsx('text-[11px]', 'text-muted', 'leading-relaxed')}>Genuine platform view of live croupier tables, roulette, blackjack and popular slots.</div>
@@ -143,7 +139,7 @@ export default function AboutPage() {
             {/* Right: Content */}
             <div className={clsx('lg:col-span-7', 'reveal')}>
               <div className="section-tag">Entertainment</div>
-              <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,56px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-6')}>
+              <h2 className="section-title">
                 Wide Range of <span className="text-gold">Entertainment Options</span>
               </h2>
               <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-5')}>
@@ -167,7 +163,7 @@ export default function AboutPage() {
             {/* Left: Content */}
             <div className={clsx('lg:col-span-7', 'reveal')}>
               <div className="section-tag">Responsive design</div>
-              <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,52px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-6')}>
+              <h2 className="section-title">
                 Mobile Friendly <span className="text-gold">Experience</span>
               </h2>
               <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-6')}>
@@ -181,15 +177,17 @@ export default function AboutPage() {
               </p>
             </div>
 
-            {/* Right: Mobile Phone Frame Mockup (Uses Soccer Mobile image) */}
-            <div className={clsx('lg:col-span-5', 'reveal', 'relative', 'rounded-2xl', 'overflow-hidden', 'border', 'border-border', 'aspect-[4/3]')}>
+            {/* Right: Mobile preview */}
+            <div className={clsx('lg:col-span-5', 'reveal', 'relative', 'rounded-2xl', 'overflow-hidden', 'border', 'border-border', 'bg-bg2')}>
               <Image
-                src="/about_3.png"
+                src="/about_3.jpeg"
                 alt="Mobile Friendly Gaming Platform Preview"
-                fill
-                className="object-cover"
+                width={1280}
+                height={1080}
+                sizes="(max-width: 1024px) 100vw, 40vw"
+                className="w-full h-auto block"
               />
-              <div className={clsx('absolute', 'inset-0', 'bg-gradient-to-t', 'from-[#080A0E]/50', 'via-transparent', 'to-transparent')} />
+              <div className={clsx('absolute', 'inset-0', 'bg-gradient-to-t', 'from-[#080A0E]/50', 'via-transparent', 'to-transparent', 'pointer-events-none')} />
             </div>
           </div>
         </div>
@@ -232,9 +230,9 @@ export default function AboutPage() {
 
       {/* ===== WHY CHOOSE 1XPLAY ===== */}
       <section className={clsx('py-[50px]', 'px-[5%]', 'bg-bg2', 'border-t', 'border-b', 'border-border')}>
-        <div className={clsx('max-w-[900px]', 'mx-auto', 'text-center', 'reveal')}>
+        <div className={clsx('max-w-[900px]', 'mx-auto', 'text-left', 'sm:text-center', 'reveal')}>
           <div className={clsx('section-tag', 'justify-center')}>Value Proposition</div>
-          <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,56px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-6')}>
+          <h2 className="section-title">
             Why Players Choose <span className="text-gold">1xPlay</span>
           </h2>
           <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-8')}>
@@ -252,7 +250,7 @@ export default function AboutPage() {
 
         <div className={clsx('relative', 'z-10', 'max-w-[750px]', 'mx-auto', 'reveal')}>
           <div className={clsx('section-tag', 'justify-center')}>Join Us</div>
-          <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(36px,5vw,64px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-6')}>
+          <h2 className="section-title">
             Join the Future of <br />Online Entertainment at <span className="text-gold">1xPlay</span>
           </h2>
           <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-8')}>

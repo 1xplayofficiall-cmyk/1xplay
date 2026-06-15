@@ -530,7 +530,7 @@ export default function HighlightsPage() {
                   <span className="w-8 h-px bg-[#01A3F6]" />
                   The Archive
                 </div>
-                <h2 className="font-[var(--font-bebas)] text-[clamp(36px,5vw,56px)] tracking-[1px] text-white leading-none">
+                <h2 className="section-title">
                   Browse <span className="text-[#01A3F6]">All Replays</span>
                 </h2>
               </div>

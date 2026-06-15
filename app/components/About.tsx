@@ -104,9 +104,9 @@ export default function About() {
           {/* Left Side: Brand Visual & Stats */}
           <div ref={leftRef} className={clsx('lg:col-span-5', 'space-y-8')}>
             <div>
-              <div className="section-tag">Our Vision</div>
+              <div className="section-tag"> About</div>
               <h2 className={clsx('section-title', 'flex','items-center','gap-2.5')} >
-                About <span style={{ background: 'linear-gradient(90deg, #0078E5, #01A3F6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                <span style={{ background: 'linear-gradient(90deg, #0078E5, #01A3F6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
                     <Image src="/1xplay.webp" alt="1XPlay" width={190} height={190} className="object-contain" />
                 </span>
               </h2>

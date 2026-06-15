@@ -16,10 +16,12 @@ import Support247 from "./components/Support247";
 import TrustedByPlayers from "./components/TrustedByPlayers";
 import PlayerExperience from "./components/PlayerExperience";
 import JoinFuture from "./components/JoinFuture";
+import PageJsonLd from "./components/PageJsonLd";
 
 export default function Home() {
   return (
     <>
+      <PageJsonLd path="/" />
       <ScrollReveal />
       <Hero />
       <Marquee />

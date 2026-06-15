@@ -75,11 +75,11 @@ const Hero = () => {
             className={clsx('hidden', 'lg:flex', 'flex-1', 'justify-center', 'items-start', 'self-start', 'relative', 'pt-2')}
           >
             {/* Background Glows */}
-            <div className={clsx('absolute', 'w-[300px]', 'h-[300px]', 'bg-blue-500/20', 'blur-[80px]', 'rounded-full', 'animate-[pulse_4s_ease-in-out_infinite]')}></div>
+            <div className={clsx('absolute', 'w-[300px]', 'h-[300px]', 'bg-blue-500/20', 'blur-[80px]', 'rounded-full')}></div>
             <div className={clsx('absolute', 'w-[200px]', 'h-[200px]', 'bg-cyan-400/20', 'blur-[60px]', 'rounded-full', 'translate-x-20', '-translate-y-20')}></div>
             
             <div className={clsx('relative', 'z-10', 'w-full', 'max-w-[480px]')}>
-              <div className={clsx('relative', 'w-full')} style={{ animation: 'float 8s ease-in-out infinite' }}>
+              <div className={clsx('relative', 'w-full')}>
                 
                 {/* Interactive Live Cricket matches widget */}
                 <LiveCricketWidget />

@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
+import LiveCricketWidget from "./LiveCricketWidget";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const cricketFeatures = [
@@ -172,58 +173,7 @@ export default function CricketBetting() {
     <section ref={containerRef} id="cricket" className={clsx('py-[50px]', 'px-[5%]', 'bg-bg', 'overflow-hidden')}>
       <div className={clsx('grid', 'grid-cols-1', 'lg:grid-cols-2', 'gap-20', 'items-center')} style={{ transformStyle: "preserve-3d" }}>
         {/* Left: Live Match Card */}
-        <div ref={matchCardRef} style={{ transformStyle: "preserve-3d" }}>
-          <div 
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            className={clsx('bg-card2', 'border', 'border-[rgba(0,120,229,0.15)]', 'rounded-[20px]', 'p-8', 'relative', 'overflow-hidden', 'transition-colors', 'duration-300')}
-            style={{ transformStyle: "preserve-3d", transform: "translateZ(0)" }}
-          >
-            {/* Glow */}
-            <div className={clsx('absolute', '-top-[60px]', '-right-[60px]', 'w-[200px]', 'h-[200px]', 'rounded-full', 'bg-[radial-gradient(circle,rgba(0,120,229,0.08)_0%,transparent_70%)]', 'pointer-events-none')} />
-
-            {/* Match Header */}
-            <div className={clsx('flex', 'justify-between', 'items-center', 'mb-7', 'relative', 'z-[1]')}>
-              <div className={clsx('inline-flex', 'items-center', 'gap-1.5', 'px-3', 'py-1.5', 'bg-[rgba(232,48,58,0.15)]', 'border', 'border-[rgba(232,48,58,0.3)]', 'rounded-full', 'text-[11px]', 'font-semibold', 'text-red', 'uppercase', 'tracking-[1px]')}>
-                <span className="live-dot" style={{ background: 'var(--red)' }} /> Live
-              </div>
-              <div className={clsx('text-[12px]', 'text-muted')}>🏏 IPL 2025 • Over 14.3</div>
-            </div>
-
-            {/* Teams */}
-            <div className={clsx('flex', 'items-center', 'gap-5', 'mb-7')} style={{ transform: "translateZ(20px)" }}>
-              <div className="flex-1 text-center">
-                <div className={clsx('w-14', 'h-14', 'rounded-full', 'flex', 'items-center', 'justify-center', 'text-[28px]', 'mx-auto', 'mb-2.5', 'border-2', 'border-border', 'bg-[rgba(0,100,200,0.1)]')}>🔵</div>
-                <div className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[16px]', 'text-white')}>MI</div>
-                <div className={clsx('font-[var(--font-bebas)]', 'text-[32px]', 'text-gold', 'tracking-[1px]')}>145/6</div>
-              </div>
-              <div className={clsx('font-[var(--font-bebas)]', 'text-[24px]', 'text-muted', 'tracking-[2px]')}>VS</div>
-              <div className="flex-1 text-center">
-                <div className={clsx('w-14', 'h-14', 'rounded-full', 'flex', 'items-center', 'justify-center', 'text-[28px]', 'mx-auto', 'mb-2.5', 'border-2', 'border-border', 'bg-[rgba(255,200,0,0.1)]')}>🟡</div>
-                <div className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[16px]', 'text-white')}>CSK</div>
-                <div className={clsx('font-[var(--font-bebas)]', 'text-[32px]', 'text-gold', 'tracking-[1px]')}>132/4</div>
-              </div>
-            </div>
-
-            {/* Bet Options */}
-            <div className={clsx('grid', 'grid-cols-2', 'gap-2.5')} style={{ transform: "translateZ(15px)" }}>
-              <div className={clsx('p-3.5', 'rounded-lg', 'border', 'border-border', 'bg-card', 'text-center', 'cursor-pointer', 'hover:border-[rgba(0,120,229,0.4)]', 'hover:bg-[rgba(0,120,229,0.05)]', 'transition-all')}>
-                <div className={clsx('text-[11px]', 'text-muted', 'uppercase', 'tracking-[1px]', 'mb-1')}>MI Wins</div>
-                <div className={clsx('font-[var(--font-bebas)]', 'text-[24px]', 'text-gold', 'tracking-[1px]')}>2.15</div>
-              </div>
-              <div className={clsx('p-3.5', 'rounded-lg', 'border', 'border-border', 'bg-card', 'text-center', 'cursor-pointer', 'hover:border-[rgba(0,120,229,0.4)]', 'hover:bg-[rgba(0,120,229,0.05)]', 'transition-all')}>
-                <div className={clsx('text-[11px]', 'text-muted', 'uppercase', 'tracking-[1px]', 'mb-1')}>CSK Wins</div>
-                <div className={clsx('font-[var(--font-bebas)]', 'text-[24px]', 'text-gold', 'tracking-[1px]')}>1.78</div>
-              </div>
-            </div>
-
-            {/* Actions */}
-            <div className={clsx('mt-4', 'pt-4', 'border-t', 'border-border', 'flex', 'gap-3', 'justify-center')} style={{ transform: "translateZ(10px)" }}>
-              <a href="#" className={clsx('btn', 'btn-gold', 'flex-1', 'justify-center')}>Place Bet</a>
-              <a href="#" className={clsx('btn', 'btn-ghost')}>Live Stream</a>
-            </div>
-          </div>
-        </div>
+        <LiveCricketWidget/>
 
         {/* Right: Cricket Info */}
         <div ref={infoRef}>
@@ -252,16 +202,18 @@ export default function CricketBetting() {
             ))}
           </div>
 
-          <a href="#" className={clsx('btn', 'btn-gold', 'btn-large')}>Get Cricket ID Now</a>
+          <div className={clsx('flex', 'justify-center', 'lg:justify-start')}>
+            <a href="#" className={clsx('btn', 'btn-gold', 'btn-large')}>Get Cricket ID Now</a>
+          </div>
         </div>
       </div>
 
       {/* IPL Cricket Betting Experience Section */}
       <div className={clsx('mt-20', 'max-w-[1200px]', 'mx-auto')}>
         {/* Section Header */}
-        <div className={clsx('text-center', 'mb-12', 'reveal-ipl-header')}>
+        <div className={clsx('text-left', 'sm:text-center', 'mb-12', 'reveal-ipl-header')}>
           <div className={clsx('section-tag', 'justify-center')}>IPL Betting</div>
-          <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4vw,52px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-4')}>
+          <h2 className="section-title">
             Best IPL Cricket <span className="text-gold">Betting Experience</span>
           </h2>
           <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'max-w-[720px]', 'mx-auto', 'font-light')}>
@@ -325,7 +277,7 @@ export default function CricketBetting() {
         </div>
 
         {/* Bottom Description */}
-        <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'text-center', 'max-w-[800px]', 'mx-auto', 'font-light')}>
+        <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'text-left', 'sm:text-center', 'max-w-[800px]', 'mx-auto', 'font-light')}>
           Our goal is to provide a premium IPL betting experience where users can enjoy every moment of live cricket action with speed and convenience. We focus on user experience, security and platform reliability to deliver the best cricket betting platform in India.
         </p>
       </div>

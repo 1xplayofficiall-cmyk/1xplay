@@ -2,8 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, useScroll } from "framer-motion";
 import {
   FaHorse,
   FaBolt,
@@ -101,18 +100,7 @@ const responsibleTips = [
 ];
 
 export default function HorseRacing() {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    const onScroll = () => {
-      const top = window.scrollY;
-      const h = document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(h > 0 ? (top / h) * 100 : 0);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  const { scrollYProgress } = useScroll();
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[#05080B] text-white">
@@ -121,15 +109,15 @@ export default function HorseRacing() {
       {/* Scroll progress */}
       <div className="fixed top-[70px] left-0 right-0 h-[2px] z-[998] bg-white/[0.04]">
         <motion.div
-          className="h-full bg-gradient-to-r from-[#0078E5] to-[#01A3F6] shadow-[0_0_12px_rgba(1,163,246,0.6)]"
-          style={{ width: `${progress}%` }}
+          className="h-full w-full origin-left bg-gradient-to-r from-[#0078E5] to-[#01A3F6] shadow-[0_0_12px_rgba(1,163,246,0.6)]"
+          style={{ scaleX: scrollYProgress }}
         />
       </div>
 
       {/* ── Hero (keeps horse-racing-hero.png) ── */}
       <section className="relative z-10 overflow-hidden pt-[120px] pb-16 md:pb-24 px-[5%]">
         <div className="absolute inset-0 z-0">
-          <Image src="/horse-racing-hero.png" alt="Horse Racing Betting at 1xPlay" fill sizes="100vw" className="object-cover" priority />
+          <Image src="/horse.png" alt="Horse Racing Betting at 1xPlay" fill sizes="100vw" className="object-cover" priority />
           <div className="absolute inset-0 bg-gradient-to-r from-[#05080B] via-[#05080B]/80 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-[#05080B]/50" />
           <div className="absolute top-[12%] right-[14%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(1,163,246,0.16)_0%,transparent_65%)] pointer-events-none" />
@@ -175,7 +163,7 @@ export default function HorseRacing() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mt-8 flex flex-wrap gap-4"
+              className="mt-8 flex flex-wrap gap-4 max-sm:justify-center"
             >
               <a href="#markets" className="btn btn-gold btn-large">
                 Explore Markets <FaArrowRight className="w-3.5 h-3.5" />
@@ -450,11 +438,11 @@ export default function HorseRacing() {
 
       {/* ── Final CTA ── */}
       <section className="relative z-10 px-[5%] pb-28">
-        <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#15100a] via-[#0C0A06] to-[#15100a] p-10 md:p-16 text-center">
+        <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#15100a] via-[#0C0A06] to-[#15100a] p-10 md:p-16 text-left sm:text-center">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[360px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.10)_0%,transparent_70%)] pointer-events-none" />
           <div className="relative z-10 mx-auto max-w-[760px]">
             <span className="section-tag justify-center mb-5">Enjoy Horse Racing</span>
-            <h2 className="font-[var(--font-bebas)] text-[clamp(34px,5vw,62px)] leading-[0.98] tracking-[1px] text-white">
+            <h2 className="section-title">
               Join the Horse Racing Betting Experience at{" "}
               <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent">
                 1xPlay
@@ -520,7 +508,7 @@ function Block({
           <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.3em] font-[var(--font-syne)]" style={{ color: accent }}>
             {eyebrow}
           </p>
-          <h2 className="font-[var(--font-bebas)] text-[clamp(28px,4vw,44px)] leading-[1.02] tracking-[0.5px] text-white">{title}</h2>
+          <h2 className="section-title">{title}</h2>
           <div className="mt-5 flex flex-col gap-5 text-[15px] leading-[1.85] font-light text-muted">{children}</div>
         </div>
       </div>
@@ -557,7 +545,7 @@ function WideBlock({
         <span className="h-[2px] w-10 rounded-full" style={{ background: ACCENT }} />
         <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#01A3F6] font-[var(--font-syne)]">{eyebrow}</span>
       </div>
-      <h2 className="font-[var(--font-bebas)] text-[clamp(28px,4vw,48px)] leading-[1.02] tracking-[0.5px] text-white">{title}</h2>
+      <h2 className="section-title">{title}</h2>
       <div className="mt-6 text-[15px] leading-[1.85] font-light text-muted">{children}</div>
     </motion.section>
   );
@@ -597,7 +585,7 @@ function SplitMedia({
             <span className="h-[2px] w-10 rounded-full" style={{ background: ACCENT }} />
             <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#01A3F6] font-[var(--font-syne)]">{eyebrow}</span>
           </div>
-          <h2 className="font-[var(--font-bebas)] text-[clamp(28px,4vw,46px)] leading-[1.02] tracking-[0.5px] text-white">{title}</h2>
+          <h2 className="section-title">{title}</h2>
           <div className="mt-5 flex flex-col gap-4 text-[15px] leading-[1.8] font-light text-muted">{children}</div>
         </div>
         <div className={`relative overflow-hidden rounded-2xl border border-white/10 ${reverse ? "lg:order-1" : ""}`}>

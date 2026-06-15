@@ -1,4 +1,5 @@
 import { createPageMetadata } from "../seo";
+import PageJsonLd from "../components/PageJsonLd";
 
 export const metadata = createPageMetadata("/privacy-policy");
 
@@ -7,5 +8,10 @@ export default function PrivacyPolicyLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return (
+    <>
+      <PageJsonLd path="/privacy-policy" />
+      {children}
+    </>
+  );
 }

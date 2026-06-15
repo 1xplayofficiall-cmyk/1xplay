@@ -23,7 +23,7 @@ export default function TrustedByPlayers() {
           {/* Left: Trusted Content */}
           <div className="reveal">
             <div className="section-tag">Trusted Platform</div>
-            <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,52px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
+            <h2 className="section-title">
               Trusted by Players<br />Across <span className="text-gold">India</span> and<br />Global Markets
             </h2>
             <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-5')}>

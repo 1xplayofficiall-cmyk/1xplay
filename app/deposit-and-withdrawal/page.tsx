@@ -85,7 +85,7 @@ export default function DepositAndWithdrawalPage() {
       <section className={clsx('relative', 'pt-[150px]', 'pb-[80px]', 'px-[5%]', 'bg-bg', 'overflow-hidden')}>
         <div className={clsx('absolute', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2', 'w-[800px]', 'h-[600px]', 'bg-[radial-gradient(ellipse,rgba(0,120,229,0.06)_0%,transparent_70%)]', 'pointer-events-none')} />
 
-        <div className={clsx('max-w-[1200px]', 'mx-auto', 'relative', 'z-10', 'text-center', 'reveal')}>
+        <div className={clsx('max-w-[1200px]', 'mx-auto', 'relative', 'z-10', 'text-left', 'sm:text-center', 'reveal')}>
           <div className={clsx('section-tag', 'justify-center')}>Transactions Info</div>
           <h1 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(44px,7vw,90px)]', 'tracking-[1px]', 'leading-[1.05]', 'text-white', 'mb-4')}>
             Deposit & <span className="text-gold">Withdrawal</span>

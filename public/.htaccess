@@ -1,0 +1,22 @@
+# 1xPlay — Apache config for static export on shared hosting (Hostinger).
+
+# Serve the branded 404 page for missing URLs.
+ErrorDocument 404 /404.html
+
+# Preserve the old misspelled affiliate URL (the Next.js redirect is disabled
+# in static export, so we handle it here).
+Redirect 301 /affilate /affiliate
+
+# Optional: force HTTPS once your SSL certificate is active in hPanel.
+# Uncomment the three lines below to enable.
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Long-cache the immutable Next.js build assets.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  <FilesMatch "\.(js|css|woff2|png|jpe?g|webp|svg|ico)$">
+    ExpiresDefault "access plus 1 year"
+  </FilesMatch>
+</IfModule>

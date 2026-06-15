@@ -140,7 +140,7 @@ export default function PartnerPage() {
 
       {/* HERO SECTION */}
       <section className="relative z-10 px-[5%] pt-[130px] pb-16">
-        <div className="mx-auto max-w-5xl text-center">
+        <div className="mx-auto max-w-5xl text-left sm:text-center">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
@@ -187,9 +187,9 @@ export default function PartnerPage() {
       {/* WHY JOIN */}
       <section className="relative z-10 px-[5%] py-16 border-t border-border bg-bg2">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-12">
+          <div className="text-left sm:text-center mb-12">
             <span className="section-tag justify-center">Benefits</span>
-            <h2 className="font-[var(--font-bebas)] text-[36px] md:text-[44px] tracking-[1px] text-white">
+            <h2 className="section-title">
               Why Join the Partner Program
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-muted text-[14px] font-light">
@@ -221,9 +221,9 @@ export default function PartnerPage() {
       {/* CATEGORIES */}
       <section className="relative z-10 px-[5%] py-16 bg-bg">
         <div className="mx-auto max-w-5xl">
-          <div className="text-center mb-12">
+          <div className="text-left sm:text-center mb-12">
             <span className="section-tag justify-center">Products</span>
-            <h2 className="font-[var(--font-bebas)] text-[36px] md:text-[44px] tracking-[1px] text-white">
+            <h2 className="section-title">
               Promote Popular Gaming Categories
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-muted text-[14px] font-light">
@@ -263,9 +263,9 @@ export default function PartnerPage() {
       {/* HOW TO START */}
       <section className="relative z-10 px-[5%] py-16 border-t border-border bg-bg2">
         <div className="mx-auto max-w-5xl">
-          <div className="text-center mb-12">
+          <div className="text-left sm:text-center mb-12">
             <span className="section-tag justify-center">Process</span>
-            <h2 className="font-[var(--font-bebas)] text-[36px] md:text-[44px] tracking-[1px] text-white">
+            <h2 className="section-title">
               Simple Process to Start
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-muted text-[14px] font-light">
@@ -310,7 +310,7 @@ export default function PartnerPage() {
             {/* Left: Content */}
             <div className="lg:col-span-6 reveal">
               <span className="section-tag">High Conversions</span>
-              <h2 className="font-[var(--font-bebas)] text-[36px] md:text-[48px] tracking-[1px] leading-none text-white mb-6">
+              <h2 className="section-title">
                 Why 1xPlay is <br />Easy to <span className="text-gold">Promote</span>
               </h2>
               <p className="text-[14px] text-muted leading-[1.8] font-light mb-6">
@@ -393,7 +393,7 @@ export default function PartnerPage() {
 
         <div className="relative z-10 max-w-[700px] mx-auto reveal">
           <span className="section-tag justify-center">Join Today</span>
-          <h2 className="font-[var(--font-bebas)] text-[clamp(36px,5vw,64px)] tracking-[1px] leading-none text-white mb-6">
+          <h2 className="section-title">
             Build Long-Term Income
           </h2>
           <p className="text-[15px] text-muted leading-[1.8] font-light mb-8">

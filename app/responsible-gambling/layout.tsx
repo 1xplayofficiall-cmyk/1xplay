@@ -1,4 +1,5 @@
 import { createPageMetadata } from "../seo";
+import PageJsonLd from "../components/PageJsonLd";
 
 export const metadata = createPageMetadata("/responsible-gambling");
 
@@ -7,5 +8,10 @@ export default function ResponsibleGamblingLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <>{children}</>;
+  return (
+    <>
+      <PageJsonLd path="/responsible-gambling" />
+      {children}
+    </>
+  );
 }

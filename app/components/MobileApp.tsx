@@ -33,7 +33,7 @@ export default function MobileApp() {
             ))}
           </div>
 
-          <div className={clsx('flex', 'gap-3', 'mt-10', 'flex-wrap')}>
+          <div className={clsx('flex', 'gap-3', 'mt-10', 'flex-wrap', 'max-sm:justify-center')}>
             <a href="#" className={clsx('btn', 'btn-gold', 'btn-large')}>📱 Download App</a>
             <a href="#" className={clsx('btn', 'btn-ghost', 'btn-large')}>Learn More</a>
           </div>

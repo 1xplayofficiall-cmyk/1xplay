@@ -114,7 +114,7 @@ export default function BlogPage() {
 
         {/* Hero */}
         <section className="relative z-10 pt-[120px] pb-10 px-[5%]">
-          <div className="max-w-[1400px] mx-auto text-center">
+          <div className="max-w-[1400px] mx-auto text-left sm:text-center">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={{ opacity: 1, y: 0 }}

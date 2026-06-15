@@ -10,9 +10,9 @@ export default function JoinFuture() {
 
       <div className={clsx('max-w-[1000px]', 'mx-auto', 'relative', 'z-10')}>
         {/* Growing Section */}
-        <div className={clsx('text-center', 'mb-16', 'reveal')}>
+        <div className={clsx('text-left', 'sm:text-center', 'mb-16', 'reveal')}>
           <div className={clsx('section-tag', 'justify-center')}>Our Growth</div>
-          <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(32px,4.5vw,52px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
+          <h2 className="section-title">
             Growing as One of the<br />Best Online <span className="text-gold">Casinos in India</span>
           </h2>
           <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'max-w-[750px]', 'mx-auto', 'font-light', 'mb-5')}>
@@ -30,8 +30,8 @@ export default function JoinFuture() {
         <div className={clsx('w-24', 'h-[2px]', 'bg-[rgba(0,120,229,0.3)]', 'mx-auto', 'mb-16', 'reveal')} />
 
         {/* Join CTA Section */}
-        <div className={clsx('text-center', 'reveal')}>
-          <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(36px,5vw,64px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
+        <div className={clsx('text-left', 'sm:text-center', 'reveal')}>
+          <h2 className="section-title">
             Join the Future of<br />Online Gaming with <span className="text-gold">1xPlay</span>
           </h2>
           <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'max-w-[750px]', 'mx-auto', 'font-light', 'mb-5')}>

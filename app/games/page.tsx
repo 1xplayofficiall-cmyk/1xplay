@@ -64,7 +64,7 @@ export default function GamesPage() {
       <section className={clsx('pt-[100px]', 'pb-[40px]', 'px-[5%]', 'bg-bg', 'relative', 'overflow-hidden')}>
         <div className={clsx('absolute', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2', 'w-[800px]', 'h-[600px]', 'bg-[radial-gradient(ellipse,rgba(0,120,229,0.06)_0%,transparent_70%)]', 'pointer-events-none')} />
 
-        <div className={clsx('max-w-[900px]', 'mx-auto', 'text-center', 'relative', 'z-10', 'reveal')}>
+        <div className={clsx('max-w-[900px]', 'mx-auto', 'text-left', 'sm:text-center', 'relative', 'z-10', 'reveal')}>
           <div className={clsx('section-tag', 'justify-center')}> 🎮 Games Hub</div>
           <h1 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(44px,6vw,80px)]', 'tracking-[1px]', 'leading-[1.05]', 'text-white', 'mb-6')}>
             Explore All <span className="text-gold">Games</span>

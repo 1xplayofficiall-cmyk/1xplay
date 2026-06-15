@@ -33,12 +33,13 @@ export default function CursorGlow() {
       const target = e.target as HTMLElement;
       if (!target) return;
 
-      const isClickable = 
+      // NOTE: deliberately avoid window.getComputedStyle() here — calling it on
+      // every mouseover forces a synchronous style/layout recalc and causes jank.
+      const isClickable =
         target.tagName === "BUTTON" ||
         target.tagName === "A" ||
         !!target.closest("a") ||
-        !!target.closest("button") ||
-        window.getComputedStyle(target).cursor === "pointer";
+        !!target.closest("button");
 
       setHovered(isClickable);
     };

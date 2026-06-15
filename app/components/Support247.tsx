@@ -14,11 +14,11 @@ export default function Support247() {
     <section id="support" className={clsx('py-[50px]', 'px-[5%]', 'bg-bg', 'relative', 'overflow-hidden')}>
       <div className={clsx('absolute', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2', 'w-[600px]', 'h-[600px]', 'bg-[radial-gradient(circle,rgba(0,120,229,0.04)_0%,transparent_70%)]', 'pointer-events-none')} />
 
-      <div className={clsx('max-w-[900px]', 'mx-auto', 'text-center')}>
+      <div className={clsx('max-w-[900px]', 'mx-auto', 'text-left', 'sm:text-center')}>
         {/* Header */}
         <div className="reveal">
           <div className={clsx('section-tag', 'justify-center')}>Always Available</div>
-          <h2 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(36px,5vw,64px)]', 'tracking-[1px]', 'leading-none', 'text-white', 'mb-5')}>
+          <h2 className="section-title">
             24/7 Customer <span className="text-gold">Support</span>
           </h2>
           <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'max-w-[700px]', 'mx-auto', 'font-light', 'mb-12')}>

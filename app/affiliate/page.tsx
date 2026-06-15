@@ -139,7 +139,7 @@ export default function AffiliatePage() {
 
       {/* HERO SECTION */}
       <section className="relative z-10 px-6 pt-36 pb-16">
-        <div className="mx-auto max-w-5xl text-center">
+        <div className="mx-auto max-w-5xl text-left sm:text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -186,9 +186,9 @@ export default function AffiliatePage() {
       {/* PROGRAM BENEFITS */}
       <section className="relative z-10 px-6 py-12 border-t border-border bg-bg2">
         <div className="mx-auto max-w-6xl">
-          <div className="text-center mb-16">
+          <div className="text-left sm:text-center mb-16">
             <span className="section-tag justify-center">Benefits</span>
-            <h2 className="font-[var(--font-bebas)] text-[40px] tracking-[1px] text-white">
+            <h2 className="section-title">
               Affiliate Program Benefits
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-muted text-[14px] font-light">
@@ -220,9 +220,9 @@ export default function AffiliatePage() {
       {/* HOW IT WORKS */}
       <section className="relative z-10 px-6 py-16">
         <div className="mx-auto max-w-5xl">
-          <div className="text-center mb-16">
+          <div className="text-left sm:text-center mb-16">
             <span className="section-tag justify-center">Onboarding</span>
-            <h2 className="font-[var(--font-bebas)] text-[40px] tracking-[1px] text-white">
+            <h2 className="section-title">
               How the Program Works
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-muted text-[14px] font-light">
@@ -266,7 +266,7 @@ export default function AffiliatePage() {
             {/* Left: Content */}
             <div className="md:col-span-6 reveal">
               <span className="section-tag">Analytics</span>
-              <h2 className="font-[var(--font-bebas)] text-[clamp(32px,4.5vw,52px)] tracking-[1px] leading-none text-white mb-6">
+              <h2 className="section-title">
                 Easy Tracking <br />and <span className="text-gold">Reporting</span>
               </h2>
               <p className="text-[14px] text-muted leading-[1.8] font-light mb-6">
@@ -319,9 +319,9 @@ export default function AffiliatePage() {
       {/* WHY CHOOSE 1XPLAY & SUPPORT */}
       <section className="relative z-10 px-6 py-16">
         <div className="mx-auto max-w-5xl">
-          <div className="text-center mb-16">
+          <div className="text-left sm:text-center mb-16">
             <span className="section-tag justify-center">Value Proposition</span>
-            <h2 className="font-[var(--font-bebas)] text-[40px] tracking-[1px] text-white">
+            <h2 className="section-title">
               Why Choose 1xPlay Affiliate Program
             </h2>
             <p className="mx-auto mt-3 max-w-xl text-muted text-[14px] font-light">
@@ -372,9 +372,9 @@ export default function AffiliatePage() {
 
       {/* WHO CAN JOIN */}
       <section className="relative z-10 px-6 py-16 border-t border-border bg-bg2">
-        <div className="mx-auto max-w-5xl text-center">
+        <div className="mx-auto max-w-5xl text-left sm:text-center">
           <span className="section-tag justify-center">Target Partners</span>
-          <h2 className="font-[var(--font-bebas)] text-[40px] tracking-[1px] text-white mb-4">
+          <h2 className="section-title">
             Who Can Join
           </h2>
           <p className="mx-auto max-w-2xl text-[14px] text-muted font-light leading-relaxed mb-10">
@@ -400,7 +400,7 @@ export default function AffiliatePage() {
 
         <div className="relative z-10 max-w-[700px] mx-auto reveal">
           <span className="section-tag justify-center">Get Started</span>
-          <h2 className="font-[var(--font-bebas)] text-[clamp(36px,5vw,64px)] tracking-[1px] leading-none text-white mb-6">
+          <h2 className="section-title">
             Start Earning with <span className="text-gold">1xPlay</span>
           </h2>
           <p className="text-[15px] text-muted leading-[1.8] font-light mb-8">

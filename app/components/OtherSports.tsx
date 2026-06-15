@@ -18,12 +18,12 @@ export default function OtherSports() {
   return (
     <section id="sports" className="py-20 px-[5%] bg-bg2">
       {/* Header */}
-      <div className="flex justify-between items-end mb-[60px] gap-6 flex-wrap reveal">
+      <div className="flex flex-col items-start gap-6 mb-[60px] sm:flex-row sm:items-end sm:justify-between flex-wrap reveal">
         <div>
           <div className="section-tag">Sports Betting</div>
           <h2 className="section-title">Bet on <span className="text-gold">Every Sport</span></h2>
         </div>
-        <a href="#" className="btn btn-ghost">View All Events</a>
+        <a href="#" className="btn btn-ghost self-center sm:self-auto">View All Events</a>
       </div>
 
       {/* Chips */}

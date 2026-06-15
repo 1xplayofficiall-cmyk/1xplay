@@ -2,8 +2,11 @@
 
 import clsx from "clsx";
 import React from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import LiveCricketWidget from "./LiveCricketWidget";
+
+const MotionLink = motion.create(Link);
 
 const Hero = () => {
   return (
@@ -115,21 +118,27 @@ const Hero = () => {
           transition={{ delay: 0.5, duration: 0.6 }}
           className={clsx('flex', 'flex-wrap', 'gap-4', 'justify-center')}
         >
-          <motion.button 
-            whileHover={{ scale: 1.05, boxShadow: "0px 0px 30px rgba(6,182,212,0.8)" }}
-            whileTap={{ scale: 0.95 }}
-            className={clsx('relative', 'px-8', 'py-3.5', 'bg-gradient-to-r', 'from-blue-600', 'to-cyan-500', 'rounded-xl', 'text-white', 'font-bold', 'text-[14px]', 'shadow-[0_0_25px_rgba(6,182,212,0.5)]', 'cursor-pointer', 'overflow-hidden', 'group')}
-          >
-            <span className={clsx('relative', 'z-10')}>Start Playing</span>
-            <div className={clsx('absolute', 'inset-0', 'bg-white/20', 'translate-y-full', 'group-hover:translate-y-0', 'transition-transform', 'duration-300', 'ease-out', 'z-0')}></div>
-          </motion.button>
-          <motion.button 
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(6, 182, 212, 0.15)", borderColor: "rgba(6, 182, 212, 0.8)" }}
-            whileTap={{ scale: 0.95 }}
-            className={clsx('px-8', 'py-3.5', 'border', 'border-cyan-500/50', 'bg-cyan-500/5', 'backdrop-blur-md', 'text-cyan-400', 'transition-all', 'rounded-xl', 'font-bold', 'text-[14px]', 'cursor-pointer', 'shadow-[0_0_15px_rgba(6,182,212,0.1)]')}
-          >
-            Explore Games
-          </motion.button>
+          
+          <a href="https://www.1xplay.games/">
+            <motion.button
+              whileHover={{ scale: 1.05, boxShadow: "0px 0px 30px rgba(6,182,212,0.8)" }}
+              whileTap={{ scale: 0.95 }}
+              className={clsx('relative', 'px-8', 'py-3.5', 'bg-gradient-to-r', 'from-blue-600', 'to-cyan-500', 'rounded-xl', 'text-white', 'font-bold', 'text-[14px]', 'shadow-[0_0_25px_rgba(6,182,212,0.5)]', 'cursor-pointer', 'overflow-hidden', 'group')}
+            >
+              <span className={clsx('relative', 'z-10')}>Start Playing</span>
+              <div className={clsx('absolute', 'inset-0', 'bg-white/20', 'translate-y-full', 'group-hover:translate-y-0', 'transition-transform', 'duration-300', 'ease-out', 'z-0')}></div>
+            </motion.button>
+          </a>
+
+          <a href="https://www.1xplay.xyz/games/live-casino">
+            <motion.button
+              whileHover={{ scale: 1.05, backgroundColor: "rgba(6, 182, 212, 0.15)", borderColor: "rgba(6, 182, 212, 0.8)" }}
+              whileTap={{ scale: 0.95 }}
+              className={clsx('px-8', 'py-3.5', 'border', 'border-cyan-500/50', 'bg-cyan-500/5', 'backdrop-blur-md', 'text-cyan-400', 'transition-all', 'rounded-xl', 'font-bold', 'text-[14px]', 'cursor-pointer', 'shadow-[0_0_15px_rgba(6,182,212,0.1)]')}
+            >
+              Explore Games
+            </motion.button>
+          </a>
         </motion.div>
 
         {/* Feature Cards with Staggered Entrance */}
@@ -149,12 +158,13 @@ const Hero = () => {
           className={clsx('grid', 'grid-cols-1', 'sm:grid-cols-2', 'lg:grid-cols-4', 'gap-4', 'mt-12', 'w-full')}
         >
           {[
-            { label: "Casino Games", emoji: "🎰", desc: "Slots, Roulette & Blackjack" },
-            { label: "Cricket Betting", emoji: "🏏", desc: "Live Odds & IPL Matches" },
-            { label: "Sports Betting", emoji: "⚽", desc: "Football & Tennis Leagues" },
-            { label: "Fast Withdrawals", emoji: "⚡", desc: "Instant & Secure Payouts" }
+            { label: "Casino Games", emoji: "🎰", desc: "Slots, Roulette & Blackjack", href: "/casino" },
+            { label: "Cricket Betting", emoji: "🏏", desc: "Live Odds & IPL Matches", href: "/cricket" },
+            { label: "Sports Betting", emoji: "⚽", desc: "Football & Tennis Leagues", href: "/soccer" },
+            { label: "Fast Withdrawals", emoji: "⚡", desc: "Instant & Secure Payouts", href: "/withdrawal" }
           ].map((item) => (
-            <motion.div
+            <MotionLink
+              href={item.href}
               key={item.label}
               variants={{
                 hidden: { opacity: 0, y: 20 },
@@ -187,7 +197,7 @@ const Hero = () => {
                   {item.desc}
                 </p>
               </div>
-            </motion.div>
+            </MotionLink>
           ))}
         </motion.div>
       </div>

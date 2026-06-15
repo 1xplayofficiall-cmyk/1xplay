@@ -116,7 +116,7 @@ body {
 .btn-gold:hover { background: linear-gradient(90deg, #0088FF, #02B3FF); transform: translateY(-1px); }
 .btn-red { background: var(--red); color: var(--white); }
 .btn-red:hover { background: #FF3C47; transform: translateY(-1px); }
-.btn-large { padding: 16px 36px; font-size: 15px; }
+.btn-large { padding: 16px 26px; font-size: 15px; }
 
 
 .section-tag {

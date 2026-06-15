@@ -12,7 +12,7 @@ const sports = [
   { icon: "/basketball-hero.jpg", name: "Basketball" },
   { icon: "/esports-hero.jpg", name: "Esports" },
   { icon: "/horse-racing-live.jpg", name: "Horse Racing" },
-  { icon: "/globe-icon.png", name: "International Sports Tournaments" },
+  { icon: "/international-sports.jpg", name: "International Sports Tournaments" },
 ];
 
 export default function BeyondCricket() {

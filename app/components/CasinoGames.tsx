@@ -7,14 +7,12 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const games = [
-  { name: "Roulette", tag: "Table Game", emoji: "🎲", image: "/casino-dice.jpg", badge: "hot" },
-  { name: "Blackjack", tag: "Card Game", emoji: "🃏", image: "/casino-spade.jpg", badge: "new" },
-  { name: "Baccarat", tag: "Live Table", emoji: "♠️", image: "/casino-cards.jpg", badge: null },
-  { name: "Teen Patti", tag: "Indian Favourite", emoji: "🃏", image: "/casino-aces.jpg", badge: "hot" },
-  { name: "Dragon Tiger", tag: "Live Game", emoji: "🐯", image: "/casino-tiger.jpg", badge: null },
-  { name: "Aviator", tag: "Crash Game", emoji: "✈️", image: "/aviator.jpg", badge: "new" },
-  { name: "Slots", tag: "100+ Games", emoji: "🎰", image: "/casino-slots.jpg", badge: null },
-  { name: "Andar Bahar", tag: "Classic Indian", emoji: "🀄", image: "/andar-bahar.jpg", badge: null },
+  { name: "Teen Patti", tag: "Indian Favourite", emoji: "🃏", image: "/teen_pati.png", badge: "hot" },
+  { name: "Aviator", tag: "Crash Game", emoji: "✈️", image: "/aviator.png", badge: "new" },
+  { name: "Money Heist", tag: "Slot Game", emoji: "💰", image: "/money_heist.png", badge: "hot" },
+  { name: "Lucy", tag: "Adventure Slot", emoji: "🎰", image: "/lucy_game.png", badge: null },
+  { name: "Disco Club", tag: "Live Casino", emoji: "🪩", image: "/disco_club.png", badge: "new" },
+  { name: "Bonus Button", tag: "Instant Win", emoji: "🎲", image: "/button.png", badge: null },
 ];
 
 export default function CasinoGames() {
@@ -197,22 +195,30 @@ export default function CasinoGames() {
           <p className="section-desc">
             1xPlay provides access to some of the best casino games online with smooth gameplay, high-quality graphics, and real-time gaming experiences. We focus on creating a premium casino environment where users can enjoy exciting games anytime and anywhere.
           </p>
-          <div className={clsx('flex', 'justify-center', 'md:justify-start', 'mt-5')}>
-            <a href="#" className={clsx('btn', 'btn-gold', 'inline-flex')}>Browse All Games</a>
-          </div>
         </div>
       </div>
 
       {/* Games Grid */}
-      <div ref={gridRef} className={clsx('grid', 'grid-cols-2', 'md:grid-cols-[repeat(auto-fill,minmax(120px,1fr))]', 'gap-3', 'md:gap-4')} style={{ transformStyle: "preserve-3d" }}>
+      <div
+        ref={gridRef}
+        className={clsx(
+          "grid",
+          "grid-cols-2",
+          "sm:grid-cols-3",
+          "lg:grid-cols-[repeat(auto-fill,minmax(168px,1fr))]",
+          "gap-4",
+          "md:gap-5"
+        )}
+        style={{ transformStyle: "preserve-3d" }}
+      >
         {games.map((game) => (
           <div 
             key={game.name} 
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             className={clsx(
-              'relative', 'rounded-xl', 'overflow-hidden', 'aspect-[3/4]', 
-              'cursor-pointer', 'group', 'reveal-card', 'border', 'border-border', 
+              'relative', 'rounded-xl', 'overflow-hidden', 'aspect-[3/4]', 'min-h-[180px]', 'sm:min-h-[200px]', 'md:min-h-[220px]',
+              'cursor-pointer', 'group', 'reveal-card', 'border', 'border-border',
               'shadow-md', 'transition-colors', 'duration-300'
             )}
             style={{ transformStyle: "preserve-3d", transform: "translateZ(0)" }}
@@ -250,6 +256,10 @@ export default function CasinoGames() {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className={clsx('flex', 'justify-center', 'mt-8')}>
+        <a href="https://www.1xplay.xyz/games/live-casino" className={clsx('btn', 'btn-gold', 'inline-flex')}>View All Games</a>
       </div>
 
       <p className={clsx('text-left', 'sm:text-center', 'mt-10', 'text-[13px]', 'text-muted', 'max-w-[800px]', 'mx-auto', 'leading-relaxed')}>

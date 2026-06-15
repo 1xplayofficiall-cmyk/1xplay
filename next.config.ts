@@ -12,6 +12,10 @@ const nextConfig: NextConfig = {
         output: "export",
         trailingSlash: true,
         images: { unoptimized: true },
+        experimental: {
+          workerThreads: false,
+          cpus: 1,
+        },
       }
     : {
         async redirects() {
@@ -31,10 +35,6 @@ const nextConfig: NextConfig = {
           ],
         },
       }),
-  experimental: {
-    workerThreads: false,
-    cpus: 1,
-  },
 };
 
 export default nextConfig;

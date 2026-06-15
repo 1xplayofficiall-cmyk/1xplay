@@ -1,6 +1,6 @@
 "use client";
-
 import clsx from "clsx";
+import { FaAndroid, FaApple } from "react-icons/fa";
 
 const appFeatures = [
   { icon: "⚡", title: "Fast Loading Speed", desc: "Optimized for smooth performance on all Android and iOS devices." },
@@ -33,9 +33,19 @@ export default function MobileApp() {
             ))}
           </div>
 
-          <div className={clsx('flex', 'gap-3', 'mt-10', 'flex-wrap', 'max-sm:justify-center')}>
-            <a href="#" className={clsx('btn', 'btn-gold', 'btn-large')}>📱 Download App</a>
-            <a href="#" className={clsx('btn', 'btn-ghost', 'btn-large')}>Learn More</a>
+          <div className={clsx("flex", "gap-3", "mt-10", "flex-wrap", "justify-center", "items-center")}>
+            <a href="#" className={clsx("btn", "btn-gold", "btn-large")}>
+              <span className={clsx("inline-flex", "flex-row", "items-end", "gap-2", "whitespace-nowrap", "leading-none")}>
+                <FaApple size={15} className="shrink-0 -translate-y-[2px]" aria-hidden />
+                <span>Download</span>
+              </span>
+            </a>
+            <a href="#" className={clsx("btn", "btn-ghost", "btn-large")}>
+              <span className={clsx("inline-flex", "flex-row", "items-end", "gap-2", "whitespace-nowrap", "leading-none")}>
+                <FaAndroid size={15} className="shrink-0" aria-hidden />
+                <span>Download</span>
+              </span>
+            </a>
           </div>
         </div>
 

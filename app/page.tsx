@@ -25,13 +25,13 @@ export default function Home() {
       <ScrollReveal />
       <Hero />
       <Marquee />
-      <About />
       <CasinoGames />
+      <About />
       <CricketBetting />
       <Features />
       <WhyBetter />
       <SafeSecure />
-      <OtherSports />
+      {/* <OtherSports /> */}
       <BeyondCricket />
       <MobileApp />
       <Support247 />

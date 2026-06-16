@@ -46,16 +46,17 @@ export default function Navbar() {
           zIndex: -1
         }}
       />
-      <div className={clsx('flex', 'items-center', 'px-[5%]', 'h-[70px]', 'w-full')}>
+      <div className={clsx('grid', 'grid-cols-[1fr_auto]',  'lg:grid-cols-[140px_1fr_280px]', 'items-center', 'h-[70px]', 'px-[5%]')}>
         {/* Logo Wrapper */}
-        <div className={clsx('flex-1', 'flex', 'items-center', 'justify-start')}>
+        <div>
+
           <Link href="/">
             <Image src="/1xplay.webp" alt="1XPlay" width={100} height={40} className="object-contain" />
           </Link>
         </div>
-
+  
         {/* Desktop Nav Links */}
-        <ul className={clsx('hidden', 'hover:text-blue-600', 'lg:flex', 'gap-4', 'xl:gap-8', 'list-none', 'h-full', 'items-center', 'justify-center', 'm-0', 'p-0')}>
+        <ul className={clsx('hidden', 'hover:text-blue-600', 'w-full', 'lg:flex', 'gap-4', 'xl:gap-8', 'list-none', 'h-full', 'items-center', 'justify-center', 'm-0', 'p-0')}>
           {navLinks.map((link) => {
             if (link.name === "GAMES") {
               return (
@@ -132,7 +133,7 @@ export default function Navbar() {
         </ul>
 
         {/* Right CTA / Mobile Toggle Wrapper */}
-        <div className={clsx('flex-1', 'flex', 'items-center', 'justify-end')}>
+        <div className={clsx('flex', 'items-center','justify-end')}>
           {/* Desktop CTA */}
           <div className={clsx('hidden', 'lg:flex', 'gap-2', 'xl:gap-3', 'items-center')}>
             <Link href="#" className={clsx('btn', 'btn-ghost', 'px-3', 'py-2', 'xl:px-5', 'xl:py-2.5', 'text-[11px]', 'xl:text-[13px]')}>Register</Link>

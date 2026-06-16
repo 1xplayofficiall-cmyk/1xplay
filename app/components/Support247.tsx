@@ -37,7 +37,7 @@ export default function Support247() {
               key={area.label}
               className={clsx(
                 'bg-card', 'border', 'border-border', 'rounded-xl',
-                'p-5', 'flex', 'flex-col', 'items-center', 'gap-3',
+                'p-3', 'flex', 'flex-col', 'items-center', 'gap-3',
                 'hover:border-[rgba(0,120,229,0.3)]', 'transition-all',
                 'group', 'reveal'
               )}

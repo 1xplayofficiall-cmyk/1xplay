@@ -44,8 +44,8 @@ export default function BadmintonPage() {
       </div>
 
       {/* ── Hero ── */}
-      <section className="relative z-10 overflow-hidden pb-[40px] px-[5%] min-h-[520px] lg:min-h-[580px] pt-[calc(var(--navbar-offset)+2.5rem)]">
-        <SportHeroBackdrop src="/badminton.png" alt="Badminton Betting at 1xPlay" />
+      <section className="relative z-10 overflow-hidden pb-[40px] px-[5%] min-h-[min(88vh,760px)] md:min-h-[520px] lg:min-h-[580px] pt-[calc(var(--navbar-offset)+2.5rem)]">
+        <SportHeroBackdrop src="/badminton.png" alt="Badminton Betting at 1xPlay" mobilePosition="object-[92%_22%]" />
 
         <div className="relative z-10 max-w-[1400px] mx-auto w-full">
           <div className="max-w-[720px] flex flex-col justify-center">

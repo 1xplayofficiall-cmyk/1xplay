@@ -12,7 +12,11 @@ const games = [
   { name: "Money Heist", tag: "Slot Game", emoji: "💰", image: "/money_heist.png", badge: "hot" },
   { name: "Lucy", tag: "Adventure Slot", emoji: "🎰", image: "/lucy_game.png", badge: null },
   { name: "Disco Club", tag: "Live Casino", emoji: "🪩", image: "/disco_club.png", badge: "new" },
-  { name: "Bonus Button", tag: "Instant Win", emoji: "🎲", image: "/button.png", badge: null },
+  { name: "Naughty Button", tag: "Instant Win", emoji: "🎲", image: "/naughty_button.png", badge: null },
+  { name: "Chicken Road", tag: "Crash Game", emoji: "🐔", image: "/chiken_road.jpeg", badge: "new" },
+  { name: "Campus Crush", tag: "Slot Game", emoji: "💕", image: "/campus_crush.jpeg", badge: null },
+  { name: "F1 Racing", tag: "Sports Slot", emoji: "🏎️", image: "/f1.png", badge: "hot" },
+  { name: "Ramp", tag: "Crash Game", emoji: "📈", image: "/ramp.jpeg", badge: null },
 ];
 
 export default function CasinoGames() {
@@ -203,11 +207,12 @@ export default function CasinoGames() {
         ref={gridRef}
         className={clsx(
           "grid",
+          "w-full",
           "grid-cols-2",
           "sm:grid-cols-3",
-          "lg:grid-cols-[repeat(auto-fill,minmax(168px,1fr))]",
-          "gap-4",
-          "md:gap-5"
+          "lg:grid-cols-6",
+          "gap-2",
+          "sm:gap-3"
         )}
         style={{ transformStyle: "preserve-3d" }}
       >
@@ -217,9 +222,19 @@ export default function CasinoGames() {
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
             className={clsx(
-              'relative', 'rounded-xl', 'overflow-hidden', 'aspect-[3/4]', 'min-h-[180px]', 'sm:min-h-[200px]', 'md:min-h-[220px]',
-              'cursor-pointer', 'group', 'reveal-card', 'border', 'border-border',
-              'shadow-md', 'transition-colors', 'duration-300'
+              "relative",
+              "rounded-lg",
+              "overflow-hidden",
+              "aspect-[4/5]",
+              "w-full",
+              "cursor-pointer",
+              "group",
+              "reveal-card",
+              "border",
+              "border-border",
+              "shadow-md",
+              "transition-colors",
+              "duration-300"
             )}
             style={{ transformStyle: "preserve-3d", transform: "translateZ(0)" }}
           >
@@ -235,10 +250,10 @@ export default function CasinoGames() {
             
             {/* Badge */}
             {game.badge === "hot" && (
-              <div className={clsx('absolute', 'top-2.5', 'right-2.5', 'md:top-3', 'md:right-3', 'bg-red', 'text-white', 'text-[9px]', 'md:text-[10px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'px-2', 'py-0.5', 'md:px-2.5', 'md:py-1', 'rounded', 'z-20')}>Hot</div>
+              <div className={clsx('absolute', 'top-2', 'right-2', 'bg-red', 'text-white', 'text-[8px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'px-1.5', 'py-0.5', 'rounded', 'z-20')}>Hot</div>
             )}
             {game.badge === "new" && (
-              <div className={clsx('absolute', 'top-2.5', 'right-2.5', 'md:top-3', 'md:right-3', 'bg-green', 'text-[#041208]', 'text-[9px]', 'md:text-[10px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'px-2', 'py-0.5', 'md:px-2.5', 'md:py-1', 'rounded', 'z-20')}>New</div>
+              <div className={clsx('absolute', 'top-2', 'right-2', 'bg-green', 'text-[#041208]', 'text-[8px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'px-1.5', 'py-0.5', 'rounded', 'z-20')}>New</div>
             )}
             
             {/* Hover name overlay */}
@@ -250,7 +265,7 @@ export default function CasinoGames() {
               )}
               style={{ transform: "translateZ(30px)" }}
             >
-              <span className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[13px]', 'sm:text-[14px]', 'md:text-[15px]', 'text-white', 'text-center', 'leading-tight')}>
+              <span className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[12px]', 'sm:text-[13px]', 'text-white', 'text-center', 'leading-tight')}>
                 {game.name}
               </span>
             </div>

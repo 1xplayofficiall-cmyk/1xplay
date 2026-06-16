@@ -77,8 +77,7 @@ export default function LiveCricketWidget() {
         throw new Error(data.error || "Failed to load matches");
       }
     } catch (err: unknown) {
-      // No server/API available (e.g. static export) — show simulated data
-      // instead of an error so the widget still renders meaningful content.
+      
       console.error(err);
       setMatches(MOCK_MATCHES);
       setIsSimulated(true);
@@ -94,7 +93,7 @@ export default function LiveCricketWidget() {
     void fetchMatches();
   };
 
-  // Fetch YouTube highlights/live videos
+  
   const fetchVideos = async () => {
     try {
       const res = await fetch("/api/youtube");
@@ -141,7 +140,6 @@ export default function LiveCricketWidget() {
     }, 3500);
   };
 
-  // Ball-by-ball simulated updates loop for Live & Simulated matches
   useEffect(() => {
     if (loading || matches.length === 0) return;
 
@@ -371,7 +369,7 @@ export default function LiveCricketWidget() {
                 : "text-gray-400 hover:text-white"
             )}
           >
-            <span>📺</span> Watch Live
+            <span>📺</span> Highlights
           </button>
         </div>
 

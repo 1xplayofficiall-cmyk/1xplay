@@ -46,7 +46,7 @@ export default function Navbar() {
           zIndex: -1
         }}
       />
-      <div className={clsx('flex', 'items-center', 'px-4', 'lg:px-6', 'xl:px-12', 'h-[70px]', 'w-full')}>
+      <div className={clsx('flex', 'items-center', 'px-[5%]', 'h-[70px]', 'w-full')}>
         {/* Logo Wrapper */}
         <div className={clsx('flex-1', 'flex', 'items-center', 'justify-start')}>
           <Link href="/">

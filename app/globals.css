@@ -288,3 +288,36 @@ body {
   .section-desc { text-align: left; }
   .section-tag { justify-content: flex-start; }
 }
+
+/* ============================================================
+   UNIFIED CONTENT WIDTH — equal left/right margins everywhere
+   ------------------------------------------------------------
+   The navbar, hero, every section and the footer share the same
+   horizontal gutter (px-[5%]) and the same maximum content
+   width, so the whole site lines up on the x-axis at every
+   screen size:
+     - below the cap, content fills ~90% of the viewport (so it
+       uses the space on 15"/16"+ laptops);
+     - on very wide monitors it stops growing at --site-content
+       and centres, keeping equal margins on both sides.
+
+   Most section wrappers already sit inside a px-[5%] section, so
+   normalising their assorted hard-coded max-widths to a single
+   value is all that's needed here. The navbar and hero are
+   switched to the same px-[5%] gutter in their components.
+   Tweak the single value below to widen/narrow the whole site.
+   ============================================================ */
+:root { --site-content: 1800px; }
+
+.container,
+.max-w-7xl,
+.max-w-\[1440px\],
+.max-w-\[1400px\],
+.max-w-\[1200px\],
+.max-w-\[1180px\],
+.max-w-\[1100px\],
+.max-w-\[1000px\],
+.max-w-\[900px\] {
+  max-width: var(--site-content);
+  margin-inline: auto;
+}

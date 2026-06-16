@@ -10,7 +10,7 @@ const MotionLink = motion.create(Link);
 
 const Hero = () => {
   return (
-    <section className={clsx('relative', 'min-h-screen', 'bg-[#030914]', 'overflow-hidden', 'pt-[calc(var(--navbar-offset)+2rem)]', 'pb-12', 'flex', 'flex-col')}>
+    <section className={clsx('relative', 'min-h-screen', 'bg-[#030914]', 'overflow-hidden', 'px-[5%]', 'pt-[calc(var(--navbar-offset)+2rem)]', 'pb-12', 'flex', 'flex-col')}>
       {/* Dynamic Background */}
       {/* Grid Pattern */}
       <div className={clsx('absolute', 'left-0', 'right-0', 'bottom-0', 'z-0', 'top-[var(--navbar-offset)]')} style={{
@@ -21,7 +21,7 @@ const Hero = () => {
       }}></div>
       
       {/* Main Content */}
-      <div className={clsx('container', 'mx-auto', 'px-6', 'lg:px-12', 'relative', 'z-10', 'flex', 'flex-col', 'flex-1')}>
+      <div className={clsx('container', 'mx-auto', 'relative', 'z-10', 'flex', 'flex-col', 'flex-1')}>
         
         {/* Top: 2 Columns */}
         <div className={clsx('flex', 'flex-col', 'lg:flex-row', 'gap-12', 'items-center', 'flex-1', 'mb-12')}>

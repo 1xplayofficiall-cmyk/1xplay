@@ -8,10 +8,10 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const games = [
-  { name: "Teen Patti", tag: "Indian Favourite", emoji: "🃏", image: "/teen_pati.png", badge: "hot" },
-  { name: "Aviator", tag: "Crash Game", emoji: "✈️", image: "/aviator.jpg", badge: "new" },
   { name: "Money Heist", tag: "Slot Game", emoji: "💰", image: "/money_heist.png", badge: "hot" },
   { name: "Lucy", tag: "Adventure Slot", emoji: "🎰", image: "/lucy_game.png", badge: null },
+  { name: "Aviator", tag: "Crash Game", emoji: "✈️", image: "/aviator.jpg", badge: "new" },
+  { name: "Teen Patti", tag: "Indian Favourite", emoji: "🃏", image: "/teen_pati.png", badge: "hot" },
   { name: "Disco Club", tag: "Live Casino", emoji: "🪩", image: "/disco_club.png", badge: "new" },
   { name: "Naughty Button", tag: "Instant Win", emoji: "🎲", image: "/naughty_button.png", badge: null },
   { name: "Chicken Road", tag: "Crash Game", emoji: "🐔", image: "/chiken_road.jpeg", badge: "new" },

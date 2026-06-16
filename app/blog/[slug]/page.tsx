@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArrowLeft, ArrowRight, Calendar, Clock, ChevronRight, Tag } from "lucide-react";
-import { getPost, getPosts, getAllSlugs, getUniqueCategories, blogCategoryHref, type BlogPost } from "../../lib/wordpress";
+import { getPost, getPosts, getAllSlugs, getUniqueCategories, blogCategoryHref, getCategoryImage, getPostDisplayImage, type BlogPost } from "../../lib/wordpress";
 import TableOfContents, { type TocItem } from "../TableOfContents";
 import ShareButtons from "../ShareButtons";
 
@@ -81,13 +82,14 @@ export default async function BlogPostPage({
   );
   const related = [...relatedSameCategory, ...relatedOther].slice(0, 6);
   const activeCategory = postCategory;
+  const heroImage = getPostDisplayImage(post);
 
   return (
     <div className="relative min-h-screen bg-[#030914] overflow-hidden">
       {/* Background glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[450px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.1)_0%,transparent_65%)] pointer-events-none" />
 
-      <div className="relative z-10 mx-auto max-w-[1200px] px-[5%] pt-[110px] pb-16">
+      <div className="relative z-10 mx-auto max-w-[1200px] px-[5%] pt-[calc(var(--navbar-offset)+2.5rem)] pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_240px] gap-10 lg:gap-14 items-start">
           <article className="min-w-0">
             {/* Breadcrumb */}
@@ -126,14 +128,28 @@ export default async function BlogPostPage({
             </header>
 
             {/* Featured image */}
-            {post.imageUrl && (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                src={post.imageUrl}
+            <div className="relative mt-10 h-[200px] sm:h-[280px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a1220]">
+              <ArticleImage
+                src={heroImage}
                 alt={post.imageAlt || post.title}
-                className="mt-10 w-full max-h-[220px] sm:max-h-[260px] rounded-2xl border border-white/10 object-cover"
+                className="object-cover"
+                fill
+                sizes="(max-width: 1024px) 100vw, 820px"
+                priority
               />
-            )}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030914]/90 via-[#030914]/20 to-transparent" />
+              <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
+                <span
+                  className="text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full border font-[var(--font-syne)] backdrop-blur-md bg-[#030914]/60"
+                  style={{
+                    color: post.accent,
+                    borderColor: `${post.accent}44`,
+                  }}
+                >
+                  {post.category}
+                </span>
+              </div>
+            </div>
 
             {/* Table of Contents */}
             <div className="mt-10">
@@ -155,7 +171,26 @@ export default async function BlogPostPage({
           </article>
 
           {/* Categories sidebar */}
-          <aside className="lg:sticky lg:top-[110px] lg:self-start">
+          <aside className="lg:sticky lg:top-[110px] lg:self-start space-y-5">
+            <div className="relative h-36 rounded-2xl overflow-hidden border border-white/[0.08]">
+              <ArticleImage
+                src={heroImage}
+                alt={post.title}
+                className="object-cover"
+                fill
+                sizes="240px"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030914] via-[#030914]/30 to-transparent" />
+              <div className="absolute bottom-3 left-3 right-3">
+                <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#01A3F6] font-[var(--font-syne)] mb-1">
+                  Featured
+                </p>
+                <p className="text-white text-[13px] font-semibold font-[var(--font-syne)] leading-snug line-clamp-2">
+                  {post.title}
+                </p>
+              </div>
+            </div>
+
             <div className="rounded-2xl border border-white/[0.08] bg-[#0a1220]/60 p-5">
               <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#01A3F6] mb-4 font-[var(--font-syne)]">
                 Categories
@@ -166,17 +201,34 @@ export default async function BlogPostPage({
                     cat === "All"
                       ? false
                       : activeCategory === cat.toLowerCase();
+                  const thumb =
+                    cat === "All" ? "/highlights-hero.jpg" : getCategoryImage(cat);
                   return (
                     <li key={cat}>
                       <Link
                         href={blogCategoryHref(cat)}
-                        className={`flex items-center justify-between gap-2 rounded-xl border px-4 py-3 text-[14px] font-semibold font-[var(--font-syne)] transition-all ${
+                        className={`flex items-center gap-3 rounded-xl border px-3 py-2.5 text-[14px] font-semibold font-[var(--font-syne)] transition-all ${
                           isActive
                             ? "border-[#01A3F6]/40 bg-[#01A3F6]/15 text-white"
                             : "border-white/[0.06] bg-white/[0.02] text-muted hover:border-[#01A3F6]/30 hover:text-white hover:bg-[#01A3F6]/10"
                         }`}
                       >
-                        {cat}
+                        <span className="relative h-9 w-9 shrink-0 rounded-lg overflow-hidden border border-white/10 bg-[#030914]">
+                          {thumb ? (
+                            <Image
+                              src={thumb}
+                              alt={cat}
+                              width={36}
+                              height={36}
+                              className="h-full w-full object-cover"
+                            />
+                          ) : (
+                            <span className="flex h-full w-full items-center justify-center text-[#01A3F6]">
+                              <Tag className="w-4 h-4" />
+                            </span>
+                          )}
+                        </span>
+                        <span className="flex-1">{cat}</span>
                         <ChevronRight className="w-4 h-4 shrink-0 opacity-60" />
                       </Link>
                     </li>
@@ -207,9 +259,17 @@ export default async function BlogPostPage({
 
       {/* CTA banner */}
       <section className="relative z-10 mx-auto max-w-[1140px] px-[5%] pb-28">
-        <div className="relative overflow-hidden rounded-3xl border border-[#01A3F6]/25 bg-gradient-to-br from-[#0078E5]/15 via-transparent to-transparent p-8 md:p-12 text-center">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.1)_0%,transparent_70%)] pointer-events-none" />
-          <div className="relative">
+        <div className="relative overflow-hidden rounded-3xl border border-[#01A3F6]/25 p-8 md:p-12 text-center min-h-[220px] flex items-center justify-center">
+          <Image
+            src="/casino.png"
+            alt=""
+            fill
+            className="object-cover object-center opacity-25"
+            sizes="(max-width: 1140px) 100vw, 1140px"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-[#0078E5]/40 via-[#030914]/85 to-[#030914]/95" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[300px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.15)_0%,transparent_70%)] pointer-events-none" />
+          <div className="relative z-10">
             <h2 className="font-[var(--font-bebas)] text-[clamp(30px,4.5vw,52px)] tracking-[1px] text-white mb-3">
               Ready to Play?
             </h2>
@@ -231,27 +291,61 @@ export default async function BlogPostPage({
   );
 }
 
+function ArticleImage({
+  src,
+  alt,
+  className,
+  fill,
+  sizes,
+  priority,
+}: {
+  src: string;
+  alt: string;
+  className?: string;
+  fill?: boolean;
+  sizes?: string;
+  priority?: boolean;
+}) {
+  if (src.startsWith("/")) {
+    return (
+      <Image
+        src={src}
+        alt={alt}
+        fill={fill}
+        sizes={sizes}
+        priority={priority}
+        className={className}
+      />
+    );
+  }
+  // eslint-disable-next-line @next/next/no-img-element
+  return (
+    <img
+      src={src}
+      alt={alt}
+      className={fill ? `absolute inset-0 h-full w-full ${className ?? ""}` : className}
+    />
+  );
+}
+
 function RelatedCard({ post }: { post: BlogPost }) {
+  const imageSrc = getPostDisplayImage(post);
+
   return (
     <Link
       href={`/blog/${post.slug}`}
       className="group flex flex-col rounded-2xl overflow-hidden border border-white/[0.06] bg-[#0a1220]/60 hover:border-[#01A3F6]/30 transition-colors"
     >
-      {post.imageUrl ? (
-        // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={post.imageUrl}
+      <div className="relative h-36 w-full overflow-hidden">
+        <ArticleImage
+          src={imageSrc}
           alt={post.imageAlt || post.title}
-          className="h-32 w-full object-cover"
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          fill
+          sizes="(max-width: 640px) 100vw, 360px"
         />
-      ) : (
-        <div
-          className="h-32 w-full flex items-center justify-center"
-          style={{ background: `linear-gradient(135deg, ${post.accent}26, #0a1220 70%)` }}
-        >
-          <Tag className="w-6 h-6" style={{ color: post.accent }} />
-        </div>
-      )}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0a1220]/80 via-transparent to-transparent" />
+      </div>
       <div className="p-5">
         <div className="flex items-center gap-2 text-[11px] text-muted/70 mb-2">
           <span style={{ color: post.accent }} className="font-bold uppercase tracking-wider">

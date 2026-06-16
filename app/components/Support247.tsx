@@ -43,7 +43,7 @@ export default function Support247() {
               )}
             >
               <span className={clsx('text-[24px]', 'group-hover:scale-110', 'transition-transform')}>{area.icon}</span>
-              <span className={clsx('text-[14px]', 'text-white', 'font-medium')}>{area.label}</span>
+              <span className={clsx('text-[10px]', 'text-white', 'font-medium')}>{area.label}</span>
             </div>
           ))}
         </div>

@@ -10,10 +10,10 @@ const MotionLink = motion.create(Link);
 
 const Hero = () => {
   return (
-    <section className={clsx('relative', 'min-h-screen', 'bg-[#030914]', 'overflow-hidden', 'pt-28', 'pb-12', 'flex', 'flex-col')}>
+    <section className={clsx('relative', 'min-h-screen', 'bg-[#030914]', 'overflow-hidden', 'pt-[calc(var(--navbar-offset)+2rem)]', 'pb-12', 'flex', 'flex-col')}>
       {/* Dynamic Background */}
       {/* Grid Pattern */}
-      <div className={clsx('absolute', 'inset-0', 'z-0')} style={{
+      <div className={clsx('absolute', 'left-0', 'right-0', 'bottom-0', 'z-0', 'top-[var(--navbar-offset)]')} style={{
         backgroundImage: 'linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)',
         backgroundSize: '40px 40px',
         maskImage: 'radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 70%)',

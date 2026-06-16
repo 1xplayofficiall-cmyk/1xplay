@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useScroll } from "framer-motion";
 import {
   FaTrophy,
@@ -17,6 +16,7 @@ import {
 } from "react-icons/fa";
 import ScrollReveal from "../components/ScrollReveal";
 import { EditorialBlock, WideBlock } from "../components/SportPageBlocks";
+import { SportHeroBackdrop } from "../components/SportHeroMedia";
 
 const ACCENT = "#01A3F6";
 
@@ -36,7 +36,7 @@ export default function BadmintonPage() {
       <ScrollReveal />
 
       {/* Scroll progress */}
-      <div className="fixed top-[70px] left-0 right-0 h-[2px] z-[998] bg-white/[0.04]">
+      <div className="fixed top-[var(--navbar-offset)] left-0 right-0 h-[2px] z-[998] bg-white/[0.04]">
         <motion.div
           className="h-full w-full origin-left bg-gradient-to-r from-[#0078E5] to-[#01A3F6] shadow-[0_0_12px_rgba(1,163,246,0.6)]"
           style={{ scaleX: scrollYProgress }}
@@ -44,24 +44,11 @@ export default function BadmintonPage() {
       </div>
 
       {/* ── Hero ── */}
-      <section className="relative z-10 overflow-hidden pt-[110px] pb-[40px] px-[5%]">
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/badminton.png"
-            alt="Badminton Betting at 1xPlay"
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#05080B] via-[#05080B]/80 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-[#05080B]/50" />
-          <div className="absolute top-[12%] right-[14%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(1,163,246,0.16)_0%,transparent_65%)] pointer-events-none" />
-        </div>
+      <section className="relative z-10 overflow-hidden pb-[40px] px-[5%] min-h-[520px] lg:min-h-[580px] pt-[calc(var(--navbar-offset)+2.5rem)]">
+        <SportHeroBackdrop src="/badminton.png" alt="Badminton Betting at 1xPlay" />
 
-        <div className="relative z-10 max-w-[1400px] mx-auto w-full flex flex-col gap-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            <div className="lg:col-span-7 flex flex-col justify-center">
+        <div className="relative z-10 max-w-[1400px] mx-auto w-full">
+          <div className="max-w-[720px] flex flex-col justify-center">
               <motion.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -108,14 +95,6 @@ export default function BadmintonPage() {
                   <span>How to Start</span>
                 </button>
               </motion.div>
-            </div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.94 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 0.25, duration: 0.6 }}
-              className="lg:col-span-5 relative flex justify-center"
-            />
           </div>
         </div>
       </section>

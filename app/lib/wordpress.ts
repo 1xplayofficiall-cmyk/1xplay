@@ -192,6 +192,30 @@ export function blogCategoryHref(category: string): string {
   return `/blog?category=${encodeURIComponent(category)}`;
 }
 
+/** Local thumbnails for blog category filters and fallbacks */
+export const BLOG_CATEGORY_IMAGES: Record<string, string> = {
+  cricket: "/cricket.png",
+  casino: "/casino.png",
+  tennis: "/tennis.png",
+  badminton: "/badminton.png",
+  soccer: "/soccer.png",
+  football: "/soccer.png",
+  platform: "/1xplay-nav.png",
+  "betting tips": "/highlights-hero.jpg",
+};
+
+export function getCategoryImage(category?: string): string | undefined {
+  if (!category) return undefined;
+  return BLOG_CATEGORY_IMAGES[category.toLowerCase()];
+}
+
+export function getPostDisplayImage(post: BlogPost): string {
+  if (post.imageUrl) return post.imageUrl;
+  const categoryImage = getCategoryImage(post.category);
+  if (categoryImage) return categoryImage;
+  return "/highlights-hero.jpg";
+}
+
 export async function getPosts(limit = 12): Promise<{ posts: BlogPost[]; usingFallback: boolean }> {
   const base = getBaseUrl();
   if (!base) return { posts: FALLBACK_POSTS, usingFallback: true };

@@ -16,6 +16,7 @@ import {
   FaExclamationTriangle,
 } from "react-icons/fa";
 import ScrollReveal from "../components/ScrollReveal";
+import { EditorialBlock, WideBlock } from "../components/SportPageBlocks";
 
 const ACCENT = "#01A3F6";
 
@@ -42,99 +43,87 @@ export default function BadmintonPage() {
         />
       </div>
 
-      {/* ── Hero (keeps badminton-hero.png) ── */}
-      <section className="relative z-10 overflow-hidden pt-[140px] pb-16 md:pb-24 px-[5%]">
+      {/* ── Hero ── */}
+      <section className="relative z-10 overflow-hidden pt-[110px] pb-[40px] px-[5%]">
         <div className="absolute inset-0 z-0">
           <Image
             src="/badminton.png"
             alt="Badminton Betting at 1xPlay"
             fill
             sizes="100vw"
-            className="object-cover"
+            className="object-cover object-center"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#05080B] via-[#05080B]/85 to-[#05080B]/40" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-[#05080B]/60" />
-          <div className="absolute top-[12%] right-[14%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(1,163,246,0.18)_0%,transparent_65%)] pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#05080B] via-[#05080B]/80 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-[#05080B]/50" />
+          <div className="absolute top-[12%] right-[14%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(1,163,246,0.16)_0%,transparent_65%)] pointer-events-none" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-[1180px]">
-          <div className="max-w-[680px]">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 rounded-full border border-[#01A3F6]/40 bg-[#01A3F6]/12 px-3.5 py-1.5 backdrop-blur-md shadow-[0_0_24px_rgba(1,163,246,0.18)]"
-            >
-              <span className="text-base leading-none">🏸</span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#01A3F6] font-[var(--font-syne)]">
-                Badminton Betting
-              </span>
-            </motion.div>
+        <div className="relative z-10 max-w-[1400px] mx-auto w-full flex flex-col gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 flex flex-col justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-2 bg-[#01A3F6]/10 border border-[#01A3F6]/20 rounded-full px-4 py-1.5 w-max mb-6"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#01A3F6] animate-pulse" />
+                <span className="text-[11px] font-semibold text-[#01A3F6] uppercase tracking-[2px] font-[var(--font-syne)]">
+                  Badminton Betting
+                </span>
+              </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="mt-6 font-[var(--font-bebas)] text-[clamp(46px,7vw,88px)] leading-[0.92] tracking-[1px] text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-            >
-              Badminton Betting <br />
-              at{" "}
-              <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent">
-                1xPlay
-              </span>
-            </motion.h1>
+              <motion.h1
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="font-[var(--font-bebas)] text-[clamp(46px,6.5vw,45px)] tracking-[1px] leading-[0.92] text-white mb-6"
+              >
+                Badminton Betting at{" "}
+                <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(1,163,246,0.15)]">
+                  1xPlay
+                </span>
+              </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mt-6 max-w-[560px] text-[16px] md:text-[18px] leading-relaxed font-light text-white/70"
-            >
-              Experience fast-paced action, live match excitement, and seamless betting
-              markets on the most secure sports portal in India.
-            </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-[16px] md:text-[18px] text-muted leading-[1.8] font-light mb-8 max-w-[620px]"
+              >
+                Experience fast-paced action, live match excitement, and seamless betting
+                markets on the most secure sports portal in India.
+              </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mt-8 flex flex-wrap gap-4 max-sm:justify-center"
-            >
-              <button onClick={() => handleScrollTo("markets")} className="btn btn-gold btn-large">
-                Explore Markets <FaArrowRight className="w-3.5 h-3.5" />
-              </button>
-              <button onClick={() => handleScrollTo("how-to-start")} className="btn btn-ghost btn-large">
-                How to Start
-              </button>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stat ribbon (counts derived from content below) */}
-      <section className="relative z-10 px-[5%] -mt-4">
-        <div className="mx-auto max-w-[1180px] grid grid-cols-3 gap-px rounded-2xl overflow-hidden border border-white/10 bg-white/[0.06]">
-          {[
-            { v: "6", l: "Bet Markets" },
-            { v: "9", l: "Major Events" },
-            { v: "24/7", l: "Live Odds" },
-          ].map((s) => (
-            <div key={s.l} className="bg-[#070C11] px-5 py-7 text-center">
-              <div className="font-[var(--font-bebas)] text-[clamp(32px,5vw,50px)] leading-none tracking-wide bg-gradient-to-b from-white to-[#01A3F6] bg-clip-text text-transparent">
-                {s.v}
-              </div>
-              <div className="mt-2 text-[10px] uppercase tracking-[0.25em] text-muted font-[var(--font-syne)] font-semibold">
-                {s.l}
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex gap-4 flex-wrap max-sm:justify-center"
+              >
+                <button onClick={() => handleScrollTo("markets")} className="btn btn-gold btn-large gap-2">
+                  <span>Explore Markets</span> <FaArrowRight size={12} />
+                </button>
+                <button onClick={() => handleScrollTo("how-to-start")} className="btn btn-ghost btn-large">
+                  <span>How to Start</span>
+                </button>
+              </motion.div>
             </div>
-          ))}
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.25, duration: 0.6 }}
+              className="lg:col-span-5 relative flex justify-center"
+            />
+          </div>
         </div>
       </section>
 
       {/* ── Editorial flow ── */}
       <div className="relative z-10 px-[5%] py-[70px] md:py-[100px] space-y-[72px] md:space-y-[110px]">
         {/* 01 — Welcome */}
-        <Block num="01" eyebrow="Badminton Betting" title="Badminton Betting at 1xPlay">
+        <EditorialBlock num="01" eyebrow="Badminton Betting" title="Badminton Betting at 1xPlay">
           <p>
             Welcome to the exciting world of badminton betting at 1xPlay where users can enjoy fast paced sports action live match excitement and smooth online betting experiences on one trusted platform.
           </p>
@@ -147,7 +136,7 @@ export default function BadmintonPage() {
           <Callout>
             Whether you are following international badminton stars major tournaments or live match action 1xPlay provides everything needed for a smooth and engaging badminton betting experience.
           </Callout>
-        </Block>
+        </EditorialBlock>
 
         {/* 02 — Why growing */}
         <WideBlock num="02" eyebrow="The Rise" title="Why Badminton Betting Is Growing Fast">
@@ -184,7 +173,7 @@ export default function BadmintonPage() {
         </WideBlock>
 
         {/* 03 — Live experience */}
-        <Block num="03" eyebrow="In-Play" title="Live Badminton Betting Experience">
+        <EditorialBlock num="03" eyebrow="In-Play" title="Live Badminton Betting Experience">
           <p>
             At 1xPlay users can enjoy live badminton betting with real time odds and fast market updates during ongoing matches.
           </p>
@@ -206,10 +195,10 @@ export default function BadmintonPage() {
           <p>
             Live badminton betting creates a more interactive sports experience because users can react to match situations instantly.
           </p>
-        </Block>
+        </EditorialBlock>
 
         {/* 04 — Markets bento */}
-        <WideBlock num="04" eyebrow="Markets" title="Popular Badminton Betting Markets">
+        <WideBlock num="04" eyebrow="Markets" title="Popular Badminton Betting Markets" id="markets">
           <p className="max-w-2xl">
             1xPlay provides multiple badminton betting options designed for both beginners and experienced sports bettors.
           </p>
@@ -281,7 +270,7 @@ export default function BadmintonPage() {
         </WideBlock>
 
         {/* 06 — Mobile */}
-        <Block num="06" eyebrow="On the Go" title="Smooth Mobile Betting Experience">
+        <EditorialBlock num="06" eyebrow="On the Go" title="Smooth Mobile Betting Experience">
           <p>
             Modern users prefer mobile sports betting because it offers flexibility and instant access to live events. That is why 1xPlay is fully optimized for smartphones tablets and mobile devices.
           </p>
@@ -297,10 +286,10 @@ export default function BadmintonPage() {
             ]}
           />
           <p>The mobile platform is designed for fast navigation and uninterrupted sports entertainment.</p>
-        </Block>
+        </EditorialBlock>
 
         {/* 07 — Security */}
-        <Block num="07" eyebrow="Trust" title="Secure Online Sports Betting Platform" accent="#01A3F6">
+        <EditorialBlock num="07" eyebrow="Trust" title="Secure Online Sports Betting Platform">
           <p>
             Security remains one of the biggest priorities at 1xPlay. Our platform uses advanced technology and secure systems to help protect user accounts transactions and betting activity.
           </p>
@@ -319,7 +308,7 @@ export default function BadmintonPage() {
           <p>
             We continuously improve platform security and performance to maintain user trust and better sports betting experiences.
           </p>
-        </Block>
+        </EditorialBlock>
 
         {/* 08 — Why choose */}
         <WideBlock num="08" eyebrow="Why 1xPlay" title="Why Choose 1xPlay for Badminton Betting">
@@ -357,60 +346,71 @@ export default function BadmintonPage() {
         </WideBlock>
 
         {/* 09 — How to start */}
-        <WideBlock num="09" eyebrow="Get Started" title="Easy to Start Betting">
+        <WideBlock num="09" eyebrow="Get Started" title="Easy to Start Betting" id="how-to-start">
           <p className="max-w-2xl">Getting started with badminton betting at 1xPlay is simple.</p>
-          <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {[
-              { step: "Step 1", title: "Create an Account", desc: "Register your account through the 1xPlay platform." },
-              { step: "Step 2", title: "Add Funds", desc: "Use the secure deposit system to fund your account." },
-              { step: "Step 3", title: "Choose a Match", desc: "Explore live and upcoming badminton events." },
-              { step: "Step 4", title: "Place Your Bet", desc: "Select your preferred betting market and enjoy the match." },
-            ].map((s, i) => (
-              <div
-                key={s.step}
-                className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5"
-              >
-                <div className="font-[var(--font-bebas)] text-[40px] leading-none text-[#01A3F6]/25">
-                  0{i + 1}
+          <div className="relative py-8 mt-2">
+            <div className="absolute top-[48px] left-[10%] right-[10%] h-[2px] bg-white/[0.07] z-0 hidden md:block" />
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 relative z-10">
+              {[
+                { step: "01", title: "Create an Account", desc: "Register your account through the 1xPlay platform." },
+                { step: "02", title: "Add Funds", desc: "Use the secure deposit system to fund your account." },
+                { step: "03", title: "Choose a Match", desc: "Explore live and upcoming badminton events." },
+                { step: "04", title: "Place Your Bet", desc: "Select your preferred betting market and enjoy the match." },
+              ].map((item) => (
+                <div key={item.step} className="flex flex-col items-center md:items-start text-center md:text-left group">
+                  <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 group-hover:border-[#01A3F6]/30 flex items-center justify-center font-[var(--font-bebas)] text-[22px] text-[#01A3F6] mb-5 shadow-lg transition-all duration-300 relative">
+                    {item.step}
+                    <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#01A3F6]/40 animate-ping" />
+                  </div>
+                  <h4 className="font-[var(--font-syne)] font-bold text-white text-[15px] mb-2">{item.title}</h4>
+                  <p className="text-muted text-[12.5px] leading-[1.6] font-light max-w-[240px] mx-auto md:mx-0">{item.desc}</p>
                 </div>
-                <p className="mt-2 text-[10px] font-bold uppercase tracking-[0.2em] text-[#01A3F6] font-[var(--font-syne)]">
-                  {s.step}
-                </p>
-                <h4 className="mt-1.5 font-[var(--font-syne)] text-[15px] font-bold text-white">{s.title}</h4>
-                <p className="mt-1.5 text-[12.5px] leading-[1.6] text-muted">{s.desc}</p>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-          <p className="mt-7 max-w-2xl text-white/60">
+          <p className="max-w-2xl text-white/60">
             The platform is designed to make sports betting easy accessible and enjoyable for all users.
           </p>
         </WideBlock>
 
-        {/* 10 — Responsible */}
-        <Block num="10" eyebrow="Play Safe" title="Responsible Sports Betting" accent="#01A3F6">
-          <p>
-            At 1xPlay we encourage users to enjoy sports betting responsibly. Betting should always remain a form of entertainment and users should play within their financial limits.
-          </p>
-          <FeatureCard
-            icon={FaExclamationTriangle}
-            accent="#01A3F6"
-            title="We recommend:"
-            items={[
-              "Setting personal betting limits",
-              "Managing spending responsibly",
-              "Avoiding emotional betting decisions",
-              "Taking breaks when necessary",
-            ]}
-          />
-          <p>Responsible betting helps maintain a safe and enjoyable sports entertainment experience.</p>
-        </Block>
+        <section className="mx-auto max-w-[1000px]">
+          <div className="rounded-3xl border border-[#01A3F6]/20 bg-[#01A3F6]/[0.04] p-6 md:p-10 flex flex-col md:flex-row gap-6 items-start relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-[radial-gradient(circle,rgba(1,163,246,0.06)_0%,transparent_70%)] pointer-events-none" />
+            <div className="w-12 h-12 rounded-2xl bg-[#01A3F6]/10 border border-[#01A3F6]/25 flex items-center justify-center text-[#01A3F6] shrink-0 shadow-lg">
+              <FaExclamationTriangle size={20} />
+            </div>
+            <div className="flex flex-col gap-4">
+              <h3 className="font-[var(--font-syne)] font-bold text-white text-[17px] uppercase tracking-wider">Responsible Sports Betting</h3>
+              <p className="text-muted text-[14.5px] leading-[1.7] font-light">
+                At 1xPlay we encourage users to enjoy sports betting responsibly. Betting should always remain a form of entertainment and users should play within their financial limits.
+              </p>
+              <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#01A3F6] font-[var(--font-syne)]">We recommend:</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[13px] text-muted font-light">
+                {[
+                  "Setting personal betting limits",
+                  "Managing spending responsibly",
+                  "Avoiding emotional betting decisions",
+                  "Taking breaks when necessary",
+                ].map((tip) => (
+                  <div key={tip} className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#01A3F6] shrink-0" />
+                    <span>{tip}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-muted text-[14.5px] leading-[1.7] font-light">
+                Responsible betting helps maintain a safe and enjoyable sports entertainment experience.
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* ── Final CTA (section 11) ── */}
       <section id="join-experience" className="relative z-10 px-[5%] pb-28 scroll-mt-24">
-        <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#06121c] via-[#070C11] to-[#06121c] p-10 md:p-16">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[320px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.10)_0%,transparent_70%)] pointer-events-none" />
-          <div className="relative z-10 max-w-2xl">
+        <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#070C13] via-[#05080B] to-[#070C13] p-10 md:p-16 text-left sm:text-center">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.08)_0%,transparent_70%)] pointer-events-none" />
+          <div className="relative z-10 max-w-[800px] mx-auto">
             <span className="section-tag mb-5">Join the Experience</span>
             <h2 className="section-title">
               Join the Badminton Betting Experience at{" "}
@@ -445,95 +445,6 @@ export default function BadmintonPage() {
 }
 
 /* ─────────── Reusable blocks ─────────── */
-
-function Block({
-  num,
-  eyebrow,
-  title,
-  accent = ACCENT,
-  children,
-}: {
-  num: string;
-  eyebrow: string;
-  title: string;
-  accent?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5 }}
-      className="mx-auto max-w-[920px]"
-    >
-      <div className="flex flex-col md:flex-row gap-6 md:gap-10">
-        <div className="shrink-0">
-          <div
-            className="font-[var(--font-bebas)] text-[56px] md:text-[80px] leading-none tracking-wider"
-            style={{ color: `${accent}26` }}
-          >
-            {num}
-          </div>
-          <div className="mt-1 h-[2px] w-12 rounded-full" style={{ background: accent }} />
-        </div>
-        <div className="flex-1">
-          <p
-            className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.3em] font-[var(--font-syne)]"
-            style={{ color: accent }}
-          >
-            {eyebrow}
-          </p>
-          <h2 className="section-title">
-            {title}
-          </h2>
-          <div className="mt-5 flex flex-col gap-5 text-[15px] leading-[1.85] font-light text-muted">
-            {children}
-          </div>
-        </div>
-      </div>
-    </motion.section>
-  );
-}
-
-function WideBlock({
-  num,
-  eyebrow,
-  title,
-  children,
-}: {
-  num: string;
-  eyebrow: string;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5 }}
-      className="mx-auto max-w-[1180px]"
-    >
-      <div className="mb-2 flex items-center gap-4">
-        <span
-          className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider"
-          style={{ color: `${ACCENT}26` }}
-        >
-          {num}
-        </span>
-        <span className="h-[2px] w-10 rounded-full" style={{ background: ACCENT }} />
-        <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#01A3F6] font-[var(--font-syne)]">
-          {eyebrow}
-        </span>
-      </div>
-      <h2 className="section-title">
-        {title}
-      </h2>
-      <div className="mt-6 text-[15px] leading-[1.85] font-light text-muted">{children}</div>
-    </motion.section>
-  );
-}
 
 function FeatureCard({
   icon: Icon,

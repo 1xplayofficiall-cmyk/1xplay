@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { GiTennisBall } from "react-icons/gi";
 import { motion, useScroll } from "framer-motion";
 import {
   FaBolt,
@@ -13,6 +12,7 @@ import {
   FaLock,
 } from "react-icons/fa";
 import ScrollReveal from "../components/ScrollReveal";
+import { EditorialBlock, WideBlock } from "../components/SportPageBlocks";
 
 const ACCENT = "#01A3F6";
 
@@ -22,7 +22,7 @@ export default function TennisPage() {
   const { scrollYProgress } = useScroll();
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#030914] text-white">
+    <div className="relative min-h-screen overflow-hidden bg-[#05080B] text-white">
       <ScrollReveal />
 
       {/* Scroll progress */}
@@ -35,31 +35,10 @@ export default function TennisPage() {
 
       <Hero />
 
-      {/* Stat ribbon */}
-      <section className="relative z-10 px-[5%] -mt-2">
-        <div className="mx-auto max-w-[1180px] grid grid-cols-2 md:grid-cols-4 gap-px rounded-2xl overflow-hidden border border-white/10 bg-white/[0.06]">
-          {[
-            { v: "4", l: "Grand Slams" },
-            { v: "8+", l: "Bet Markets" },
-            { v: "24/7", l: "Live Odds" },
-            { v: "100s", l: "Monthly Matches" },
-          ].map((s) => (
-            <div key={l(s.l)} className="bg-[#09101e] px-5 py-7 text-center">
-              <div className="font-[var(--font-bebas)] text-[clamp(34px,5vw,52px)] leading-none tracking-wide bg-gradient-to-b from-white to-[#01A3F6] bg-clip-text text-transparent">
-                {s.v}
-              </div>
-              <div className="mt-2 text-[10px] uppercase tracking-[0.25em] text-muted font-[var(--font-syne)] font-semibold">
-                {s.l}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* ── Editorial flow ── */}
       <div className="relative z-10 px-[5%] py-[70px] md:py-[100px] space-y-[72px] md:space-y-[110px]">
         {/* 01 — Intro */}
-        <Block num="01" eyebrow="Tennis Betting Online" title="Where Every Point Can Change Everything">
+        <EditorialBlock num="01" eyebrow="Tennis Betting Online" title="Where Every Point Can Change Everything">
           <p>
             Tennis is one of the most exciting sports in the world. Every serve, every rally, and every point can completely change the outcome of a match. This unpredictability is what makes tennis betting online so popular among sports fans worldwide.
           </p>
@@ -69,10 +48,10 @@ export default function TennisPage() {
           <p>
             From pre-match predictions to live betting opportunities, 1xPlay is designed to provide a smooth, secure, and user-friendly experience for every tennis enthusiast.
           </p>
-        </Block>
+        </EditorialBlock>
 
         {/* 02 — Why popular */}
-        <Block num="02" eyebrow="The Appeal" title="Why Tennis Betting Is So Popular">
+        <EditorialBlock num="02" eyebrow="The Appeal" title="Why Tennis Betting Is So Popular">
           <p>
             Unlike many other sports, tennis offers constant action from start to finish. A single break of serve can change the momentum of the entire match. Players can come back from difficult situations, making every set exciting and unpredictable.
           </p>
@@ -91,7 +70,7 @@ export default function TennisPage() {
           <p>
             With hundreds of professional matches taking place every month, tennis remains one of the most active and entertaining sports for online betting.
           </p>
-        </Block>
+        </EditorialBlock>
 
         {/* 03 — Why choose (full-width feature) */}
         <WideBlock num="03" eyebrow="Why 1xPlay" title="Built for a Better Betting Experience">
@@ -127,7 +106,7 @@ export default function TennisPage() {
         </WideBlock>
 
         {/* 04 — Live betting (split with feature card) */}
-        <Block num="04" eyebrow="In-Play" title="Live Tennis Betting in Real Time">
+        <EditorialBlock num="04" eyebrow="In-Play" title="Live Tennis Betting in Real Time">
           <p>
             One of the biggest attractions of tennis betting online is live betting. Tennis is perfectly suited for live betting because the match constantly changes with every point played.
           </p>
@@ -149,7 +128,7 @@ export default function TennisPage() {
           <p>
             As players win games and sets, new opportunities become available throughout the match, creating a more engaging experience for tennis fans.
           </p>
-        </Block>
+        </EditorialBlock>
 
         {/* 05 — Markets bento */}
         <WideBlock num="05" eyebrow="Markets" title="Popular Tennis Betting Markets">
@@ -266,7 +245,7 @@ export default function TennisPage() {
         </WideBlock>
 
         {/* 08 — Mobile */}
-        <Block num="08" eyebrow="On the Go" title="Mobile Tennis Betting Anytime, Anywhere">
+        <EditorialBlock num="08" eyebrow="On the Go" title="Mobile Tennis Betting Anytime, Anywhere">
           <p>Modern sports fans expect flexibility, and 1xPlay delivers exactly that.</p>
           <p>
             Our platform is fully optimized for smartphones and tablets, allowing users to enjoy tennis betting online wherever they are.
@@ -286,10 +265,10 @@ export default function TennisPage() {
           <p>
             Whether you are watching a Grand Slam final at home or following an ATP match while travelling, 1xPlay keeps you connected to the action.
           </p>
-        </Block>
+        </EditorialBlock>
 
         {/* 09 — Security */}
-        <Block num="09" eyebrow="Trust" title="Safe and Secure Betting Environment" accent="#1EBF6A">
+        <EditorialBlock num="09" eyebrow="Trust" title="Safe and Secure Betting Environment">
           <p>
             Security is a top priority at 1xPlay. We use modern technology and advanced security systems to help protect user accounts, transactions, and personal information.
           </p>
@@ -308,10 +287,10 @@ export default function TennisPage() {
           <p>
             Our goal is to provide a trusted environment where users can focus on enjoying their betting experience.
           </p>
-        </Block>
+        </EditorialBlock>
 
         {/* 10 — Built for modern fans */}
-        <Block num="10" eyebrow="The Future" title="Built for Modern Tennis Fans">
+        <EditorialBlock num="10" eyebrow="The Future" title="Built for Modern Tennis Fans">
           <p>
             Tennis continues to grow as one of the most followed sports globally. New tournaments, emerging stars, and exciting rivalries keep fans engaged throughout the year.
           </p>
@@ -321,23 +300,14 @@ export default function TennisPage() {
           <p>
             Whether you are following ATP stars, WTA champions, or Grand Slam tournaments, 1xPlay gives you everything needed for premium online tennis betting.
           </p>
-        </Block>
+        </EditorialBlock>
       </div>
 
       {/* ── Final CTA ── */}
       <section className="relative z-10 px-[5%] pb-28">
-        <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#0a1220] via-[#09101e] to-[#0a1220] p-10 md:p-16">
-          <div
-            className="absolute inset-0 opacity-[0.18] pointer-events-none"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(0deg, transparent, transparent 47px, rgba(1,163,246,0.25) 47px, rgba(1,163,246,0.25) 48px)",
-              maskImage: "radial-gradient(ellipse 70% 100% at 80% 50%, black, transparent 75%)",
-              WebkitMaskImage: "radial-gradient(ellipse 70% 100% at 80% 50%, black, transparent 75%)",
-            }}
-          />
-          <GiTennisBall className="absolute -bottom-10 -right-8 h-64 w-64 text-[#01A3F6]/[0.06] pointer-events-none" />
-          <div className="relative z-10 max-w-2xl">
+        <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#070C13] via-[#05080B] to-[#070C13] p-10 md:p-16 text-left sm:text-center">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.08)_0%,transparent_70%)] pointer-events-none" />
+          <div className="relative z-10 max-w-[800px] mx-auto">
             <span className="section-tag mb-5">Enjoy the Best Online Tennis Betting</span>
             <h2 className="section-title">
               Feel the Thrill of{" "}
@@ -372,34 +342,32 @@ export default function TennisPage() {
 
 function Hero() {
   return (
-    <section className="relative z-10 overflow-hidden pt-[120px] pb-16 md:pb-24 px-[5%]">
-      {/* Hero background */}
+    <section className="relative z-10 overflow-hidden pt-[110px] pb-[40px] px-[5%]">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Image
           src="/tennis.png"
-          alt=""
+          alt="Tennis Betting at 1xPlay"
           fill
           sizes="100vw"
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#030914] via-[#030914]/88 to-[#030914]/45" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#030914] via-transparent to-[#030914]/55" />
-        <div className="absolute top-[10%] right-[12%] h-[460px] w-[460px] rounded-full bg-[radial-gradient(circle,rgba(1,163,246,0.14)_0%,transparent_65%)]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#05080B] via-[#05080B]/80 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-[#05080B]/50" />
+        <div className="absolute top-[12%] right-[14%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(1,163,246,0.16)_0%,transparent_65%)] pointer-events-none" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1180px]">
+      <div className="relative z-10 max-w-[1400px] mx-auto w-full flex flex-col gap-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          {/* Left: copy */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 flex flex-col justify-center">
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 rounded-full border border-[#01A3F6]/40 bg-[#01A3F6]/12 px-3.5 py-1.5 backdrop-blur-md shadow-[0_0_24px_rgba(1,163,246,0.18)]"
+              className="flex items-center gap-2 bg-[#01A3F6]/10 border border-[#01A3F6]/20 rounded-full px-4 py-1.5 w-max mb-6"
             >
-              <GiTennisBall className="w-3.5 h-3.5 text-[#01A3F6]" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#01A3F6] font-[var(--font-syne)]">
-              Tennis Betting Online at 1xPlay
+              <span className="w-2 h-2 rounded-full bg-[#01A3F6] animate-pulse" />
+              <span className="text-[11px] font-semibold text-[#01A3F6] uppercase tracking-[2px] font-[var(--font-syne)]">
+                Tennis Betting Online at 1xPlay
               </span>
             </motion.div>
 
@@ -407,17 +375,19 @@ function Hero() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
-              className="mt-6 font-[var(--font-bebas)] text-[clamp(52px,9vw,58px)] leading-[0.85] tracking-[1px] text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
+              className="font-[var(--font-bebas)] text-[clamp(46px,6.5vw,45px)] tracking-[1px] leading-[0.92] text-white mb-6"
             >
-              Tennis Betting Online at 1xPlay
-              
+              Tennis Betting Online at{" "}
+              <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(1,163,246,0.15)]">
+                1xPlay
+              </span>
             </motion.h1>
 
             <motion.p
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="mt-6 max-w-lg text-[16px] md:text-[18px] leading-relaxed font-light text-white/70"
+              className="text-[16px] md:text-[18px] text-muted leading-[1.8] font-light mb-8 max-w-[620px]"
             >
               Experience the excitement of online tennis betting — live matches,
               real-time odds, and premium markets across every Grand Slam, ATP, and
@@ -428,17 +398,23 @@ function Hero() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="mt-8 flex flex-wrap gap-4 max-sm:justify-center"
+              className="flex gap-4 flex-wrap max-sm:justify-center"
             >
-              <Link href="/apps" className="btn btn-gold btn-large">
-                Start Betting <FaArrowRight className="w-3.5 h-3.5" />
+              <Link href="/apps" className="btn btn-gold btn-large gap-2">
+                <span>Start Betting</span> <FaArrowRight size={12} />
               </Link>
               <Link href="/games" className="btn btn-ghost btn-large">
-                View Markets
+                <span>View Markets</span>
               </Link>
             </motion.div>
           </div>
 
+          <motion.div
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.25, duration: 0.6 }}
+            className="lg:col-span-5 relative flex justify-center"
+          />
         </div>
       </div>
     </section>
@@ -446,97 +422,6 @@ function Hero() {
 }
 
 /* ─────────── Reusable blocks ─────────── */
-
-// Narrow editorial block with a big ghost number on the left.
-function Block({
-  num,
-  eyebrow,
-  title,
-  accent = ACCENT,
-  children,
-}: {
-  num: string;
-  eyebrow: string;
-  title: string;
-  accent?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5 }}
-      className="mx-auto max-w-[920px]"
-    >
-      <div className="flex flex-col md:flex-row gap-6 md:gap-10">
-        <div className="shrink-0">
-          <div
-            className="font-[var(--font-bebas)] text-[56px] md:text-[80px] leading-none tracking-wider"
-            style={{ color: `${accent}26` }}
-          >
-            {num}
-          </div>
-          <div className="mt-1 h-[2px] w-12 rounded-full" style={{ background: accent }} />
-        </div>
-        <div className="flex-1">
-          <p
-            className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.3em] font-[var(--font-syne)]"
-            style={{ color: accent }}
-          >
-            {eyebrow}
-          </p>
-          <h2 className="section-title">
-            {title}
-          </h2>
-          <div className="mt-5 flex flex-col gap-5 text-[15px] leading-[1.85] font-light text-muted">
-            {children}
-          </div>
-        </div>
-      </div>
-    </motion.section>
-  );
-}
-
-// Full-width showcase block (for bento / grids / chip clouds).
-function WideBlock({
-  num,
-  eyebrow,
-  title,
-  children,
-}: {
-  num: string;
-  eyebrow: string;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5 }}
-      className="mx-auto max-w-[1180px]"
-    >
-      <div className="mb-2 flex items-center gap-4">
-        <span
-          className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider"
-          style={{ color: `${ACCENT}26` }}
-        >
-          {num}
-        </span>
-        <span className="h-[2px] w-10 rounded-full bg-[#01A3F6]" />
-        <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#01A3F6] font-[var(--font-syne)]">
-          {eyebrow}
-        </span>
-      </div>
-      <h2 className="section-title">
-        {title}
-      </h2>
-      <div className="mt-6 text-[15px] leading-[1.85] font-light text-muted">{children}</div>
-    </motion.section>
-  );
-}
 
 function TagGrid({ items }: { items: string[] }) {
   return (
@@ -627,7 +512,3 @@ const slams = [
     desc: "One of the most exciting tournaments featuring thrilling matches and passionate crowds.",
   },
 ];
-
-function l(s: string) {
-  return s.toLowerCase().replace(/\s+/g, "-");
-}

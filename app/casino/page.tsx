@@ -198,27 +198,7 @@ export default function CasinoPage() {
               transition={{ delay: 0.25, duration: 0.6 }}
               className="lg:col-span-5 relative flex justify-center"
             >
-              <div className="relative w-[280px] sm:w-[350px] h-[320px] sm:h-[420px] rounded-3xl overflow-hidden border border-white/10 bg-white/[0.03] backdrop-blur-sm p-4 shadow-[0_20px_50px_rgba(0,0,0,0.5)] group">
-                <div className="absolute -inset-1 bg-gradient-to-tr from-[#0078E5] to-[#01A3F6] rounded-3xl opacity-20 blur-xl group-hover:opacity-40 transition duration-1000 group-hover:duration-200" />
-                <div className="relative w-full h-full rounded-2xl overflow-hidden">
-                  <Image
-                    src="/casino-slots.jpg"
-                    alt="Online Casino Table Illustration"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 350px"
-                    priority
-                    className="object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-transparent" />
-                  <div className="absolute bottom-6 left-6 right-6 backdrop-blur-md bg-black/40 border border-white/10 p-4 rounded-xl flex items-center justify-between">
-                    <div className="flex flex-col">
-                      <span className="text-[10px] uppercase text-muted tracking-wider">Super Jackpot</span>
-                      <span className="text-white font-[var(--font-syne)] font-bold text-[14px]">Mega Slots Pool</span>
-                    </div>
-                    <span className="bg-[#01A3F6] text-white font-[var(--font-syne)] font-bold text-[13px] px-3 py-1.5 rounded-lg shadow-lg">₹50,00,000</span>
-                  </div>
-                </div>
-              </div>
+              
             </motion.div>
           </div>
 
@@ -240,26 +220,6 @@ export default function CasinoPage() {
               ))}
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* Stat ribbon */}
-      <section className="relative z-10 px-[5%] mt-6">
-        <div className="mx-auto max-w-[1180px] grid grid-cols-3 gap-px rounded-2xl overflow-hidden border border-white/10 bg-white/[0.06]">
-          {[
-            { v: "6", l: "Game Types" },
-            { v: "Live", l: "Dealer Rooms" },
-            { v: "24/7", l: "Always Open" },
-          ].map((s) => (
-            <div key={s.l} className="bg-[#070C13] px-5 py-7 text-center">
-              <div className="font-[var(--font-bebas)] text-[clamp(32px,5vw,50px)] leading-none tracking-wide bg-gradient-to-b from-white to-[#01A3F6] bg-clip-text text-transparent">
-                {s.v}
-              </div>
-              <div className="mt-2 text-[10px] uppercase tracking-[0.25em] text-muted font-[var(--font-syne)] font-semibold">
-                {s.l}
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -479,7 +439,7 @@ export default function CasinoPage() {
         <section id="slots-game" className="mx-auto max-w-[1180px] scroll-mt-24">
           <div className="text-left sm:text-center max-w-[650px] mx-auto mb-10">
             <div className="flex items-center justify-center gap-4 mb-3">
-              <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider text-[#01A3F6]/15">04</span>
+              <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider text-white">04</span>
               <span className="h-[2px] w-10 rounded-full bg-[#01A3F6]" />
               <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#01A3F6] font-[var(--font-syne)]">Slot Simulator</span>
             </div>
@@ -740,7 +700,7 @@ function EyebrowHead({ num, eyebrow, title }: { num: string; eyebrow: string; ti
   return (
     <>
       <div className="mb-2 flex items-center gap-4">
-        <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider" style={{ color: `${ACCENT}26` }}>
+        <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider text-white">
           {num}
         </span>
         <span className="h-[2px] w-10 rounded-full" style={{ background: ACCENT }} />

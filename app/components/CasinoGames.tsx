@@ -2,13 +2,14 @@
 
 import clsx from "clsx";
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const games = [
   { name: "Teen Patti", tag: "Indian Favourite", emoji: "🃏", image: "/teen_pati.png", badge: "hot" },
-  { name: "Aviator", tag: "Crash Game", emoji: "✈️", image: "/aviator.png", badge: "new" },
+  { name: "Aviator", tag: "Crash Game", emoji: "✈️", image: "/aviator.jpg", badge: "new" },
   { name: "Money Heist", tag: "Slot Game", emoji: "💰", image: "/money_heist.png", badge: "hot" },
   { name: "Lucy", tag: "Adventure Slot", emoji: "🎰", image: "/lucy_game.png", badge: null },
   { name: "Disco Club", tag: "Live Casino", emoji: "🪩", image: "/disco_club.png", badge: "new" },
@@ -21,7 +22,38 @@ const games = [
 
 export default function CasinoGames() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [canScrollLeft, setCanScrollLeft] = useState(false);
+  const [canScrollRight, setCanScrollRight] = useState(true);
+
+  const updateScrollState = useCallback(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const { scrollLeft, scrollWidth, clientWidth } = el;
+    setCanScrollLeft(scrollLeft > 4);
+    setCanScrollRight(scrollLeft < scrollWidth - clientWidth - 4);
+  }, []);
+
+  const scrollCarousel = useCallback((direction: "left" | "right") => {
+    const el = carouselRef.current;
+    if (!el) return;
+    const firstCard = el.querySelector<HTMLElement>("[data-casino-card]");
+    const gap = 12;
+    const step = firstCard ? firstCard.offsetWidth + gap : el.clientWidth * 0.5;
+    el.scrollBy({ left: direction === "left" ? -step * 2 : step * 2, behavior: "smooth" });
+  }, []);
+
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+    updateScrollState();
+    el.addEventListener("scroll", updateScrollState, { passive: true });
+    window.addEventListener("resize", updateScrollState);
+    return () => {
+      el.removeEventListener("scroll", updateScrollState);
+      window.removeEventListener("resize", updateScrollState);
+    };
+  }, [updateScrollState]);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -59,7 +91,7 @@ export default function CasinoGames() {
           stagger: 0.08,
           ease: "back.out(1.5)",
           scrollTrigger: {
-            trigger: gridRef.current,
+            trigger: carouselRef.current,
             start: "top 85%",
             toggleActions: "play none none none",
           },
@@ -202,42 +234,125 @@ export default function CasinoGames() {
         </div>
       </div>
 
-      {/* Games Grid */}
-      <div
-        ref={gridRef}
-        className={clsx(
-          "grid",
-          "w-full",
-          "grid-cols-2",
-          "sm:grid-cols-3",
-          "lg:grid-cols-6",
-          "gap-2",
-          "sm:gap-3"
-        )}
-        style={{ transformStyle: "preserve-3d" }}
-      >
-        {games.map((game) => (
-          <div 
-            key={game.name} 
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            className={clsx(
-              "relative",
-              "rounded-lg",
-              "overflow-hidden",
-              "aspect-[4/5]",
-              "w-full",
-              "cursor-pointer",
-              "group",
-              "reveal-card",
-              "border",
-              "border-border",
-              "shadow-md",
-              "transition-colors",
-              "duration-300"
-            )}
-            style={{ transformStyle: "preserve-3d", transform: "translateZ(0)" }}
-          >
+      {/* Games Carousel */}
+      <div className={clsx("relative", "group/carousel")}>
+        <button
+          type="button"
+          onClick={() => scrollCarousel("left")}
+          disabled={!canScrollLeft}
+          aria-label="Previous games"
+          className={clsx(
+            "absolute",
+            "left-0",
+            "top-[42%]",
+            "-translate-y-1/2",
+            "z-20",
+            "w-9",
+            "h-9",
+            "sm:w-10",
+            "sm:h-10",
+            "rounded-full",
+            "border",
+            "border-white/15",
+            "bg-bg/90",
+            "text-white",
+            "flex",
+            "items-center",
+            "justify-center",
+            "shadow-lg",
+            "transition-all",
+            "duration-200",
+            "-translate-x-1/2",
+            "disabled:opacity-30",
+            "disabled:pointer-events-none",
+            "hover:bg-gold",
+            "hover:border-gold",
+            "hover:scale-105"
+          )}
+        >
+          <ChevronLeft className="w-5 h-5" />
+        </button>
+
+        <button
+          type="button"
+          onClick={() => scrollCarousel("right")}
+          disabled={!canScrollRight}
+          aria-label="Next games"
+          className={clsx(
+            "absolute",
+            "right-0",
+            "top-[42%]",
+            "-translate-y-1/2",
+            "z-20",
+            "w-9",
+            "h-9",
+            "sm:w-10",
+            "sm:h-10",
+            "rounded-full",
+            "border",
+            "border-white/15",
+            "bg-bg/90",
+            "text-white",
+            "flex",
+            "items-center",
+            "justify-center",
+            "shadow-lg",
+            "transition-all",
+            "duration-200",
+            "translate-x-1/2",
+            "disabled:opacity-30",
+            "disabled:pointer-events-none",
+            "hover:bg-gold",
+            "hover:border-gold",
+            "hover:scale-105"
+          )}
+        >
+          <ChevronRight className="w-5 h-5" />
+        </button>
+
+        <div
+          ref={carouselRef}
+          className={clsx(
+            "flex",
+            "gap-3",
+            "overflow-x-auto",
+            "scroll-smooth",
+            "snap-x",
+            "snap-mandatory",
+            "pb-2",
+            "[scrollbar-width:none]",
+            "[&::-webkit-scrollbar]:hidden",
+            "px-1"
+          )}
+          style={{ transformStyle: "preserve-3d" }}
+        >
+          {games.map((game) => (
+            <div
+              key={game.name}
+              data-casino-card
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              className={clsx(
+                "relative",
+                "rounded-lg",
+                "overflow-hidden",
+                "aspect-[4/5]",
+                "shrink-0",
+                "snap-start",
+                "w-[calc((100%-0.75rem)/2)]",
+                "sm:w-[calc((100%-1.5rem)/3)]",
+                "lg:w-[calc((100%-1.25rem*5)/6)]",
+                "cursor-pointer",
+                "group",
+                "reveal-card",
+                "border",
+                "border-border",
+                "shadow-md",
+                "transition-colors",
+                "duration-300"
+              )}
+              style={{ transformStyle: "preserve-3d", transform: "translateZ(0)" }}
+            >
             {/* Background Image */}
             <div className={clsx('absolute', 'inset-0', 'transition-transform', 'duration-500', 'group-hover:scale-[1.05]')}>
               <Image
@@ -269,8 +384,9 @@ export default function CasinoGames() {
                 {game.name}
               </span>
             </div>
-          </div>
-        ))}
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className={clsx('flex', 'justify-center', 'mt-8')}>

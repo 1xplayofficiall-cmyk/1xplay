@@ -165,43 +165,12 @@ export default function CricketPage() {
           </div>
 
           {/* Live Score Ticker */}
-          <div className="border border-white/5 bg-[#09101e]/80 backdrop-blur-md py-4 px-6 rounded-2xl flex items-center justify-between gap-6 overflow-hidden">
-            <div className="flex items-center gap-2.5 shrink-0 bg-red-600/10 border border-red-600/20 px-3 py-1.5 rounded-md">
-              <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-pulse" />
-              <span className="text-[10px] font-bold text-red-600 uppercase tracking-[1.5px]">Live Updates</span>
-            </div>
-            <div className="flex gap-10 overflow-x-auto scrollbar-none w-full text-xs">
-              {liveScores.map((score, i) => (
-                <div key={i} className="flex items-center gap-2.5 whitespace-nowrap text-muted hover:text-white transition-colors cursor-pointer">
-                  <span className="font-bold text-white uppercase">{score.match}</span>
-                  <span className="text-[#01A3F6] font-mono">{score.score}</span>
-                  <span className="text-[9px] uppercase bg-white/5 border border-white/10 px-1.5 py-0.5 rounded text-muted">{score.status}</span>
-                </div>
-              ))}
-            </div>
-          </div>
+          
         </div>
       </section>
 
       {/* Stat ribbon */}
-      <section className="relative z-10 px-[5%] mt-6">
-        <div className="mx-auto max-w-[1180px] grid grid-cols-3 gap-px rounded-2xl overflow-hidden border border-white/10 bg-white/[0.06]">
-          {[
-            { v: "9", l: "Bet Markets" },
-            { v: "8", l: "Tournaments" },
-            { v: "24/7", l: "Live Odds" },
-          ].map((s) => (
-            <div key={s.l} className="bg-[#070C13] px-5 py-7 text-center">
-              <div className="font-[var(--font-bebas)] text-[clamp(32px,5vw,50px)] leading-none tracking-wide bg-gradient-to-b from-white to-[#01A3F6] bg-clip-text text-transparent">
-                {s.v}
-              </div>
-              <div className="mt-2 text-[10px] uppercase tracking-[0.25em] text-muted font-[var(--font-syne)] font-semibold">
-                {s.l}
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
+    
 
       {/* ── Editorial flow ── */}
       <div className="relative z-10 px-[5%] py-[70px] md:py-[100px] space-y-[72px] md:space-y-[110px]">
@@ -542,7 +511,7 @@ function EyebrowHead({ num, eyebrow, title }: { num: string; eyebrow: string; ti
   return (
     <>
       <div className="mb-2 flex items-center gap-4">
-        <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider" style={{ color: `${ACCENT}26` }}>
+        <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider text-white">
           {num}
         </span>
         <span className="h-[2px] w-10 rounded-full" style={{ background: ACCENT }} />
@@ -566,7 +535,7 @@ function WideBlock({
 }) {
   return (
     <motion.section
-      initial={{ opacity: 0, y: 28 }}
+      initial={{ opacity: 1, y: 28 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-80px" }}
       transition={{ duration: 0.5 }}

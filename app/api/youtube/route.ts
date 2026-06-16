@@ -78,7 +78,7 @@ export async function GET() {
     });
   }
 
-  // Handle caching
+ 
   const now = Date.now();
   if (cachedVideos && now - lastFetched < CACHE_DURATION_MS) {
     return NextResponse.json({

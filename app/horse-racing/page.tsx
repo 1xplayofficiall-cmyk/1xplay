@@ -12,6 +12,7 @@ import {
   FaExclamationTriangle,
 } from "react-icons/fa";
 import ScrollReveal from "../components/ScrollReveal";
+import { EditorialBlock, WideBlock } from "../components/SportPageBlocks";
 
 const ACCENT = "#01A3F6";
 
@@ -114,99 +115,86 @@ export default function HorseRacing() {
         />
       </div>
 
-      {/* ── Hero (keeps horse-racing-hero.png) ── */}
-      <section className="relative z-10 overflow-hidden pt-[120px] pb-16 md:pb-24 px-[5%]">
+      {/* ── Hero ── */}
+      <section className="relative z-10 overflow-hidden pt-[110px] pb-[40px] px-[5%]">
         <div className="absolute inset-0 z-0">
-          <Image src="/horse.png" alt="Horse Racing Betting at 1xPlay" fill sizes="100vw" className="object-cover" priority />
+          <Image src="/horse.png" alt="Horse Racing Betting at 1xPlay" fill sizes="100vw" className="object-cover object-center" priority />
           <div className="absolute inset-0 bg-gradient-to-r from-[#05080B] via-[#05080B]/80 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-[#05080B]/50" />
           <div className="absolute top-[12%] right-[14%] h-[420px] w-[420px] rounded-full bg-[radial-gradient(circle,rgba(1,163,246,0.16)_0%,transparent_65%)] pointer-events-none" />
         </div>
 
-        <div className="relative z-10 mx-auto max-w-[1180px]">
-          <div className="max-w-[720px]">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="inline-flex items-center gap-2 rounded-full border border-[#01A3F6]/40 bg-[#01A3F6]/12 px-3.5 py-1.5 backdrop-blur-md shadow-[0_0_24px_rgba(1,163,246,0.18)]"
-            >
-              <FaHorse className="w-3.5 h-3.5 text-[#01A3F6]" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#01A3F6] font-[var(--font-syne)]">
-                Horse Racing
-              </span>
-            </motion.div>
+        <div className="relative z-10 max-w-[1400px] mx-auto w-full flex flex-col gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 flex flex-col justify-center">
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="flex items-center gap-2 bg-[#01A3F6]/10 border border-[#01A3F6]/20 rounded-full px-4 py-1.5 w-max mb-6"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#01A3F6] animate-pulse" />
+                <span className="text-[11px] font-semibold text-[#01A3F6] uppercase tracking-[2px] font-[var(--font-syne)]">
+                  Horse Racing
+                </span>
+              </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="mt-6 font-[var(--font-bebas)] text-[clamp(44px,7vw,82px)] leading-[0.92] tracking-[1px] text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.5)]"
-            >
-              Horse Racing Betting
-              <br />
-              at{" "}
-              <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent">
-                1xPlay
-              </span>
-            </motion.h1>
+              <motion.h1
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="font-[var(--font-bebas)] text-[clamp(46px,6.5vw,45px)] tracking-[1px] leading-[0.92] text-white mb-6"
+              >
+                Horse Racing Betting at{" "}
+                <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(1,163,246,0.15)]">
+                  1xPlay
+                </span>
+              </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mt-6 max-w-[600px] text-[16px] md:text-[18px] leading-relaxed font-light text-white/70"
-            >
-              Welcome to the exciting world of horse racing betting at 1xPlay where speed, strategy, and real-time sports action come together on one modern betting platform.
-            </motion.p>
+              <motion.p
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="text-[16px] md:text-[18px] text-muted leading-[1.8] font-light mb-8 max-w-[620px]"
+              >
+                Welcome to the exciting world of horse racing betting at 1xPlay where speed, strategy, and real-time sports action come together on one modern betting platform.
+              </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="mt-8 flex flex-wrap gap-4 max-sm:justify-center"
-            >
-              <a href="#markets" className="btn btn-gold btn-large">
-                Explore Markets <FaArrowRight className="w-3.5 h-3.5" />
-              </a>
-              <a href="#how-to-start" className="btn btn-ghost btn-large">
-                How to Start
-              </a>
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stat ribbon */}
-      <section className="relative z-10 px-[5%] -mt-4">
-        <div className="mx-auto max-w-[1180px] grid grid-cols-3 gap-px rounded-2xl overflow-hidden border border-white/10 bg-white/[0.06]">
-          {[
-            { v: "6", l: "Bet Markets" },
-            { v: "5", l: "Event Types" },
-            { v: "24/7", l: "Live Odds" },
-          ].map((s) => (
-            <div key={s.l} className="bg-[#0C0A06] px-5 py-7 text-center">
-              <div className="font-[var(--font-bebas)] text-[clamp(32px,5vw,50px)] leading-none tracking-wide bg-gradient-to-b from-white to-[#01A3F6] bg-clip-text text-transparent">
-                {s.v}
-              </div>
-              <div className="mt-2 text-[10px] uppercase tracking-[0.25em] text-muted font-[var(--font-syne)] font-semibold">
-                {s.l}
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="flex gap-4 flex-wrap max-sm:justify-center"
+              >
+                <a href="#markets" className="btn btn-gold btn-large gap-2">
+                  <span>Explore Markets</span> <FaArrowRight size={12} />
+                </a>
+                <a href="#how-to-start" className="btn btn-ghost btn-large">
+                  <span>How to Start</span>
+                </a>
+              </motion.div>
             </div>
-          ))}
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.25, duration: 0.6 }}
+              className="lg:col-span-5 relative flex justify-center"
+            />
+          </div>
         </div>
       </section>
 
       {/* ── Editorial flow ── */}
       <div className="relative z-10 px-[5%] py-[70px] md:py-[100px] space-y-[72px] md:space-y-[110px]">
         {/* 01 — Intro */}
-        <Block num="01" eyebrow="The Sport of Kings" title="Horse Racing Betting at 1xPlay">
+        <EditorialBlock num="01" eyebrow="The Sport of Kings" title="Horse Racing Betting at 1xPlay">
           <p>
             Horse racing remains one of the most popular sports betting categories worldwide because of its fast races, thrilling finishes, and exciting betting opportunities. At 1xPlay, users can enjoy live horse racing betting, smooth mobile access, and real-time odds updates for major racing events and international tournaments.
           </p>
           <p>
             Whether you are an experienced racing fan or a beginner exploring online horse racing betting, 1xPlay provides a secure, easy to use, and user-friendly platform designed for modern sports enthusiasts.
           </p>
-        </Block>
+        </EditorialBlock>
 
         {/* 02 — Why popular */}
         <WideBlock num="02" eyebrow="Thrilling Action" title="Why Horse Racing Betting Is So Popular">
@@ -397,50 +385,60 @@ export default function HorseRacing() {
         {/* 09 — How to start (keeps image.png) */}
         <WideBlock num="09" eyebrow="Get Started" title="Easy to Start Racing Betting" id="how-to-start">
           <p className="max-w-2xl">Getting started with horse racing betting at 1xPlay is quick and beginner-friendly.</p>
-          <div className="mt-7 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {steps.map((s) => (
-                <div key={s.step} className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5">
-                  <div className="font-[var(--font-bebas)] text-[40px] leading-none text-[#01A3F6]/25">{s.step}</div>
-                  <h4 className="mt-2 font-[var(--font-syne)] text-[15px] font-bold text-white">{s.title}</h4>
-                  <p className="mt-1.5 text-[12.5px] leading-[1.6] text-muted">{s.desc}</p>
+          <div className="relative py-8 mt-2">
+            <div className="absolute top-[48px] left-[10%] right-[10%] h-[2px] bg-white/[0.07] z-0 hidden md:block" />
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-10 relative z-10">
+              {steps.map((item) => (
+                <div key={item.step} className="flex flex-col items-center md:items-start text-center md:text-left group">
+                  <div className="w-14 h-14 rounded-2xl bg-white/[0.03] border border-white/10 group-hover:border-[#01A3F6]/30 flex items-center justify-center font-[var(--font-bebas)] text-[22px] text-[#01A3F6] mb-5 shadow-lg transition-all duration-300 relative">
+                    {item.step}
+                    <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-[#01A3F6]/40 animate-ping" />
+                  </div>
+                  <h4 className="font-[var(--font-syne)] font-bold text-white text-[15px] mb-2">{item.title}</h4>
+                  <p className="text-muted text-[12.5px] leading-[1.6] font-light max-w-[240px] mx-auto md:mx-0">{item.desc}</p>
                 </div>
               ))}
             </div>
-            <div className="lg:col-span-5 relative rounded-2xl overflow-hidden border border-white/10 aspect-[16/10] bg-[#0C0A06] shadow-[0_20px_40px_rgba(0,0,0,0.5)]">
-              <div className="absolute inset-0 scale-[1.18] origin-[center_46%]">
-                <Image src="/image.png" alt="1xPlay Registration Platform" fill sizes="(max-width:1024px) 100vw, 40vw" className="object-cover" />
-              </div>
-              <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 rounded-lg border border-white/10 bg-[#05080B]/85 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[1px] text-white backdrop-blur-md">
-                <span className="h-2 w-2 rounded-full bg-[#01A3F6] animate-pulse" /> Live Platform Preview
-              </div>
-            </div>
           </div>
-          <p className="mt-8 max-w-2xl text-white/60">
+          <p className="max-w-2xl text-white/60">
             The platform is designed to make horse racing betting simple, accessible, and enjoyable for all users.
           </p>
         </WideBlock>
 
         {/* 10 — Responsible */}
-        <Block num="10" eyebrow="Play Safe" title="Responsible Sports Betting" accent="#01A3F6">
-          <p>
-            At 1xPlay, we encourage responsible gambling and recommend users enjoy horse racing betting as a form of entertainment only.
-          </p>
-          <FeatureCard
-            icon={FaExclamationTriangle}
-            accent="#01A3F6"
-            title="We recommend users:"
-            items={responsibleTips}
-          />
-          <p>Responsible betting helps maintain a safe and enjoyable sports entertainment experience.</p>
-        </Block>
+        <section className="mx-auto max-w-[1000px]">
+          <div className="rounded-3xl border border-[#01A3F6]/20 bg-[#01A3F6]/[0.04] p-6 md:p-10 flex flex-col md:flex-row gap-6 items-start relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-[radial-gradient(circle,rgba(1,163,246,0.06)_0%,transparent_70%)] pointer-events-none" />
+            <div className="w-12 h-12 rounded-2xl bg-[#01A3F6]/10 border border-[#01A3F6]/25 flex items-center justify-center text-[#01A3F6] shrink-0 shadow-lg">
+              <FaExclamationTriangle size={20} />
+            </div>
+            <div className="flex flex-col gap-4">
+              <h3 className="font-[var(--font-syne)] font-bold text-white text-[17px] uppercase tracking-wider">Responsible Sports Betting</h3>
+              <p className="text-muted text-[14.5px] leading-[1.7] font-light">
+                At 1xPlay, we encourage responsible gambling and recommend users enjoy horse racing betting as a form of entertainment only.
+              </p>
+              <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#01A3F6] font-[var(--font-syne)]">We recommend users:</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-[13px] text-muted font-light">
+                {responsibleTips.map((tip) => (
+                  <div key={tip} className="flex items-center gap-2">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#01A3F6] shrink-0" />
+                    <span>{tip}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="text-muted text-[14.5px] leading-[1.7] font-light">
+                Responsible betting helps maintain a safe and enjoyable sports entertainment experience.
+              </p>
+            </div>
+          </div>
+        </section>
       </div>
 
       {/* ── Final CTA ── */}
       <section className="relative z-10 px-[5%] pb-28">
-        <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#15100a] via-[#0C0A06] to-[#15100a] p-10 md:p-16 text-left sm:text-center">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[360px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.10)_0%,transparent_70%)] pointer-events-none" />
-          <div className="relative z-10 mx-auto max-w-[760px]">
+        <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#070C13] via-[#05080B] to-[#070C13] p-10 md:p-16 text-left sm:text-center">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.08)_0%,transparent_70%)] pointer-events-none" />
+          <div className="relative z-10 max-w-[800px] mx-auto">
             <span className="section-tag justify-center mb-5">Enjoy Horse Racing</span>
             <h2 className="section-title">
               Join the Horse Racing Betting Experience at{" "}
@@ -476,81 +474,6 @@ export default function HorseRacing() {
 
 /* ─────────── Reusable blocks ─────────── */
 
-function Block({
-  num,
-  eyebrow,
-  title,
-  accent = ACCENT,
-  children,
-}: {
-  num: string;
-  eyebrow: string;
-  title: string;
-  accent?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5 }}
-      className="mx-auto max-w-[920px]"
-    >
-      <div className="flex flex-col md:flex-row gap-6 md:gap-10">
-        <div className="shrink-0">
-          <div className="font-[var(--font-bebas)] text-[56px] md:text-[80px] leading-none tracking-wider" style={{ color: `${accent}26` }}>
-            {num}
-          </div>
-          <div className="mt-1 h-[2px] w-12 rounded-full" style={{ background: accent }} />
-        </div>
-        <div className="flex-1">
-          <p className="mb-2.5 text-[11px] font-bold uppercase tracking-[0.3em] font-[var(--font-syne)]" style={{ color: accent }}>
-            {eyebrow}
-          </p>
-          <h2 className="section-title">{title}</h2>
-          <div className="mt-5 flex flex-col gap-5 text-[15px] leading-[1.85] font-light text-muted">{children}</div>
-        </div>
-      </div>
-    </motion.section>
-  );
-}
-
-function WideBlock({
-  num,
-  eyebrow,
-  title,
-  id,
-  children,
-}: {
-  num: string;
-  eyebrow: string;
-  title: string;
-  id?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <motion.section
-      id={id}
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5 }}
-      className="mx-auto max-w-[1180px] scroll-mt-24"
-    >
-      <div className="mb-2 flex items-center gap-4">
-        <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider" style={{ color: `${ACCENT}26` }}>
-          {num}
-        </span>
-        <span className="h-[2px] w-10 rounded-full" style={{ background: ACCENT }} />
-        <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#01A3F6] font-[var(--font-syne)]">{eyebrow}</span>
-      </div>
-      <h2 className="section-title">{title}</h2>
-      <div className="mt-6 text-[15px] leading-[1.85] font-light text-muted">{children}</div>
-    </motion.section>
-  );
-}
-
 function SplitMedia({
   num,
   eyebrow,
@@ -579,7 +502,7 @@ function SplitMedia({
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
         <div className={reverse ? "lg:order-2" : ""}>
           <div className="mb-2 flex items-center gap-4">
-            <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider" style={{ color: `${ACCENT}26` }}>
+            <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider text-white">
               {num}
             </span>
             <span className="h-[2px] w-10 rounded-full" style={{ background: ACCENT }} />
@@ -588,42 +511,11 @@ function SplitMedia({
           <h2 className="section-title">{title}</h2>
           <div className="mt-5 flex flex-col gap-4 text-[15px] leading-[1.8] font-light text-muted">{children}</div>
         </div>
-        <div className={`relative overflow-hidden rounded-2xl border border-white/10 ${reverse ? "lg:order-1" : ""}`}>
-          <Image src={image} alt={alt} width={600} height={400} sizes="(max-width:1024px) 100vw, 50vw" className="w-full h-auto object-cover" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#05080B]/60 via-transparent to-transparent" />
+        <div className={`relative w-full h-[300px] rounded-3xl overflow-hidden border border-white/10 bg-white/[0.02] shadow-lg group ${reverse ? "lg:order-1" : ""}`}>
+          <Image src={image} alt={alt} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-transparent" />
         </div>
       </div>
     </motion.section>
-  );
-}
-
-function FeatureCard({
-  icon: Icon,
-  title,
-  items,
-  accent = ACCENT,
-}: {
-  icon: React.ElementType;
-  title: string;
-  items: string[];
-  accent?: string;
-}) {
-  return (
-    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6">
-      <div className="mb-4 flex items-center gap-3">
-        <span className="flex h-9 w-9 items-center justify-center rounded-lg" style={{ backgroundColor: `${accent}1A`, color: accent }}>
-          <Icon size={16} />
-        </span>
-        <p className="font-[var(--font-syne)] text-[14px] font-bold text-white">{title}</p>
-      </div>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
-        {items.map((item) => (
-          <li key={item} className="flex items-start gap-3 text-[14px] text-white/85">
-            <FaCheck className="mt-0.5 shrink-0" size={13} style={{ color: accent }} />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
   );
 }

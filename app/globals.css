@@ -201,6 +201,80 @@ body {
 ::-webkit-scrollbar-thumb:hover { background: rgba(0,120,229,0.4); }
 
 /* ============================================================
+   WORDPRESS ARTICLE CONTENT (.wp-content)
+   Styles the raw HTML returned by the WordPress REST API so it
+   matches the dark theme. Used on /blog/[slug].
+   ============================================================ */
+.wp-content {
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.85;
+}
+.wp-content > * + * { margin-top: 1.15em; }
+.wp-content h1,
+.wp-content h2,
+.wp-content h3,
+.wp-content h4 {
+  color: var(--white);
+  font-family: var(--font-syne);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-top: 1.8em;
+  margin-bottom: 0.2em;
+}
+.wp-content h2 { font-size: 1.7rem; }
+.wp-content h3 { font-size: 1.35rem; }
+.wp-content h4 { font-size: 1.1rem; }
+/* Offset anchor jumps from the Table of Contents so headings clear the fixed navbar */
+.wp-content h2,
+.wp-content h3 { scroll-margin-top: 90px; }
+.wp-content a { color: var(--gold-dim); text-decoration: underline; text-underline-offset: 2px; }
+.wp-content a:hover { color: var(--white); }
+.wp-content strong { color: #e7ebf3; }
+.wp-content img,
+.wp-content figure img {
+  max-width: 100%;
+  max-height: 360px;
+  height: auto;
+  width: auto;
+  margin-inline: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  margin: 1.4em 0;
+}
+.wp-content figcaption { font-size: 0.85em; color: var(--muted); text-align: center; margin-top: 0.5em; }
+.wp-content ul, .wp-content ol { padding-left: 1.4em; }
+.wp-content ul { list-style: disc; }
+.wp-content ol { list-style: decimal; }
+.wp-content li { margin: 0.4em 0; }
+.wp-content blockquote {
+  border-left: 3px solid var(--gold);
+  padding: 0.5em 1.1em;
+  margin: 1.5em 0;
+  background: rgba(0, 120, 229, 0.06);
+  color: #cfd6e6;
+  border-radius: 0 10px 10px 0;
+}
+.wp-content code {
+  background: var(--bg3);
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
+  font-size: 0.9em;
+}
+.wp-content pre {
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  padding: 1em 1.2em;
+  border-radius: 12px;
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+.wp-content pre code { background: none; padding: 0; }
+.wp-content hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+
+/* ============================================================
    MOBILE OPTIMIZATION — phones (<= 639px)
    Section headings/intro copy align to the LEFT, while CTA
    button groups stay CENTERED. Applies site-wide via the

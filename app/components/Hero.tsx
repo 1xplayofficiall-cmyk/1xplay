@@ -130,7 +130,7 @@ const Hero = () => {
             </motion.button>
           </a>
 
-          <a href="https://www.1xplay.xyz/games/live-casino">
+          <a href="https://www.1xplay.games/games/live-casino">
             <motion.button
               whileHover={{ scale: 1.05, backgroundColor: "rgba(6, 182, 212, 0.15)", borderColor: "rgba(6, 182, 212, 0.8)" }}
               whileTap={{ scale: 0.95 }}

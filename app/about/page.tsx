@@ -200,7 +200,7 @@ export default function AboutPage() {
             {/* Customer Support */}
             <div className={clsx('bg-card', 'border', 'border-border', 'rounded-2xl', 'p-8', 'md:p-12', 'reveal', 'group')}>
               <div className="section-tag">Help Desk</div>
-              <h3 className={clsx('font-[var(--font-bebas)]', 'text-[32px]', 'text-white', 'tracking-[1px]', 'mb-4')}>
+              <h3 className={clsx('font-[var(--font-bebas)]', 'text-[32px]', 'text-white', 'tracking-[4px]', 'mb-4')}>
                 Customer Support <span className="text-gold">That Cares</span>
               </h3>
               <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-6')}>

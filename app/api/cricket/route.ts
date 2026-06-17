@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { MOCK_MATCHES, type MockMatch } from "../../data/mockMatches";
 
-// Static export pre-renders this to its simulated payload; on a Node server it
-// behaves as ISR (the live fetch below carries its own revalidate window).
 export const dynamic = "force-static";
 
 type CricApiScore = { r: number; w: number; o: number; inning?: string };

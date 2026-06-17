@@ -363,7 +363,7 @@ export default function CasinoGames() {
                 src={game.image}
                 alt={game.name}
                 fill
-                className="object-cover"
+                className="object-fit"
               />
             </div>
             

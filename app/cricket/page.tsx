@@ -139,7 +139,7 @@ export default function CricketPage() {
     
 
       {/* ── Editorial flow ── */}
-      <div className="relative z-10 px-[5%] py-[70px] md:py-[100px] space-y-[72px] md:space-y-[110px]">
+      <div className="relative z-10 px-[5%] py-[60px] md:py-[100px] space-y-[72px] md:space-y-[90px]">
         {/* 01 — Intro + Exchange Highlights */}
         <WideBlock num="01" eyebrow="Premier Sports Portal" title="Online Cricket Betting Built for the Ultimate Fan">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
@@ -451,7 +451,7 @@ export default function CricketPage() {
       </div>
 
       {/* ── Final CTA ── */}
-      <section className="relative z-10 px-[5%] pb-28">
+      <section className="relative z-10 px-[5%] pb-15">
         <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#070C13] via-[#05080B] to-[#070C13] p-10 md:p-16 text-left sm:text-center">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.08)_0%,transparent_70%)] pointer-events-none" />
           <div className="relative z-10 max-w-[800px] mx-auto">

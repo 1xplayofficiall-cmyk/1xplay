@@ -106,7 +106,7 @@ export default function TennisPage() {
         </WideBlock>
 
         {/* 04 — Live betting */}
-        <SplitMedia num="04" eyebrow="In-Play" title="Live Tennis Betting in Real Time" image="/tennis.png" alt="Live Tennis Betting at 1xPlay">
+        <SplitMedia num="04" eyebrow="In-Play" title="Live Tennis Betting in Real Time" image="/12.png" alt="Live Tennis Betting at 1xPlay">
           <p>
             One of the biggest attractions of tennis betting online is live betting. Tennis is perfectly suited for live betting because the match constantly changes with every point played.
           </p>
@@ -245,7 +245,7 @@ export default function TennisPage() {
         </WideBlock>
 
         {/* 08 — Mobile */}
-        <SplitMedia num="08" eyebrow="On the Go" title="Mobile Tennis Betting Anytime, Anywhere" image="/tennis-hero.jpg" alt="Mobile Tennis Betting at 1xPlay" reverse>
+        <SplitMedia num="08" eyebrow="On the Go" title="Mobile Tennis Betting Anytime, Anywhere" image="/13.png" alt="Mobile Tennis Betting at 1xPlay" reverse>
           <p>Modern sports fans expect flexibility, and 1xPlay delivers exactly that.</p>
           <p>
             Our platform is fully optimized for smartphones and tablets, allowing users to enjoy tennis betting online wherever they are.

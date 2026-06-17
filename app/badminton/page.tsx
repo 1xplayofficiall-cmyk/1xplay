@@ -146,7 +146,7 @@ export default function BadmintonPage() {
         </WideBlock>
 
         {/* 03 — Live experience */}
-        <SplitMedia num="03" eyebrow="In-Play" title="Live Badminton Betting Experience" image="/badminton.png" alt="Live Badminton Betting at 1xPlay">
+        <SplitMedia num="03" eyebrow="In-Play" title="Live Badminton Betting Experience" image="/14.png" alt="Live Badminton Betting at 1xPlay">
           <p>
             At 1xPlay users can enjoy live badminton betting with real time odds and fast market updates during ongoing matches.
           </p>
@@ -243,7 +243,7 @@ export default function BadmintonPage() {
         </WideBlock>
 
         {/* 06 — Mobile */}
-        <SplitMedia num="06" eyebrow="On the Go" title="Smooth Mobile Betting Experience" image="/badminton.png" alt="Mobile Badminton Betting at 1xPlay" reverse>
+        <SplitMedia num="06" eyebrow="On the Go" title="Smooth Mobile Betting Experience" image="/15.png" alt="Mobile Badminton Betting at 1xPlay" reverse>
           <p>
             Modern users prefer mobile sports betting because it offers flexibility and instant access to live events. That is why 1xPlay is fully optimized for smartphones tablets and mobile devices.
           </p>

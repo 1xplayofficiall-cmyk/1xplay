@@ -1,55 +1,55 @@
 import Image from "next/image";
+import type { ReactNode } from "react";
 
-type SportHeroBackdropProps = {
+type SportHeroProps = {
   src: string;
   alt: string;
-  /** Tailwind object-position for mobile crop (wide assets with subject on the right) */
-  mobilePosition?: string;
+  children: ReactNode;
+  /** Tailwind object-position for desktop background */
+  desktopPosition?: string;
 };
 
-/** Full-bleed hero background — large crop on mobile, full image on desktop */
-export function SportHeroBackdrop({
+const pageX = "px-[5%]";
+
+/** Desktop: background image + text overlay. Mobile: text only (no hero image). */
+export function SportHero({
   src,
   alt,
-  mobilePosition = "object-[90%_26%]",
-}: SportHeroBackdropProps) {
+  children,
+  desktopPosition = "object-right",
+}: SportHeroProps) {
   return (
-    <div
-      className="absolute left-0 right-0 bottom-0 z-0 pointer-events-none bg-[#05080B] top-[var(--navbar-offset)]"
+    <section
+      className="relative z-10 overflow-hidden w-screen max-w-[100vw] ml-[calc(50%-50vw)] bg-[#05080B] pt-[calc(var(--navbar-offset)+2rem)] pb-8 md:pb-14 md:min-h-[520px] lg:min-h-[560px]"
     >
-      {/* Mobile: tall image band so the subject reads large below the headline */}
-      <div className="absolute inset-x-0 bottom-0 h-[min(56vh,460px)] min-h-[340px] md:hidden">
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes="100vw"
-          className={`object-cover scale-[1.18] ${mobilePosition}`}
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-[#05080B]/25 to-transparent" />
+      {/* Desktop background only */}
+      <div
+        className={`absolute top-[var(--navbar-offset)] bottom-0 left-0 right-0 pointer-events-none hidden md:block ${pageX}`}
+        aria-hidden
+      >
+        <div className="relative h-full w-full overflow-hidden bg-[#05080B]">
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes="90vw"
+            className={`object-contain ${desktopPosition}`}
+            priority
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-r from-[#05080B] from-0% via-[#05080B]/92 via-[45%] to-transparent to-[62%]"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-[#05080B]/25"
+          />
+        </div>
       </div>
 
-      {/* Desktop: full image visible, no crop */}
-      <Image
-        src={src}
-        alt={alt}
-        fill
-        sizes="100vw"
-        className="hidden md:block object-contain object-right"
-        priority
-      />
-
-      {/* Mobile: keep headline area readable */}
-      <div
-        className="absolute inset-0 md:hidden bg-gradient-to-b from-[#05080B] from-0% via-[#05080B]/94 via-[36%] to-transparent to-[52%]"
-      />
-
-      {/* Desktop overlays */}
-      <div
-        className="absolute inset-0 hidden md:block bg-gradient-to-r from-[#05080B] from-0% via-[#05080B]/90 via-[40%] to-transparent to-[72%]"
-      />
-      <div className="absolute inset-0 hidden md:block bg-gradient-to-t from-[#05080B] via-transparent to-[#05080B]/30" />
-    </div>
+      <div className={`relative z-10 ${pageX} md:min-h-[480px] flex items-center`}>
+        <div className="w-full md:w-1/2 sport-hero-copy flex flex-col justify-center py-2 md:py-10 md:pr-6">
+          {children}
+        </div>
+      </div>
+    </section>
   );
 }

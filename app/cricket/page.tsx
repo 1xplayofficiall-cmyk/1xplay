@@ -19,7 +19,7 @@ import {
   FaIdCard,
 } from "react-icons/fa";
 import ScrollReveal from "../components/ScrollReveal";
-import { SportHeroBackdrop } from "../components/SportHeroMedia";
+import { SportHero } from "../components/SportHeroMedia";
 
 const ACCENT = "#01A3F6";
 
@@ -75,7 +75,7 @@ export default function CricketPage() {
   const { scrollYProgress } = useScroll();
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#05080B] text-white">
+    <div className="relative min-h-screen overflow-hidden  text-white">
       <ScrollReveal />
 
       {/* Scroll progress */}
@@ -87,18 +87,14 @@ export default function CricketPage() {
       </div>
 
       {/* ── Hero ── */}
-      <section className="relative z-10 overflow-hidden pb-[40px] px-[5%] min-h-[min(88vh,760px)] md:min-h-[520px] lg:min-h-[580px] pt-[calc(var(--navbar-offset)+2.5rem)]">
-        <SportHeroBackdrop src="/cricket.png" alt="Cricket Betting at 1xPlay" mobilePosition="object-[88%_24%]" />
-
-        <div className="relative z-10 max-w-[1400px] mx-auto w-full">
-          <div className="max-w-[720px] flex flex-col justify-center">
+      <SportHero src="/cricket.png" alt="Cricket Betting at 1xPlay" desktopPosition="object-right">
               <motion.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="flex items-center gap-2 bg-[#01A3F6]/10 border border-[#01A3F6]/20 rounded-full px-4 py-1.5 w-max mb-6"
+                className="flex items-center gap-2 bg-[#01A3F6]/10 border border-[#01A3F6]/20 rounded-full px-4  w-max mb-6"
               >
                 <span className="w-2 h-2 rounded-full bg-[#01A3F6] animate-pulse" />
-                <span className="text-[11px] font-semibold text-[#01A3F6] uppercase tracking-[2px] font-[var(--font-syne)]">
+                <span className="sport-hero-eyebrow font-semibold text-[#01A3F6] uppercase tracking-[2px] font-[var(--font-syne)]">
                   No. 1 Cricket Exchange
                 </span>
               </motion.div>
@@ -107,7 +103,7 @@ export default function CricketPage() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="font-[var(--font-bebas)] text-[clamp(46px,6.5vw,45px)] tracking-[1px] leading-[0.92] text-white mb-6"
+                className=""
               >
                 Experience the Excitement of{" "}
                 <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(1,163,246,0.15)]">
@@ -119,7 +115,7 @@ export default function CricketPage() {
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-[16px] md:text-[18px] text-muted leading-[1.8] font-light mb-8 max-w-[620px]"
+                className=""
               >
                 Cricket is more than just a sport—it is an emotion. From thrilling T20 matches to legendary Test matches, 1xPlay delivers live match updates, real-time odds, and secure ID services on a premium, next-generation exchange.
               </motion.p>
@@ -137,9 +133,7 @@ export default function CricketPage() {
                   <span>Get Cricket ID</span>
                 </Link>
               </motion.div>
-          </div>
-        </div>
-      </section>
+      </SportHero>
 
       {/* Stat ribbon */}
     

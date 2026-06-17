@@ -9,6 +9,8 @@
   --sab: env(safe-area-inset-bottom);
   --navbar-height: 70px;
   --navbar-offset: calc(var(--navbar-height) + env(safe-area-inset-top, 0px));
+  --page-gutter: 5%;
+  --page-max-width: 1400px;
 }
 
 html, body {
@@ -275,6 +277,69 @@ body {
 }
 .wp-content pre code { background: none; padding: 0; }
 .wp-content hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+
+/* Sport page hero — moderate scale on large screens */
+.sport-hero-copy h1 {
+  font-family: var(--font-bebas);
+  font-size: clamp(36px, 5vw, 44px);
+  letter-spacing: 1px;
+  line-height: 0.92;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+@media (min-width: 768px) {
+  .sport-hero-copy h1 {
+    font-size: clamp(40px, 4.5vw, 52px);
+  }
+}
+@media (min-width: 1024px) {
+  .sport-hero-copy h1 {
+    font-size: clamp(44px, 3.8vw, 58px);
+  }
+}
+@media (min-width: 1280px) {
+  .sport-hero-copy h1 {
+    font-size: clamp(48px, 3.2vw, 64px);
+  }
+}
+@media (min-width: 1536px) {
+  .sport-hero-copy h1 {
+    font-size: 68px;
+  }
+}
+
+.sport-hero-copy p {
+  font-size: 15px;
+  line-height: 1.8;
+  font-weight: 300;
+  color: var(--muted);
+  margin-bottom: 2rem;
+  max-width: 100%;
+}
+@media (min-width: 768px) {
+  .sport-hero-copy p {
+    font-size: 16px;
+  }
+}
+@media (min-width: 1024px) {
+  .sport-hero-copy p {
+    font-size: 17px;
+  }
+}
+@media (min-width: 1280px) {
+  .sport-hero-copy p {
+    font-size: 18px;
+  }
+}
+
+.sport-hero-eyebrow {
+  font-size: 11px;
+}
+@media (min-width: 1280px) {
+  .sport-hero-eyebrow {
+    font-size: 12px;
+  }
+}
 
 /* ============================================================
    MOBILE OPTIMIZATION — phones (<= 639px)

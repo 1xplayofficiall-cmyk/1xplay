@@ -16,7 +16,7 @@ import {
 } from "react-icons/fa";
 import ScrollReveal from "../components/ScrollReveal";
 import { EditorialBlock, WideBlock } from "../components/SportPageBlocks";
-import { SportHeroBackdrop } from "../components/SportHeroMedia";
+import { SportHero } from "../components/SportHeroMedia";
 
 const ACCENT = "#01A3F6";
 
@@ -44,18 +44,14 @@ export default function BadmintonPage() {
       </div>
 
       {/* ── Hero ── */}
-      <section className="relative z-10 overflow-hidden pb-[40px] px-[5%] min-h-[min(88vh,760px)] md:min-h-[520px] lg:min-h-[580px] pt-[calc(var(--navbar-offset)+2.5rem)]">
-        <SportHeroBackdrop src="/badminton.png" alt="Badminton Betting at 1xPlay" mobilePosition="object-[92%_22%]" />
-
-        <div className="relative z-10 max-w-[1400px] mx-auto w-full">
-          <div className="max-w-[720px] flex flex-col justify-center">
-              <motion.div
+      <SportHero src="/badminton.png" alt="Badminton Betting at 1xPlay" desktopPosition="object-right">
+          <motion.div
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="flex items-center gap-2 bg-[#01A3F6]/10 border border-[#01A3F6]/20 rounded-full px-4 py-1.5 w-max mb-6"
               >
                 <span className="w-2 h-2 rounded-full bg-[#01A3F6] animate-pulse" />
-                <span className="text-[11px] font-semibold text-[#01A3F6] uppercase tracking-[2px] font-[var(--font-syne)]">
+                <span className="sport-hero-eyebrow font-semibold text-[#01A3F6] uppercase tracking-[2px] font-[var(--font-syne)]">
                   Badminton Betting
                 </span>
               </motion.div>
@@ -64,7 +60,7 @@ export default function BadmintonPage() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="font-[var(--font-bebas)] text-[clamp(46px,6.5vw,45px)] tracking-[1px] leading-[0.92] text-white mb-6"
+                className=""
               >
                 Badminton Betting at{" "}
                 <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(1,163,246,0.15)]">
@@ -76,7 +72,7 @@ export default function BadmintonPage() {
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="text-[16px] md:text-[18px] text-muted leading-[1.8] font-light mb-8 max-w-[620px]"
+                className=""
               >
                 Experience fast-paced action, live match excitement, and seamless betting
                 markets on the most secure sports portal in India.
@@ -95,9 +91,7 @@ export default function BadmintonPage() {
                   <span>How to Start</span>
                 </button>
               </motion.div>
-          </div>
-        </div>
-      </section>
+      </SportHero>
 
       {/* ── Editorial flow ── */}
       <div className="relative z-10 px-[5%] py-[70px] md:py-[100px] space-y-[72px] md:space-y-[110px]">

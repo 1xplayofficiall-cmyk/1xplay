@@ -144,8 +144,8 @@ body {
   font-family: var(--font-bebas);
   /* Single standard size for ALL section headings (h2) across the site */
   font-size: clamp(28px, 4.5vw, 50px);
-  letter-spacing: 1px;
-  line-height: 1;
+  letter-spacing: 0.8px;
+  line-height: 1.2;
   color: var(--white);
   margin-bottom: 16px;
 }

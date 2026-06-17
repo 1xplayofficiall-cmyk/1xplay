@@ -11,7 +11,7 @@ import {
   FaLock,
 } from "react-icons/fa";
 import ScrollReveal from "../components/ScrollReveal";
-import { EditorialBlock, WideBlock } from "../components/SportPageBlocks";
+import { EditorialBlock, WideBlock, SplitMedia } from "../components/SportPageBlocks";
 import { SportHero } from "../components/SportHeroMedia";
 
 const ACCENT = "#01A3F6";
@@ -105,8 +105,8 @@ export default function TennisPage() {
           </p>
         </WideBlock>
 
-        {/* 04 — Live betting (split with feature card) */}
-        <EditorialBlock num="04" eyebrow="In-Play" title="Live Tennis Betting in Real Time">
+        {/* 04 — Live betting */}
+        <SplitMedia num="04" eyebrow="In-Play" title="Live Tennis Betting in Real Time" image="/tennis.png" alt="Live Tennis Betting at 1xPlay">
           <p>
             One of the biggest attractions of tennis betting online is live betting. Tennis is perfectly suited for live betting because the match constantly changes with every point played.
           </p>
@@ -128,7 +128,7 @@ export default function TennisPage() {
           <p>
             As players win games and sets, new opportunities become available throughout the match, creating a more engaging experience for tennis fans.
           </p>
-        </EditorialBlock>
+        </SplitMedia>
 
         {/* 05 — Markets bento */}
         <WideBlock num="05" eyebrow="Markets" title="Popular Tennis Betting Markets">
@@ -245,7 +245,7 @@ export default function TennisPage() {
         </WideBlock>
 
         {/* 08 — Mobile */}
-        <EditorialBlock num="08" eyebrow="On the Go" title="Mobile Tennis Betting Anytime, Anywhere">
+        <SplitMedia num="08" eyebrow="On the Go" title="Mobile Tennis Betting Anytime, Anywhere" image="/tennis-hero.jpg" alt="Mobile Tennis Betting at 1xPlay" reverse>
           <p>Modern sports fans expect flexibility, and 1xPlay delivers exactly that.</p>
           <p>
             Our platform is fully optimized for smartphones and tablets, allowing users to enjoy tennis betting online wherever they are.
@@ -265,7 +265,7 @@ export default function TennisPage() {
           <p>
             Whether you are watching a Grand Slam final at home or following an ATP match while travelling, 1xPlay keeps you connected to the action.
           </p>
-        </EditorialBlock>
+        </SplitMedia>
 
         {/* 09 — Security */}
         <EditorialBlock num="09" eyebrow="Trust" title="Safe and Secure Betting Environment">

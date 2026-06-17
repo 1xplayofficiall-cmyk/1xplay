@@ -15,7 +15,7 @@ import {
   FaExclamationTriangle,
 } from "react-icons/fa";
 import ScrollReveal from "../components/ScrollReveal";
-import { EditorialBlock, WideBlock } from "../components/SportPageBlocks";
+import { EditorialBlock, WideBlock, SplitMedia } from "../components/SportPageBlocks";
 import { SportHero } from "../components/SportHeroMedia";
 
 const ACCENT = "#01A3F6";
@@ -146,7 +146,7 @@ export default function BadmintonPage() {
         </WideBlock>
 
         {/* 03 — Live experience */}
-        <EditorialBlock num="03" eyebrow="In-Play" title="Live Badminton Betting Experience">
+        <SplitMedia num="03" eyebrow="In-Play" title="Live Badminton Betting Experience" image="/badminton.png" alt="Live Badminton Betting at 1xPlay">
           <p>
             At 1xPlay users can enjoy live badminton betting with real time odds and fast market updates during ongoing matches.
           </p>
@@ -168,7 +168,7 @@ export default function BadmintonPage() {
           <p>
             Live badminton betting creates a more interactive sports experience because users can react to match situations instantly.
           </p>
-        </EditorialBlock>
+        </SplitMedia>
 
         {/* 04 — Markets bento */}
         <WideBlock num="04" eyebrow="Markets" title="Popular Badminton Betting Markets" id="markets">
@@ -243,7 +243,7 @@ export default function BadmintonPage() {
         </WideBlock>
 
         {/* 06 — Mobile */}
-        <EditorialBlock num="06" eyebrow="On the Go" title="Smooth Mobile Betting Experience">
+        <SplitMedia num="06" eyebrow="On the Go" title="Smooth Mobile Betting Experience" image="/badminton.png" alt="Mobile Badminton Betting at 1xPlay" reverse>
           <p>
             Modern users prefer mobile sports betting because it offers flexibility and instant access to live events. That is why 1xPlay is fully optimized for smartphones tablets and mobile devices.
           </p>
@@ -259,7 +259,7 @@ export default function BadmintonPage() {
             ]}
           />
           <p>The mobile platform is designed for fast navigation and uninterrupted sports entertainment.</p>
-        </EditorialBlock>
+        </SplitMedia>
 
         {/* 07 — Security */}
         <EditorialBlock num="07" eyebrow="Trust" title="Secure Online Sports Betting Platform">

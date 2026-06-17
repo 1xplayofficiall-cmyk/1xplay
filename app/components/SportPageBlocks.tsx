@@ -1,6 +1,8 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { ReactNode } from "react";
+import { SportImageCard } from "./SportImageCard";
 
 export const SPORT_PAGE_ACCENT = "#01A3F6";
 
@@ -65,5 +67,58 @@ export function EditorialBlock({
     <WideBlock num={num} eyebrow={eyebrow} title={title} id={id}>
       {children}
     </WideBlock>
+  );
+}
+
+/** Two-column text + SportImageCard layout used on sport game pages. */
+export function SplitMedia({
+  num,
+  eyebrow,
+  title,
+  image,
+  alt,
+  reverse,
+  id,
+  imageClassName,
+  sizes,
+  overlay,
+  children,
+}: {
+  num: string;
+  eyebrow: string;
+  title: string;
+  image: string;
+  alt: string;
+  reverse?: boolean;
+  id?: string;
+  imageClassName?: string;
+  sizes?: string;
+  overlay?: ReactNode;
+  children: ReactNode;
+}) {
+  return (
+    <motion.section
+      id={id}
+      initial={{ opacity: 0, y: 28 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-80px" }}
+      transition={{ duration: 0.5 }}
+      className="mx-auto max-w-[1180px] scroll-mt-24"
+    >
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div className={reverse ? "lg:order-2" : ""}>
+          <EyebrowHead num={num} eyebrow={eyebrow} title={title} />
+          <div className="mt-5 flex flex-col gap-4 text-[15px] leading-[1.8] font-light text-muted">{children}</div>
+        </div>
+        <SportImageCard
+          src={image}
+          alt={alt}
+          reverse={reverse}
+          imageClassName={imageClassName}
+          sizes={sizes}
+          overlay={overlay}
+        />
+      </div>
+    </motion.section>
   );
 }

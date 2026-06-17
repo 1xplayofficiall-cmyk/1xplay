@@ -36,7 +36,35 @@ const MOCK_VIDEO_IDS = new Set([
   "MIvCSK2026",
   "ENGPAKHighlights",
   "cricket_best_catches",
+  "mock-t20-world-cup",
+  "mock-ipl-final",
 ]);
+
+function youtubeIdFromThumbnail(thumbnail: string) {
+  const match = thumbnail.match(/\/vi\/([^/]+)\//);
+  return match?.[1] ?? null;
+}
+
+function isMockVideo(video: Video, simulated: boolean) {
+  return (
+    simulated ||
+    video.id.startsWith("mock") ||
+    MOCK_VIDEO_IDS.has(video.id) ||
+    !/^[a-zA-Z0-9_-]{11}$/.test(video.id)
+  );
+}
+
+function getEmbedUrl(video: Video, simulated: boolean) {
+  if (isMockVideo(video, simulated)) {
+    const fromThumb = youtubeIdFromThumbnail(video.thumbnail);
+    if (fromThumb) {
+      return `https://www.youtube.com/embed/${fromThumb}?autoplay=1`;
+    }
+    return "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
+  }
+
+  return `https://www.youtube.com/embed/${video.id}?autoplay=1`;
+}
 
 function formatPublishedDate(iso: string) {
   if (!iso) return "";
@@ -47,19 +75,6 @@ function formatPublishedDate(iso: string) {
     month: "short",
     year: "numeric",
   });
-}
-
-function getEmbedUrl(video: Video, simulated: boolean) {
-  const isMock =
-    simulated ||
-    video.id.startsWith("mock") ||
-    MOCK_VIDEO_IDS.has(video.id);
-
-  if (isMock) {
-    return "https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1";
-  }
-
-  return `https://www.youtube.com/embed/${video.id}?autoplay=1`;
 }
 
 function VideoCard({
@@ -209,7 +224,7 @@ export default function HighlightsPage() {
   // call from an effect; retryFetch adds the spinner for manual retries.
   const fetchVideos = useCallback(async () => {
     try {
-      const res = await fetch("/api/youtube?limit=12");
+      const res = await fetch("/api/youtube?limit=25");
       if (!res.ok) {
         throw new Error(`Failed to fetch videos (${res.status})`);
       }
@@ -296,7 +311,7 @@ export default function HighlightsPage() {
         />
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.12)_0%,transparent_65%)] pointer-events-none" />
         <div className="absolute bottom-1/3 -left-32 w-[400px] h-[400px] bg-[radial-gradient(circle,rgba(0,120,229,0.08)_0%,transparent_70%)] pointer-events-none" />
-        <div className="absolute inset-x-0 top-0 h-[520px] pointer-events-none overflow-hidden relative">
+        <div className="absolute inset-x-0 top-0 h-[520px] pointer-events-none overflow-hidden">
           <Image
             src="/highlights-hero.jpg"
             alt=""
@@ -309,7 +324,7 @@ export default function HighlightsPage() {
         </div>
 
         {/* Hero */}
-        <section className="relative z-10 pt-[110px] pb-6 px-[5%]">
+        <section className="relative z-10 pt-[calc(var(--navbar-offset)+2rem)] pb-6 px-[5%]">
           <div className="max-w-[1400px] mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 24 }}
@@ -699,11 +714,19 @@ export default function HighlightsPage() {
                     Channel{" "}
                     <strong className="text-white font-[var(--font-syne)]">{selectedVideo.channelTitle}</strong>
                   </span>
-                  {!simulated &&
-                    !selectedVideo.id.startsWith("mock") &&
-                    !MOCK_VIDEO_IDS.has(selectedVideo.id) && (
+                  {!simulated && !isMockVideo(selectedVideo, simulated) && (
                       <a
                         href={`https://www.youtube.com/watch?v=${selectedVideo.id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-[#01A3F6] hover:text-white font-bold text-[12px] uppercase tracking-wider font-[var(--font-syne)] transition-colors"
+                      >
+                        Open on YouTube →
+                      </a>
+                    )}
+                  {simulated && youtubeIdFromThumbnail(selectedVideo.thumbnail) && (
+                      <a
+                        href={`https://www.youtube.com/watch?v=${youtubeIdFromThumbnail(selectedVideo.thumbnail)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-1 text-[#01A3F6] hover:text-white font-bold text-[12px] uppercase tracking-wider font-[var(--font-syne)] transition-colors"

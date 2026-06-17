@@ -2,7 +2,6 @@
 
 import clsx from "clsx";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import {
@@ -20,6 +19,7 @@ import {
 } from "react-icons/fa";
 import ScrollReveal from "../components/ScrollReveal";
 import { SportHero } from "../components/SportHeroMedia";
+import { SportImageCard } from "../components/SportImageCard";
 
 const ACCENT = "#01A3F6";
 
@@ -233,13 +233,16 @@ export default function CricketPage() {
                 </div>
               </div>
             </div>
-            <div className="relative w-full h-[300px] rounded-3xl overflow-hidden border border-white/10 bg-white/[0.02] shadow-lg group">
-              <Image src="/cricket-live.png" alt="Live Wicket Smash Graphic" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 bg-red-600 text-white text-[10px] font-bold uppercase tracking-[1px] px-3 py-1 rounded-full flex items-center gap-1.5 border border-red-500/30">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> Active Live Bets
-              </div>
-            </div>
+            <SportImageCard
+              src="/live_cricket.png"
+              alt="Live Wicket Smash Graphic"
+              sizes="(max-width:1024px) 100vw, 50vw"
+              overlay={
+                <div className="absolute bottom-4 left-4 bg-red-600 text-white text-[10px] font-bold uppercase tracking-[1px] px-3 py-1 rounded-full flex items-center gap-1.5 border border-red-500/30">
+                  <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" /> Active Live Bets
+                </div>
+              }
+            />
           </div>
         </section>
 
@@ -265,13 +268,17 @@ export default function CricketPage() {
                 </div>
               </div>
             </div>
-            <div className="lg:order-1 relative w-full h-[300px] rounded-3xl overflow-hidden border border-white/10 bg-white/[0.02] shadow-lg group">
-              <Image src="/cricket-mobile.png" alt="Futuristic Mobile Betting" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 bg-[#0078E5] text-white text-[10px] font-bold uppercase tracking-[1px] px-3 py-1 rounded-full flex items-center gap-1.5 border border-[#0078E5]/30">
-                <FaMobileAlt size={11} /> 100% Mobile Optimized
-              </div>
-            </div>
+           <SportImageCard
+              src="/3nd_cricket.png"
+              alt="Futuristic Mobile Betting"
+              reverse
+              sizes="(max-width:1024px) 100vw, 50vw"
+              overlay={
+                <div className="absolute bottom-4 left-4 bg-[#0078E5] text-white text-[10px] font-bold uppercase tracking-[1px] px-3 py-1 rounded-full flex items-center gap-1.5 border border-[#0078E5]/30">
+                  <FaMobileAlt size={11} /> 100% Mobile Optimized
+                </div>
+              }
+            />
           </div>
         </section>
 

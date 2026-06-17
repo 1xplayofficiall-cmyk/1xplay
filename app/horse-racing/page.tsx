@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { motion, useScroll } from "framer-motion";
 import {
   FaHorse,
@@ -12,7 +11,7 @@ import {
   FaExclamationTriangle,
 } from "react-icons/fa";
 import ScrollReveal from "../components/ScrollReveal";
-import { EditorialBlock, WideBlock } from "../components/SportPageBlocks";
+import { EditorialBlock, WideBlock, SplitMedia } from "../components/SportPageBlocks";
 import { SportHero } from "../components/SportHeroMedia";
 
 const ACCENT = "#01A3F6";
@@ -199,7 +198,7 @@ export default function HorseRacing() {
         </WideBlock>
 
         {/* 03 — Live betting (split with horse-racing-live.png) */}
-        <SplitMedia num="03" eyebrow="Live Race Tracking" title="Live Horse Racing Betting Experience" image="/horse-racing-live.jpg" alt="Live Horse Racing Betting at 1xPlay">
+        <SplitMedia num="03" eyebrow="Live Race Tracking" title="Live Horse Racing Betting Experience" image="/1XPLAY_GAMES2.PNG" alt="Live Horse Racing Betting at 1xPlay">
           <p>
             At 1xPlay, users can enjoy live horse racing betting with real-time race updates and continuously changing odds.
           </p>
@@ -275,7 +274,7 @@ export default function HorseRacing() {
         </WideBlock>
 
         {/* 06 — Mobile (split reverse with horse-racing-mobile.png) */}
-        <SplitMedia num="06" eyebrow="Mobile Optimization" title="Smooth Mobile Horse Racing Experience" image="/horse-racing-mobile.jpg" alt="Mobile Horse Racing Betting at 1xPlay" reverse>
+        <SplitMedia num="06" eyebrow="Mobile Optimization" title="Smooth Mobile Horse Racing Experience" image="/1XPLAY_GAMES3.PNG" alt="Mobile Horse Racing Betting at 1xPlay" reverse>
           <p>
             Modern users prefer mobile sports betting because it provides instant access to live races anytime and anywhere. 1xPlay is fully optimized for mobile devices for convenience and speed.
           </p>
@@ -453,50 +452,3 @@ export default function HorseRacing() {
   );
 }
 
-/* ─────────── Reusable blocks ─────────── */
-
-function SplitMedia({
-  num,
-  eyebrow,
-  title,
-  image,
-  alt,
-  reverse,
-  children,
-}: {
-  num: string;
-  eyebrow: string;
-  title: string;
-  image: string;
-  alt: string;
-  reverse?: boolean;
-  children: React.ReactNode;
-}) {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5 }}
-      className="mx-auto max-w-[1180px]"
-    >
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-        <div className={reverse ? "lg:order-2" : ""}>
-          <div className="mb-2 flex items-center gap-4">
-            <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider text-white">
-              {num}
-            </span>
-            <span className="h-[2px] w-10 rounded-full" style={{ background: ACCENT }} />
-            <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#01A3F6] font-[var(--font-syne)]">{eyebrow}</span>
-          </div>
-          <h2 className="section-title">{title}</h2>
-          <div className="mt-5 flex flex-col gap-4 text-[15px] leading-[1.8] font-light text-muted">{children}</div>
-        </div>
-        <div className={`relative w-full h-[300px] rounded-3xl overflow-hidden border border-white/10 bg-white/[0.02] shadow-lg group ${reverse ? "lg:order-1" : ""}`}>
-          <Image src={image} alt={alt} fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-transparent" />
-        </div>
-      </div>
-    </motion.section>
-  );
-}

@@ -2,7 +2,6 @@
 
 import clsx from "clsx";
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import {
@@ -18,6 +17,7 @@ import {
 } from "react-icons/fa";
 import ScrollReveal from "../components/ScrollReveal";
 import { SportHero } from "../components/SportHeroMedia";
+import { EyebrowHead, WideBlock, SplitMedia } from "../components/SportPageBlocks";
 
 const ACCENT = "#01A3F6";
 
@@ -476,39 +476,42 @@ export default function CasinoPage() {
           </div>
         </section>
 
-        {/* 05 — Mobile (split casino-mobile.png) */}
-        <section className="mx-auto max-w-[1180px]">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
-            <div>
-              <EyebrowHead num="05" eyebrow="On-The-Go Play" title="Play Anytime with Mobile Casino Gaming" />
-              <p className="mt-5 text-muted text-[15px] leading-[1.8] font-light">
-                Today&apos;s players want flexibility, and 1xPlay is designed to deliver exactly that. Our platform is fully optimized for smartphones, tablets, laptops, and desktop devices, allowing players to enjoy their favorite casino games whenever and wherever they want.
-              </p>
-              <h4 className="mt-6 font-[var(--font-syne)] text-[14px] font-bold text-white uppercase tracking-wider mb-4">Benefits of Mobile Play:</h4>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[
-                  "Instant access to casino games",
-                  "Smooth performance across devices",
-                  "Fast navigation and gameplay",
-                  "No complicated setup process",
-                  "Convenient gaming from anywhere",
-                ].map((benefit) => (
-                  <div key={benefit} className="flex items-center gap-2.5 text-[13px] text-white/85 font-medium">
-                    <FaCheck className="text-[#01A3F6] shrink-0" size={13} />
-                    <span>{benefit}</span>
-                  </div>
-                ))}
-              </div>
+        {/* 05 — Mobile */}
+        <SplitMedia
+          num="05"
+          eyebrow="On-The-Go Play"
+          title="Play Anytime with Mobile Casino Gaming"
+          image="/casino1.png"
+          alt="Mobile Casino Gaming at 1xPlay"
+          sizes="(max-width:1024px) 100vw, 50vw"
+          imageClassName="object-fit object-top"
+          overlay={
+            <div className="absolute bottom-4 left-4 bg-[#0078E5] text-white text-[10px] font-bold uppercase tracking-[1px] px-3 py-1 rounded-full flex items-center gap-1.5 border border-[#0078E5]/30">
+              <FaMobileAlt size={11} /> 100% Mobile Friendly
             </div>
-            <div className="relative w-full h-[300px] rounded-3xl overflow-hidden border border-white/10 bg-white/[0.02] shadow-lg group">
-              <Image src="/andar-bahar.jpg" alt="Mobile Casino Gaming at 1xPlay" fill sizes="(max-width:1024px) 100vw, 50vw" className="object-cover object-top transition-transform duration-500 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#05080B] via-transparent to-transparent" />
-              <div className="absolute bottom-4 left-4 bg-[#0078E5] text-white text-[10px] font-bold uppercase tracking-[1px] px-3 py-1 rounded-full flex items-center gap-1.5 border border-[#0078E5]/30">
-                <FaMobileAlt size={11} /> 100% Mobile Friendly
+          }
+        >
+          <p>
+            Today&apos;s players want flexibility, and 1xPlay is designed to deliver exactly that. Our platform is fully optimized for smartphones, tablets, laptops, and desktop devices, allowing players to enjoy their favorite casino games whenever and wherever they want.
+          </p>
+          <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#01A3F6] font-[var(--font-syne)]">
+            Benefits of Mobile Play
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {[
+              "Instant access to casino games",
+              "Smooth performance across devices",
+              "Fast navigation and gameplay",
+              "No complicated setup process",
+              "Convenient gaming from anywhere",
+            ].map((benefit) => (
+              <div key={benefit} className="flex items-center gap-2.5 text-[13px] text-white/85 font-medium">
+                <FaCheck className="text-[#01A3F6] shrink-0" size={13} />
+                <span>{benefit}</span>
               </div>
-            </div>
+            ))}
           </div>
-        </section>
+        </SplitMedia>
 
         {/* 06 — Safe & secure */}
         <WideBlock num="06" eyebrow="Safe & Protected" title="A Safe and Secure Gaming Environment">
@@ -640,47 +643,5 @@ export default function CasinoPage() {
         </div>
       </section>
     </div>
-  );
-}
-
-/* ─────────── Reusable blocks ─────────── */
-
-function EyebrowHead({ num, eyebrow, title }: { num: string; eyebrow: string; title: string }) {
-  return (
-    <>
-      <div className="mb-2 flex items-center gap-4">
-        <span className="font-[var(--font-bebas)] text-[40px] leading-none tracking-wider text-white">
-          {num}
-        </span>
-        <span className="h-[2px] w-10 rounded-full" style={{ background: ACCENT }} />
-        <span className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#01A3F6] font-[var(--font-syne)]">{eyebrow}</span>
-      </div>
-      <h2 className="section-title">{title}</h2>
-    </>
-  );
-}
-
-function WideBlock({
-  num,
-  eyebrow,
-  title,
-  children,
-}: {
-  num: string;
-  eyebrow: string;
-  title: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.5 }}
-      className="mx-auto max-w-[1180px]"
-    >
-      <EyebrowHead num={num} eyebrow={eyebrow} title={title} />
-      <div className="mt-6 text-[15px] leading-[1.85] font-light text-muted">{children}</div>
-    </motion.section>
   );
 }

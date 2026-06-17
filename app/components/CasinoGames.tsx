@@ -2,22 +2,23 @@
 
 import clsx from "clsx";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const games = [
-  { name: "Money Heist", tag: "Slot Game", emoji: "💰", image: "/money_heist.png", badge: "hot" },
-  { name: "Lucy", tag: "Adventure Slot", emoji: "🎰", image: "/lucy_game.png", badge: null },
-  { name: "Aviator", tag: "Crash Game", emoji: "✈️", image: "/aviator.jpg", badge: "new" },
-  { name: "Teen Patti", tag: "Indian Favourite", emoji: "🃏", image: "/teen_pati.png", badge: "hot" },
-  { name: "Disco Club", tag: "Live Casino", emoji: "🪩", image: "/disco_club.png", badge: "new" },
-  { name: "Naughty Button", tag: "Instant Win", emoji: "🎲", image: "/naughty_button.png", badge: null },
-  { name: "Chicken Road", tag: "Crash Game", emoji: "🐔", image: "/chiken_road.jpeg", badge: "new" },
-  { name: "Campus Crush", tag: "Slot Game", emoji: "💕", image: "/campus_crush.jpeg", badge: null },
-  { name: "F1 Racing", tag: "Sports Slot", emoji: "🏎️", image: "/f1.png", badge: "hot" },
-  { name: "Ramp", tag: "Crash Game", emoji: "📈", image: "/ramp.jpeg", badge: null },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Slot Game", emoji: "💰", image: "/money_heist.png", badge: "hot" },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Adventure Slot", emoji: "🎰", image: "/lucy_game.png", badge: null },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Crash Game", emoji: "✈️", image: "/aviator.jpg", badge: "new" },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Indian Favourite", emoji: "🃏", image: "/teen_pati.png", badge: "hot" },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Live Casino", emoji: "🪩", image: "/disco_club.png", badge: "new" },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Instant Win", emoji: "🎲", image: "/naughty_button.png", badge: null },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Crash Game", emoji: "🐔", image: "/chiken_road.jpeg", badge: "new" },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Slot Game", emoji: "💕", image: "/campus_crush.jpeg", badge: null },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Sports Slot", emoji: "🏎️", image: "/f1.png", badge: "hot" },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Crash Game", emoji: "📈", image: "/ramp.jpeg", badge: null },
 ];
 
 export default function CasinoGames() {
@@ -131,7 +132,7 @@ export default function CasinoGames() {
   }, []);
 
   // 3D Tilt Hover Effects
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLElement>) => {
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
@@ -153,7 +154,7 @@ export default function CasinoGames() {
     });
   };
 
-  const handleMouseLeave = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseLeave = (e: React.MouseEvent<HTMLElement>) => {
     const card = e.currentTarget;
     gsap.to(card, {
       rotateX: 0,
@@ -327,8 +328,11 @@ export default function CasinoGames() {
           style={{ transformStyle: "preserve-3d" }}
         >
           {games.map((game) => (
-            <div
-              key={game.name}
+            <Link
+              href={game.href}
+              key={game.image}
+              target="_blank"
+              rel="noopener noreferrer"
               data-casino-card
               onMouseMove={handleMouseMove}
               onMouseLeave={handleMouseLeave}
@@ -384,7 +388,7 @@ export default function CasinoGames() {
                 {game.name}
               </span>
             </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

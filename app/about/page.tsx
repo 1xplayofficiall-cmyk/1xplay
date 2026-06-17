@@ -235,12 +235,12 @@ export default function AboutPage() {
           <h2 className="section-title">
             Why Players Choose <span className="text-gold">1xPlay</span>
           </h2>
-          <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-8')}>
-            Players choose 1xPlay because we focus on what truly matters. We provide a smooth user experience, strong platform performance, engaging entertainment, secure systems, and reliable support. Every part of our platform is built to make online entertainment more enjoyable and accessible.
+          <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-5')}>
+            Players choose 1xPlay because we focus on what truly matters. We provide a smooth user experience, strong platform performance, engaging entertainment, secure systems, and reliable support. Every part of our platform is built to make online entertainment more enjoyable and accessible.  Our growing global community reflects the trust and satisfaction of users who continue choosing 1xPlay for their digital entertainment needs. We are proud to serve players from different regions and backgrounds while maintaining high standards of quality and performance.
           </p>
-          <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light', 'max-w-[700px]', 'mx-auto')}>
+          {/* <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light')}>
             Our growing global community reflects the trust and satisfaction of users who continue choosing 1xPlay for their digital entertainment needs. We are proud to serve players from different regions and backgrounds while maintaining high standards of quality and performance.
-          </p>
+          </p> */}
         </div>
       </section>
 

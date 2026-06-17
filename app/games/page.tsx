@@ -3,54 +3,49 @@
 import clsx from "clsx";
 import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
+import { SportImageCard } from "../components/SportImageCard";
 
 const games = [
   {
     name: "Badminton",
-    emoji: "🏸",
+    image: "/badminton.png",
     desc: "Fast paced live badminton betting with real time odds and international tournament coverage.",
     href: "/badminton",
-    gradient: "from-[#0a1a2a] to-[#0d2a3d]",
     available: true,
   },
   {
     name: "Soccer",
-    emoji: "⚽",
+    image: "/soccer.png",
     desc: "Bet on football matches worldwide with live scores, multiple markets and smooth mobile experience.",
     href: "/soccer",
-    gradient: "from-[#0a2a14] to-[#0d3d1f]",
     available: true,
   },
   {
     name: "Horse Racing",
-    emoji: "🏇",
+    image: "/horse.png",
     desc: "Experience the thrill of horse racing betting with live race tracking and fast odds updates.",
     href: "/horse-racing",
-    gradient: "from-[#2a1a0a] to-[#3d2a0d]",
     available: true,
   },
   {
     name: "Tennis",
-    emoji: "🎾",
+    image: "/tennis.png",
     desc: "Follow Grand Slam tournaments and live tennis matches with real time betting markets.",
     href: "/tennis",
-    gradient: "from-[#1a2a0a] to-[#2a3d0d]",
-    available: false,
+    available: true,
   },
   {
     name: "Casino",
-    emoji: "🎰",
+    image: "/casino.png",
     desc: "Premium casino games including slots, roulette, blackjack, and live dealer experiences.",
     href: "/casino",
-    gradient: "from-[#2a0a1a] to-[#3d0d2a]",
     available: true,
   },
   {
     name: "Cricket",
-    emoji: "🏏",
+    image: "/cricket.png",
     desc: "India's best cricket betting platform with IPL live betting, ball-by-ball markets and instant cricket ID.",
     href: "/cricket",
-    gradient: "from-[#0a0e2a] to-[#0d1a3d]",
     available: true,
   },
 ];
@@ -83,40 +78,29 @@ export default function GamesPage() {
               <Link
                 key={game.name}
                 href={game.available ? game.href : "#"}
-                className={clsx(
-                  'block', 'rounded-2xl', 'overflow-hidden', 'border', 'border-border',
-                  'hover:border-[rgba(0,120,229,0.35)]', 'transition-all', 'duration-300',
-                  'group', 'reveal', 'no-underline',
-                  !game.available && 'opacity-60 pointer-events-none'
-                )}
+                className={clsx('block', 'no-underline', 'reveal', !game.available && 'opacity-60 pointer-events-none')}
               >
-                {/* Card Top - Gradient + Emoji */}
-                <div className={clsx('relative', 'h-[200px]', 'bg-gradient-to-br', game.gradient, 'flex', 'items-center', 'justify-center', 'overflow-hidden')}>
-                  <span className={clsx('text-[80px]', 'group-hover:scale-110', 'transition-transform', 'duration-300')}>{game.emoji}</span>
-                  {/* Glow */}
-                  <div className={clsx('absolute', 'bottom-0', 'left-0', 'right-0', 'h-[60px]', 'bg-gradient-to-t', 'from-[var(--card)]', 'to-transparent')} />
-
-                  {/* Badge */}
-                  {!game.available && (
-                    <div className={clsx('absolute', 'top-4', 'right-4', 'bg-muted/20', 'text-muted', 'text-[10px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'px-3', 'py-1', 'rounded-full', 'border', 'border-border')}>
-                      Coming Soon
-                    </div>
-                  )}
-                  {game.available && (
-                    <div className={clsx('absolute', 'top-4', 'right-4', 'bg-[rgba(0,120,229,0.15)]', 'text-[#0078E5]', 'text-[10px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'px-3', 'py-1', 'rounded-full', 'border', 'border-[rgba(0,120,229,0.3)]')}>
-                      Live
-                    </div>
-                  )}
-                </div>
-
-                {/* Card Body */}
-                <div className={clsx('bg-card', 'p-6')}>
-                  <h3 className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-white', 'text-[18px]', 'mb-2')}>{game.name}</h3>
-                  <p className={clsx('text-[13px]', 'text-muted', 'leading-[1.7]', 'mb-4')}>{game.desc}</p>
-                  <div className={clsx('flex', 'items-center', 'gap-2', 'text-[13px]', 'font-semibold', game.available ? 'text-[#0078E5]' : 'text-muted')}>
-                    {game.available ? 'Explore Now →' : 'Coming Soon'}
-                  </div>
-                </div>
+                <SportImageCard
+                  src={game.image}
+                  alt={game.name}
+                  frameClassName="aspect-[16/9]"
+                  imageClassName="object-cover"
+                  sizes="(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw"
+                  className="transition-colors duration-300 hover:border-[rgba(0,120,229,0.45)]"
+                  overlay={
+                    <>
+                      <div className={clsx('absolute', 'top-4', 'right-4', 'text-[10px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'px-3', 'py-1', 'rounded-full', 'border', game.available ? 'bg-[rgba(0,120,229,0.15)] text-[#0078E5] border-[rgba(0,120,229,0.3)]' : 'bg-muted/20 text-muted border-border')}>
+                        {game.available ? 'Live' : 'Coming Soon'}
+                      </div>
+                      <div className="absolute inset-x-0 bottom-0 p-5 flex items-center justify-between gap-3">
+                        <h3 className="font-[var(--font-syne)] font-bold text-white text-[18px]">{game.name}</h3>
+                        {game.available && (
+                          <span className="text-[13px] font-semibold text-[#0078E5] whitespace-nowrap">Explore →</span>
+                        )}
+                      </div>
+                    </>
+                  }
+                />
               </Link>
             ))}
           </div>

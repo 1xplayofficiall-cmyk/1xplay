@@ -61,9 +61,17 @@ export function isStandaloneApp() {
   );
 }
 
+function canUseWebShare() {
+  return (
+    typeof navigator !== "undefined" &&
+    "share" in navigator &&
+    typeof navigator.share === "function"
+  );
+}
+
 /** Opens the native share sheet — closest iOS allows to “Add to Home Screen”. */
 export async function openIosShareSheet(): Promise<boolean> {
-  if (typeof navigator === "undefined" || !navigator.share) return false;
+  if (!canUseWebShare()) return false;
 
   try {
     await navigator.share({
@@ -86,7 +94,7 @@ export function IosAddToHomeScreenModal({
   onClose: () => void;
   mode?: ModalMode;
 }) {
-  const canShare = typeof navigator !== "undefined" && Boolean(navigator.share);
+  const canShare = canUseWebShare();
 
   const handleShare = useCallback(async () => {
     const shared = await openIosShareSheet();
@@ -330,7 +338,7 @@ export function IosDownloadButton({
     }
 
     // Best available on iOS: native share sheet → user taps "Add to Home Screen"
-    if (navigator.share) {
+    if (canUseWebShare()) {
       const shared = await openIosShareSheet();
       if (shared) return;
     }

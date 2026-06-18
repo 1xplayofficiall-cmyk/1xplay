@@ -1,12 +1,14 @@
 "use client";
 
 import clsx from "clsx";
+import type { IconType } from "react-icons";
+import { FaBolt, FaCheck, FaCommentDots, FaHeadset } from "react-icons/fa";
 
-const focusAreas = [
-  { icon: "⚡", label: "Fast responses" },
-  { icon: "🎓", label: "Professional assistance" },
-  { icon: "💬", label: "User friendly communication" },
-  { icon: "✅", label: "Quick issue resolution" },
+const focusAreas: { icon: IconType; label: string }[] = [
+  { icon: FaBolt, label: "Fast responses" },
+  { icon: FaHeadset, label: "Professional assistance" },
+  { icon: FaCommentDots, label: "User friendly communication" },
+  { icon: FaCheck, label: "Quick issue resolution" },
 ];
 
 export default function Support247() {
@@ -32,7 +34,9 @@ export default function Support247() {
         </h3>
 
         <div className={clsx('grid', 'grid-cols-2', 'md:grid-cols-4', 'gap-4', 'mb-12')}>
-          {focusAreas.map((area) => (
+          {focusAreas.map((area) => {
+            const Icon = area.icon;
+            return (
             <div
               key={area.label}
               className={clsx(
@@ -42,10 +46,17 @@ export default function Support247() {
                 'group', 'reveal'
               )}
             >
-              <span className={clsx('text-[24px]', 'group-hover:scale-110', 'transition-transform')}>{area.icon}</span>
+              <Icon
+                className={clsx(
+                  'text-[22px] text-[#01A3F6]',
+                  'group-hover:scale-110 transition-transform'
+                )}
+                aria-hidden
+              />
               <span className={clsx('text-[10px]', 'text-white', 'font-medium')}>{area.label}</span>
             </div>
-          ))}
+            );
+          })}
         </div>
 
         {/* Bottom Text */}

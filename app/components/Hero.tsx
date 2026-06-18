@@ -4,7 +4,7 @@ import clsx from "clsx";
 import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import LiveCricketWidget from "./LiveCricketWidget";
+import HeroImageCarousel from "./HeroImageCarousel";
 
 const MotionLink = motion.create(Link);
 
@@ -78,27 +78,11 @@ const Hero = () => {
             className={clsx('hidden', 'lg:flex', 'flex-1', 'justify-center', 'items-start', 'self-start', 'relative', 'pt-2')}
           >
             {/* Background Glows */}
-            <div className={clsx('absolute', 'w-[300px]', 'h-[300px]', 'bg-blue-500/20', 'blur-[80px]', 'rounded-full')}></div>
-            <div className={clsx('absolute', 'w-[200px]', 'h-[200px]', 'bg-cyan-400/20', 'blur-[60px]', 'rounded-full', 'translate-x-20', '-translate-y-20')}></div>
+          
             
-            <div className={clsx('relative', 'z-10', 'w-full', 'max-w-[480px]')}>
-              <div className={clsx('relative', 'w-full')}>
-                
-                {/* Interactive Live Cricket matches widget */}
-                <LiveCricketWidget />
-
-
-              </div>
+            <div className={clsx('relative', 'z-10', 'w-full', 'max-w-[430px]')}>
+              <HeroImageCarousel />
             </div>
-
-            {/* Inline keyframes for float if not defined in globals */}
-            <style dangerouslySetInnerHTML={{__html: `
-              @keyframes float {
-                0% { transform: translateY(0px); }
-                50% { transform: translateY(-10px); }
-                100% { transform: translateY(0px); }
-              }
-            `}} />
           </motion.div>
         </div>
 

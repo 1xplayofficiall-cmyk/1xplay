@@ -29,6 +29,8 @@ export function SportImageCard({
     <div
       className={clsx(
         "relative w-full rounded-3xl overflow-hidden border border-white/10 bg-white/[0.02] shadow-lg group",
+        "transition-all duration-300",
+        "hover:border-blue-500/70 hover:shadow-[0_0_28px_rgba(59,130,246,0.5)]",
         frameClassName,
         reverse && "lg:order-1",
         className
@@ -40,7 +42,7 @@ export function SportImageCard({
         fill
         sizes={sizes}
         className={clsx(
-          "transition-transform duration-500 group-hover:scale-105",
+          "transition-transform duration-500",
           imageClassName
         )}
       />

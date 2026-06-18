@@ -136,7 +136,7 @@ export default function Navbar() {
         <div className={clsx('flex', 'items-center','justify-end')}>
           {/* Desktop CTA */}
           <div className={clsx('hidden', 'lg:flex', 'gap-2', 'xl:gap-3', 'items-center')}>
-            <Link href="#" className={clsx('btn', 'btn-ghost', 'px-3', 'py-2', 'xl:px-5', 'xl:py-2.5', 'text-[11px]', 'xl:text-[13px]')}>Register</Link>
+            <Link href="" className={clsx('btn', 'btn-ghost', 'px-3', 'py-2', 'xl:px-5', 'xl:py-2.5', 'text-[11px]', 'xl:text-[13px]')}>Register</Link>
             <Link href="#" className={clsx('btn', 'btn-gold', 'px-3', 'py-2', 'xl:px-5', 'xl:py-2.5', 'text-[11px]', 'xl:text-[13px]')}>Download</Link>
           </div>
           

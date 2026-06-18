@@ -18,6 +18,7 @@ import {
 import ScrollReveal from "../components/ScrollReveal";
 import { SportHero } from "../components/SportHeroMedia";
 import { EyebrowHead, WideBlock, SplitMedia } from "../components/SportPageBlocks";
+import Image from "next/image";
 
 const ACCENT = "#01A3F6";
 
@@ -28,6 +29,20 @@ const liveWinners = [
   { player: "Player ***563", amount: "₹8,000", game: "Slots" },
   { player: "Player ***122", amount: "₹64,300", game: "Roulette" },
   { player: "Player ***715", amount: "₹32,000", game: "Dragon Tiger" },
+];
+
+
+const games = [
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Slot Game", emoji: "💰", image: "/money_heist.png", badge: "hot" },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Adventure Slot", emoji: "🎰", image: "/lucy_game.png", badge: null },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Crash Game", emoji: "✈️", image: "/aviator.jpg", badge: "new" },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Indian Favourite", emoji: "🃏", image: "/teen_pati.png", badge: "hot" },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Live Casino", emoji: "🪩", image: "/disco_club.png", badge: "new" },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Instant Win", emoji: "🎲", image: "/naughty_button.png", badge: null },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Crash Game", emoji: "🐔", image: "/chiken_road.jpeg", badge: "new" },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Slot Game", emoji: "💕", image: "/campus_crush.jpeg", badge: null },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Sports Slot", emoji: "🏎️", image: "/f1.png", badge: "hot" },
+  { name: "Play Now",href:"https://www.1xplay.games/", tag: "Crash Game", emoji: "📈", image: "/ramp.jpeg", badge: null },
 ];
 
 const gameTabs = [
@@ -171,6 +186,69 @@ export default function CasinoPage() {
                 </a>
               </motion.div>
       </SportHero>
+
+         {/* Games grid — aligns with navbar px-[5%], 6 cards per row on desktop */}
+            <section className="relative z-10 px-[5%] pb-10 md:pb-14">
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+                {games.map((game) => (
+                  <Link
+                    href={game.href}
+                    key={game.image}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-casino-card
+                    className={clsx(
+                      "relative",
+                      "rounded-lg",
+                      "overflow-hidden",
+                      "aspect-[4/5]",
+                      "cursor-pointer",
+                      "group",
+                      "reveal-card",
+                      "border",
+                      "border-border",
+                      "shadow-md",
+                      "transition-colors",
+                      "duration-300"
+                    )}
+                    style={{ transformStyle: "preserve-3d", transform: "translateZ(0)" }}
+                  >
+                  {/* Background Image */}
+                  <div className={clsx('absolute', 'inset-0', 'transition-transform', 'duration-500', 'group-hover:scale-[1.05]')}>
+                    <Image
+                      src={game.image}
+                      alt={game.name}
+                      fill
+                      sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 16vw"
+                      className="object-cover"
+                    />
+                  </div>
+                  
+                  {/* Badge */}
+                  {game.badge === "hot" && (
+                    <div className={clsx('absolute', 'top-2', 'right-2', 'bg-red', 'text-white', 'text-[8px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'px-1.5', 'py-0.5', 'rounded', 'z-20')}>Hot</div>
+                  )}
+                  {game.badge === "new" && (
+                    <div className={clsx('absolute', 'top-2', 'right-2', 'bg-green', 'text-[#041208]', 'text-[8px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'px-1.5', 'py-0.5', 'rounded', 'z-20')}>New</div>
+                  )}
+                  
+                  {/* Hover name overlay */}
+                  <div
+                    className={clsx(
+                      'absolute', 'inset-0', 'flex', 'items-center', 'justify-center', 'p-3',
+                      'bg-black/65', 'opacity-0', 'group-hover:opacity-100',
+                      'transition-opacity', 'duration-300', 'z-10'
+                    )}
+                    style={{ transform: "translateZ(30px)" }}
+                  >
+                    <span className={clsx('font-[var(--font-syne)]', 'font-bold', 'text-[12px]', 'sm:text-[13px]', 'text-white', 'text-center', 'leading-tight')}>
+                      {game.name}
+                    </span>
+                  </div>
+                  </Link>
+                ))}
+              </div>
+            </section>
 
       {/* ── Editorial flow ── */}
       <div className="relative z-10 px-[5%] py-[70px] md:py-[100px] space-y-[72px] md:space-y-[110px]">

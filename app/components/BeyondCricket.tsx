@@ -5,14 +5,15 @@ import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
 
 const sports = [
-  { icon: "/footbal.png", name: "Football" },
-  { icon: "/tennis-hero.jpg", name: "Tennis" },
-  { icon: "/basketball-hero.jpg", name: "Basketball" },
-  { icon: "/esports-hero.jpg", name: "Esports" },
-  { icon: "/horse-racing-live.jpg", name: "Horse Racing" },
-  { icon: "/international-sports.jpg", name: "International Sports Tournaments" },
+  { icon: "/footbal.png", name: "Football", href:"/soccer" },
+  { icon: "/tennis-hero.jpg", name: "Tennis", href:"/tennis" },
+  { icon: "/basketball-hero.jpg", name: "Basketball",href:"/casino" },
+  { icon: "/esports-hero.jpg", name: "Esports",href:"/casino" },
+  { icon: "/horse-racing-live.jpg", name: "Horse Racing",href:"/horse-racing" },
+  { icon: "/international-sports.jpg", name: "International Sports Tournaments",href:"/" },
 ];
 
 export default function BeyondCricket() {
@@ -105,7 +106,8 @@ export default function BeyondCricket() {
 
         <div ref={gridRef} className={clsx('grid', 'grid-cols-2', 'md:grid-cols-3', 'lg:grid-cols-6', 'gap-4', 'mb-12')}>
           {sports.map((sport) => (
-            <div
+            <Link
+              href={sport.href} 
               key={sport.name}
               className={clsx(
                 'relative', 'aspect-[3/4]', 'rounded-xl', 'overflow-hidden',
@@ -131,7 +133,7 @@ export default function BeyondCricket() {
                   {sport.name}
                 </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

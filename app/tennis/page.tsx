@@ -323,11 +323,11 @@ export default function TennisPage() {
                 If you are looking for a trusted platform for tennis betting online, 1xPlay provides the perfect combination of convenience, performance, and excitement. Join 1xPlay today and experience the thrill of every serve, every set, and every match like never before.
               </p>
             </div>
-            <div className="mt-8 flex flex-wrap gap-4 max-sm:justify-center">
-              <Link href="/apps" className="btn btn-gold btn-large">
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap justify-center gap-4 w-full">
+              <Link href="/apps" className="btn btn-gold btn-large w-full sm:w-auto justify-center">
                 Get Started <FaArrowRight className="w-3.5 h-3.5" />
               </Link>
-              <Link href="/games" className="btn btn-ghost btn-large">
+              <Link href="/games" className="btn btn-ghost btn-large w-full sm:w-auto justify-center">
                 Explore All Games
               </Link>
             </div>
@@ -383,7 +383,7 @@ function Hero() {
               transition={{ delay: 0.3 }}
               className="flex gap-4 flex-wrap max-sm:justify-center justify-center"
             >
-              <Link href="/https://www.1xplay.games" className="btn btn-gold btn-large gap-2">
+              <Link href="/https://www.1xplay.games/sports/tennis/2" className="btn btn-gold btn-large gap-2">
                 <span>Start Betting</span> <FaArrowRight size={12} />
               </Link>
               <Link href="/games" className="btn btn-ghost btn-large">

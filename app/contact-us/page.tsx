@@ -18,6 +18,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import ScrollReveal from "../components/ScrollReveal";
+import { submitContactForm, validateContactForm } from "../../lib/contactForm";
 
 const supportCategories = [
   "Account & Login",
@@ -84,16 +85,18 @@ type FormState = {
   email: string;
   category: string;
   message: string;
+  botcheck: string;
 };
 
 type FormErrors = Partial<Record<keyof FormState, string>>;
 
-const emptyForm: FormState = { name: "", email: "", category: "", message: "" };
+const emptyForm: FormState = { name: "", email: "", category: "", message: "", botcheck: "" };
 
 export default function ContactUsPage() {
   const [form, setForm] = useState<FormState>(emptyForm);
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+  const [submitError, setSubmitError] = useState("");
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
@@ -119,18 +122,7 @@ export default function ContactUsPage() {
   };
 
   const validate = (): boolean => {
-    const next: FormErrors = {};
-    if (!form.name.trim()) next.name = "Please enter your name";
-    if (!form.email.trim()) {
-      next.email = "Please enter your email";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      next.email = "Enter a valid email address";
-    }
-    if (!form.message.trim()) {
-      next.message = "Please tell us how we can help";
-    } else if (form.message.trim().length < 10) {
-      next.message = "A little more detail helps us help you";
-    }
+    const next = validateContactForm(form) as FormErrors;
     setErrors(next);
     return Object.keys(next).length === 0;
   };
@@ -141,16 +133,24 @@ export default function ContactUsPage() {
     if (!validate()) return;
 
     setStatus("submitting");
-    try {
-      // TODO: replace this simulated delay with a real request, e.g.
-      //   await fetch("/api/contact", { method: "POST", body: JSON.stringify(form) })
-      // and branch on res.ok. The UI states below are already wired for it.
-      await new Promise((resolve) => setTimeout(resolve, 1100));
+    setSubmitError("");
+
+    const result = await submitContactForm({
+      name: form.name,
+      email: form.email,
+      category: form.category,
+      message: form.message,
+      botcheck: form.botcheck,
+    });
+
+    if (result.ok) {
       setStatus("success");
       setForm(emptyForm);
-    } catch {
-      setStatus("error");
+      return;
     }
+
+    setSubmitError(result.error);
+    setStatus("error");
   };
 
   const inputBase =
@@ -407,6 +407,16 @@ export default function ContactUsPage() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} noValidate className="space-y-5">
+                  <input
+                    type="text"
+                    name="botcheck"
+                    value={form.botcheck}
+                    onChange={(e) => update("botcheck", e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    className="hidden"
+                    aria-hidden
+                  />
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
                       <label className="mb-2 block text-[11px] font-bold uppercase tracking-wider text-muted font-[var(--font-syne)]">
@@ -510,7 +520,7 @@ export default function ContactUsPage() {
                   {status === "error" && (
                     <p className="flex items-center gap-2 rounded-xl border border-[#E8303A]/30 bg-[#E8303A]/10 px-4 py-3 text-[13px] text-[#E8303A]">
                       <AlertCircle className="w-4 h-4 shrink-0" />
-                      Something went wrong sending your message. Please try again.
+                      {submitError || "Something went wrong sending your message. Please try again."}
                     </p>
                   )}
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { submitContactForm } from "../../lib/contactForm";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -8,27 +9,42 @@ export default function Contact() {
     email: "",
     subject: "support",
     message: "",
+    botcheck: "",
   });
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
 
-    // Simulate server submission
-    setTimeout(() => {
-      setLoading(false);
+    const result = await submitContactForm({
+      name: formData.name,
+      email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      botcheck: formData.botcheck,
+    });
+
+    setLoading(false);
+
+    if (result.ok) {
       setSuccess(true);
       setFormData({
         name: "",
         email: "",
         subject: "support",
         message: "",
+        botcheck: "",
       });
       setTimeout(() => setSuccess(false), 5000);
-    }, 1500);
+      return;
+    }
+
+    setError(result.error);
   };
 
   const handleInputChange = (
@@ -55,7 +71,16 @@ export default function Contact() {
         {/* Contact Form: 7 cols */}
         <div className="lg:col-span-7 glass-panel rounded-3xl p-6 sm:p-10 border border-white/10 relative">
           <form onSubmit={handleSubmit} className="space-y-6">
-            
+            <input
+              type="text"
+              name="botcheck"
+              value={formData.botcheck}
+              onChange={handleInputChange}
+              tabIndex={-1}
+              autoComplete="off"
+              className="hidden"
+              aria-hidden
+            />
             {/* Row: Name and Email */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
               <div>
@@ -143,6 +168,12 @@ export default function Contact() {
                 )}
               </button>
             </div>
+
+            {error && (
+              <div className="mt-4 rounded-xl bg-red-500/10 border border-red-500/20 p-4 text-center">
+                <p className="text-sm font-medium text-red-400">{error}</p>
+              </div>
+            )}
 
             {success && (
               <div className="mt-4 rounded-xl bg-accent-cyan/10 border border-accent-cyan/20 p-4 text-center">

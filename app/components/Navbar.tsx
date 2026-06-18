@@ -19,11 +19,11 @@ const navLinks = [
 
 const gameItems = [
   { name: "Cricket", href: "/cricket", icon: GiCricketBat, color: "#F5A623", desc: "Live Betting Available" },
+  { name: "Casino", href: "/casino", icon: FaDice, color: "#E8303A", desc: "Live Betting Available" },
   { name: "Badminton", href: "/badminton", icon: GiShuttlecock, color: "#00A8FF", desc: "Live Betting Available" },
   { name: "Soccer", href: "/soccer", icon: FaFutbol, color: "#1EBF6A", desc: "Live Betting Available" },
   { name: "Horse Racing", href: "/horse-racing", icon: FaHorse, color: "#F5A623", desc: "Live Betting Available" },
   { name: "Tennis", href: "/tennis", icon: GiTennisBall, color: "#A3E635", desc: "Live Betting Available" },
-  { name: "Casino", href: "/casino", icon: FaDice, color: "#E8303A", desc: "Live Betting Available" },
 ];
 
 export default function Navbar() {

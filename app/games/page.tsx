@@ -7,6 +7,20 @@ import { SportImageCard } from "../components/SportImageCard";
 
 const games = [
   {
+    name: "Cricket",
+    image: "/cricket.png",
+    desc: "India's best cricket betting platform with IPL live betting, ball-by-ball markets and instant cricket ID.",
+    href: "/cricket",
+    available: true,
+  },
+  {
+    name: "Casino",
+    image: "/casino.png",
+    desc: "Premium casino games including slots, roulette, blackjack, and live dealer experiences.",
+    href: "/casino",
+    available: true,
+  },
+  {
     name: "Badminton",
     image: "/badminton.png",
     desc: "Fast paced live badminton betting with real time odds and international tournament coverage.",
@@ -34,20 +48,8 @@ const games = [
     href: "/tennis",
     available: true,
   },
-  {
-    name: "Casino",
-    image: "/casino.png",
-    desc: "Premium casino games including slots, roulette, blackjack, and live dealer experiences.",
-    href: "/casino",
-    available: true,
-  },
-  {
-    name: "Cricket",
-    image: "/cricket.png",
-    desc: "India's best cricket betting platform with IPL live betting, ball-by-ball markets and instant cricket ID.",
-    href: "/cricket",
-    available: true,
-  },
+  
+  
 ];
 
 export default function GamesPage() {

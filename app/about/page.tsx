@@ -20,7 +20,7 @@ export default function AboutPage() {
       alt=""
       fill
       priority
-      className="object-cover opacity-10"
+      className="object-cover opacity-50"
     />    
 
       </div> 

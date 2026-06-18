@@ -203,7 +203,7 @@ export default function BlogView({
                     <div className="flex items-center justify-between pt-4 border-t border-white/[0.06] mt-auto">
                       <span className="text-[11px] text-muted/70 flex items-center gap-1">
                         <Clock className="w-3 h-3" />
-                        {post.readTime}
+                        {post.date}
                       </span>
                       {usingFallback ? (
                         <span className="text-[11px] font-bold uppercase tracking-wider text-muted/40 cursor-not-allowed">

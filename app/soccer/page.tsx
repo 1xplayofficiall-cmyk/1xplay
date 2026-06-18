@@ -147,7 +147,7 @@ export default function SoccerBetting() {
                 transition={{ delay: 0.3 }}
                 className="flex gap-4 flex-wrap max-sm:justify-center"
               >
-                <a href="#markets" className="btn btn-gold btn-large gap-2">
+                <a href="https://www.1xplay.games/sports/soccer/1" className="btn btn-gold btn-large gap-2">
                   <span>Explore Markets</span> <FaArrowRight size={12} />
                 </a>
                 <a href="#how-to-start" className="btn btn-ghost btn-large">
@@ -424,7 +424,7 @@ export default function SoccerBetting() {
               </p>
             </div>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <a href="#" className="btn btn-gold btn-large">
+              <a href="https://www.1xplay.games" className="btn btn-gold btn-large">
                 Join &amp; Bet Now <FaArrowRight className="w-3.5 h-3.5" />
               </a>
               <Link href="/games" className="btn btn-ghost btn-large">

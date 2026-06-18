@@ -224,7 +224,7 @@ export default function Navbar() {
             );
           })}
           <div className={clsx('flex', 'gap-3', 'mt-4')}>
-            <Link href="#" className={clsx('btn', 'btn-ghost', 'flex-1', 'justify-center')}>Register</Link>
+            <a href="https://www.1xplay.xyz/games" className={clsx('btn', 'btn-ghost', 'flex-1', 'justify-center')}>Register</a>
             <Link href="#" className={clsx('btn', 'btn-gold', 'flex-1', 'justify-center')}>Download</Link>
           </div>
         </div>

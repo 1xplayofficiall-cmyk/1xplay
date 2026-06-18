@@ -84,12 +84,12 @@ export default function BadmintonPage() {
                 transition={{ delay: 0.3 }}
                 className="flex gap-4 flex-wrap max-sm:justify-center"
               >
-                <button onClick={() => handleScrollTo("markets")} className="btn btn-gold btn-large gap-2">
+                <a href="https://www.1xplay.games/games/live-casino" className="btn btn-gold btn-large gap-2">
                   <span>Explore Markets</span> <FaArrowRight size={12} />
-                </button>
-                <button onClick={() => handleScrollTo("how-to-start")} className="btn btn-ghost btn-large">
+                </a>
+                <Link href='/blog' className="btn btn-ghost btn-large">
                   <span>How to Start</span>
-                </button>
+                </Link>
               </motion.div>
       </SportHero>
 
@@ -403,9 +403,9 @@ export default function BadmintonPage() {
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-4 max-sm:justify-center">
-              <Link href="/" className="btn btn-gold btn-large">
+              <a href="https://www.1xplay.games" className="btn btn-gold btn-large">
                 Register &amp; Join Now <FaArrowRight className="w-3.5 h-3.5" />
-              </Link>
+              </a>
               <Link href="/games" className="btn btn-ghost btn-large">
                 Explore Game Hub
               </Link>

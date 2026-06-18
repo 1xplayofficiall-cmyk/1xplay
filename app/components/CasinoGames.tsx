@@ -394,7 +394,7 @@ export default function CasinoGames() {
       </div>
 
       <div className={clsx('flex', 'justify-center', 'mt-8')}>
-        <a href="https://www.1xplay.xyz/games/live-casino" className={clsx('btn', 'btn-gold', 'inline-flex')}>View All Games</a>
+        <Link href="/casino" className={clsx('btn', 'btn-gold', 'inline-flex')}>View All Games</Link>
       </div>
 
       <p className={clsx('text-left', 'sm:text-center', 'mt-10', 'text-[13px]', 'text-muted', 'max-w-[800px]', 'mx-auto', 'leading-relaxed')}>

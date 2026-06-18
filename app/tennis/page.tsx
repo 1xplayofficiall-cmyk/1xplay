@@ -381,9 +381,9 @@ function Hero() {
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="flex gap-4 flex-wrap max-sm:justify-center"
+              className="flex gap-4 flex-wrap max-sm:justify-center justify-center"
             >
-              <Link href="/apps" className="btn btn-gold btn-large gap-2">
+              <Link href="/https://www.1xplay.games" className="btn btn-gold btn-large gap-2">
                 <span>Start Betting</span> <FaArrowRight size={12} />
               </Link>
               <Link href="/games" className="btn btn-ghost btn-large">

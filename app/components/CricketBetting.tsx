@@ -203,7 +203,7 @@ export default function CricketBetting() {
           </div>
 
           <div className={clsx('flex', 'justify-center', 'lg:justify-start')}>
-            <a href="#" className={clsx('btn', 'btn-gold', 'btn-large')}>Get Cricket ID Now</a>
+            <a href="https://wa.link/1xplayindia" className={clsx('btn', 'btn-gold', 'btn-large')}>Get Cricket ID Now</a>
           </div>
         </div>
       </div>

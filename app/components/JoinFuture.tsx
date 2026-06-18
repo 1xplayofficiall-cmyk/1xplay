@@ -1,6 +1,7 @@
 "use client";
 
 import clsx from "clsx";
+import { Link } from "lucide-react";
 
 export default function JoinFuture() {
   return (
@@ -53,8 +54,8 @@ export default function JoinFuture() {
               Join 1XPlay today and experience a modern online gaming platform created for users who expect better performance better entertainment and a smoother gaming experience every day.
             </p>
             <div className={clsx('flex', 'gap-4', 'justify-center', 'flex-wrap')}>
-              <a href="#" className={clsx('btn-gold', 'btn-large','btn-2')}>Join 1XPlay Now</a>
-              <a href="#" className={clsx('btn', 'btn-ghost', 'btn-large')}>Explore Games</a>
+              <a href="https://wa.link/1xplayindia" className={clsx('btn-gold', 'btn-large','btn-2')}>Join 1XPlay Now</a>
+              <Link href="/casino" className={clsx('btn', 'btn-ghost', 'btn-large')}>Explore Games</Link>
             </div>
           </div>
         </div>

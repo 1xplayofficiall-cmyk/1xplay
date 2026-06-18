@@ -126,12 +126,12 @@ export default function CricketPage() {
                 transition={{ delay: 0.3 }}
                 className="flex gap-4 flex-wrap max-sm:justify-center"
               >
-                <Link href="#sportsbook" className="btn btn-gold btn-large gap-2">
+                <a href="https://www.1xplay.games/" className="btn btn-gold btn-large gap-2">
                   <span>Place Bets Now</span> <FaArrowRight size={12} />
-                </Link>
-                <Link href="#get-id" className="btn btn-ghost btn-large">
+                </a>
+                <a href="https://wa.link/1xplayindia" className="btn btn-ghost btn-large">
                   <span>Get Cricket ID</span>
-                </Link>
+                </a>
               </motion.div>
       </SportHero>
 
@@ -409,7 +409,7 @@ export default function CricketPage() {
             Starting your online cricket betting journey at 1xPlay is simple. Follow these 4 easy steps to unlock non-stop action.
           </p>
           <div className="relative py-8 mt-2">
-            <div className="absolute top-[48px] left-[10%] right-[10%] h-[2px] bg-white/[0.07] z-0 hidden md:block" />
+            {/* <div className="absolute top-[48px] left-[10%] right-[10%] h-[2px] bg-white/[0.07] z-0 hidden md:block" /> */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-10 relative z-10">
               {onboarding.map((item) => (
                 <div key={item.step} className="flex flex-col items-center md:items-start text-center md:text-left group">
@@ -464,9 +464,9 @@ export default function CricketPage() {
               Cricket continues to unite fans through unforgettable moments. We bring you closer to the action with live betting, online cricket IDs, and quick withdrawals.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/" className="btn btn-gold btn-large">
+              <a href="https://www.1xplay.games/" className="btn btn-gold btn-large">
                 Register &amp; Join Now
-              </Link>
+              </a>
               <Link href="/games" className="btn btn-ghost btn-large">
                 Explore Games Hub
               </Link>

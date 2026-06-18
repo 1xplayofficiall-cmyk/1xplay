@@ -93,14 +93,14 @@ export default function Apps() {
               {/* HOME TAB */}
               {activeTab === "home" && (
                 <div className={styles.phoneImageWrapper}>
-                  <Image src="/app_home.png" alt="1xPlay Home Screen" width={434} height={917} className={styles.phoneImage} />
+                  <Image src="/app_home.PNG" alt="1xPlay Home Screen" width={434} height={917} className={styles.phoneImage} />
                 </div>
               )}
  
               {/* CASINO TAB */}
               {activeTab === "casino" && (
                   <div className={styles.phoneImageWrapper}>
-                  <Image src="/app_casino.png" alt="1xPlay Home Screen" width={434} height={917} className={styles.phoneImage} />
+                  <Image src="/app_casino.PNG" alt="1xPlay Home Screen" width={434} height={917} className={styles.phoneImage} />
                 </div>
               )}
  
@@ -225,7 +225,7 @@ export default function Apps() {
             <div className={styles.casinoPhoneScreen}>
               
              <div className={styles.phoneImageWrapper}>
-                  <Image src="/app_casino.png" alt="1xPlay Home Screen" width={434} height={917} className={styles.phoneImage} />
+                  <Image src="/app_casino.PNG" alt="1xPlay Home Screen" width={434} height={917} className={styles.phoneImage} />
                 </div>
             
             </div>
@@ -374,7 +374,7 @@ export default function Apps() {
           <p className={styles.ctaDesc}>Download the 1xPlay App to get a smooth, secure gaming environment wherever you are. Cricket IDs, slots, live betting, instant withdrawals â€” all in one place.</p>
           <div className={styles.ctaBtns}>
             <a href="#" className={styles.btnGold}><FaMobileAlt className="mr-1.5 inline align-middle text-[14px]" /> Download APK</a>
-            <Link href="/games" className={styles.btnOutline}>Browse Games â†’</Link>
+            <Link href="/games" className={styles.btnOutline}>Browse Games</Link>
           </div>
         </div>
       </section>

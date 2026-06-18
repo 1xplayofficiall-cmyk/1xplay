@@ -144,8 +144,8 @@ export default function CasinoPage() {
                 Experience the Ultimate{" "}
                 <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(1,163,246,0.15)]">
                   Online Casino
-                </span>{" "}
-                Entertainment
+                </span>
+                   Entertainment
               </motion.h1>
 
               <motion.p
@@ -163,12 +163,12 @@ export default function CasinoPage() {
                 transition={{ delay: 0.3 }}
                 className="flex gap-4 flex-wrap max-sm:justify-center"
               >
-                <Link href="#portfolio" className="btn btn-gold btn-large gap-2">
+                <a href="https://www.1xplay.games/games/live-casino" className="btn btn-gold btn-large gap-2">
                   <span>Explore Games</span> <FaArrowRight size={12} />
-                </Link>
-                <Link href="#slots-game" className="btn btn-ghost btn-large">
+                </a>
+                <a href="https://wa.link/1xplayindia" className="btn btn-ghost btn-large">
                   <span>Play Mock Slots</span>
-                </Link>
+                </a>
               </motion.div>
       </SportHero>
 

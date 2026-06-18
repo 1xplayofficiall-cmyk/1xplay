@@ -14,7 +14,7 @@ const navLinks = [
   { name: "GAMES", href: "/games" },
   { name: "BLOG", href: "/blog" },
   { name: "Support", href: "/contact-us" },
-  { name: "Contact", href: "/contact-us" },
+  { name: "Contact", href: "/contact" },
 ];
 
 const gameItems = [

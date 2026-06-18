@@ -132,7 +132,7 @@ export default function HorseRacing() {
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1 }}
-                className="md:w-3xl"
+                className="md:w-3xl w-2xl"
               >
                 <span>Horse Racing Betting at{" "}</span>
                 <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6]  to-[#7fd5ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(1,163,246,0.15)]">

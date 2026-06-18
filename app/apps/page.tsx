@@ -28,6 +28,7 @@ import {
 } from "react-icons/fa";
 import { IoFlash } from "react-icons/io5";
 import { GiCricketBat, GiTennisBall } from "react-icons/gi";
+import { IosDownloadButton } from "../components/IosInstallPrompt";
 
 type MockTab = "home" | "casino" | "sports" | "security";
  
@@ -70,13 +71,13 @@ export default function Apps() {
                 <span className={styles.badgeName}>Android APK</span>
               </div>
             </a>
-            <a href="#" className={styles.badge}>
+            <IosDownloadButton className={styles.badge}>
               <FaApple className={styles.badgeIcon} />
               <div>
                 <span className={styles.badgeSub}>Available on</span>
                 <span className={styles.badgeName}>iOS App Store</span>
               </div>
-            </a>
+            </IosDownloadButton>
           </div>
         </div>
  
@@ -92,33 +93,14 @@ export default function Apps() {
               {/* HOME TAB */}
               {activeTab === "home" && (
                 <div className={styles.phoneImageWrapper}>
-                  <Image src="/home.jpeg" alt="1xPlay Home Screen" width={434} height={917} className={styles.phoneImage} />
+                  <Image src="/app_home.png" alt="1xPlay Home Screen" width={434} height={917} className={styles.phoneImage} />
                 </div>
               )}
  
               {/* CASINO TAB */}
               {activeTab === "casino" && (
-                <div className={clsx(styles.tabContent, styles.casinoScreen)}>
-                  <div className={styles.casinoHeader}>
-                    <div className={styles.casinoTitle}><FaDice className="inline mr-1 text-[20px] align-middle" /> Casino <span>Hub</span></div>
-                    <span className={styles.vipBadge}>VIP</span>
-                  </div>
-                  <p className={styles.casinoSubtext}>Browse and launch popular casino games instantly.</p>
-                  <div className={styles.casinoGames}>
-                    {[
-                      { icon: <FaCrown />, name: "Teen Patti", type: "Traditional card" },
-                      { icon: <FaLifeRing />, name: "Roulette", type: "Live wheel" },
-                      { icon: <FaPlane className="rotate-45" />, name: "Aviator", type: "Crash game" },
-                      { icon: <FaCoins />, name: "Slots", type: "3D spinners" },
-                    ].map((g, idx) => (
-                      <div key={idx} className={styles.casinoGameCard}>
-                        <span className={styles.casinoGameEmoji}>{g.icon}</span>
-                        <div className={styles.casinoGameName}>{g.name}</div>
-                        <div className={styles.casinoGameType}>{g.type}</div>
-                      </div>
-                    ))}
-                  </div>
-                  <div className={styles.casinoFooter}>âš¡ Fully optimized for mobile</div>
+                  <div className={styles.phoneImageWrapper}>
+                  <Image src="/app_casino.png" alt="1xPlay Home Screen" width={434} height={917} className={styles.phoneImage} />
                 </div>
               )}
  
@@ -241,24 +223,11 @@ export default function Apps() {
           <div className={styles.casinoPhoneOuter}>
             <div className={styles.casinoPhoneNotch} />
             <div className={styles.casinoPhoneScreen}>
-              <div className={styles.casinoPhoneHeader}>
-                <span className={styles.casinoPhoneTitle}><FaDice className="inline mr-1 text-[16px] align-middle" /> Live Casino</span>
-                <span className={styles.casinoPhoneConnected}>Connected</span>
-              </div>
-              {[
-                { icon: <FaPlane className="rotate-45" />, name: "Aviator Crash", detail: "Live Multiplier: x4.85", gold: true },
-                { icon: <FaLifeRing />, name: "Live Roulette", detail: "Interactive wheel spinning", gold: false },
-                { icon: <FaCrown />, name: "Teen Patti Live", detail: "Real-time multiplayer deal", gold: false },
-              ].map((g) => (
-                <div key={g.name} className={styles.gameRow}>
-                  <span className={styles.gameRowIcon}>{g.icon}</span>
-                  <div>
-                    <div className={styles.gameRowName}>{g.name}</div>
-                    <div className={clsx(styles.gameRowDetail, !g.gold && styles.muted)}>{g.detail}</div>
-                  </div>
+              
+             <div className={styles.phoneImageWrapper}>
+                  <Image src="/app_casino.png" alt="1xPlay Home Screen" width={434} height={917} className={styles.phoneImage} />
                 </div>
-              ))}
-              <div className={styles.casinoLaunchBtn}>LAUNCH QUICK CASINO</div>
+            
             </div>
           </div>
         </div>

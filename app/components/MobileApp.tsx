@@ -1,6 +1,7 @@
 "use client";
 import clsx from "clsx";
 import { FaAndroid, FaApple } from "react-icons/fa";
+import { IosDownloadButton } from "./IosInstallPrompt";
 
 const appFeatures = [
   { icon: "⚡", title: "Fast Loading Speed", desc: "Optimized for smooth performance on all Android and iOS devices." },
@@ -34,12 +35,12 @@ export default function MobileApp() {
           </div>
 
           <div className={clsx("flex", "gap-3", "mt-10", "flex-wrap", "justify-center", "items-center")}>
-            <a href="#" className={clsx("btn", "btn-gold", "btn-large")}>
+            <IosDownloadButton className={clsx("btn", "btn-gold", "btn-large")}>
               <span className={clsx("inline-flex", "flex-row", "items-end", "gap-2", "whitespace-nowrap", "leading-none")}>
                 <FaApple size={15} className="shrink-0 -translate-y-[2px]" aria-hidden />
                 <span>Download</span>
               </span>
-            </a>
+            </IosDownloadButton>
             <a href="#" className={clsx("btn", "btn-ghost", "btn-large")}>
               <span className={clsx("inline-flex", "flex-row", "items-end", "gap-2", "whitespace-nowrap", "leading-none")}>
                 <FaAndroid size={15} className="shrink-0" aria-hidden />
@@ -51,7 +52,7 @@ export default function MobileApp() {
 
         {/* Right: Phone Mockup with iPhone Frame Overlay */}
         <div className={clsx('reveal', 'flex', 'justify-center')}>
-          <div className={clsx('max-w-[310px]', 'w-full', 'aspect-[434/917]', 'relative', 'shadow-[0_0_80px_rgba(0,120,229,0.12)]')}>
+          <div className={clsx('max-w-[310px]', 'w-full', 'aspect-[434/917]', 'relative')}>
             {/* Screen Content Wrapper (Aligned perfectly inside bezel window of iPhone Frame) */}
             <div className={clsx('absolute', 'top-[1%]', 'bottom-[1%]', 'left-[2.3%]', 'right-[2.3%]', 'rounded-[38px]', 'bg-[#080A0E]', 'overflow-hidden', 'p-5', 'pt-8', 'z-10', 'flex', 'flex-col', 'justify-between')}>
               

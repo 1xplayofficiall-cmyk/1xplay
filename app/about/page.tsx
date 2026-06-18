@@ -11,8 +11,24 @@ export default function AboutPage() {
       <ScrollReveal />
 
       {/* ===== HERO SECTION ===== */}
-      <section className={clsx('relative', 'pt-[160px]', 'pb-[100px]', 'px-[5%]', 'bg-bg', 'overflow-hidden')}>
-        <div className={clsx('absolute', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2', 'w-[800px]', 'h-[600px]', 'bg-[radial-gradient(ellipse,rgba(0,120,229,0.06)_0%,transparent_70%)]', 'pointer-events-none')} />
+      <section className={clsx('relative', 'pt-[calc(var(--navbar-offset)+4rem)]', 'pb-[100px]', 'px-[5%]', 'bg-bg', 'overflow-hidden', 'min-h-[420px]', 'md:min-h-[600px]')}>
+      <div
+    className="absolute inset-0">
+      
+  <Image
+      src="/about_hero2.png"
+      alt=""
+      fill
+      priority
+      className="object-cover opacity-10"
+    />    
+
+      </div> 
+
+  {/* Optional dark overlay */}
+  {/* <div className="absolute inset-0 -z-10 bg-[#05080B]/40" /> */}
+
+        <div className={clsx('absolute', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2', 'w-[800px]', 'h-[600px]', 'bg-[radial-gradient(ellipse,rgba(0,120,229,0.08)_0%,transparent_70%)]', 'pointer-events-none')} />
 
         <div className={clsx('max-w-[1200px]', 'mx-auto', 'relative', 'z-10', 'text-left', 'sm:text-center', 'reveal')}>
           <h1 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(44px,7vw,90px)]', 'tracking-[1px]', 'leading-[1.05]', 'text-white', 'mb-6')}>

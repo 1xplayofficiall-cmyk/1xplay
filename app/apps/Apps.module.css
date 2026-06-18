@@ -173,6 +173,9 @@
   text-decoration: none;
   transition: border-color 0.2s;
   cursor: pointer;
+  color: inherit;
+  font: inherit;
+  text-align: left;
 }
 .badge:hover { border-color: rgba(0, 120, 229, 0.25); }
 .badge:hover .badgeName { color: var(--gold); }

@@ -43,8 +43,8 @@ export default function Contact() {
       {/* Title */}
       <div className="text-left sm:text-center max-w-3xl mx-auto mb-16">
         <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-          Get In <span className="bg-gradient-to-r from-accent-cyan to-accent-indigo bg-clip-text text-transparent">Touch</span>
-        </h1>
+          Get In
+        </h1> 
         <p className="mt-4 text-base text-white/50">
           Have an app suggestion? Discovered a bug? Drop us a line and our sandbox team will investigate.
         </p>

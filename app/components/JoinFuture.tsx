@@ -50,10 +50,10 @@ export default function JoinFuture() {
             'rounded-2xl', 'p-10', 'max-w-[700px]', 'mx-auto'
           )}>
             <p className={clsx('text-[16px]', 'text-white', 'font-medium', 'leading-[1.7]', 'mb-8')}>
-              Join 1xPlay today and experience a modern online gaming platform created for users who expect better performance better entertainment and a smoother gaming experience every day.
+              Join 1XPlay today and experience a modern online gaming platform created for users who expect better performance better entertainment and a smoother gaming experience every day.
             </p>
             <div className={clsx('flex', 'gap-4', 'justify-center', 'flex-wrap')}>
-              <a href="#" className={clsx('btn', 'btn-gold', 'btn-large')}>Join 1xPlay Now</a>
+              <a href="#" className={clsx('btn-gold', 'btn-large','btn-2')}>Join 1XPlay Now</a>
               <a href="#" className={clsx('btn', 'btn-ghost', 'btn-large')}>Explore Games</a>
             </div>
           </div>

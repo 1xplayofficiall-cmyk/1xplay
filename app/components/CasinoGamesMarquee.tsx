@@ -11,6 +11,10 @@ export type CasinoGameCard = {
 
 type CasinoGamesMarqueeProps = {
   games: CasinoGameCard[];
+  /** Optional override — defaults to first half of `games` */
+  rowA?: CasinoGameCard[];
+  /** Optional override — defaults to second half of `games` */
+  rowB?: CasinoGameCard[];
 };
 
 function GameCard({ game }: { game: CasinoGameCard }) {
@@ -27,7 +31,7 @@ function GameCard({ game }: { game: CasinoGameCard }) {
       )}
     >
       <div className="absolute inset-0 transition-transform duration-500 group-hover:scale-[1.05]">
-        <Image src={game.image} alt={game.name} fill sizes="190px" className="object-cover" />
+        <Image src={game.image} alt={game.name} fill sizes="190px" className="object-fit" />
       </div>
 
       {game.badge === "hot" && (
@@ -91,10 +95,11 @@ function MarqueeRow({
   );
 }
 
-/** Two auto-scrolling rows: top R→L, bottom L→R. Full-bleed width, navbar-aligned section. */
-export default function CasinoGamesMarquee({ games }: CasinoGamesMarqueeProps) {
-  const rowA = games;
-  const rowB = [...games].reverse();
+/** Two auto-scrolling rows: top R→L, bottom L→R. Each row shows a different set of games. */
+export default function CasinoGamesMarquee({ games, rowA, rowB }: CasinoGamesMarqueeProps) {
+  const mid = Math.ceil(games.length / 2);
+  const topRow = rowA ?? games.slice(0, mid);
+  const bottomRow = rowB ?? games.slice(mid);
 
   return (
     <section className="relative z-10 pb-10 md:pb-14">
@@ -104,8 +109,8 @@ export default function CasinoGamesMarquee({ games }: CasinoGamesMarqueeProps) {
           "space-y-3 md:space-y-4"
         )}
       >
-        <MarqueeRow games={rowA} direction="left" duration="38s" />
-        <MarqueeRow games={rowB} direction="right" duration="44s" />
+        <MarqueeRow games={topRow} direction="left" duration="38s" />
+        <MarqueeRow games={bottomRow} direction="right" duration="44s" />
       </div>
     </section>
   );

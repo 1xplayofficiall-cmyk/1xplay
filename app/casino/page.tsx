@@ -43,6 +43,15 @@ const games: CasinoGameCard[] = [
   { name: "Play Now", href: "https://www.1xplay.games/", image: "/campus_crush.jpeg", badge: null },
   { name: "Play Now", href: "https://www.1xplay.games/", image: "/f1.png", badge: "hot" },
   { name: "Play Now", href: "https://www.1xplay.games/", image: "/ramp.jpeg", badge: null },
+  { name: "Play Now", href: "https://www.1xplay.games/", image: "/casino_game1.png", badge: null },
+  { name: "Play Now", href: "https://www.1xplay.games/", image: "/casino_game2.png", badge: null },
+  { name: "Play Now", href: "https://www.1xplay.games/", image: "/casino_game3.png", badge: null },
+  { name: "Play Now", href: "https://www.1xplay.games/", image: "/casino_game4.png", badge: null },
+  { name: "Play Now", href: "https://www.1xplay.games/", image: "/casino_game5.png", badge: null },
+  { name: "Play Now", href: "https://www.1xplay.games/", image: "/casino_game6.png", badge: null },
+  { name: "Play Now", href: "https://www.1xplay.games/", image: "/casino_game7.png", badge: null },
+  { name: "Play Now", href: "https://www.1xplay.games/", image: "/casino_game8.png", badge: null },
+  { name: "Play Now", href: "https://www.1xplay.games/", image: "/casino_game9.png", badge: null },
 ];
 
 const gameTabs = [

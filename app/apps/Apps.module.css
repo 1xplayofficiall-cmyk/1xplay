@@ -40,7 +40,7 @@
   font-family: var(--font-bebas, sans-serif);
   font-size: clamp(40px, 5vw, 60px);
   letter-spacing: 1px;
-  line-height: 0.95;
+  line-height: 1.20;
   color: #fff;
   margin: 12px 0 0;
 }
@@ -129,13 +129,6 @@
   letter-spacing: 1px;
   color: #fff;
   margin: 16px 0 24px;
-  white-space: nowrap;
-}
-
-@media (max-width: 480px) {
-  .heroTitle {
-    white-space: normal;
-  }
 }
 
 .heroDesc {
@@ -1182,7 +1175,7 @@
 }
 
 .whyHeader .sectionDesc {
-  max-width: 340px;
+  max-width: 490px;
   text-align: right;
 }
 

@@ -35,7 +35,8 @@ export default function AboutPage() {
             About <span className="text-gold">1xPlay</span>
           </h1>
           <p className={clsx('text-[18px]', 'text-muted', 'leading-[1.8]', 'font-light', 'max-w-[800px]', 'mx-auto', 'mb-10')}>
-            Welcome to 1xPlay — a global online gaming and entertainment platform built for players who want excitement, speed, and a smooth digital experience in one place.
+           Welcome to 1xPlay — an all-in-one gaming platform where casino games, cricket betting, and live entertainment come together to create a fast, secure, and seamless experience.
+
           </p>
           <div className={clsx('flex', 'gap-4', 'justify-center', 'flex-wrap')}>
             <Link href="/games" className={clsx('btn', 'btn-gold', 'btn-large')}>Explore Our Games</Link>

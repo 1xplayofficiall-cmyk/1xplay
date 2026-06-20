@@ -59,10 +59,12 @@ export default function Contact() {
       {/* Title */}
       <div className="text-left sm:text-center max-w-3xl mx-auto mb-16">
         <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl">
-          Get In
+         Contact 1xPlay
+
         </h1> 
         <p className="mt-4 text-base text-white/50">
-          Have an app suggestion? Discovered a bug? Drop us a line and our sandbox team will investigate.
+         Need help with your account, platform access, payments, or general inquiries? Contact the 1xPlay team and we'll respond as quickly as possible.
+
         </p>
       </div>
 
@@ -118,7 +120,7 @@ export default function Contact() {
             {/* Subject Dropdown */}
             <div>
               <label htmlFor="subject" className="block text-xs font-semibold text-white/60 uppercase tracking-wider mb-2">
-                Subject Focus
+               Reason for Contact
               </label>
               <select
                 id="subject"
@@ -127,10 +129,13 @@ export default function Contact() {
                 onChange={handleInputChange}
                 className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white focus:outline-none focus:border-accent-cyan transition-colors appearance-none [&>option]:bg-[#041220] [&>option]:text-white"
               >
-                <option value="support">Technical Support</option>
-                <option value="app-submission">Submit an App</option>
-                <option value="feedback">General Feedback</option>
-                <option value="other">Other Inquiry</option>
+                <option value="support">Account Support</option>
+                <option value="app-submission">Payments </option>
+                <option value="feedback">Platform Assistance</option>
+                <option value="other">General Inquiry</option>
+                <option value="other">Partnerships</option>
+                <option value="other">Technical Support</option>
+                <option value="other">Other</option>
               </select>
             </div>
 
@@ -211,17 +216,19 @@ export default function Contact() {
               <div className="flex items-start gap-4 pt-4 border-t border-white/5">
                 <span className="text-accent-purple text-lg">📍</span>
                 <div>
-                  <div className="font-bold text-white">HQ Coordinates</div>
-                  <div className="text-white/50 mt-1">Virtual Orbit Sector 7</div>
+                  <div className="font-bold text-white">Support Availability</div>
+                  <div className="text-white/50 mt-1">24/7 Assistance</div>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="glass-panel rounded-3xl p-6 sm:p-8 border border-white/10 bg-gradient-to-br from-accent-cyan/5 to-transparent">
-            <h3 className="text-sm font-bold text-accent-cyan mb-2">Response Benchmarks</h3>
+            <h3 className="text-sm font-bold text-accent-cyan mb-2">Response Time</h3>
             <p className="text-xs text-white/50 leading-relaxed">
-              Our support cycles target responding to query requests within 24 hours. General code contributions and dashboard integrations are audited weekly.
+              Our support cycles target responding to query requests within 24 hours. Most inquiries receive a response within 24 hours. Support requests are handled as quickly as possible by our team.
+
+
             </p>
           </div>
         </div>

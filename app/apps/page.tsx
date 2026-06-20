@@ -53,12 +53,14 @@ export default function Apps() {
       {/* â”€â”€ HERO â”€â”€ */}
       <section className={styles.hero}>
         <div className={styles.heroLeft}>
-          <div className={styles.tag}>Official Mobile App</div>
+          <div className={styles.tag}>1xPlay Mobile App
+</div>
           <h1 className={styles.heroTitle}>
-            1xPlay <span className={styles.gold}>Smooth</span> Gaming
+            Download the <span className={styles.gold}>1xPlay App</span> for Casino Games and Live Sports
           </h1>
           <p className={styles.heroDesc}>
-            The 1xPlay App puts the full platform in your pocket â€” casino, live sports, cricket IDs, and instant withdrawals. Built for people who don&apos;t want to sit in front of a desktop to place a bet.
+          The 1xPlay App gives users access to casino games, live sports, cricket IDs, and mobile gaming features from one easy-to-use platform.
+
           </p>
           <p className={styles.heroSub}>
             Clean interface, fast loads, and a layout that just makes sense. Whether you&apos;re on the bus or watching the match from your couch, you&apos;re two taps away from the action.
@@ -306,8 +308,8 @@ export default function Apps() {
       {/* â”€â”€ WHY SECTION â”€â”€ */}
       <section className={styles.whySection}>
         <div className={styles.whyHeader}>
-          <h2 className={styles.sectionTitle}>Nine reasons<br />players stick<br />with 1xPlay</h2>
-          <p className={styles.sectionDesc}>A secure, reliable layout built for how people actually play â€” on the go, on their phone, in the moment.</p>
+          <h2 className={styles.sectionTitle}>Why Players Prefer the 1xPlay App</h2>
+          <p className={styles.sectionDesc}>A secure, reliable layout built for how people actually play  on the go, on their phone, in the moment.</p>
         </div>
         <div className={styles.whyGrid}>
           {benefits.map((b, i) => (
@@ -370,8 +372,9 @@ export default function Apps() {
         <div className={styles.ctaGlow} />
         <div className={styles.ctaInner}>
           <span className={styles.ctaTag}>Unleash the action</span>
-          <h2 className={styles.ctaTitle}>Mobile gaming,<br />done properly</h2>
-          <p className={styles.ctaDesc}>Download the 1xPlay App to get a smooth, secure gaming environment wherever you are. Cricket IDs, slots, live betting, instant withdrawals â€” all in one place.</p>
+          <h2 className={styles.ctaTitle}>Start Playing with the 1xPlay Mobile App
+</h2>
+          <p className={styles.ctaDesc}>Download the 1xPlay App to get a smooth, secure gaming environment wherever you are. Cricket IDs, slots, live betting, instant withdrawals  all in one place.</p>
           <div className={styles.ctaBtns}>
             <a href="#" className={styles.btnGold}><FaMobileAlt className="mr-1.5 inline align-middle text-[14px]" /> Download APK</a>
             <Link href="/games" className={styles.btnOutline}>Browse Games</Link>

@@ -148,7 +148,7 @@ export default function Testimonials() {
         <div className="flex justify-between items-end mb-[40px] gap-6 flex-wrap reveal">
           <div>
             <div className="section-tag">Player Reviews</div>
-            <h2 className="section-title">Trusted by<br /><span className="text-gold">Thousands</span></h2>
+            <h2 className="section-title">Player Experiences</h2>
           </div>
           <div className="flex items-center gap-4 ml-auto">
             <p className="section-desc hidden md:block max-w-[320px]">

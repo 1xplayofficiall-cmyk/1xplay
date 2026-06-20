@@ -16,7 +16,7 @@ export default function MobileApp() {
         {/* Left: Text */}
         <div className="reveal">
           <div className="section-tag">Mobile App</div>
-          <h2 className="section-title">Gaming in<br />Your <span className="text-gold">Pocket</span></h2>
+          <h2 className="section-title">Play Anywhere with the 1xPlay <span className="text-gold"> Mobile App</span></h2>
           <p className={clsx('section-desc', 'mt-5')}>The 1xPlay app brings smooth casino gaming, live cricket betting and fast sports action to any smartphone.</p>
 
           {/* Feature Rows */}

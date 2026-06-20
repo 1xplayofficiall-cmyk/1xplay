@@ -74,10 +74,11 @@ export default function BlogView({
                 <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#5ecfff] bg-clip-text leading-0 tracking-normal text-transparent">
                   play
                 </span>{" "}
-                <span>BLOG</span>
+                <span>Blog</span>
               </h1>
               <p className="text-muted text-[15px] md:text-[17px] leading-relaxed font-light max-w-2xl mx-auto mb-8">
-                Betting insights, cricket guides, casino tips, and platform updates — all in one place.
+               Learn betting strategies, cricket guides, casino tips, and platform updates designed to help players make informed decisions and enjoy a better gaming experience.
+
               </p>
 
               {/* "Coming soon" banner only shows while WordPress isn't connected yet */}
@@ -237,7 +238,8 @@ export default function BlogView({
                   <h3 className="font-[var(--font-bebas)] text-3xl md:text-4xl text-white tracking-wide">
                     EXPLORE THE PLATFORM
                   </h3>
-                  <p className="text-muted text-sm mt-2">Jump straight into the action — start playing today.</p>
+                  <p className="text-muted text-sm mt-2">Explore our latest guides, strategies, and platform updates while discovering new ways to enjoy sports betting and casino entertainment.
+</p>
                 </div>
                 <div className="flex gap-3 flex-wrap justify-center">
                   <Link href="/cricket" className="btn btn-gold inline-flex items-center gap-2">

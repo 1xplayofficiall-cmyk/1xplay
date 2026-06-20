@@ -20,21 +20,21 @@ const games = [
     href: "/casino",
     available: true,
   },
-  {
-    name: "Badminton",
-    image: "/badminton.png",
-    desc: "Fast paced live badminton betting with real time odds and international tournament coverage.",
-    href: "/badminton",
-    available: true,
-  },
-  {
+   {
     name: "Soccer",
     image: "/soccer.png",
     desc: "Bet on football matches worldwide with live scores, multiple markets and smooth mobile experience.",
     href: "/soccer",
     available: true,
   },
-  {
+   {
+    name: "Tennis",
+    image: "/tennis.png",
+    desc: "Follow Grand Slam tournaments and live tennis matches with real time betting markets.",
+    href: "/tennis",
+    available: true,
+  },
+    {
     name: "Horse Racing",
     image: "/horse.png",
     desc: "Experience the thrill of horse racing betting with live race tracking and fast odds updates.",
@@ -42,12 +42,14 @@ const games = [
     available: true,
   },
   {
-    name: "Tennis",
-    image: "/tennis.png",
-    desc: "Follow Grand Slam tournaments and live tennis matches with real time betting markets.",
-    href: "/tennis",
+    name: "Badminton",
+    image: "/badminton.png",
+    desc: "Fast paced live badminton betting with real time odds and international tournament coverage.",
+    href: "/badminton",
     available: true,
   },
+ 
+
   
   
 ];
@@ -64,10 +66,11 @@ export default function GamesPage() {
         <div className={clsx('max-w-[900px]', 'mx-auto', 'text-left', 'sm:text-center', 'relative', 'z-10', 'reveal')}>
           <div className={clsx('section-tag', 'justify-center')}> 🎮 Games Hub</div>
           <h1 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(44px,6vw,80px)]', 'tracking-[1px]', 'leading-[1.05]', 'text-white', 'mb-6')}>
-            Explore All <span className="text-gold">Games</span>
+            Explore Popular  <span className="text-gold">Games</span>
           </h1>
           <p className={clsx('text-[17px]', 'text-muted', 'leading-[1.8]', 'font-light', 'max-w-[600px]', 'mx-auto')}>
-            Choose your sport and start your premium betting experience with live odds, secure systems and smooth mobile performance.
+           Explore sports betting markets and casino games, all in one place with live action, smooth performance, and mobile-friendly access.
+
           </p>
         </div>
       </section>

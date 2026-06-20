@@ -93,7 +93,8 @@ export default function ResponsibleGamblingPage() {
             transition={{ delay: 0.2 }}
             className="mx-auto mt-6 max-w-3xl text-[16px] leading-relaxed text-muted font-light"
           >
-            At 1xPlay, we believe online gaming and betting should always remain a form of entertainment and enjoyment. We are committed to promoting responsible gambling practices and creating a safe environment where users can play responsibly and maintain control over their gaming activities.
+         Learn how to enjoy online gaming responsibly, manage your activity, and access support when needed.
+
           </motion.p>
         </div>
       </section>
@@ -239,11 +240,10 @@ export default function ResponsibleGamblingPage() {
           </p>
           <div className="flex gap-4 justify-center flex-wrap">
             <Link href="/contact" className="btn btn-gold btn-large">
-              Speak to Support
+              Need Assistance?
+
             </Link>
-            <Link href="/" className="btn btn-ghost btn-large">
-              Back to Home
-            </Link>
+
           </div>
         </div>
       </section>

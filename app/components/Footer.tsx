@@ -11,18 +11,24 @@ const platformLinks = [
   { name: "Games", href: "/games" },
   { name: "Highlights", href: "/highlights" },
   { name: "Blog", href: "/blog" },
-  { name: "Contact", href: "/contact" },
+  { name: "App", href: "/App" },
+ 
 ];
 const supportLinks = [
-  { name: "Privacy-policy", href: "/privacy-policy" },
+   { name: "Contact", href: "/contact" }, 
+   { name: "Support Centre", href: "/contact-us" }, 
   { name: "Rules", href: "/rules" },
   { name: "Deposit & Withdrawal", href: "/deposit-and-withdrawal" },
-  { name: "Responsible Gaming", href: "/responsible-gambling" },
-  { name: "Affiliates", href: "/affiliate" },
-  { name: "Partner", href: "/partner" },
+  
 ];
 const legalLinks = [
+   { name: "Privacy-policy", href: "/privacy-policy" },
   { name: "Terms & Conditions", href: "/terms-and-conditions" },
+   { name: "Responsible Gaming", href: "/responsible-gambling" },
+];
+const Partner = [
+  { name: "Affiliates", href: "/affiliate" },
+  { name: "Partner", href: "/partner" },
 ];
 // Official brand logos (full colour) as inline SVGs
 const InstagramLogo = () => (
@@ -66,14 +72,14 @@ export default function Footer() {
   return (
     <footer className={clsx('bg-bg2', 'border-t', 'border-border', 'pt-20', 'pb-10', 'px-[5%]')}>
       {/* Top Grid */}
-      <div className={clsx('grid', 'grid-cols-12', 'gap-8', 'mb-[60px]')}>
+      <div className={clsx('grid', 'grid-cols-12', 'gap-4', 'md:gap-0', 'mb-[60px]')}>
         {/* Brand */}
-        <div className={clsx('col-span-12', 'md:col-span-3')}>
+        <div className={clsx('col-span-12', 'md:col-span-4', 'md:pr-3')}>
           <div className={clsx('font-[var(--font-bebas)]', 'text-[36px]', 'tracking-[2px]', 'text-white', 'mb-4')}>
             <Image src="/1xplay.webp" alt="1xplay" height={50} width={150} className="object-contain" />
           </div>
           <p className={clsx('text-[14px]', 'text-muted', 'leading-[1.7]', 'max-w-[280px]', 'mb-6')}>
-            India&apos;s premier online casino and sports betting platform. Play 200+ games, bet on IPL cricket, and win big — all from one secure platform.
+          1xPlay is a modern gaming and entertainment platform offering sports experiences, casino games, platform updates, and mobile-friendly access.
           </p>
           <div className={clsx('flex', 'gap-2.5')}>
             {socialLinks.map(({ name, href, logo }) => (
@@ -93,7 +99,7 @@ export default function Footer() {
         </div>
 
         {/* Platform */}
-        <div className={clsx('col-span-6', 'md:col-span-3')}>
+        <div className={clsx('col-span-6', 'md:col-span-2', 'md:border-l', 'md:border-border', 'md:px-3')}>
           <div className={clsx('font-[var(--font-syne)]', 'text-[14px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'text-white', 'mb-5')}>Platform</div>
           <ul className={clsx('flex', 'flex-col', 'gap-2.5', 'list-none')}>
             {platformLinks.map((link) => (
@@ -103,7 +109,7 @@ export default function Footer() {
         </div>
 
         {/* Support */}
-        <div className={clsx('col-span-6', 'md:col-span-3')}>
+        <div className={clsx('col-span-6', 'md:col-span-2', 'md:border-l', 'md:border-border', 'md:px-3')}>
           <div className={clsx('font-[var(--font-syne)]', 'text-[14px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'text-white', 'mb-5')}>Support</div>
           <ul className={clsx('flex', 'flex-col', 'gap-2.5', 'list-none')}>
             {supportLinks.map((link) => (
@@ -113,10 +119,20 @@ export default function Footer() {
         </div>
 
         {/* Legal */}
-        <div className={clsx('col-span-6', 'md:col-span-3')}>
+        <div className={clsx('col-span-6', 'md:col-span-2', 'md:border-l', 'md:border-border', 'md:px-3')}>
           <div className={clsx('font-[var(--font-syne)]', 'text-[14px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'text-white', 'mb-5')}>Legal</div>
           <ul className={clsx('flex', 'flex-col', 'gap-2.5', 'list-none')}>
             {legalLinks.map((link) => (
+              <li key={link.name}><Link href={link.href} className={clsx('text-[14px]', 'text-muted', 'no-underline', 'hover:text-gold', 'transition-colors')}>{link.name}</Link></li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Partner */}
+        <div className={clsx('col-span-6', 'md:col-span-2', 'md:border-l', 'md:border-border', 'md:pl-3')}>
+          <div className={clsx('font-[var(--font-syne)]', 'text-[14px]', 'font-bold', 'uppercase', 'tracking-[1px]', 'text-white', 'mb-5')}>Partner</div>
+          <ul className={clsx('flex', 'flex-col', 'gap-2.5', 'list-none')}>
+            {Partner.map((link) => (
               <li key={link.name}><Link href={link.href} className={clsx('text-[14px]', 'text-muted', 'no-underline', 'hover:text-gold', 'transition-colors')}>{link.name}</Link></li>
             ))}
           </ul>

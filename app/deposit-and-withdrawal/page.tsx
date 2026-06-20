@@ -91,7 +91,7 @@ export default function DepositAndWithdrawalPage() {
             Deposit & <span className="text-gold">Withdrawal</span>
           </h1>
           <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'font-light', 'max-w-[650px]', 'mx-auto')}>
-            Understand how we handle deposit transactions, withdrawal clearances, account verification steps, and responsible financial policies on 1xPlay.
+            Learn how to add funds, request withdrawals, complete account verification, and manage transactions securely on 1xPlay.
           </p>
         </div>
       </section>

@@ -24,7 +24,7 @@ import {
 import ScrollReveal from "../components/ScrollReveal";
 
 const sections = [
-    { id: "welcome", title: "Terms and Rules", icon: FaRegFileAlt },
+    { id: "welcome", title: "Introduction", icon: FaRegFileAlt },
     { id: "acceptance", title: "Acceptance of Terms", icon: FaUserCheck },
     { id: "eligibility", title: "Eligibility", icon: FaUserShield },
     { id: "account-rules", title: "Account Rules", icon: FaLock },
@@ -96,10 +96,12 @@ export default function TermsAndRulesPage() {
         <div className={clsx('max-w-[1200px]', 'mx-auto', 'relative', 'z-10', 'text-left', 'sm:text-center', 'reveal')}>
           <div className={clsx('section-tag', 'justify-center')}>Platform Guidelines</div>
           <h1 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(44px,7vw,90px)]', 'tracking-[1px]', 'leading-[1.05]', 'text-white', 'mb-4')}>
-            Terms & <span className="text-gold">Rules</span>
+            Terms & <span className="text-gold">Conditions
+</span>
           </h1>
           <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'font-light', 'max-w-[650px]', 'mx-auto')}>
-            Please review the official rules, conditions, and regulations governing the use of 1xPlay. We encourage safe, fair, and responsible entertainment.
+           These Terms & Conditions govern your use of the 1xPlay platform, including account registration, deposits, withdrawals, betting activities, promotions, and platform services.
+
           </p>
         </div>
       </section>
@@ -150,7 +152,7 @@ export default function TermsAndRulesPage() {
                     <FaRegFileAlt size={18} />
                   </div>
                   <h2 className={clsx('font-[var(--font-bebas)]', 'text-[32px]', 'text-white', 'tracking-[1px]')}>
-                    Terms and Rules
+                   Introduction
                   </h2>
                 </div>
 

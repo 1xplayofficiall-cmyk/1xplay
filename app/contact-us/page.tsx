@@ -222,7 +222,8 @@ export default function ContactUsPage() {
                       <span className="relative inline-flex h-2 w-2 rounded-full bg-[#1EBF6A]" />
                     </span>
                     <span className="text-[10px] font-bold text-[#01A3F6] uppercase tracking-[0.25em] font-[var(--font-syne)]">
-                      Support Online · 24/7
+                      24/7 Customer Support
+
                     </span>
                   </motion.div>
 
@@ -246,9 +247,9 @@ export default function ContactUsPage() {
                     transition={{ delay: 0.4 }}
                     className="text-white/70 text-[15px] md:text-[17px] leading-relaxed font-light max-w-xl mb-6"
                   >
-                    Questions about your account, cricket ID, payments, or a game?
-                    The 1xPlay support team responds fast — pick a channel below or
-                    send us a message directly.
+                  Need help with your account, cricket ID, deposits, withdrawals, or live betting? Our support team is available 24/7 to assist you.
+
+
                   </motion.p>
 
                   <motion.div
@@ -641,7 +642,8 @@ export default function ContactUsPage() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[640px] h-[320px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.10)_0%,transparent_70%)] pointer-events-none" />
           <div className="relative z-10">
             <h2 className="section-title">
-              Still Have Questions?
+              Need More Help?
+
             </h2>
             <p className="mx-auto mb-8 max-w-2xl text-[14px] md:text-[15px] text-muted font-light leading-relaxed">
               Start a live chat for instant answers, or drop us an email and we&apos;ll

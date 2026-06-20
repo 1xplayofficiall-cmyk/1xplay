@@ -90,7 +90,8 @@ export default function PrivacyPolicyPage() {
             Privacy <span className="text-gold">Policy</span>
           </h1>
           <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.8]', 'font-light', 'max-w-[650px]', 'mx-auto')}>
-            At 1xPlay, transparency and safety are our top priorities. Read our complete Privacy Policy below to understand how we protect and manage your personal data.
+           Learn how 1xPlay collects, uses, protects, and manages user information across the platform.
+
           </p>
         </div>
       </section>

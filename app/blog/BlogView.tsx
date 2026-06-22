@@ -70,7 +70,7 @@ export default function BlogView({
               transition={{ duration: 0.7 }}
             >
               <h1 className="font-[var(--font-bebas)] text-[clamp(52px,8vw,96px)] tracking-[2px] leading-[0.9] text-white mb-4">
-                1X
+                1x
                 <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#5ecfff] bg-clip-text leading-0 tracking-normal text-transparent">
                   play
                 </span>{" "}

@@ -17,6 +17,7 @@ import TrustedByPlayers from "./components/TrustedByPlayers";
 import PlayerExperience from "./components/PlayerExperience";
 import JoinFuture from "./components/JoinFuture";
 import PageJsonLd from "./components/PageJsonLd";
+import HeroCards from "./components/HeroCards";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
       <PageJsonLd path="/" />
       <ScrollReveal />
       <Hero />
+      <HeroCards/>
       <Marquee />
       <CasinoGames />
       <About />

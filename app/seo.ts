@@ -263,10 +263,9 @@ export const rootMetadata: Metadata = {
     title: siteName,
     statusBarStyle: "black-translucent",
   },
-  // Drop your Google Search Console token into NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
-    : undefined,
+  verification: {
+    google: "vED9bQyoEX5eqa7pOmQiXGRyd20Dqv0WvY3_BGyHews",
+  },
   alternates: {
     canonical: seoPages["/"].path,
   },

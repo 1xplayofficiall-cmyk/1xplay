@@ -10,20 +10,11 @@ type FaqItem = {
 };
 
 type FaqSectionProps = {
-  tag?: string;
-  heading: string;
-  description?: string;
   faqs: readonly FaqItem[];
   className?: string;
 };
 
-export default function FaqSection({
-  tag = "FAQ",
-  heading,
-  description,
-  faqs,
-  className,
-}: FaqSectionProps) {
+export default function FaqSection({ faqs, className }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -43,16 +34,7 @@ export default function FaqSection({
       />
 
       <div className={clsx("max-w-[900px]", "mx-auto", "relative", "z-10")}>
-        <div className={clsx("text-left", "sm:text-center", "mb-10")}>
-          <div className={clsx("section-tag", "justify-center")}>{tag}</div>
-          <h2 className="section-title">{heading}</h2>
-          {description ? (
-            <p className={clsx("text-[15px]", "text-muted", "leading-[1.8]", "max-w-[700px]", "mx-auto", "font-light", "mt-4")}>
-              {description}
-            </p>
-          ) : null}
-        </div>
-
+        <div className={clsx("section-tag", "justify-center", "mb-8")}>FAQs</div>
         <div className={clsx("space-y-3")}>
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;

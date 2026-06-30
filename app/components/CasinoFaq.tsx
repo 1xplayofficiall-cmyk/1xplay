@@ -2,11 +2,5 @@ import FaqSection from "./FaqSection";
 import { casinoFaqs } from "../seo";
 
 export default function CasinoFaq() {
-  return (
-    <FaqSection
-      heading="FAQs"
-      faqs={casinoFaqs}
-      className="bg-bg2"
-    />
-  );
+  return <FaqSection faqs={casinoFaqs} className="bg-bg2" />;
 }

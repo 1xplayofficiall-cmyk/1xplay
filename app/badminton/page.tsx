@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import BadmintonFaq from "../components/BadmintonFaq";
 import { motion, useScroll } from "framer-motion";
 import {
   FaTrophy,
@@ -378,6 +379,8 @@ export default function BadmintonPage() {
           </div>
         </section>
       </div>
+
+      <BadmintonFaq />
 
       {/* ── Final CTA (section 11) ── */}
       <section id="join-experience" className="relative z-10 px-[5%] pb-28 scroll-mt-24">

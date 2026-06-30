@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import HorseRacingFaq from "../components/HorseRacingFaq";
 import { motion, useScroll } from "framer-motion";
 import {
   FaHorse,
@@ -413,6 +414,8 @@ export default function HorseRacing() {
           </div>
         </section>
       </div>
+
+      <HorseRacingFaq />
 
       {/* ── Final CTA ── */}
       <section className="relative z-10 px-[5%] pb-28">

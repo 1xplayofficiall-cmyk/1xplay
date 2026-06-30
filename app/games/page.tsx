@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
+import GamesFaq from "../components/GamesFaq";
 import { SportImageCard } from "../components/SportImageCard";
 
 const games = [
@@ -111,6 +112,8 @@ export default function GamesPage() {
           </div>
         </div>
       </section>
+
+      <GamesFaq />
     </>
   );
 }

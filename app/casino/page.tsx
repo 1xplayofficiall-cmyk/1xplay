@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import Link from "next/link";
+import CasinoFaq from "../components/CasinoFaq";
 import { useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import {
@@ -643,6 +644,8 @@ export default function CasinoPage() {
           </div>
         </section>
       </div>
+
+      <CasinoFaq />
 
       {/* ── Final CTA ── */}
       <section className="relative z-10 px-[5%] pb-28">

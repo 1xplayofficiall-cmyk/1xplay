@@ -18,6 +18,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import ScrollReveal from "../components/ScrollReveal";
+import ContactUsFaq from "../components/ContactUsFaq";
 import { submitContactForm, validateContactForm } from "../../lib/contactForm";
 
 const supportCategories = [
@@ -635,6 +636,8 @@ export default function ContactUsPage() {
           </div>
         </div>
       </section>
+
+      <ContactUsFaq />
 
       {/* ─────────── CTA ─────────── */}
       <section id="messaging" className="relative z-10 px-[5%] pb-28 scroll-mt-24">

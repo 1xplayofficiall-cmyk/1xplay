@@ -1,4 +1,4 @@
-import { webPageSchema, breadcrumbSchema, type SeoPath } from "../seo";
+import { webPageSchema, breadcrumbSchema, faqPageSchema, pageFaqs, type SeoPath } from "../seo";
 
 /**
  * Per-page JSON-LD (WebPage + BreadcrumbList), server-rendered into the page's
@@ -16,6 +16,12 @@ export default function PageJsonLd({ path }: { path: SeoPath }) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema(path)) }}
       />
+      {pageFaqs[path] && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPageSchema(pageFaqs[path]!)) }}
+        />
+      )}
     </>
   );
 }

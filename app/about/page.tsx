@@ -4,6 +4,7 @@ import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "../components/ScrollReveal";
+import AboutFaq from "../components/AboutFaq";
 
 export default function AboutPage() {
   return (
@@ -260,6 +261,8 @@ export default function AboutPage() {
           </p> */}
         </div>
       </section>
+
+      <AboutFaq />
 
       {/* ===== FINAL CTA ===== */}
       <section className={clsx('py-[60px]', 'px-[5%]', 'bg-bg', 'text-center', 'relative', 'overflow-hidden')}>

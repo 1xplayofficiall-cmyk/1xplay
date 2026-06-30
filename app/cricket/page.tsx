@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import Link from "next/link";
+import CricketFaq from "../components/CricketFaq";
 import { useState } from "react";
 import { motion, useScroll } from "framer-motion";
 import {
@@ -449,6 +450,8 @@ export default function CricketPage() {
           </div>
         </section>
       </div>
+
+      <CricketFaq />
 
       {/* ── Final CTA ── */}
       <section className="relative z-10 px-[5%] pb-15">

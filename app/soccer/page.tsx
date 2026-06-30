@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import SoccerFaq from "../components/SoccerFaq";
 import { motion, useScroll } from "framer-motion";
 import {
   FaFutbol,
@@ -399,6 +400,8 @@ export default function SoccerBetting() {
           </div>
         </section>
       </div>
+
+      <SoccerFaq />
 
       {/* ── Final CTA ── */}
       <section className="relative z-10 px-[5%] pb-28">

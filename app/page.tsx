@@ -16,6 +16,7 @@ import Support247 from "./components/Support247";
 import TrustedByPlayers from "./components/TrustedByPlayers";
 import PlayerExperience from "./components/PlayerExperience";
 import JoinFuture from "./components/JoinFuture";
+import HomepageFaq from "./components/HomepageFaq";
 import PageJsonLd from "./components/PageJsonLd";
 import HeroCards from "./components/HeroCards";
 
@@ -41,6 +42,7 @@ export default function Home() {
       <Testimonials />
       <PlayerExperience />
       <JoinCTA />
+      <HomepageFaq />
       <JoinFuture />
     </>
   );

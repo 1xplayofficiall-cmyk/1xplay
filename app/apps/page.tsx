@@ -29,6 +29,8 @@ import {
 import { IoFlash } from "react-icons/io5";
 import { GiCricketBat, GiTennisBall } from "react-icons/gi";
 import { IosDownloadButton } from "../components/IosInstallPrompt";
+import AppsFaq from "../components/AppsFaq";
+import ScrollReveal from "../components/ScrollReveal";
 
 type MockTab = "home" | "casino" | "sports" | "security";
  
@@ -49,7 +51,8 @@ export default function Apps() {
  
   return (
     <div className={styles.page}>
- 
+      <ScrollReveal />
+
       {/* â”€â”€ HERO â”€â”€ */}
       <section className={styles.hero}>
         <div className={styles.heroLeft}>
@@ -366,7 +369,9 @@ export default function Apps() {
           </div>
         </div>
       </section>
- 
+
+      <AppsFaq />
+
       {/* â”€â”€ CTA â”€â”€ */}
       <section className={styles.ctaSection}>
         <div className={styles.ctaGlow} />

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import TennisFaq from "../components/TennisFaq";
 import { motion, useScroll } from "framer-motion";
 import {
   FaBolt,
@@ -302,6 +303,8 @@ export default function TennisPage() {
           </p>
         </EditorialBlock>
       </div>
+
+      <TennisFaq />
 
       {/* ── Final CTA ── */}
       <section className="relative z-10 px-[5%] pb-28">

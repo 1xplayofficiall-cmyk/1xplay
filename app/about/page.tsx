@@ -31,15 +31,15 @@ export default function AboutPage() {
 
         <div className={clsx('absolute', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2', 'w-[800px]', 'h-[600px]', 'bg-[radial-gradient(ellipse,rgba(0,120,229,0.08)_0%,transparent_70%)]', 'pointer-events-none')} />
 
-        <div className={clsx('max-w-[1200px]', 'mx-auto', 'relative', 'z-10', 'text-left', 'sm:text-center', 'reveal')}>
+        <div className={clsx('max-w-[1200px]', 'mx-auto', 'relative', 'z-10', 'text-left', 'reveal')}>
           <h1 className={clsx('font-[var(--font-bebas)]', 'text-[clamp(44px,7vw,90px)]', 'tracking-[1px]', 'leading-[1.05]', 'text-white', 'mb-6')}>
             About <span className="text-gold">1xPlay</span>
           </h1>
-          <p className={clsx('text-[18px]', 'text-muted', 'leading-[1.8]', 'font-light', 'max-w-[800px]', 'mx-auto', 'mb-10')}>
+          <p className={clsx('text-[18px]', 'text-muted', 'leading-[1.8]', 'font-light', 'max-w-[750px]', 'mb-10')}>
            Welcome to 1xPlay — an all-in-one gaming platform where casino games, cricket betting, and live entertainment come together to create a fast, secure, and seamless experience.
 
           </p>
-          <div className={clsx('flex', 'gap-4', 'justify-center', 'flex-wrap')}>
+          <div className={clsx('flex', 'gap-4', 'justify-start', 'flex-wrap')}>
             <Link href="/games" className={clsx('btn', 'btn-gold', 'btn-large')}>Explore Our Games</Link>
             <Link href="/contact" className={clsx('btn', 'btn-ghost', 'btn-large')}>Contact Support</Link>
           </div>
@@ -48,7 +48,7 @@ export default function AboutPage() {
 
       {/* ===== INTRO SECTION ===== */}
       <section className={clsx('py-[40px]', 'px-[5%]', 'bg-bg2', 'border-t', 'border-b', 'border-border')}>
-        <div className={clsx('max-w-[1000px]', 'mx-auto', 'text-left', 'sm:text-center', 'reveal')}>
+        <div className={clsx('max-w-[1000px]', 'mx-auto', 'text-left', 'reveal')}>
           <p className={clsx('text-[16px]', 'text-muted', 'leading-[1.9]', 'font-light', 'mb-6')}>
             At 1xPlay, we focus on creating a trusted gaming environment where users from different parts of the world can enjoy online games, sports entertainment, live experiences, and rewarding opportunities anytime they want.
           </p>
@@ -248,8 +248,8 @@ export default function AboutPage() {
 
       {/* ===== WHY CHOOSE 1XPLAY ===== */}
       <section className={clsx('py-[50px]', 'px-[5%]', 'bg-bg2', 'border-t', 'border-b', 'border-border')}>
-        <div className={clsx('max-w-[900px]', 'mx-auto', 'text-left', 'sm:text-center', 'reveal')}>
-          <div className={clsx('section-tag', 'justify-center')}>Value Proposition</div>
+        <div className={clsx('max-w-[900px]', 'mx-auto', 'text-left', 'reveal')}>
+          <div className="section-tag">Value Proposition</div>
           <h2 className="section-title">
             Why Players Choose <span className="text-gold">1xPlay</span>
           </h2>
@@ -265,18 +265,18 @@ export default function AboutPage() {
       <AboutFaq />
 
       {/* ===== FINAL CTA ===== */}
-      <section className={clsx('py-[60px]', 'px-[5%]', 'bg-bg', 'text-center', 'relative', 'overflow-hidden')}>
+      <section className={clsx('py-[60px]', 'px-[5%]', 'bg-bg', 'text-left', 'relative', 'overflow-hidden')}>
         <div className={clsx('absolute', 'top-1/2', 'left-1/2', '-translate-x-1/2', '-translate-y-1/2', 'w-[800px]', 'h-[400px]', 'bg-[radial-gradient(ellipse,rgba(0,120,229,0.06)_0%,transparent_70%)]', 'pointer-events-none')} />
 
         <div className={clsx('relative', 'z-10', 'max-w-[750px]', 'mx-auto', 'reveal')}>
-          <div className={clsx('section-tag', 'justify-center')}>Join Us</div>
+          <div className="section-tag">Join Us</div>
           <h2 className="section-title">
             Join the Future of <br />Online Entertainment at <span className="text-gold">1xPlay</span>
           </h2>
           <p className={clsx('text-[15px]', 'text-muted', 'leading-[1.8]', 'font-light', 'mb-8')}>
             1xPlay continues moving forward with a clear vision to become one of the most trusted and recognized online gaming platforms globally. We are dedicated to providing modern entertainment experiences supported by technology, performance, and customer satisfaction.
           </p>
-          <div className={clsx('flex', 'gap-4', 'justify-center', 'flex-wrap')}>
+          <div className={clsx('flex', 'gap-4', 'justify-start', 'flex-wrap')}>
             <Link href="/" className={clsx('btn', 'btn-gold', 'btn-large')}>Join & Register Now</Link>
             <Link href="/games" className={clsx('btn', 'btn-ghost', 'btn-large')}>Explore Game Hub</Link>
           </div>

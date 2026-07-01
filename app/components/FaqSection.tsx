@@ -34,7 +34,7 @@ export default function FaqSection({ faqs, className }: FaqSectionProps) {
       />
 
       <div className={clsx("max-w-[900px]", "mx-auto", "relative", "z-10")}>
-        <div className={clsx("section-tag", "justify-center", "mb-8")}>FAQs</div>
+        <div className={clsx("section-tag", "mb-8")}>FAQs</div>
         <div className={clsx("space-y-3")}>
           {faqs.map((faq, index) => {
             const isOpen = openIndex === index;

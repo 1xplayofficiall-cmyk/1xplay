@@ -62,7 +62,7 @@ const FacebookLogo = () => (
 
 // TODO: replace the "#" placeholders with 1xPlay's real profile URLs
 const socialLinks = [
-  { name: "Instagram", href: "https://www.instagram.com/info_1xplay", logo: <InstagramLogo /> },
+  { name: "Instagram", href: "https://www.instagram.com/1xplay_pro", logo: <InstagramLogo /> },
   { name: "GitHub", href: "https://github.com/1xplayofficiall-cmyk", logo: <FaGithub size={19} color="#ffffff" /> },
   { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61582750799605 ", logo: <FacebookLogo /> },
   { name: "Pinterest", href: "https://in.pinterest.com/1xplayofficial/", logo: <FaPinterestP size={19} color="#E60023" /> },

@@ -25,9 +25,9 @@ export const seoPages = {
   "/": {
     title: "Best Online Cricket ID & Casino Games India | 1xPlay",
     description:
-      "Get a trusted Online Cricket ID for IPL betting, live cricket betting, casino games online and sports betting in India. Enjoy fast withdrawals, secure payments and 200+ casino games on 1xPlay.",
+      "1xplay is a trusted online gaming platform offering cricket betting ID, live casino games, secure payments, and instant withdrawals.",
     path: "/",
-    image: "/home.jpeg",
+    image: "/1xplay.webp",
     keywords: [
       "1xPlay",
       "online cricket ID",
@@ -947,15 +947,15 @@ export const rootMetadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    siteName,
+    siteName: "1xplay",
     title: seoPages["/"].title,
-    description: seoPages["/"].description,
-    url: seoPages["/"].path,
+    description: "1xplay is a trusted online gaming platform offering cricket betting ID, live casino games, secure payments, and instant withdrawals.",
+    url: "https://1xplay.pro/",
     images: [
       {
-        url: seoPages["/"].image || defaultImage,
-        width: 1200,
-        height: 630,
+        url: "https://1xplay.pro/_next/image?url=%2F1xplay.webp&w=384&q=75",
+        width: 384,
+        height: 75,
         alt: `${siteName} online casino and cricket betting`,
       },
     ],

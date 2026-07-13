@@ -128,13 +128,13 @@ export default async function BlogPostPage({
             </header>
 
             {/* Featured image */}
-            <div className="relative mt-10 h-[400px] sm:h-[380px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a1220]">
+            <div className="relative mt-10 h-[300px] sm:h-[600px]  rounded-2xl overflow-hidden border border-white/10 bg-[#0a1220]">
               <ArticleImage
                 src={heroImage}
                 alt={post.imageAlt || post.title}
-                className="object-cover"
+                className="object-fit"
                 fill
-                sizes="(max-width: 1024px) 100vw, 820px"
+                sizes="(max-width: 1024px) 100vw, 920px"
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#030914]/90 via-[#030914]/20 to-transparent" />

@@ -168,7 +168,7 @@ export default function BlogView({
                       <img
                         src={post.imageUrl}
                         alt={post.imageAlt || post.title}
-                        className="h-36 w-full rounded-xl object-cover border border-white/10 mb-5"
+                        className="h-56 w-full rounded-xl object-fit border border-white/10 mb-5"
                       />
                     ) : (
                       <div className="h-36 rounded-xl border border-dashed border-white/10 bg-[#030914]/60 mb-5 flex items-center justify-center">

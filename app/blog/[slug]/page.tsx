@@ -128,7 +128,7 @@ export default async function BlogPostPage({
             </header>
 
             {/* Featured image */}
-            <div className="relative mt-10 h-[200px] sm:h-[280px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a1220]">
+            <div className="relative mt-10 h-[400px] sm:h-[380px] rounded-2xl overflow-hidden border border-white/10 bg-[#0a1220]">
               <ArticleImage
                 src={heroImage}
                 alt={post.imageAlt || post.title}

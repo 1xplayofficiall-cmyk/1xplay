@@ -11,7 +11,7 @@ const platformLinks = [
   { name: "Games", href: "/games" },
   { name: "Highlights", href: "/highlights" },
   { name: "Blog", href: "/blog" },
-  { name: "App", href: "/App" },
+  { name: "App", href: "/apps" },
  
 ];
 const supportLinks = [

@@ -25,7 +25,7 @@ export const seoPages = {
   "/": {
     title: "Best Online Cricket ID & Casino Games India | 1xPlay",
     description:
-      "1xplay is a trusted online gaming platform offering cricket betting ID, live casino games, secure payments, and instant withdrawals.",
+      "Get a trusted Online Cricket ID for IPL betting, live cricket betting, sports betting, and 200+ casino games with fast withdrawals and secure payments.",
     path: "/",
     image: "/1xplay.webp",
     keywords: [
@@ -43,7 +43,7 @@ export const seoPages = {
   "/about": {
     title: "About 1xPlay | Trusted Online Cricket ID & Gaming Platform",
     description:
-      "Learn about 1xPlay, a trusted online gaming platform offering Online Cricket ID, casino games, IPL betting, sports entertainment, secure access, and mobile-friendly gaming experiences.",
+      "Learn about 1xplay, a trusted platform for Online Cricket ID, casino games, IPL betting, secure access, and sports entertainment.",
     path: "/about",
     keywords: [
       "about 1xPlay",
@@ -57,7 +57,7 @@ export const seoPages = {
     priority: 0.7,
   },
   "/affiliate": {
-    title: "1xPlay Affiliate Program",
+    title: "1xplay Affiliate Program - Earn Rewards",
     description:
       "Join the 1xPlay Affiliate Program and earn commission by referring active users to a trusted online casino, sports betting, and gaming platform.",
     path: "/affiliate",
@@ -68,7 +68,7 @@ export const seoPages = {
   "/apps": {
     title: "1xPlay App Download | Online Cricket ID & Casino Games App",
     description:
-      "Download the 1xPlay App for Online Cricket ID, IPL Betting, Casino Games and Live Sports Betting. Enjoy fast withdrawals, secure access and smooth mobile gaming on Android & iOS.",
+      "Download the 1xplay app for Online Cricket ID, IPL betting, live casino games, and secure sports betting on Android and iOS.",
     path: "/apps",
     image: "/iphone.jpg",
     keywords: [
@@ -85,7 +85,7 @@ export const seoPages = {
   "/badminton": {
     title: "Badminton Betting India | Live Badminton Betting Online | 1xPlay",
     description:
-      "Enjoy live badminton betting with real-time odds, international tournaments, mobile-friendly access, and secure sports betting markets. Explore badminton betting at 1xPlay.",
+      "Enjoy live badminton betting with real-time odds, top international tournaments, secure betting markets, and a mobile-friendly experience.",
     path: "/badminton",
     image: "/badminton-hero.png",
     keywords: [
@@ -100,7 +100,7 @@ export const seoPages = {
     priority: 0.82,
   },
   "/blog": {
-    title: "1xPlay Blog",
+    title: "1xplay Blog - Betting Tips & Guides",
     description:
       "Read the latest 1xPlay articles, platform updates, betting insights, casino guides, and online gaming tips for players.",
     path: "/blog",
@@ -111,7 +111,7 @@ export const seoPages = {
   "/casino": {
     title: "Casino Games Online India | Live Casino & Aviator Games | 1xPlay",
     description:
-      "Play Casino Games Online at 1xPlay. Enjoy Aviator, Blackjack, Roulette, Baccarat, Teen Patti, Dragon Tiger and Live Casino games with secure access and mobile-friendly gameplay.",
+      "Play Aviator, Blackjack, Roulette, Baccarat, Teen Patti, Dragon Tiger, and live casino games with secure access on 1xplay.",
     path: "/casino",
     image: "/casino-slots.jpg",
     keywords: [
@@ -126,7 +126,7 @@ export const seoPages = {
     priority: 0.88,
   },
   "/contact": {
-    title: "Contact 1xPlay",
+    title: "Contact 1xplay - Customer Support",
     description:
       "Contact the 1xPlay support team for account help, platform questions, payment assistance, and online gaming support.",
     path: "/contact",
@@ -152,7 +152,7 @@ export const seoPages = {
   "/cricket": {
     title: "Online Cricket ID & Live Cricket Betting Platform | 1xPlay",
     description:
-      "Get a trusted Online Cricket ID for live cricket betting, IPL betting, real-time odds, secure access and major cricket tournaments. Enjoy a smooth cricket betting experience with 1xPlay.",
+      "Get a trusted Online Cricket ID for live cricket betting, IPL matches, real-time odds, and secure betting with 1xplay.",
     path: "/cricket",
     image: "/cricket-hero.png",
     keywords: [
@@ -167,7 +167,7 @@ export const seoPages = {
     priority: 0.95,
   },
   "/deposit": {
-    title: "Deposit Funds",
+    title: "Deposit Funds Securely - 1xplay",
     description:
       "Deposit funds on 1xPlay using a secure and simple payment flow designed for fast account top-ups and uninterrupted gameplay.",
     path: "/deposit",
@@ -176,7 +176,7 @@ export const seoPages = {
     priority: 0.5,
   },
   "/deposit-and-withdrawal": {
-    title: "Deposit and Withdrawal Guide",
+    title: "Deposit & Withdrawal Guide - 1xplay",
     description:
       "Learn how deposits and withdrawals work on 1xPlay, including secure transactions, account verification, mobile payments, and support.",
     path: "/deposit-and-withdrawal",
@@ -187,7 +187,7 @@ export const seoPages = {
   "/games": {
     title: "Explore Casino Games & Cricket Betting Markets | 1xPlay",
     description:
-      "Explore casino games, cricket betting, football, tennis, horse racing and live sports markets on 1xPlay. Enjoy fast access, mobile-friendly gaming and real-time entertainment.",
+      "Explore cricket betting, casino games, football, tennis, horse racing, and live sports with fast, secure access.",
     path: "/games",
     keywords: [
       "1xPlay games hub",
@@ -213,7 +213,7 @@ export const seoPages = {
   "/horse-racing": {
     title: "Horse Racing Betting India | Live Horse Racing Odds | 1xPlay",
     description:
-      "Experience live horse racing betting with real-time odds, international race events, fast betting markets, and mobile-friendly access. Enjoy secure horse racing betting at 1xPlay.",
+      "Experience live horse racing betting with real-time odds, global race events, fast markets, and secure mobile betting.",
     path: "/horse-racing",
     image: "/horse-racing-hero.png",
     keywords: [
@@ -227,7 +227,7 @@ export const seoPages = {
     priority: 0.82,
   },
   "/partner": {
-    title: "1xPlay Partner Program",
+    title: "1xplay Partner Program - Join Today",
     description:
       "Become a 1xPlay partner and grow revenue with a transparent program for gaming, casino, and sports betting traffic.",
     path: "/partner",
@@ -236,7 +236,7 @@ export const seoPages = {
     priority: 0.7,
   },
   "/privacy-policy": {
-    title: "Privacy Policy",
+    title: "Privacy Policy - 1xplay",
     description:
       "Read the 1xPlay Privacy Policy to understand how user information, cookies, account data, and platform security are handled.",
     path: "/privacy-policy",
@@ -245,7 +245,7 @@ export const seoPages = {
     priority: 0.45,
   },
   "/responsible-gambling": {
-    title: "Responsible Gambling",
+    title: "Responsible Gambling - 1xplay",
     description:
       "Review 1xPlay responsible gambling guidance, player protection practices, betting limits, account control, and safer gaming advice.",
     path: "/responsible-gambling",
@@ -254,7 +254,7 @@ export const seoPages = {
     priority: 0.58,
   },
   "/rules": {
-    title: "Sports Betting Rules",
+    title: "Sports Betting Rules - 1xplay",
     description:
       "Read 1xPlay rules for sports betting, market settlement, cricket betting, tennis, football, account use, and fair gaming standards.",
     path: "/rules",
@@ -266,7 +266,7 @@ export const seoPages = {
   "/soccer": {
     title: "Soccer Betting Online India | Live Football Odds | 1xPlay",
     description:
-      "Enjoy live soccer betting with real-time odds, football betting markets, Premier League, Champions League, FIFA World Cup coverage, and mobile-friendly access at 1xPlay.",
+      "Enjoy live soccer betting with Premier League, Champions League, FIFA events, real-time odds, and secure football betting markets.",
     path: "/soccer",
     image: "/footbal.png",
     keywords: [
@@ -283,7 +283,7 @@ export const seoPages = {
   "/tennis": {
     title: "Tennis Betting Online India | Live Tennis Odds | 1xPlay",
     description:
-      "Experience Tennis Betting Online with live tennis odds, ATP & WTA events, Grand Slam tournaments, and real-time betting markets on the secure 1xPlay platform.",
+      "Bet on ATP, WTA, and Grand Slam tennis with live odds, real-time markets, and a smooth betting experience on 1xplay.",
     path: "/tennis",
     image: "/tennis-hero.jpg",
     keywords: [
@@ -298,7 +298,7 @@ export const seoPages = {
     priority: 0.84,
   },
   "/terms-and-conditions": {
-    title: "Terms and Conditions",
+    title: "Terms & Conditions - 1xplay",
     description:
       "Read the 1xPlay Terms and Conditions covering account use, payments, bonuses, responsible gaming, privacy, and platform rules.",
     path: "/terms-and-conditions",
@@ -307,7 +307,7 @@ export const seoPages = {
     priority: 0.5,
   },
   "/withdrawal": {
-    title: "Withdraw Winnings",
+    title: "Withdraw Winnings Securely - 1xplay",
     description:
       "Withdraw winnings from 1xPlay with a simple secure payout flow for UPI and bank transfer requests.",
     path: "/withdrawal",
@@ -949,7 +949,7 @@ export const rootMetadata: Metadata = {
     locale: "en_IN",
     siteName: "1xplay",
     title: seoPages["/"].title,
-    description: "1xplay is a trusted online gaming platform offering cricket betting ID, live casino games, secure payments, and instant withdrawals.",
+    description: seoPages["/"].description,
     url: "https://1xplay.pro/",
     images: [
       {

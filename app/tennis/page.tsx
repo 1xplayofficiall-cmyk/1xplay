@@ -386,9 +386,9 @@ function Hero() {
               transition={{ delay: 0.3 }}
               className="flex gap-4 flex-wrap max-sm:justify-center justify-center"
             >
-              <Link href="/https://www.1xplay.games/sports/tennis/2" className="btn btn-gold btn-large gap-2">
+              <a href="https://www.1xplay.games/sports/tennis/2" className="btn btn-gold btn-large gap-2">
                 <span>Start Betting</span> <FaArrowRight size={12} />
-              </Link>
+              </a>
               <Link href="/games" className="btn btn-ghost btn-large">
                 <span>View Markets</span>
               </Link>

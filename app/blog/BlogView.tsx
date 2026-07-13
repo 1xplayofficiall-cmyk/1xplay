@@ -165,56 +165,60 @@ export default function BlogView({
                     {/* Thumbnail */}
                     {post.imageUrl ? (
                       // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={post.imageUrl}
-                        alt={post.imageAlt || post.title}
-                        className="h-56 w-full rounded-xl object-fit border border-white/10 mb-5"
-                      />
+                      <div className="w-full relative overflow-hidden bg-[#030914]/60 border-b border-white/[0.06]">
+                        <img
+                          src={post.imageUrl}
+                          alt={post.imageAlt || post.title}
+                          className="w-full h-auto object-contain block transition-transform duration-500 group-hover:scale-105"
+                        />
+                      </div>
                     ) : (
-                      <div className="h-36 rounded-xl border border-dashed border-white/10 bg-[#030914]/60 mb-5 flex items-center justify-center">
+                      <div className="w-full aspect-[16/9] bg-[#030914]/60 flex items-center justify-center border-b border-white/[0.06]">
                         <Tag className="w-6 h-6 text-white/15" />
                       </div>
                     )}
 
-                    <div className="flex items-center gap-2 mb-3">
-                      <span
-                        className="text-[9px] font-black uppercase tracking-[0.15em] px-2 py-0.5 rounded border font-[var(--font-syne)]"
-                        style={{
-                          color: post.accent,
-                          borderColor: `${post.accent}33`,
-                          backgroundColor: `${post.accent}12`,
-                        }}
-                      >
-                        {post.category}
-                      </span>
-                      {usingFallback && (
-                        <span className="text-[9px] font-bold uppercase tracking-wider text-amber-400/80">
-                          Soon
+                    <div className="p-6 flex-1 flex flex-col">
+                      <div className="flex items-center gap-2 mb-3">
+                        <span
+                          className="text-[9px] font-black uppercase tracking-[0.15em] px-2 py-0.5 rounded border font-[var(--font-syne)]"
+                          style={{
+                            color: post.accent,
+                            borderColor: `${post.accent}33`,
+                            backgroundColor: `${post.accent}12`,
+                          }}
+                        >
+                          {post.category}
                         </span>
-                      )}
-                    </div>
+                        {usingFallback && (
+                          <span className="text-[9px] font-bold uppercase tracking-wider text-amber-400/80">
+                            Soon
+                          </span>
+                        )}
+                      </div>
 
-                    <h4 className="text-white font-[var(--font-syne)] font-bold text-[15px] leading-snug line-clamp-2 mb-2 group-hover:text-[#01A3F6] transition-colors">
-                      {post.title}
-                    </h4>
-                    <p className="text-muted text-[13px] leading-relaxed line-clamp-3 flex-1 mb-5">
-                      {post.excerpt}
-                    </p>
+                      <h4 className="text-white font-[var(--font-syne)] font-bold text-[15px] leading-snug line-clamp-2 mb-2 group-hover:text-[#01A3F6] transition-colors">
+                        {post.title}
+                      </h4>
+                      <p className="text-muted text-[13px] leading-relaxed line-clamp-3 flex-1 mb-5">
+                        {post.excerpt}
+                      </p>
 
-                    <div className="flex items-center justify-between pt-4 border-t border-white/[0.06] mt-auto">
-                      <span className="text-[11px] text-muted/70 flex items-center gap-1">
-                        <Clock className="w-3 h-3" />
-                        {post.date}
-                      </span>
-                      {usingFallback ? (
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-muted/40 cursor-not-allowed">
-                          Read Soon
+                      <div className="flex items-center justify-between pt-4 border-t border-white/[0.06] mt-auto">
+                        <span className="text-[11px] text-muted/70 flex items-center gap-1">
+                          <Clock className="w-3 h-3" />
+                          {post.date}
                         </span>
-                      ) : (
-                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#01A3F6] flex items-center gap-1">
-                          Read <ArrowRight className="w-3 h-3" />
-                        </span>
-                      )}
+                        {usingFallback ? (
+                          <span className="text-[11px] font-bold uppercase tracking-wider text-muted/40 cursor-not-allowed">
+                            Read Soon
+                          </span>
+                        ) : (
+                          <span className="text-[11px] font-bold uppercase tracking-wider text-[#01A3F6] flex items-center gap-1">
+                            Read <ArrowRight className="w-3 h-3" />
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </CardShell>
                 </motion.article>
@@ -261,7 +265,7 @@ export default function BlogView({
 // Wraps a grid card in a link when a slug is available, otherwise a plain div.
 function CardShell({ slug, children }: { slug?: string; children: React.ReactNode }) {
   const className =
-    "relative h-full flex flex-col rounded-2xl border border-white/[0.06] bg-[#0a1220]/70 backdrop-blur-xl p-6";
+    "relative h-full flex flex-col rounded-2xl border border-white/[0.06] bg-[#0a1220]/70 backdrop-blur-xl overflow-hidden group";
   return slug ? (
     <Link href={`/blog/${slug}`} className={className}>
       {children}

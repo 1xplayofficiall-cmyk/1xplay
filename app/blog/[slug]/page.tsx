@@ -128,14 +128,12 @@ export default async function BlogPostPage({
             </header>
 
             {/* Featured image */}
-            <div className="relative mt-10 h-[300px] sm:h-[600px]  rounded-2xl overflow-hidden border border-white/10 bg-[#0a1220]">
-              <ArticleImage
+            <div className="relative mt-10 w-full rounded-2xl overflow-hidden border border-white/10 bg-[#0a1220]">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={heroImage}
                 alt={post.imageAlt || post.title}
-                className="object-fit"
-                fill
-                sizes="(max-width: 1024px) 100vw, 920px"
-                priority
+                className="w-full h-auto object-contain block"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#030914]/90 via-[#030914]/20 to-transparent" />
               <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
@@ -336,13 +334,12 @@ function RelatedCard({ post }: { post: BlogPost }) {
       href={`/blog/${post.slug}`}
       className="group flex flex-col rounded-2xl overflow-hidden border border-white/[0.06] bg-[#0a1220]/60 hover:border-[#01A3F6]/30 transition-colors"
     >
-      <div className="relative h-36 w-full overflow-hidden">
-        <ArticleImage
+      <div className="relative w-full overflow-hidden bg-[#030914]/60 border-b border-white/[0.06]">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
           src={imageSrc}
           alt={post.imageAlt || post.title}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          fill
-          sizes="(max-width: 640px) 100vw, 360px"
+          className="w-full h-auto object-contain block transition-transform duration-500 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0a1220]/80 via-transparent to-transparent" />
       </div>

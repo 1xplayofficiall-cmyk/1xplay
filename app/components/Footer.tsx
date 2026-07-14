@@ -16,7 +16,7 @@ const platformLinks = [
 ];
 const supportLinks = [
    { name: "Contact", href: "/contact" }, 
-   { name: "Support Centre", href: "/contact-us" }, 
+   { name: "Support Centre", href: "/support" },
   { name: "Rules", href: "/rules" },
   { name: "Deposit & Withdrawal", href: "/deposit-and-withdrawal" },
   

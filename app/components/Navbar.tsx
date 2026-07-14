@@ -13,7 +13,7 @@ const navLinks = [
   { name: "ABOUT", href: "/about" },
   { name: "GAMES", href: "/games" },
   { name: "BLOG", href: "/blog" },
-  { name: "Support", href: "/contact-us" },
+  { name: "Support", href: "/support" },
   { name: "Contact", href: "/contact" },
 ];
 

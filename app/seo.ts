@@ -263,6 +263,22 @@ export const seoPages = {
     changeFrequency: "monthly",
     priority: 0.62,
   },
+  "/support": {
+    title: "1xPlay Help Centre | 24/7 Support for Cricket ID & Betting",
+    description:
+      "Visit the 1xPlay Help Centre for 24/7 support with account access, Cricket ID, deposits, withdrawals, casino games, sports betting, and technical help.",
+    keywords: [
+      "1xPlay help centre",
+      "1xPlay support",
+      "24/7 betting help",
+      "cricket ID support",
+      "deposit withdrawal help",
+      "live chat support",
+    ],
+    path: "/support",
+    changeFrequency: "monthly",
+    priority: 0.6,
+  },
   "/soccer": {
     title: "Soccer Betting Online India | Live Football Odds | 1xPlay",
     description:
@@ -902,6 +918,49 @@ export const contactUsFaqs = [
   },
 ] as const;
 
+export const supportFaqs = [
+  {
+    question: "How do I get help on 1xPlay?",
+    answer:
+      "You can reach the 1xPlay Help Centre 24/7 through live chat, email, WhatsApp, or Telegram. Pick a help topic on this page to jump straight to the right guide, or open a support ticket and our team will assist you.",
+  },
+  {
+    question: "Is 1xPlay support available 24/7?",
+    answer:
+      "Yes. Our support agents are available 24 hours a day, 7 days a week to help with account access, Cricket ID, deposits, withdrawals, casino games, and sports betting.",
+  },
+  {
+    question: "I can't log in to my account. What should I do?",
+    answer:
+      "First check your username and password, then clear your browser cache or update the app. If you still can't log in, contact live chat or email support and our team will help you restore access securely.",
+  },
+  {
+    question: "How long do deposits and withdrawals take?",
+    answer:
+      "Deposits are usually credited instantly. Withdrawal times vary depending on the payment method used, account verification, and processing checks. Visit the Deposit & Withdrawal guide for full details.",
+  },
+  {
+    question: "How do I get or recover my Online Cricket ID?",
+    answer:
+      "Register an account to receive your Online Cricket ID, or contact support if you need help recovering an existing ID. Our team can guide you through verification and account access.",
+  },
+  {
+    question: "Where can I find responsible gambling tools?",
+    answer:
+      "1xPlay provides deposit limits, account controls, and self-exclusion options. Visit the Responsible Gambling page or contact support to set up limits on your account.",
+  },
+  {
+    question: "How quickly will I get a reply from support?",
+    answer:
+      "Live chat is typically answered within a few minutes. Email responses usually arrive within a few hours, depending on the volume of requests.",
+  },
+  {
+    question: "Is my information safe when I contact support?",
+    answer:
+      "Yes. 1xPlay uses secure, encrypted communication channels to protect your personal and account information during every support interaction.",
+  },
+] as const;
+
 export const pageFaqs: Partial<
   Record<SeoPath, readonly { question: string; answer: string }[]>
 > = {
@@ -916,6 +975,7 @@ export const pageFaqs: Partial<
   "/horse-racing": horseRacingFaqs,
   "/tennis": tennisFaqs,
   "/contact-us": contactUsFaqs,
+  "/support": supportFaqs,
 };
 
 export const rootMetadata: Metadata = {

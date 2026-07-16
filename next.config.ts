@@ -22,9 +22,10 @@ const nextConfig: NextConfig = {
           return [
             {
               // Old misspelled affiliate URL, kept in case it was already indexed/linked
-              source: "/affilate",
-              destination: "/affiliate",
-              permanent: true,
+              source: "/:path*",
+        has: [{ type: "host", value: "1xplay.pro" }],
+        destination: "https://www.1xplay.pro/:path*",
+        permanent: true,
             },
           ];
         },
@@ -34,6 +35,7 @@ const nextConfig: NextConfig = {
             { protocol: "https", hostname: "contribution.usercontent.google.com" },
             { protocol: "https", hostname: "img.youtube.com" },
             { protocol: "https", hostname: "i.ytimg.com" },
+            { protocol: "https", hostname: "floralwhite-salamander-958022.hostingersite.com" },
           ],
         },
       }),

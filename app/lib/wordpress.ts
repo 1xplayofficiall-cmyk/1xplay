@@ -12,6 +12,8 @@ export type BlogPost = {
   accent: string;
   imageUrl?: string;
   imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
   author?: string;
   authorAvatar?: string;
   authorBio?: string;
@@ -94,7 +96,11 @@ const REVALIDATE_SECONDS = 300;
 const ACCENTS = ["#01A3F6", "#F5A623", "#1EBF6A", "#E8303A", "#0078E5"];
 
 
-type WPMedia = { source_url?: string; alt_text?: string };
+type WPMedia = {
+  source_url?: string;
+  alt_text?: string;
+  media_details?: { width?: number; height?: number };
+};
 type WPTerm = { name?: string; taxonomy?: string };
 type WPPost = {
   id: number;
@@ -173,6 +179,8 @@ function mapPost(wp: WPPost, withContent: boolean): BlogPost {
     accent: pickAccent(category),
     imageUrl: media?.source_url,
     imageAlt: media?.alt_text,
+    imageWidth: media?.media_details?.width,
+    imageHeight: media?.media_details?.height,
     author: wp._embedded?.author?.[0]?.name,
     authorAvatar: wp._embedded?.author?.[0]?.avatar_urls?.["96"],
     authorBio: wp._embedded?.author?.[0]?.description

@@ -127,15 +127,17 @@ export default async function BlogPostPage({
               <ShareButtons title={post.title} />
             </header>
 
-            {/* Featured image */}
-            <div className="relative mt-10 w-full rounded-2xl overflow-hidden border border-white/10 bg-[#0a1220]">
+            {/* Featured image — same pattern as /blog cards: full width, natural height, no crop */}
+            <div className="relative mt-10 w-full overflow-hidden rounded-2xl border border-white/[0.06] bg-[#030914]/60">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={heroImage}
                 alt={post.imageAlt || post.title}
-                className="w-full h-auto object-contain block"
+                width={post.imageWidth}
+                height={post.imageHeight}
+                className="w-full h-auto block"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#030914]/90 via-[#030914]/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#030914]/90 via-[#030914]/20 to-transparent pointer-events-none" />
               <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between gap-3">
                 <span
                   className="text-[10px] font-bold uppercase tracking-[0.2em] px-3 py-1 rounded-full border font-[var(--font-syne)] backdrop-blur-md bg-[#030914]/60"

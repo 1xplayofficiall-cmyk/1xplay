@@ -257,17 +257,25 @@ body {
 .wp-content a { color: var(--gold-dim); text-decoration: underline; text-underline-offset: 2px; }
 .wp-content a:hover { color: var(--white); }
 .wp-content strong { color: #e7ebf3; }
+.wp-content figure,
+.wp-content .wp-block-image {
+  width: 100%;
+  max-width: 100%;
+  margin: 1.4em 0;
+}
 .wp-content img,
 .wp-content figure img {
-  max-width: 100%;
-  max-height: 360px;
-  height: auto;
-  width: auto;
-  margin-inline: auto;
   display: block;
-  object-fit: cover;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   border-radius: 14px;
   border: 1px solid var(--border);
+}
+.wp-content figure img {
+  margin: 0;
+}
+.wp-content > img {
   margin: 1.4em 0;
 }
 .wp-content figcaption { font-size: 0.85em; color: var(--muted); text-align: center; margin-top: 0.5em; }

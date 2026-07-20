@@ -22,10 +22,10 @@ const nextConfig: NextConfig = {
           return [
             {
               // Old misspelled affiliate URL, kept in case it was already indexed/linked
-              source: "/:path*",
-        has: [{ type: "host", value: "1xplay.pro" }],
-        destination: "https://www.1xplay.pro/:path*",
-        permanent: true,
+             source: "/:path*",
+             has: [{type: "host", value: "1xplay.pro"}],
+             destination: "https://www.1xplay.pro/:path*",
+             permanent: true
             },
           ];
         },
@@ -39,6 +39,6 @@ const nextConfig: NextConfig = {
           ],
         },
       }),
-};
+};  
 
 export default nextConfig;

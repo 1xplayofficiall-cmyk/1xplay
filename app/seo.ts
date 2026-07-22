@@ -1,7 +1,7 @@
 import type { Metadata, MetadataRoute } from "next";
 
 const siteName = "1xPlay";
-const defaultSiteUrl = "https://1xplay.pro";
+const defaultSiteUrl = "https://www.1xplay.pro";
 const defaultImage = "/1xplay.png";
 
 type ChangeFrequency = NonNullable<MetadataRoute.Sitemap[number]["changeFrequency"]>;
@@ -17,8 +17,21 @@ type PageSeo = {
 };
 
 export function getSiteUrl() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || defaultSiteUrl;
-  return siteUrl.replace(/\/$/, "");
+  const raw = process.env.NEXT_PUBLIC_SITE_URL || defaultSiteUrl;
+  const siteUrl = raw.replace(/\/$/, "");
+
+  try {
+    const url = new URL(siteUrl.startsWith("http") ? siteUrl : `https://${siteUrl}`);
+
+    if (url.hostname === "1xplay.pro") {
+      url.hostname = "www.1xplay.pro";
+      url.protocol = "https:";
+    }
+
+    return url.origin;
+  } catch {
+    return defaultSiteUrl;
+  }
 }
 
 export const seoPages = {
@@ -999,7 +1012,7 @@ export const rootMetadata: Metadata = {
     statusBarStyle: "black-translucent",
   },
   verification: {
-    google: "vED9bQyoEX5eqa7pOmQiXGRyd20Dqv0WvY3_BGyHews",
+    google: "1YAWCtaVVXalPfAeMjzwUthOX-HPWQGcuEesmiZZNWE",
   },
   alternates: {
     canonical: seoPages["/"].path,
@@ -1010,10 +1023,10 @@ export const rootMetadata: Metadata = {
     siteName: "1xplay",
     title: seoPages["/"].title,
     description: seoPages["/"].description,
-    url: "https://1xplay.pro/",
+    url: `${getSiteUrl()}/`,
     images: [
       {
-        url: "https://1xplay.pro/_next/image?url=%2F1xplay.webp&w=384&q=75",
+        url: `${getSiteUrl()}/_next/image?url=%2F1xplay.webp&w=384&q=75`,
         width: 384,
         height: 75,
         alt: `${siteName} online casino and cricket betting`,
@@ -1138,6 +1151,8 @@ export function websiteSchema() {
 function absoluteUrl(path: string) {
   return `${getSiteUrl()}${path === "/" ? "/" : path}`;
 }
+
+export { absoluteUrl };
 
 export function webPageSchema(path: SeoPath) {
   const page = seoPages[path];

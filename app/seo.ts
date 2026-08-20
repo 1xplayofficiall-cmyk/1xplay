@@ -1012,7 +1012,7 @@ export const rootMetadata: Metadata = {
     statusBarStyle: "black-translucent",
   },
   verification: {
-    google: "1YAWCtaVVXalPfAeMjzwUthOX-HPWQGcuEesmiZZNWE",
+    google: "vED9bQyoEX5eqa7pOmQiXGRyd20Dqv0WvY3_BGyHews",
   },
   alternates: {
     canonical: seoPages["/"].path,

@@ -12,15 +12,7 @@ const  HeroCards = () =>{
 
      <div className={clsx('relative','overflow-hidden', 'px-[5%]',  'pb-12', 'flex', 'flex-col')}>
 
-           <div className={clsx('w-full', 'mb-8')}>
-          <p className={clsx('text-[13px]', 'md:text-[14px]', 'text-gray-300/95', 'font-light', 'leading-relaxed')}>
-            As the online gaming industry continues growing millions of users are searching for a platform that offers everything in one place. Players want casino games online trusted cricket betting ID services fast withdrawals live gaming experiences and smooth mobile access. 1xPlay is designed to fulfill all these expectations through a modern platform focused on speed convenience security and user satisfaction.
-            Whether you are searching for the best online casinos in India a reliable cricket ID provider exciting casino game India experiences or a powerful online gambling casino platform 1xPlay gives you access to everything through one easy to use website and mobile app.
-            Our goal is simple — to create a world class gaming platform where users can enjoy online casino games live sports betting IPL cricket betting and mobile entertainment without complications.
-          </p>
-        </div>
-
-
+      
          <motion.div 
           initial="hidden"
           animate="visible"

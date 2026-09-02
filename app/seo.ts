@@ -664,13 +664,48 @@ export const casinoFaqs = [
     answer:
       "Yes, Aviator is one of the featured casino games available on the platform.",
   },
+  {
+    question: "What are casino games online?",
+    answer:
+      "Casino games online are digital versions of classic casino titles, including slots, roulette, blackjack, and baccarat, accessible through internet-connected devices.",
+  },
+  {
+    question: "What are the best casino games online for beginners?",
+    answer:
+      "Slots and baccarat are often recommended for beginners due to their straightforward mechanics and minimal decision-making requirements.",
+  },
+  {
+    question: "What types of online casino games are available?",
+    answer:
+      "Common categories include digital slots, traditional table options (roulette, blackjack, baccarat), and real-time live dealer streams.",
+  },
+  {
+    question: "How does an online casino work?",
+    answer:
+      "Digital casinos host software-based games using Random Number Generators (RNG) or live video streams to deliver game outcomes, managed via secure user accounts.",
+  },
+  {
+    question: "Are online casinos legal in India?",
+    answer:
+      "Legal permissions vary by individual state laws across India. Users must check regional regulations in their location before accessing online gaming services.",
+  },
+  {
+    question: "How do I choose an online casino game?",
+    answer:
+      "Consider your preference for game speed, rule complexity, strategic involvement, and personal risk comfort when selecting a game.",
+  },
+  {
+    question: "Are casino games based on chance?",
+    answer:
+      "Yes. All casino outcomes rely on chance and mathematical probability designed with a built-in house edge. No strategy can guarantee consistent wins.",
+  },
 ] as const;
 
 export const badmintonFaqs = [
   {
     question: "What is badminton betting?",
     answer:
-      "Badminton betting allows users to explore betting markets related to badminton matches, tournaments, and live match action.",
+      "Badminton betting is the act of wagering on specific outcomes in a badminton match or tournament, such as overall winners, set scores, or total points scored.",
   },
   {
     question: "Can I enjoy live badminton betting on 1xPlay?",
@@ -717,13 +752,33 @@ export const badmintonFaqs = [
     answer:
       "1xPlay offers live betting markets, international tournament coverage, mobile-friendly access, secure systems, and a smooth user experience.",
   },
+  {
+    question: "How do badminton betting odds work?",
+    answer:
+      "Odds reflect the statistical probability of a specific outcome. Lower odds indicate a higher probability (a favorite), while higher odds reflect a lower probability (an underdog), and they determine the potential payout relative to your stake.",
+  },
+  {
+    question: "Can I bet on badminton tournaments as a whole?",
+    answer:
+      "Yes, futures or outright markets allow you to select which player or pair will win an entire tournament before or during the event.",
+  },
+  {
+    question: "What is live badminton betting?",
+    answer:
+      "Live betting allows you to place wagers on a badminton match while it is taking place, with odds shifting dynamically point-by-point based on live match action.",
+  },
+  {
+    question: "Is live badminton betting different from pre-match betting?",
+    answer:
+      "Yes. Pre-match betting relies on historical data and pre-game conditions, whereas live betting requires reacting to active momentum, live scores, and physical factors during the match.",
+  },
 ] as const;
 
 export const soccerFaqs = [
   {
-    question: "What is Soccer Betting?",
+    question: "What is soccer betting?",
     answer:
-      "Soccer betting allows users to predict different outcomes of football matches, including match winners, total goals, correct scores, and live match events through online betting markets.",
+      "Soccer betting is the act of predicting specific outcomes within a soccer match — such as the final score, match winner, or total goals — and placing a financial stake on that prediction through a set market.",
   },
   {
     question: "Can I enjoy Live Soccer Betting at 1xPlay?",
@@ -770,13 +825,48 @@ export const soccerFaqs = [
     answer:
       "Live Football Odds change throughout the match based on goals, possession, player performance, and other match events. At 1xPlay, users can access real-time odds updates and explore live soccer betting markets while the game is in progress.",
   },
+  {
+    question: "What is live soccer betting?",
+    answer:
+      "Live soccer betting involves placing wagers on a match after it has kicked off. The odds update continuously in real time to reflect events happening on the pitch, such as goals, cards, and red cards.",
+  },
+  {
+    question: "What are soccer betting odds?",
+    answer:
+      "Soccer betting odds show the relative likelihood of a specific event occurring according to the platform. They also determine the potential financial payout you receive if your wager is successful.",
+  },
+  {
+    question: "What is the difference between soccer betting and football betting?",
+    answer:
+      'There is no functional difference. "Soccer" and "football" refer to the exact same sport; the term used simply depends on regional preferences (for example, "soccer" in North America and "football" in Europe and Asia).',
+  },
+  {
+    question: "Which soccer betting markets are popular?",
+    answer:
+      "The most popular markets include Match Winner (1X2), Over/Under Goals, Both Teams to Score (BTTS), Double Chance, Correct Score, and Asian Handicaps.",
+  },
+  {
+    question: "Can soccer betting odds change during a match?",
+    answer:
+      "Yes, live odds change constantly during a match. Events like goals, red cards, key injuries, dominant momentum, or time remaining cause the system to recalculate and adjust the odds instantly.",
+  },
+  {
+    question: "How can beginners approach soccer betting responsibly?",
+    answer:
+      "Beginners should set a strict spending budget, focus on simple markets they understand, avoid chasing losses, research teams thoroughly before betting, and treat all wagers purely as entertainment.",
+  },
+  {
+    question: "Is soccer betting guaranteed to make money?",
+    answer:
+      "No, there are no guaranteed wins or risk-free bets in sports wagering. Outcomes in sports are unpredictable, and betting always carries the risk of losing your stake.",
+  },
 ] as const;
 
 export const horseRacingFaqs = [
   {
-    question: "What is horse racing betting?",
+    question: "What is Horse Racing Betting Online?",
     answer:
-      "Horse racing betting allows users to explore betting markets on horse races, race winners, place betting, and other race outcomes.",
+      "Online horse racing betting is the process of selecting outcomes on official horse races through a digital platform. Users can review racecards, evaluate odds for competing runners, and choose specific market options such as win or place positions.",
   },
   {
     question: "Can I enjoy live horse racing betting on 1xPlay?",
@@ -823,13 +913,43 @@ export const horseRacingFaqs = [
     answer:
       "Horse racing betting is popular because of fast-paced races, exciting finishes, multiple betting options, and international race events throughout the year.",
   },
+  {
+    question: "How does online horse racing betting work?",
+    answer:
+      "Users browse scheduled races, analyze form and market odds, select a specific runner and market type, and confirm their selection on their digital bet slip. Once the race finishes and results are verified by stewards, successful entries are settled automatically.",
+  },
+  {
+    question: "What are horse racing odds?",
+    answer:
+      "Horse racing odds are numerical values that reflect the estimated probability of a horse winning or placing in a race. They also determine the potential return on a successful selection relative to the amount staked.",
+  },
+  {
+    question: "What is live horse racing betting?",
+    answer:
+      "Live or in-play horse racing betting allows users to place entries on a race after it has officially started. Odds adjust continuously in real time based on how the horses are performing along the course.",
+  },
+  {
+    question: "What should I check before betting on a horse race?",
+    answer:
+      "Before selecting a runner, it is helpful to review recent form figures, suitability for the race distance, track surface conditions (the going), jockey and trainer track records, and current market odds.",
+  },
+  {
+    question: "What are the most common horse racing betting markets?",
+    answer:
+      "The most popular markets are Win (selecting the first-place finisher) and Place (selecting a horse to finish within the top 2, 3, or 4 positions depending on field size). Where available, Each-Way options combine both into a dual selection.",
+  },
+  {
+    question: "Is horse racing betting legal in India?",
+    answer:
+      "Legal rules surrounding sports engagement and horse racing vary by state and region across India. Horse racing holds a unique legal history in several jurisdictions, but users must independently verify the specific local laws, age limits, and regulations applicable in their state before participating.",
+  },
 ] as const;
 
 export const tennisFaqs = [
   {
-    question: "What is Tennis Betting Online?",
+    question: "What is online tennis betting?",
     answer:
-      "Tennis Betting Online allows users to explore betting markets on professional tennis matches, including ATP, WTA, Grand Slam tournaments, and live tennis events.",
+      "Online tennis betting is the process of predicting outcomes in professional tennis matches — such as match winners, set scores, or total games — through a digital platform like 1Xplay.",
   },
   {
     question: "Can I enjoy Live Tennis Betting on 1xPlay?",
@@ -875,6 +995,36 @@ export const tennisFaqs = [
     question: "What are Live Tennis Odds?",
     answer:
       "Live Tennis Odds change throughout the match based on points, games, sets, and player performance, providing real-time betting opportunities.",
+  },
+  {
+    question: "How do tennis betting odds work?",
+    answer:
+      "Tennis betting odds express the probability of a specific match outcome and determine potential payouts relative to your stake. Shorter odds denote favorites, while longer odds indicate underdogs.",
+  },
+  {
+    question: "What is live tennis betting?",
+    answer:
+      "Live tennis betting involves selecting outcomes while a tennis match is actively taking place. In-play odds update in real time after every point, game, and set based on current court action.",
+  },
+  {
+    question: "What are the most common tennis betting markets?",
+    answer:
+      "The most popular tennis markets include Match Winner, Set Betting (exact set score), Total Games (Over/Under), and Game Handicaps.",
+  },
+  {
+    question: "What should I check before betting on a tennis match?",
+    answer:
+      "Before selecting an outcome, it is recommended to evaluate recent player form, head-to-head records, court surface suitability, player workload, and current pre-match odds.",
+  },
+  {
+    question: "Does the court surface affect tennis betting?",
+    answer:
+      "Yes, court surfaces (hard, clay, or grass) significantly influence ball speed, bounce height, and rally lengths, which can favor certain playing styles over others.",
+  },
+  {
+    question: "Is tennis betting legal in India?",
+    answer:
+      "Sports regulations and legal frameworks vary across different states and regions in India. Users should independently review the applicable local laws and age requirements in their jurisdiction before participating in online sports platforms.",
   },
 ] as const;
 

@@ -10,7 +10,7 @@ const MotionLink = motion.create(Link);
 
 const Hero = () => {
   return (
-    <section className={clsx('relative','h-[600px]', 'overflow-hidden', 'px-[5%]', 'pt-[calc(var(--navbar-offset)+2rem)]', 'pb-12', 'flex', 'flex-col')}>
+    <section className={clsx('relative','h-[600px]', 'overflow-hidden', 'px-[5%]', 'pt-[calc(var(--navbar-offset)+2rem)]', 'pb-30', 'flex', 'flex-col')}>
       {/* Hero Banner Background */}
       <div className={clsx('md:absolute', 'hidden md:block', 'inset-0', 'z-0')}>
         <Image
@@ -56,9 +56,9 @@ const Hero = () => {
               className={clsx('text-4xl', 'md:text-5xl', 'lg:text-[42px]', 'font-extrabold', 'text-white', 'leading-[1.2]', 'mb-6', 'tracking-tight', 'drop-shadow-lg')}
             >
               <span className={clsx('relative')}>
-                1XPlay
+              Live Cricket Betting on 1Xplay  Your Trusted Cricket Betting ID Platform
               </span>
-              {" "}– Best Online Casino and Cricket Betting Platform in India
+              
             </motion.h1>
 
             {/* Subheading & Paragraphs (Smaller Text) */}
@@ -69,14 +69,15 @@ const Hero = () => {
               className={clsx('space-y-2', 'mb-2', 'text-[14px]', 'md:text-[15px]', 'text-gray-300', 'font-light', 'leading-relaxed', 'max-w-xl')}
             >
               <p>
-                Welcome to 1xPlay — a trusted destination for online gaming sports betting and premium casino entertainment. Built for modern players 1xPlay delivers a complete gaming experience with advanced technology smooth performance secure access and exciting entertainment options for users across India and international markets.
+              Cricket is more than just a sport in India; it is a passion shared by millions. With 1Xplay, you can elevate your match-day excitement through top-tier Online Cricket Betting. Our platform offers a seamless, secure, and user-friendly experience designed for every fan. Whether you are looking for real-time Live Cricket Betting during high-stakes overs or seeking a reliable Online Cricket ID, we provide everything you need under one roof. At 1Xplay, we prioritize transparency, quick payouts, and continuous customer support to ensure your betting journey is safe and enjoyable. Get your verified ID today, follow ball-by-ball action, and discover why thousands of users trust 1Xplay as their go-to destination for online sports betting.
+
               </p>
 
                <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}
-          className={clsx('flex', 'flex-wrap', 'gap-4', 'justify-center','mt-6')}
+          className={clsx('flex', 'flex-wrap', 'gap-4', 'justify-center','mt-6 mb-4 pb-9')}
         >
           
           <a href="https://www.1xplay.games/">

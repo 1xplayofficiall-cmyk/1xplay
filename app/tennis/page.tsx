@@ -3,21 +3,117 @@
 import Link from "next/link";
 import TennisFaq from "../components/TennisFaq";
 import { motion, useScroll } from "framer-motion";
-import {
-  FaBolt,
-  FaTv,
-  FaMobileAlt,
-  FaCheck,
-  FaArrowRight,
-  FaLock,
-} from "react-icons/fa";
+import { FaCheck, FaArrowRight, FaExclamationTriangle, FaBolt } from "react-icons/fa";
 import ScrollReveal from "../components/ScrollReveal";
 import { EditorialBlock, WideBlock, SplitMedia } from "../components/SportPageBlocks";
 import { SportHero } from "../components/SportHeroMedia";
 
 const ACCENT = "#01A3F6";
 
-/* ─────────── Page ─────────── */
+/* ---------- content data ---------- */
+const introParas = [
+  "Tennis is one of the world's most dynamic individual sports, offering non-stop action across the ATP and WTA tours, Grand Slams, and regional tournaments throughout the calendar year. Unlike team sports where bench depth or tactical substitutions can alter outcomes, tennis centers entirely on two players — or two pairs in doubles — competing head-to-head. This direct dynamic makes online tennis betting a popular choice for fans who enjoy analyzing player performance, tactical matchups, and match statistics.",
+  "At its foundation, tennis betting involves reviewing upcoming or ongoing tennis matches and predicting specific outcomes across structured markets. Rather than relying on simple luck, evaluating player form, head-to-head records, and court surfaces provides valuable context before placing a wager. Whether you follow fast-paced hard-court battles or grueling rallies on clay, understanding match dynamics enhances your overall viewing experience.",
+  "On the 1Xplay Tennis platform, sports enthusiasts can explore a wide variety of pre-match options, follow live tennis betting opportunities, and access clear market views designed for smooth navigation across desktop and mobile devices.",
+];
+
+const howSteps = [
+  { title: "Select a Tennis Match", desc: "Browse the schedule of upcoming or live fixtures on 1Xplay to find a match across international or regional events." },
+  { title: "Review the Players", desc: "Check essential pre-match details, including ATP or WTA rankings, recent form, head-to-head history, and physical conditioning." },
+  { title: "Check Available Markets", desc: "Explore the types of selections offered, ranging from predicting the outright match winner to set scores and total games." },
+  { title: "Understand Tennis Betting Odds", desc: "Examine the numerical values assigned to each player or market outcome to evaluate the market's expectation and potential returns." },
+  { title: "Choose a Market", desc: "Select the specific outcome that aligns best with your pre-match analysis." },
+  { title: "Place a Wager", desc: "Enter your intended stake into your digital bet slip, review the selection details carefully, and confirm your entry." },
+  { title: "Follow the Match", desc: "Watch live broadcasts or monitor point-by-point digital trackers as the contest unfolds." },
+  { title: "Understand the Settlement", desc: "Once the match concludes and official results are recorded, your entry is settled according to the final score line and market rules." },
+];
+const howClosing =
+  "Following these structured steps helps maintain clarity, though it is important to remember that no analytical process guarantees a winning outcome due to the inherent unpredictability of live sports.";
+
+const oddsIntro =
+  "Grasping how tennis betting odds work is essential for anyone interested in sports markets. Odds serve two main functions: they reflect the probability assigned to a particular outcome by the market, and they determine the return relative to the amount staked.";
+const whatOddsRepresent =
+  "Odds are established using statistical data, historical performance, rankings, and public market demand. When a player is assigned shorter tennis odds (for example, 1.50 in decimal format or 1/2 in fractional format), the market views that player as the favorite with a higher likelihood of winning. Consequently, potential returns on shorter odds are lower. Conversely, longer odds (such as 3.50 or 5/2) indicate an underdog with a lower estimated probability of success, offering a higher potential return if an upset occurs.";
+const whyOddsShift = [
+  "Unannounced physical issues or minor injuries sustained during warm-ups.",
+  "Sudden weather changes affecting open-air court conditions.",
+  "Heavy betting volume favoring a specific player.",
+  "Late reports regarding court speed or ball bounce characteristics.",
+];
+const oddsNotGuarantees =
+  "Even heavily favored players with short odds can experience off days, struggle with environmental conditions, or face an inspired opponent. Therefore, odds should be viewed purely as market indicators rather than absolute forecasts.";
+
+const marketsIntro =
+  "Tennis offers a wide range of selection types beyond simply picking who will win the match. Understanding these distinct options allows you to choose markets that fit your specific analysis.";
+const marketBreakdowns = [
+  { emoji: "🏆", title: "Match Winner", desc: "The Match Winner market is the most direct form of selection. You simply choose which player (or doubles team) will win the contest overall. Because tennis matches cannot end in a draw, there are only two possible outcomes." },
+  { emoji: "🎯", title: "Set Betting", desc: "In set betting markets, you predict the exact set score of the match (for example, 2-0 or 2-1 in a best-of-three-set match). This market requires deeper evaluation of whether a favorite will dominate completely or if the underdog can steal a set based on their serve and return capabilities." },
+  { emoji: "🔢", title: "Total Games", desc: "Total Games markets (often referred to as Over/Under markets) involve predicting whether the combined number of games played by both players will be above or below a specified benchmark set by the market. High-serving battles between big servers often feature more games and tiebreaks, pushing total game counts higher." },
+  { emoji: "⚖️", title: "Handicap Markets", desc: "Handicap markets level the playing field between a heavy favorite and an underdog. A game handicap assigns a virtual deficit (e.g., -4.5 games) to the favorite or a virtual advantage (e.g., +4.5 games) to the underdog. The selection wins if your chosen player covers the handicap once all games are tallied." },
+  { emoji: "📊", title: "Player and Match Markets", desc: "Depending on event coverage, additional options may include predicting who will win the first set, total aces served, or break-point conversion totals. Market availability varies depending on the tournament tier and fixture profile." },
+];
+
+const liveIntro =
+  "The fast-paced nature of point-by-point scoring makes live tennis betting one of the most engaging ways to follow an ongoing match. In-play markets allow you to respond dynamically as momentum shifts from one player to another.";
+const liveFactors = [
+  { title: "Current Score & Set Position", desc: "A player holding break points or leading by a set experiences immediate odds shifts." },
+  { title: "Serve Performance", desc: "High first-serve percentages and easy service holds build pressure on the receiver." },
+  { title: "Breaks of Serve", desc: "Securing a break of serve significantly alters set momentum and live market pricing." },
+  { title: "Unforced Errors & Momentum", desc: "Noticeable drop-offs in consistency or visible fatigue can shift momentum quickly." },
+  { title: "Physical Condition & Medical Timeouts", desc: "Signs of cramping or injury breaks can dramatically alter a match's trajectory." },
+];
+const liveClosing =
+  "While live tennis betting provides real-time interaction, in-play markets move rapidly. Broadcast latencies and sudden momentum swings mean that in-play selections carry unique risks. Maintaining a calm, objective mindset is crucial when following live action.";
+
+const factorsIntro =
+  "Analyzing a tennis fixture requires evaluating multiple performance indicators rather than relying on ranking alone.";
+const factors = [
+  { title: "Recent Player Form", desc: "Check a player's recent win-loss record over their last 5 to 10 matches to gauge confidence and consistency." },
+  { title: "Head-to-Head Record", desc: "Certain players possess tactical styles or left-handed angles that create matchup difficulties for specific opponents, regardless of overall rank." },
+  { title: "ATP/WTA Ranking Context", desc: "While rankings reflect long-term success over 52 weeks, they do not always capture a player's immediate physical form or current surface preference." },
+  { title: "Court Surface Adaptation", desc: "Players often specialize on particular surfaces; a high-ranked clay specialist may struggle on fast grass courts." },
+  { title: "Workload and Fitness", desc: "Examine how many hours a player spent on court in previous tournament rounds. Long, five-set matches can cause physical depletion in subsequent outings." },
+  { title: "Serve and Return Metrics", desc: "Review statistics like first-serve percentage, aces per match, and break-point conversion rates to assess tactical strengths." },
+];
+const factorsClosing =
+  "Combining these analytical factors helps build a complete picture of a match, though unexpected performance variations are always possible in professional sports.";
+
+const surfacesIntro =
+  "Court surface plays a fundamental role in shaping how tennis matches are played. Understanding how surface conditions alter ball speed and bounce is key to accurate match evaluation.";
+const surfaces = [
+  { title: "Hard Courts", surface: "Hard", color: "#2E7BD8", desc: "Hard courts (made of acrylic or synthetic materials over concrete) offer a neutral balance between speed and bounce consistency. They reward well-rounded players with strong serves, solid baseline consistency, and reliable court coverage." },
+  { title: "Clay Courts", surface: "Clay", color: "#D8743F", desc: "Clay courts significantly slow down the speed of the ball while producing a higher, heavier bounce. This surface favors patient baseliners who excel at extended rallies, sliding movement, and heavy topspin, while reducing the immediate advantage of big servers." },
+  { title: "Grass Courts", surface: "Grass", color: "#2E9E5B", desc: "Grass courts are the fastest playing surface in tennis, producing a low, slick ball bounce. Points tend to be shorter, strongly favoring big servers, aggressive net-rushers, and players with quick reaction times on return." },
+];
+
+const prematchVsLiveIntro = "Both pre-match and live formats offer distinct approaches to reviewing tennis fixtures.";
+const prematchVsLive = [
+  { title: "Pre-Match Tennis Betting", desc: "Allows ample time for detailed statistical research, historical head-to-head comparisons, and calm decision-making before the first serve. Odds remain relatively stable until shortly before the match begins." },
+  { title: "Live Tennis Betting", desc: "Offers real-time engagement where you evaluate active match momentum, court body language, and live tactical changes. However, live odds fluctuate rapidly, requiring quick decisions under fast-changing conditions." },
+];
+const prematchVsLiveClosing =
+  "Neither approach guarantees superior results; choosing between them depends on your personal analytical preference and comfort level.";
+
+const whyClosing =
+  "Explore upcoming tournament draws and review available odds directly on the 1Xplay Tennis page to start your journey.";
+
+const beginnerPoints = [
+  { title: "Start with Match Winners", desc: "Begin by focusing on straightforward match winner selections before exploring complex handicap or set score markets." },
+  { title: "Study Tournament Context", desc: "Understand whether a tournament is a Grand Slam (best-of-five sets for men) or a standard ATP/WTA event (best-of-three sets), as match length impacts player stamina." },
+  { title: "Focus on a Few Tournaments", desc: "Follow specific tour events closely rather than attempting to track every match across multiple simultaneous events." },
+  { title: "Set Spending Limits", desc: "Decide on a personal budget before viewing any markets, and stick to it strictly regardless of match outcomes." },
+  { title: "Avoid Chasing Losses", desc: "Accept that unsuccessful predictions are part of sports analysis. Never increase stakes impulsively to recover previous losses." },
+];
+
+const responsibleIntro =
+  "Maintaining sports engagement as a safe, enjoyable activity requires clear personal boundaries and responsible behavior.";
+const responsibleTips = [
+  { label: "Participate Legally", desc: "Ensure that engaging with sports markets is fully compliant with all local laws, regulatory guidelines, and age requirements in your area." },
+  { label: "Treat Betting as Entertainment", desc: "View sports selections solely as a way to enhance your viewing interest, never as a financial plan or income source." },
+  { label: "Set Clear Personal Boundaries", desc: "Establish daily, weekly, or monthly time and spending limits, and pause immediately once those limits are reached." },
+  { label: "Bet with a Clear Mind", desc: "Avoid making selections under emotional stress, fatigue, or the influence of alcohol." },
+  { label: "Recognize When to Stop", desc: "If sports tracking ceases to be fun or begins impacting your personal life or finances, step away from the platform and reach out to professional support organizations." },
+];
 
 export default function TennisPage() {
   const { scrollYProgress } = useScroll();
@@ -39,190 +135,133 @@ export default function TennisPage() {
       {/* ── Editorial flow ── */}
       <div className="relative z-10 px-[5%] py-[70px] md:py-[100px] space-y-[72px] md:space-y-[110px]">
         {/* 01 — Intro */}
-        <EditorialBlock num="01" eyebrow="Tennis Betting Online" title="Where Every Point Can Change Everything">
-          <p>
-            Tennis is one of the most exciting sports in the world. Every serve, every rally, and every point can completely change the outcome of a match. This unpredictability is what makes tennis betting online so popular among sports fans worldwide.
-          </p>
-          <p>
-            At 1xPlay, we bring you a premium online tennis betting experience where you can enjoy live matches, real-time odds, and exciting betting opportunities throughout the year. Whether you follow Grand Slam tournaments, ATP Tour events, WTA competitions, or international tennis championships, our platform gives you access to all the action in one place.
-          </p>
-          <p>
-            From pre-match predictions to live betting opportunities, 1xPlay is designed to provide a smooth, secure, and user-friendly experience for every tennis enthusiast.
-          </p>
+        <EditorialBlock num="01" eyebrow="Overview" title="Online Tennis Betting at 1Xplay">
+          <div className="max-w-3xl space-y-4">
+            {introParas.map((p, i) => (
+              <p key={i}>{p}</p>
+            ))}
+          </div>
         </EditorialBlock>
 
-        {/* 02 — Why popular */}
-        <EditorialBlock num="02" eyebrow="The Appeal" title="Why Tennis Betting Is So Popular">
-          <p>
-            Unlike many other sports, tennis offers constant action from start to finish. A single break of serve can change the momentum of the entire match. Players can come back from difficult situations, making every set exciting and unpredictable.
+        {/* 02 — How it works */}
+        <WideBlock num="02" eyebrow="Step by Step" title="How Tennis Betting Works" id="basics">
+          <p className="max-w-3xl">
+            Engaging with tennis markets follows a straightforward, step-by-step process. Developing a consistent routine allows you to analyze available data carefully before confirming any selection.
           </p>
-          <p className="text-white/90">Millions of sports fans enjoy online tennis betting because it offers:</p>
-          <TagGrid
-            items={[
-              "Fast-paced action",
-              "Real-time betting opportunities",
-              "Exciting player matchups",
-              "Multiple betting markets",
-              "Year-round tournaments",
-              "Live betting excitement",
-              "Easy mobile access",
-            ]}
-          />
-          <p>
-            With hundreds of professional matches taking place every month, tennis remains one of the most active and entertaining sports for online betting.
-          </p>
-        </EditorialBlock>
-
-        {/* 03 — Why choose (full-width feature) */}
-        <WideBlock num="03" eyebrow="Why 1xPlay" title="Built for a Better Betting Experience">
-          <p className="max-w-2xl">
-            At 1xPlay, we focus on creating a better betting experience for tennis fans. Our platform combines speed, simplicity, and modern technology to help users enjoy every match without complications.
-          </p>
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            {[
-              "Live tennis betting markets",
-              "Real-time odds updates",
-              "Coverage of major ATP & WTA events",
-              "Mobile-friendly platform",
-              "Fast and secure transactions",
-              "Easy account management",
-              "User-friendly interface",
-              "Dedicated customer support",
-              "Smooth experience on all devices",
-            ].map((item) => (
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {howSteps.map((s, i) => (
               <div
-                key={item}
-                className="group flex items-center gap-3 rounded-xl border border-white/[0.07] bg-white/[0.02] px-4 py-3.5 transition-all hover:border-[#01A3F6]/30 hover:bg-[#01A3F6]/[0.04]"
+                key={s.title}
+                className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 transition-all hover:border-[#01A3F6]/30 hover:bg-[#01A3F6]/[0.03]"
               >
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-[#01A3F6]/12 text-[#01A3F6]">
-                  <FaCheck size={11} />
-                </span>
-                <span className="text-[14px] text-white/85">{item}</span>
+                <div className="font-[var(--font-bebas)] text-[26px] leading-none text-[#01A3F6] mb-3">0{i + 1}</div>
+                <h4 className="font-[var(--font-syne)] text-[15px] font-bold text-white mb-1.5">{s.title}</h4>
+                <p className="text-[12.5px] leading-[1.6] text-muted font-light">{s.desc}</p>
               </div>
             ))}
           </div>
-          <p className="mt-8 text-white/60">
-            Whether you are a beginner or an experienced sports bettor, 1xPlay makes online tennis betting simple and enjoyable.
-          </p>
+          <p className="mt-7 max-w-3xl text-white/60">{howClosing}</p>
         </WideBlock>
 
-        {/* 04 — Live betting */}
-        <SplitMedia num="04" eyebrow="In-Play" title="Live Tennis Betting in Real Time" image="/12.png" alt="Live Tennis Betting at 1xPlay">
-          <p>
-            One of the biggest attractions of tennis betting online is live betting. Tennis is perfectly suited for live betting because the match constantly changes with every point played.
+        {/* 03 — Understanding odds */}
+        <WideBlock num="03" eyebrow="Reading Odds" title="Understanding Tennis Betting Odds">
+          <p className="max-w-3xl">{oddsIntro}</p>
+          <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-5">
+            <InfoCard title="What Odds Represent" desc={whatOddsRepresent} />
+            <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5">
+              <h4 className="font-[var(--font-syne)] text-[15px] font-bold text-white mb-3">Why Odds Shift</h4>
+              <ul className="space-y-2.5 list-none p-0 m-0">
+                {whyOddsShift.map((b) => (
+                  <li key={b} className="flex items-start gap-2.5 text-[13px] leading-[1.6] text-muted font-light">
+                    <FaCheck className="mt-1 shrink-0 text-[#01A3F6]" size={12} />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="mt-5 flex items-start gap-3 rounded-2xl border border-[#01A3F6]/20 bg-[#01A3F6]/[0.05] p-5">
+            <FaExclamationTriangle className="mt-0.5 shrink-0 text-[#01A3F6]" size={16} />
+            <div>
+              <h4 className="font-[var(--font-syne)] text-[14px] font-bold text-white mb-1.5">Odds Are Not Guarantees</h4>
+              <p className="text-[13.5px] leading-[1.7] text-white/85 font-light">{oddsNotGuarantees}</p>
+            </div>
+          </div>
+        </WideBlock>
+
+        {/* 04 — Markets */}
+        <WideBlock num="04" eyebrow="Betting Markets" title="Popular Tennis Betting Markets" id="markets">
+          <p className="max-w-3xl">{marketsIntro}</p>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5">
+            {marketBreakdowns.map((m) => (
+              <div
+                key={m.title}
+                className="rounded-2xl border border-white/[0.07] bg-gradient-to-b from-white/[0.03] to-transparent p-6 transition-all hover:border-[#01A3F6]/30"
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="w-11 h-11 rounded-xl bg-[#01A3F6]/10 border border-[#01A3F6]/20 flex items-center justify-center text-[20px]">
+                    {m.emoji}
+                  </span>
+                  <h3 className="font-[var(--font-syne)] font-bold text-white text-[17px]">{m.title}</h3>
+                </div>
+                <p className="text-muted text-[13px] leading-[1.7] font-light">{m.desc}</p>
+              </div>
+            ))}
+          </div>
+        </WideBlock>
+
+        {/* 05 — Live betting (split media) */}
+        <SplitMedia
+          num="05"
+          eyebrow="In-Play"
+          title="Live Tennis Betting"
+          image="/12.png"
+          alt="Live Tennis Betting at 1xPlay"
+        >
+          <p>{liveIntro}</p>
+          <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#01A3F6] font-[var(--font-syne)] pt-1">
+            Dynamic Market Movement
           </p>
-          <p>
-            At 1xPlay, users can place bets while the match is happening and enjoy updated odds in real time.
+          <div className="flex flex-col gap-2.5">
+            {liveFactors.map((f) => (
+              <div key={f.title} className="flex items-start gap-2.5 rounded-lg border border-white/[0.06] bg-white/[0.02] px-3.5 py-2.5 text-[13px] leading-[1.6]">
+                <FaCheck className="mt-1 shrink-0 text-[#01A3F6]" size={12} />
+                <span className="text-muted font-light">
+                  <span className="text-white/90 font-medium">{f.title}:</span> {f.desc}
+                </span>
+              </div>
+            ))}
+          </div>
+          <p className="text-[12px] font-bold uppercase tracking-[0.2em] text-[#01A3F6] font-[var(--font-syne)] pt-1">
+            Navigating Live Uncertainty
           </p>
-          <FeatureCard
-            icon={FaTv}
-            title="Live Tennis Betting Features"
-            items={[
-              "Live match coverage",
-              "Instant odds updates",
-              "Fast betting markets",
-              "Interactive betting experience",
-              "Mobile betting convenience",
-              "Multiple live betting options",
-            ]}
-          />
-          <p>
-            As players win games and sets, new opportunities become available throughout the match, creating a more engaging experience for tennis fans.
-          </p>
+          <p className="text-white/60">{liveClosing}</p>
         </SplitMedia>
 
-        {/* 05 — Markets bento */}
-        <WideBlock num="05" eyebrow="Markets" title="Popular Tennis Betting Markets">
-          <p className="max-w-2xl">
-            At 1xPlay, users can explore a wide range of tennis betting options designed to suit different betting styles.
-          </p>
-          <div className="mt-8 grid grid-cols-2 lg:grid-cols-4 gap-3.5 [grid-auto-rows:1fr]">
-            {markets.map((m, i) => (
-              <motion.div
-                key={m.title}
-                initial={{ opacity: 0, y: 18 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: (i % 4) * 0.05 }}
-                className={`group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-gradient-to-b from-white/[0.03] to-transparent p-5 transition-all hover:border-[#01A3F6]/35 ${m.span ?? ""}`}
-              >
-                <div className="absolute -top-10 -right-10 h-28 w-28 rounded-full bg-[radial-gradient(circle,rgba(1,163,246,0.12)_0%,transparent_70%)] opacity-0 transition-opacity group-hover:opacity-100" />
-                <div className="relative z-10 flex h-full flex-col">
-                  <span className="mb-3 inline-flex w-fit items-center rounded-md bg-[#01A3F6]/10 px-2 py-1 text-[9px] font-bold uppercase tracking-wider text-[#01A3F6] font-[var(--font-syne)]">
-                    Market
-                  </span>
-                  <h4 className="font-[var(--font-syne)] text-[15px] font-bold text-white">
-                    {m.title}
-                  </h4>
-                  <p className="mt-1.5 text-[12.5px] leading-[1.6] text-muted">{m.desc}</p>
-                </div>
-              </motion.div>
+        {/* 06 — Factors */}
+        <WideBlock num="06" eyebrow="Match Analysis" title="Factors to Consider Before Tennis Betting">
+          <p className="max-w-3xl">{factorsIntro}</p>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {factors.map((f) => (
+              <InfoCard key={f.title} title={f.title} desc={f.desc} />
             ))}
           </div>
-          <p className="mt-8 text-white/60">
-            These markets allow users to stay involved throughout every stage of the match.
-          </p>
+          <p className="mt-7 max-w-3xl text-white/60">{factorsClosing}</p>
         </WideBlock>
 
-        {/* 06 — Tournaments chip cloud */}
-        <WideBlock num="06" eyebrow="Calendar" title="Follow the Biggest Tennis Tournaments">
-          <div className="max-w-2xl space-y-5">
-            <p>
-              Tennis fans enjoy action throughout the year thanks to a packed international calendar filled with world-class tournaments.
-            </p>
-            <p>
-              At 1xPlay, users can enjoy online tennis betting on some of the biggest events in professional tennis.
-            </p>
-          </div>
-          <div className="mt-8 flex flex-wrap gap-2.5">
-            {[
-              "Wimbledon",
-              "Australian Open",
-              "French Open",
-              "US Open",
-              "ATP Masters 1000",
-              "ATP Tour Events",
-              "WTA Tour Events",
-              "Davis Cup",
-              "Olympic Tennis",
-              "International Championships",
-            ].map((t) => (
-              <span
-                key={t}
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.03] px-4 py-2.5 text-[13px] font-medium text-white/85 transition-all hover:border-[#01A3F6]/40 hover:bg-[#01A3F6]/[0.06] hover:text-white"
-              >
-                <span className="h-1.5 w-1.5 rounded-full bg-[#01A3F6] shadow-[0_0_8px_rgba(1,163,246,0.6)]" />
-                {t}
-              </span>
-            ))}
-          </div>
-          <p className="mt-8 max-w-2xl text-white/60">
-            Whether you support legendary champions or rising stars, 1xPlay helps you stay connected to every major tennis event.
-          </p>
-        </WideBlock>
-
-        {/* 07 — Grand Slams surface cards */}
-        <WideBlock num="07" eyebrow="The Majors" title="Grand Slam Tennis Betting">
-          <p className="max-w-2xl">
-            Grand Slam tournaments represent the highest level of professional tennis and attract millions of viewers worldwide.
-          </p>
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {slams.map((s, i) => (
-              <motion.div
+        {/* 07 — Court surfaces */}
+        <WideBlock num="07" eyebrow="Court Surfaces" title="Tennis Betting on Different Court Surfaces">
+          <p className="max-w-3xl">{surfacesIntro}</p>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+            {surfaces.map((s) => (
+              <div
                 key={s.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
                 className="group relative overflow-hidden rounded-2xl border border-white/[0.08] bg-[#09101e] p-6"
                 style={{ boxShadow: `inset 0 0 0 1px ${s.color}14` }}
               >
+                <div className="absolute inset-x-0 top-0 h-1" style={{ background: s.color }} />
                 <div
-                  className="absolute inset-x-0 top-0 h-1"
-                  style={{ background: s.color }}
-                />
-                <div
-                  className="absolute -bottom-12 -right-12 h-40 w-40 rounded-full blur-2xl opacity-25 transition-opacity group-hover:opacity-40"
+                  className="absolute -bottom-12 -right-12 h-40 w-40 rounded-full blur-2xl opacity-20 transition-opacity group-hover:opacity-35"
                   style={{ background: s.color }}
                 />
                 <div className="relative z-10">
@@ -232,76 +271,108 @@ export default function TennisPage() {
                   >
                     {s.surface}
                   </span>
-                  <h4 className="mt-4 font-[var(--font-bebas)] text-[26px] tracking-wide text-white">
-                    {s.title}
-                  </h4>
-                  <p className="mt-2 text-[12.5px] leading-[1.65] text-muted">{s.desc}</p>
+                  <h4 className="mt-4 font-[var(--font-bebas)] text-[26px] tracking-wide text-white">{s.title}</h4>
+                  <p className="mt-2 text-[12.5px] leading-[1.7] text-muted">{s.desc}</p>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
-          <p className="mt-8 max-w-2xl text-white/60">
-            These events create incredible opportunities for tennis fans who enjoy following and betting on the sport.
-          </p>
         </WideBlock>
 
-        {/* 08 — Mobile */}
-        <SplitMedia num="08" eyebrow="On the Go" title="Mobile Tennis Betting Anytime, Anywhere" image="/13.png" alt="Mobile Tennis Betting at 1xPlay" reverse>
-          <p>Modern sports fans expect flexibility, and 1xPlay delivers exactly that.</p>
+        {/* 08 — Pre-match vs live */}
+        <WideBlock num="08" eyebrow="Two Formats" title="Pre-Match vs Live Tennis Betting">
+          <p className="max-w-3xl">{prematchVsLiveIntro}</p>
+          <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-5">
+            {prematchVsLive.map((p) => (
+              <InfoCard key={p.title} title={p.title} desc={p.desc} />
+            ))}
+          </div>
+          <p className="mt-7 max-w-3xl text-white/60">{prematchVsLiveClosing}</p>
+        </WideBlock>
+
+        {/* 09 — Why 1Xplay (split media) */}
+        <SplitMedia
+          num="09"
+          eyebrow="Why 1Xplay"
+          title="Why Explore Tennis Betting on 1Xplay?"
+          image="/13.png"
+          alt="Tennis Betting on 1xPlay"
+          reverse
+        >
           <p>
-            Our platform is fully optimized for smartphones and tablets, allowing users to enjoy tennis betting online wherever they are.
+            1Xplay offers a clean, user-focused digital interface tailored for sports enthusiasts looking to follow tennis tournaments around the world.
           </p>
-          <FeatureCard
-            icon={FaMobileAlt}
-            title="Mobile Betting Benefits"
-            items={[
-              "Fast loading platform",
-              "Easy navigation",
-              "Live score access",
-              "Real-time betting markets",
-              "Smooth performance",
-              "Quick account management",
-            ]}
-          />
-          <p>
-            Whether you are watching a Grand Slam final at home or following an ATP match while travelling, 1xPlay keeps you connected to the action.
-          </p>
+          <div className="flex flex-col gap-3">
+            <FeatureRow title="Clear Market Presentation">
+              Navigate easily between match winners, set betting, and game totals with an organized, uncluttered layout.
+            </FeatureRow>
+            <FeatureRow title="Real-Time Live Updates">
+              Stay connected to ongoing action with dynamic live tennis odds and point-by-point tracking tools.
+            </FeatureRow>
+            <FeatureRow title="Mobile Accessibility">
+              Access your account, review schedule draw sheets, and check odds seamlessly across mobile devices and desktop screens.
+            </FeatureRow>
+            <FeatureRow title="Diverse Sports Options">
+              In addition to tennis coverage, discover other major sports categories — such as exploring international match
+              coverage for{" "}
+              <Link href="/cricket" className="text-[#01A3F6] underline underline-offset-2 hover:text-white">
+                online cricket betting
+              </Link>{" "}
+              or checking options for{" "}
+              <Link href="/badminton" className="text-[#01A3F6] underline underline-offset-2 hover:text-white">
+                badminton betting
+              </Link>
+              .
+            </FeatureRow>
+            <FeatureRow title="Integrated Gaming Hub">
+              For users who enjoy classic gaming options alongside sports, 1Xplay also provides convenient access to a wide
+              selection of{" "}
+              <Link href="/casino" className="text-[#01A3F6] underline underline-offset-2 hover:text-white">
+                casino games online
+              </Link>
+              .
+            </FeatureRow>
+          </div>
+          <p className="text-white/60">{whyClosing}</p>
         </SplitMedia>
 
-        {/* 09 — Security */}
-        <EditorialBlock num="09" eyebrow="Trust" title="Safe and Secure Betting Environment">
-          <p>
-            Security is a top priority at 1xPlay. We use modern technology and advanced security systems to help protect user accounts, transactions, and personal information.
+        {/* 10 — Beginners */}
+        <WideBlock num="10" eyebrow="For Beginners" title="Tennis Betting for Beginners">
+          <p className="max-w-3xl">
+            If you are new to tennis markets, adopting a measured approach helps you learn without unnecessary stress.
           </p>
-          <FeatureCard
-            icon={FaLock}
-            title="Security Features"
-            accent="#1EBF6A"
-            items={[
-              "Secure account protection",
-              "Encrypted transactions",
-              "Safe payment systems",
-              "User data protection",
-              "Reliable platform performance",
-            ]}
-          />
-          <p>
-            Our goal is to provide a trusted environment where users can focus on enjoying their betting experience.
-          </p>
-        </EditorialBlock>
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {beginnerPoints.map((b) => (
+              <InfoCard key={b.title} title={b.title} desc={b.desc} />
+            ))}
+          </div>
+        </WideBlock>
 
-        {/* 10 — Built for modern fans */}
-        <EditorialBlock num="10" eyebrow="The Future" title="Built for Modern Tennis Fans">
-          <p>
-            Tennis continues to grow as one of the most followed sports globally. New tournaments, emerging stars, and exciting rivalries keep fans engaged throughout the year.
-          </p>
-          <p>
-            At 1xPlay, we have created a platform that helps tennis enthusiasts enjoy every match through a smooth betting experience, live markets, and easy access to major competitions.
-          </p>
-          <p>
-            Whether you are following ATP stars, WTA champions, or Grand Slam tournaments, 1xPlay gives you everything needed for premium online tennis betting.
-          </p>
-        </EditorialBlock>
+        {/* Responsible */}
+        <section className="mx-auto max-w-[1000px]">
+          <div className="rounded-3xl border border-[#01A3F6]/20 bg-[#01A3F6]/[0.04] p-6 md:p-10 flex flex-col md:flex-row gap-6 items-start relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-[150px] h-[150px] bg-[radial-gradient(circle,rgba(1,163,246,0.06)_0%,transparent_70%)] pointer-events-none" />
+            <div className="w-12 h-12 rounded-2xl bg-[#01A3F6]/10 border border-[#01A3F6]/25 flex items-center justify-center text-[#01A3F6] shrink-0 shadow-lg">
+              <FaExclamationTriangle size={20} />
+            </div>
+            <div className="flex flex-col gap-4">
+              <h3 className="font-[var(--font-syne)] font-bold text-white text-[17px] uppercase tracking-wider">
+                Responsible Tennis Betting
+              </h3>
+              <p className="text-muted text-[14.5px] leading-[1.7] font-light">{responsibleIntro}</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-[13px] text-muted font-light">
+                {responsibleTips.map((tip) => (
+                  <div key={tip.label} className="flex items-start gap-2.5">
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#01A3F6] shrink-0" />
+                    <span>
+                      <span className="text-white/90 font-medium">{tip.label}:</span> {tip.desc}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
 
       <TennisFaq />
@@ -311,7 +382,7 @@ export default function TennisPage() {
         <div className="mx-auto max-w-[1180px] relative overflow-hidden rounded-[28px] border border-[#01A3F6]/25 bg-gradient-to-br from-[#070C13] via-[#05080B] to-[#070C13] p-10 md:p-16 text-left sm:text-center">
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[radial-gradient(ellipse,rgba(1,163,246,0.08)_0%,transparent_70%)] pointer-events-none" />
           <div className="relative z-10 max-w-[800px] mx-auto">
-            <span className="section-tag mb-5">Enjoy the Best Online Tennis Betting</span>
+            <span className="section-tag justify-center mb-5">Enjoy the Best Online Tennis Betting</span>
             <h2 className="section-title">
               Feel the Thrill of{" "}
               <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#5ecfff] bg-clip-text text-transparent">
@@ -346,145 +417,80 @@ export default function TennisPage() {
 function Hero() {
   return (
     <SportHero src="/tennis.png" alt="Tennis Betting at 1xPlay" desktopPosition="object-right">
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex items-center gap-2 bg-[#01A3F6]/10 border border-[#01A3F6]/20 rounded-full px-4 py-1.5 w-max mb-6"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#01A3F6] animate-pulse" />
-              <span className="sport-hero-eyebrow font-semibold text-[#01A3F6] uppercase tracking-[2px] font-[var(--font-syne)]">
-                Tennis Betting Online at 1xPlay
-              </span>
-            </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex items-center gap-2 bg-[#01A3F6]/10 border border-[#01A3F6]/20 rounded-full px-4 py-1.5 w-max mb-6"
+      >
+        <span className="w-2 h-2 rounded-full bg-[#01A3F6] animate-pulse" />
+        <span className="sport-hero-eyebrow font-semibold text-[#01A3F6] uppercase tracking-[2px] font-[var(--font-syne)]">
+          Tennis Betting
+        </span>
+      </motion.div>
 
-            <motion.h1
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className=""
-            >
-              Tennis Betting Online at{" "}
-              <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(1,163,246,0.15)]">
-                1xPlay
-              </span>
-            </motion.h1>
+      <motion.h1
+        initial={{ opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1 }}
+        className=""
+      >
+        Online Tennis Betting at{" "}
+        <span className="bg-gradient-to-r from-[#0078E5] via-[#01A3F6] to-[#7fd5ff] bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(1,163,246,0.15)]">
+          1Xplay
+        </span>
+      </motion.h1>
 
-            <motion.p
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className=""
-            >
-              Experience the excitement of online tennis betting — live matches,
-              real-time odds, and premium markets across every Grand Slam, ATP, and
-              WTA event.
-            </motion.p>
+      <motion.p
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+        className=""
+      >
+        Explore tennis markets and live matches across every Grand Slam, ATP, and WTA event —
+        with real-time odds and clear market views built for smooth navigation on any device.
+      </motion.p>
 
-            <motion.div
-              initial={{ opacity: 0, y: 14 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="flex gap-4 flex-wrap max-sm:justify-center justify-center"
-            >
-              <a href="https://www.1xplay.games/sports/tennis/2" className="btn btn-gold btn-large gap-2">
-                <span>Start Betting</span> <FaArrowRight size={12} />
-              </a>
-              <Link href="/games" className="btn btn-ghost btn-large">
-                <span>View Markets</span>
-              </Link>
-            </motion.div>
+      <motion.div
+        initial={{ opacity: 0, y: 14 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="flex gap-4 flex-wrap max-sm:justify-center"
+      >
+        <a href="https://www.1xplay.games/sports/tennis/2" className="btn btn-gold btn-large gap-2">
+          <span>Start Betting</span> <FaArrowRight size={12} />
+        </a>
+        <a href="#basics" className="btn btn-ghost btn-large">
+          <span>How It Works</span>
+        </a>
+      </motion.div>
     </SportHero>
   );
 }
 
 /* ─────────── Reusable blocks ─────────── */
 
-function TagGrid({ items }: { items: string[] }) {
+function InfoCard({ title, desc }: { title: string; desc: React.ReactNode }) {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-      {items.map((item) => (
-        <div
-          key={item}
-          className="flex items-center gap-3 rounded-xl border border-white/[0.06] bg-white/[0.02] px-4 py-3 transition hover:border-[#01A3F6]/25"
-        >
-          <FaBolt className="shrink-0 text-[#01A3F6]" size={14} />
-          <span className="text-[14px] text-white/85">{item}</span>
-        </div>
-      ))}
+    <div className="rounded-2xl border border-white/[0.07] bg-white/[0.02] p-5 transition-all hover:border-[#01A3F6]/30 hover:bg-[#01A3F6]/[0.03]">
+      <h4 className="font-[var(--font-syne)] text-[15px] font-bold text-white mb-2">{title}</h4>
+      <p className="text-[13px] leading-[1.7] text-muted font-light">{desc}</p>
     </div>
   );
 }
 
-function FeatureCard({
-  icon: Icon,
-  title,
-  items,
-  accent = ACCENT,
-}: {
-  icon: React.ElementType;
-  title: string;
-  items: string[];
-  accent?: string;
-}) {
+function FeatureRow({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-6">
-      <div className="mb-4 flex items-center gap-3">
-        <span
-          className="flex h-9 w-9 items-center justify-center rounded-lg"
-          style={{ backgroundColor: `${accent}1A`, color: accent }}
-        >
-          <Icon size={16} />
-        </span>
-        <p className="font-[var(--font-syne)] text-[14px] font-bold text-white">{title}</p>
+    <div className="flex gap-3.5 rounded-2xl border border-white/[0.07] bg-white/[0.02] p-4 transition-all hover:border-[#01A3F6]/30">
+      <span
+        className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg"
+        style={{ backgroundColor: `${ACCENT}1A`, color: ACCENT }}
+      >
+        <FaBolt size={15} />
+      </span>
+      <div>
+        <p className="font-[var(--font-syne)] text-[14px] font-bold text-white mb-1">{title}</p>
+        <p className="text-[13px] leading-[1.7] text-muted font-light">{children}</p>
       </div>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 list-none p-0 m-0">
-        {items.map((item) => (
-          <li key={item} className="flex items-start gap-3 text-[14px] text-white/85">
-            <FaCheck className="mt-0.5 shrink-0" size={13} style={{ color: accent }} />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
     </div>
   );
 }
-
-/* ─────────── Data ─────────── */
-
-const markets = [
-  { title: "Match Winner", desc: "Predict which player will win the match.", span: "lg:row-span-1" },
-  { title: "Set Winner", desc: "Choose the player expected to win a particular set." },
-  { title: "First Set Winner", desc: "Bet on the player who will take the opening set." },
-  { title: "Total Games", desc: "Predict whether total games will be over or under a selected line." },
-  { title: "Handicap Betting", desc: "Add more excitement with game and set handicap markets." },
-  { title: "Correct Score", desc: "Predict the exact final score of the match." },
-  { title: "Tournament Winner", desc: "Choose the player you believe will win the entire tournament." },
-  { title: "Live Tennis Betting", desc: "Place bets during live matches with continuously updated odds." },
-];
-
-const slams = [
-  {
-    title: "Wimbledon",
-    surface: "Grass",
-    color: "#2E9E5B",
-    desc: "The most prestigious tennis tournament, known for its rich history and iconic grass courts.",
-  },
-  {
-    title: "Australian Open",
-    surface: "Hard",
-    color: "#2E7BD8",
-    desc: "A tournament that starts the tennis season with some of the biggest matches of the year.",
-  },
-  {
-    title: "French Open",
-    surface: "Clay",
-    color: "#D8743F",
-    desc: "Famous for its challenging clay courts and unforgettable battles between the world's best players.",
-  },
-  {
-    title: "US Open",
-    surface: "Hard",
-    color: "#7B5CD8",
-    desc: "One of the most exciting tournaments featuring thrilling matches and passionate crowds.",
-  },
-];

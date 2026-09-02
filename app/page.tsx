@@ -11,6 +11,7 @@ import JoinCTA from "./components/JoinCTA";
 import ScrollReveal from "./components/ScrollReveal";
 import WhyBetter from "./components/WhyBetter";
 import SafeSecure from "./components/SafeSecure";
+import LiveCricketOverview from "./components/LiveCricketOverview";
 import BeyondCricket from "./components/BeyondCricket";
 import Support247 from "./components/Support247";
 import TrustedByPlayers from "./components/TrustedByPlayers";
@@ -34,6 +35,7 @@ export default function Home() {
       <Features />
       <WhyBetter />
       <SafeSecure />
+      <LiveCricketOverview />
       {/* <OtherSports /> */}
       <BeyondCricket />
       <MobileApp />

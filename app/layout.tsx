@@ -7,6 +7,7 @@ import Preloader from "./components/Preloader";
 import SmoothScroll from "./components/SmoothScroll";
 import GlobalJsonLd from "./components/GlobalJsonLd";
 import GoogleAnalytics from "./components/GoogleAnalytics";
+import ContentProtection from "./components/ContentProtection";
 import { rootMetadata } from "./seo";
 
 const robotoSlab = Roboto_Slab({
@@ -48,6 +49,7 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body className="min-h-screen flex flex-col">
+        <ContentProtection />
         <GoogleAnalytics />
         <GlobalJsonLd />
         <SmoothScroll />

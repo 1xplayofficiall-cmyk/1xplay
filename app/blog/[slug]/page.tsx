@@ -3,7 +3,7 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { ArrowLeft, ArrowRight, Calendar, Clock, ChevronRight, Tag } from "lucide-react";
-import { getPost, getPosts, getAllSlugs, getUniqueCategories, blogCategoryHref, getCategoryImage, getPostDisplayImage, type BlogPost } from "../../lib/wordpress";
+import { getPost, getPostSeo, getPosts, getAllSlugs, getUniqueCategories, blogCategoryHref, getCategoryImage, getPostDisplayImage, type BlogPost } from "../../lib/wordpress";
 import TableOfContents, { type TocItem } from "../TableOfContents";
 import ShareButtons from "../ShareButtons";
 
@@ -23,12 +23,17 @@ export async function generateMetadata({
   const post = await getPost(slug);
   if (!post) return { title: "Article Not Found | 1xPlay Blog" };
 
+  // Prefer Rank Math's SEO title/description; fall back to the post title + excerpt.
+  const seo = await getPostSeo(post.link);
+  const title = seo.title ?? `${post.title} | 1xPlay Blog`;
+  const description = seo.description ?? post.excerpt;
+
   return {
-    title: `${post.title} | 1xPlay Blog`,
-    description: post.excerpt,
+    title,
+    description,
     openGraph: {
-      title: post.title,
-      description: post.excerpt,
+      title: seo.title ?? post.title,
+      description,
       type: "article",
       images: post.imageUrl ? [{ url: post.imageUrl }] : undefined,
     },

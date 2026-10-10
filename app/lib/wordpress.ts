@@ -3,6 +3,7 @@
 export type BlogPost = {
   id: string;
   slug: string;
+  link?: string;
   title: string;
   excerpt: string;
   content?: string; 
@@ -105,6 +106,7 @@ type WPTerm = { name?: string; taxonomy?: string };
 type WPPost = {
   id: number;
   slug: string;
+  link?: string;
   date: string;
   title: { rendered: string };
   excerpt: { rendered: string };
@@ -170,6 +172,7 @@ function mapPost(wp: WPPost, withContent: boolean): BlogPost {
   return {
     id: String(wp.id),
     slug: wp.slug,
+    link: wp.link,
     title: decodeEntities(stripHtml(wp.title?.rendered ?? "")),
     excerpt,
     content: withContent ? wp.content?.rendered ?? "" : undefined,
@@ -270,6 +273,32 @@ export async function getPost(slug: string): Promise<BlogPost | null> {
   } catch (error) {
     console.error(`Failed to fetch WordPress post "${slug}":`, error);
     return null;
+  }
+}
+
+/** Pull the SEO title/description Rank Math renders for a post URL. Empty on any failure. */
+export function parseSeoHead(head: string): { title?: string; description?: string } {
+  const title = head.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1];
+  const description = head.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i)?.[1];
+  return {
+    title: title ? decodeEntities(title) : undefined,
+    description: description ? decodeEntities(description) : undefined,
+  };
+}
+
+export async function getPostSeo(link?: string): Promise<{ title?: string; description?: string }> {
+  const base = getBaseUrl();
+  if (!base || !link) return {};
+  try {
+    const res = await fetch(
+      `${base}/wp-json/rankmath/v1/getHead?url=${encodeURIComponent(link)}`,
+      { next: { revalidate: REVALIDATE_SECONDS } }
+    );
+    if (!res.ok) return {};
+    const head: string = (await res.json())?.head ?? "";
+    return parseSeoHead(head);
+  } catch {
+    return {};
   }
 }
 

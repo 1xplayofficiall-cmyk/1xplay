@@ -278,8 +278,14 @@ export async function getPost(slug: string): Promise<BlogPost | null> {
 
 /** Pull the SEO title/description Rank Math renders for a post URL. Empty on any failure. */
 export function parseSeoHead(head: string): { title?: string; description?: string } {
-  const title = head.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1];
-  const description = head.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i)?.[1];
+  const pick = (re: RegExp) => head.match(re)?.[1];
+  // Prefer Rank Math's og:title meta (its SEO title); the <title> tag can carry the theme's default.
+  const title =
+    pick(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']*)["']/i) ??
+    pick(/<title[^>]*>([\s\S]*?)<\/title>/i);
+  const description =
+    pick(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i) ??
+    pick(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']*)["']/i);
   return {
     title: title ? decodeEntities(title) : undefined,
     description: description ? decodeEntities(description) : undefined,

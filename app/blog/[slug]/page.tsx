@@ -29,7 +29,8 @@ export async function generateMetadata({
   const description = seo.description ?? post.excerpt;
 
   return {
-    title,
+    // `absolute` so the root title template ("%s | 1xplay") doesn't double-append to Rank Math's title.
+    title: { absolute: title },
     description,
     openGraph: {
       title: seo.title ?? post.title,
@@ -74,6 +75,7 @@ export default async function BlogPostPage({
   const { slug } = await params;
   const post = await getPost(slug);
   if (!post) notFound();
+  console.log(post.link)
 
   const { html, toc } = buildToc(post.content ?? "");
   const { posts } = await getPosts();
@@ -88,6 +90,7 @@ export default async function BlogPostPage({
   const related = [...relatedSameCategory, ...relatedOther].slice(0, 6);
   const activeCategory = postCategory;
   const heroImage = getPostDisplayImage(post);
+
 
   return (
     <div className="relative min-h-screen bg-[#030914] overflow-hidden">

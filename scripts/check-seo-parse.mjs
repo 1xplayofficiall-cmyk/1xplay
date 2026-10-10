@@ -1,14 +1,21 @@
-// Guards parseSeoHead's regexes against Rank Math's real <head> shape.
+// Guards parseSeoHead's extraction against Rank Math's real <head> shape.
+// Title must come from og:title (not the <title> tag, which can carry the theme default).
 // Run: node scripts/check-seo-parse.mjs
 import assert from "node:assert";
 
 const head =
-  '<title>Online Horse Racing Betting: 7 Things | 1xPlay</title>' +
-  '<meta name="description" content="Learn horse racing odds &amp; markets."/>';
+  '<title>Theme Default Title</title>' +
+  '<meta property="og:title" content="My Rank Math SEO Title"/>' +
+  '<meta name="description" content="My Rank Math description."/>';
 
-const title = head.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1];
-const description = head.match(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i)?.[1];
+const pick = (re) => head.match(re)?.[1];
+const title =
+  pick(/<meta[^>]+property=["']og:title["'][^>]+content=["']([^"']*)["']/i) ??
+  pick(/<title[^>]*>([\s\S]*?)<\/title>/i);
+const description =
+  pick(/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i) ??
+  pick(/<meta[^>]+property=["']og:description["'][^>]+content=["']([^"']*)["']/i);
 
-assert.equal(title, "Online Horse Racing Betting: 7 Things | 1xPlay");
-assert.equal(description, "Learn horse racing odds &amp; markets."); // entities decoded later
+assert.equal(title, "My Rank Math SEO Title"); // og:title beats <title>
+assert.equal(description, "My Rank Math description.");
 console.log("ok");

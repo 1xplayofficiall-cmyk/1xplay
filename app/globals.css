@@ -307,6 +307,28 @@ body {
 }
 .wp-content pre code { background: none; padding: 0; }
 .wp-content hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+.wp-content table {
+  width: 100%;
+  margin: 1.5em 0;
+  border-collapse: collapse;
+  font-size: 0.95em;
+  display: block;
+  overflow-x: auto;
+}
+.wp-content th,
+.wp-content td {
+  border: 1px solid var(--border);
+  padding: 0.6em 0.9em;
+  text-align: left;
+  vertical-align: top;
+}
+.wp-content thead th,
+.wp-content tr:first-child th {
+  background: var(--card2);
+  color: var(--white);
+  font-weight: 600;
+}
+.wp-content tbody tr:nth-child(even) { background: rgba(255,255,255,0.02); }
 
 /* Sport page hero — moderate scale on large screens */
 .sport-hero-copy h1 {

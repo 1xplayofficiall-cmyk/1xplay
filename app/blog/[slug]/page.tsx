@@ -32,6 +32,7 @@ export async function generateMetadata({
     // `absolute` so the root title template ("%s | 1xplay") doesn't double-append to Rank Math's title.
     title: { absolute: title },
     description,
+    alternates: { canonical: `/blog/${slug}` },
     openGraph: {
       title: seo.title ?? post.title,
       description,

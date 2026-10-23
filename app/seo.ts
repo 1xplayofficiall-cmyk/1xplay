@@ -70,9 +70,9 @@ export const seoPages = {
     priority: 0.7,
   },
   "/affiliate": {
-    title: "1xplay Affiliate Program - Earn Rewards",
+    title: "1Xplay Affiliate Program – Earn Commissions Online",
     description:
-      "Join the 1xPlay Affiliate Program and earn commission by referring active users to a trusted online casino, sports betting, and gaming platform.",
+      "Explore the 1Xplay Affiliate Program, learn how referrals work, and discover commission opportunities, program terms, and affiliate support.",
     path: "/affiliate",
     keywords: ["1xPlay affiliate", "affiliate program", "gaming affiliate", "casino affiliate"],
     changeFrequency: "monthly",
@@ -214,9 +214,9 @@ export const seoPages = {
     priority: 0.86,
   },
   "/highlights": {
-    title: "Cricket Match Highlights & Live Streams",
+    title: "Cricket Match Highlights & IPL Highlights | 1Xplay",
     description:
-      "Watch the latest cricket match highlights, live streams, and top moments on 1xPlay. Stream IPL, international, and T20 action powered by YouTube.",
+      "Watch cricket match highlights, IPL highlights, T20 action, and top moments from international cricket on 1Xplay. Catch key moments from exciting matches.",
     path: "/highlights",
     image: "/highlights-hero.jpg",
     keywords: ["cricket highlights", "live cricket stream", "IPL highlights", "cricket videos", "1xPlay highlights"],
@@ -240,36 +240,36 @@ export const seoPages = {
     priority: 0.82,
   },
   "/partner": {
-    title: "1xplay Partner Program - Join Today",
+    title: "1Xplay Partner Program | Partnership Opportunities",
     description:
-      "Become a 1xPlay partner and grow revenue with a transparent program for gaming, casino, and sports betting traffic.",
+      "Explore partnership opportunities with 1Xplay. Learn about our partner program, collaboration options, and how to connect with our team.",
     path: "/partner",
     keywords: ["1xPlay partner", "partner program", "gaming partnership", "sports betting partner"],
     changeFrequency: "monthly",
     priority: 0.7,
   },
   "/privacy-policy": {
-    title: "Privacy Policy - 1xplay",
+    title: "Privacy Policy | User Data & Security - 1Xplay",
     description:
-      "Read the 1xPlay Privacy Policy to understand how user information, cookies, account data, and platform security are handled.",
+      "Read the 1Xplay Privacy Policy to learn how user data, cookies, account information, and privacy are handled on our platform.",
     path: "/privacy-policy",
     keywords: ["1xPlay privacy policy", "user privacy", "data protection", "cookie policy"],
     changeFrequency: "yearly",
     priority: 0.45,
   },
   "/responsible-gambling": {
-    title: "Responsible Gambling - 1xplay",
+    title: "Responsible Gambling Guide & Safer Gaming | 1Xplay",
     description:
-      "Review 1xPlay responsible gambling guidance, player protection practices, betting limits, account control, and safer gaming advice.",
+      "Review 1Xplay's responsible gambling guide for safer gaming advice, betting limits, account controls, and player protection tips. Play responsibly.",
     path: "/responsible-gambling",
     keywords: ["responsible gambling", "safe betting", "player protection", "gaming limits"],
     changeFrequency: "monthly",
     priority: 0.58,
   },
   "/rules": {
-    title: "Sports Betting Rules - 1xplay",
+    title: "Sports Betting Rules & Market Settlement | 1Xplay",
     description:
-      "Read 1xPlay rules for sports betting, market settlement, cricket betting, tennis, football, account use, and fair gaming standards",
+      "Read the 1Xplay sports betting rules for cricket, tennis, football, market settlement, account use, and fair play guidelines. Review the rules before playing.",
     path: "/rules",
     image: "/rules-hero.png",
     keywords: ["1xPlay rules", "sports betting rules", "bet settlement", "gaming rules"],
@@ -277,9 +277,9 @@ export const seoPages = {
     priority: 0.62,
   },
   "/support": {
-    title: "1xPlay Help Centre | 24/7 Support for Cricket ID & Betting",
+    title: "1Xplay Support Centre | Customer Help & Assistance",
     description:
-      "Visit the 1xPlay Help Centre for 24/7 support with account access, Cricket ID, deposits, withdrawals, casino games, sports betting, and technical help",
+      "Find help with your 1Xplay account, Cricket ID, deposits, withdrawals, and technical issues. Visit our support centre for platform assistance.",
     keywords: [
       "1xPlay help centre",
       "1xPlay support",
@@ -327,18 +327,18 @@ export const seoPages = {
     priority: 0.84,
   },
   "/terms-and-conditions": {
-    title: "Terms & Conditions - 1xplay",
+    title: "Terms and Conditions for Online Gaming | 1Xplay",
     description:
-      "Read the 1xPlay Terms and Conditions covering account use, payments, bonuses, responsible gaming, privacy, and platform rules.",
+      "Read the 1Xplay Terms and Conditions for account usage, payments, bonuses, platform rules, eligibility, and responsible gaming policies.",
     path: "/terms-and-conditions",
     keywords: ["1xPlay terms", "terms and conditions", "platform rules", "gaming terms"],
     changeFrequency: "yearly",
     priority: 0.5,
   },
   "/withdrawal": {
-    title: "Withdraw Winnings Securely - 1xplay",
+    title: "1Xplay Withdrawal Guide – UPI & Bank Transfers",
     description:
-      "Withdraw winnings from 1xPlay with a simple secure payout flow for UPI and bank transfer requests.",
+      "Withdraw on 1Xplay with information about UPI and bank transfer requests, payout steps, and withdrawal guidelines. Review the process before submitting a request.",
     path: "/withdrawal",
     keywords: ["1xPlay withdrawal", "withdraw winnings", "secure payout", "online gaming withdrawal"],
     changeFrequency: "monthly",
